@@ -1,6 +1,7 @@
 # Sube a R2 los MP3 que cambien en audio/. Secreto necesario: CLOUDFLARE_API_TOKEN (permiso Workers R2 Storage: Edit).
 name: Audio a R2
 on:
+  workflow_dispatch:
   push:
     branches: [main]
     paths: ['audio/**']
