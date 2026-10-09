@@ -32,19 +32,28 @@ async function tokenGoogle(sa) {
   return (await r.json()).access_token;
 }
 
-async function informe(env, token, rango, dims, mets, extra = {}) {
-  const r = await fetch(`https://analyticsdata.googleapis.com/v1beta/properties/${env.GA_PROPERTY}:runReport`, {
-    method: "POST", headers: { authorization: `Bearer ${token}`, "content-type": "application/json" },
-    body: JSON.stringify({ dateRanges: [rango], dimensions: dims.map(name => ({ name })),
-      metrics: mets.map(name => ({ name })), limit: 50, ...extra }) });
-  if (!r.ok) throw new Error(`runReport ${dims.join(",") || "totales"}: ${await r.text()}`);
-  const d = await r.json();
+// Varias consultas en una sola llamada (batchRunReports admite 5 por llamada): el plan gratuito limita subrequests.
+function filas(d, dims, mets) {
   return (d.rows || []).map(row => {
     const o = {};
     dims.forEach((k, i) => o[k] = row.dimensionValues[i].value);
     mets.forEach((k, i) => o[k] = Number(row.metricValues[i].value));
     return o;
   });
+}
+async function lote(env, token, rango, specs) {
+  const out = {};
+  for (let i = 0; i < specs.length; i += 5) {
+    const parte = specs.slice(i, i + 5);
+    const r = await fetch(`https://analyticsdata.googleapis.com/v1beta/properties/${env.GA_PROPERTY}:batchRunReports`, {
+      method: "POST", headers: { authorization: `Bearer ${token}`, "content-type": "application/json" },
+      body: JSON.stringify({ requests: parte.map(s => ({ dateRanges: [rango], dimensions: s.dims.map(name => ({ name })),
+        metrics: s.mets.map(name => ({ name })), limit: s.limit || 50, ...(s.extra || {}) })) }) });
+    if (!r.ok) { const e = (await r.text()).slice(0, 300); parte.forEach(s => out[s.k] = { error: e }); continue; }
+    const d = await r.json();
+    parte.forEach((s, j) => { const rep = d.reports?.[j]; out[s.k] = rep ? filas(rep, s.dims, s.mets) : { error: "sin informe" }; });
+  }
+  return out;
 }
 
 async function generar(env) {
@@ -59,35 +68,35 @@ async function generar(env) {
     acumulado: { startDate: env.ESTRENO <= ayer ? env.ESTRENO : hace(30), endDate: ayer },
   };
   const U = ["totalUsers", "newUsers", "sessions"];
+  const EV = ["eventCount", "totalUsers"];
   const EVENTOS = ["play", "progreso", "complete", "share_click", "canal_click", "toda_serie_click"];
-  const ev = (rango, dims = []) => informe(env, token, rango, ["eventName", ...dims], ["eventCount", "totalUsers"],
-    { dimensionFilter: { filter: { fieldName: "eventName", inListFilter: { values: EVENTOS } } } });
-  const suave = p => p.catch(e => ({ error: String(e).slice(0, 200) }));
-
+  const fEv = { dimensionFilter: { filter: { fieldName: "eventName", inListFilter: { values: EVENTOS } } } };
   const out = { generado: new Date().toISOString(), fecha_informe: ayer, hoy: hace(0), estreno: env.ESTRENO,
     propiedad: env.GA_PROPERTY,
     nota: "Edad y sexo requieren Google Signals y umbrales de privacidad; lista vacía = sin datos suficientes. " +
-          "Los datos de GA4 de ayer pueden tardar hasta 24-48 h en consolidarse." };
+          "Los datos de GA4 de ayer pueden tardar hasta 24-48 h en consolidarse. " +
+          "fuente/capitulo/pct/donde son dimensiones personalizadas creadas el 2026-10-09; no hay datos anteriores." };
   for (const [k, rango] of Object.entries(R)) {
-    out[k] = {
-      rango,
-      totales: (await informe(env, token, rango, [], U))[0] || { totalUsers: 0, newUsers: 0, sessions: 0 },
-      por_dia: k === "ayer" ? undefined : await suave(informe(env, token, rango, ["date"], U,
-        { orderBys: [{ dimension: { dimensionName: "date" } }], limit: 120 })),
-      nuevos_vs_recurrentes: await suave(informe(env, token, rango, ["newVsReturning"], U)),
-      canal: await suave(informe(env, token, rango, ["sessionDefaultChannelGroup"], U)),
-      fuente_sitio: await suave(informe(env, token, rango, ["customEvent:fuente"], U)),
-      pagina: await suave(informe(env, token, rango, ["pagePath"], U)),
-      eventos: await suave(ev(rango)),
-      eventos_por_capitulo: await suave(ev(rango, ["customEvent:capitulo"])),
-      eventos_por_fuente: await suave(ev(rango, ["customEvent:fuente"])),
-      progreso_pct: await suave(informe(env, token, rango, ["eventName", "customEvent:pct"], ["eventCount", "totalUsers"],
-        { dimensionFilter: { filter: { fieldName: "eventName", stringFilter: { value: "progreso" } } } })),
-      dispositivo: await suave(informe(env, token, rango, ["deviceCategory", "operatingSystem"], U)),
-      ciudad: await suave(informe(env, token, rango, ["city"], U, { limit: 15 })),
-      edad: await suave(informe(env, token, rango, ["userAgeBracket"], U)),
-      sexo: await suave(informe(env, token, rango, ["userGender"], U)),
-    };
+    const specs = [
+      { k: "totales", dims: [], mets: U },
+      { k: "nuevos_vs_recurrentes", dims: ["newVsReturning"], mets: U },
+      { k: "canal", dims: ["sessionDefaultChannelGroup"], mets: U },
+      { k: "fuente_sitio", dims: ["customEvent:fuente"], mets: U },
+      { k: "pagina", dims: ["pagePath"], mets: U },
+      { k: "eventos", dims: ["eventName"], mets: EV, extra: fEv },
+      { k: "eventos_por_capitulo", dims: ["eventName", "customEvent:capitulo"], mets: EV, extra: fEv },
+      { k: "eventos_por_fuente", dims: ["eventName", "customEvent:fuente"], mets: EV, extra: fEv },
+      { k: "progreso_pct", dims: ["customEvent:capitulo", "customEvent:pct"], mets: EV,
+        extra: { dimensionFilter: { filter: { fieldName: "eventName", stringFilter: { value: "progreso" } } } } },
+      { k: "dispositivo", dims: ["deviceCategory", "operatingSystem"], mets: U },
+      { k: "ciudad", dims: ["city"], mets: U, limit: 15 },
+      { k: "edad", dims: ["userAgeBracket"], mets: U },
+      { k: "sexo", dims: ["userGender"], mets: U },
+    ];
+    if (k !== "ayer") specs.push({ k: "por_dia", dims: ["date"], mets: U, limit: 120, extra: { orderBys: [{ dimension: { dimensionName: "date" } }] } });
+    const res = await lote(env, token, rango, specs);
+    res.totales = Array.isArray(res.totales) ? (res.totales[0] || { totalUsers: 0, newUsers: 0, sessions: 0 }) : res.totales;
+    out[k] = { rango, ...res };
   }
   const cuerpo = JSON.stringify(out, null, 1);
   const meta = { httpMetadata: { contentType: "application/json; charset=utf-8", cacheControl: "public, max-age=300" } };
