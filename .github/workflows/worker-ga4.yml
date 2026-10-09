@@ -1,0 +1,35 @@
+# Despliega el Worker ga4-informe (GA4 → R2 datos/informe.json) y genera el informe una vez.
+# Secretos del repo: CLOUDFLARE_API_TOKEN (Workers Scripts: Edit + Workers R2 Storage: Edit), GA_SA_KEY (JSON de la cuenta de servicio).
+name: Worker GA4
+on:
+  push:
+    branches: [main]
+    paths: ['worker/**', '.github/workflows/worker-ga4.yml']
+  workflow_dispatch:
+jobs:
+  desplegar:
+    runs-on: ubuntu-latest
+    defaults: { run: { working-directory: worker } }
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: 85f7056427611b1d4b8733ca46c69ba8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Desplegar
+        run: npx --yes wrangler@4 deploy 2>&1 | tee salida.txt
+      - name: Secretos del Worker
+        env:
+          GA_SA_KEY: ${{ secrets.GA_SA_KEY }}
+        run: |
+          set -e
+          [ -n "$GA_SA_KEY" ] || { echo "Falta el secreto GA_SA_KEY"; exit 1; }
+          printf '%s' "$GA_SA_KEY" | npx --yes wrangler@4 secret put GA_SA_KEY
+          CLAVE=$(printf '%s' "$GA_SA_KEY" | sha256sum | cut -c1-32)
+          printf '%s' "$CLAVE" | npx --yes wrangler@4 secret put CLAVE_MANUAL
+          echo "CLAVE=$CLAVE" >> "$GITHUB_ENV"
+      - name: Generar informe ahora
+        run: |
+          URL=$(grep -o 'https://ga4-informe[^ ]*workers.dev' salida.txt | head -1)
+          [ -n "$URL" ] || { echo "No se encontró la URL del Worker"; exit 1; }
+          sleep 10
+          curl -sS "$URL/generar?clave=$CLAVE" | sed 's/"error":"[^"]\{0,300\}/&…/' | head -c 1500; echo

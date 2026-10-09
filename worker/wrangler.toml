@@ -1,0 +1,15 @@
+name = "ga4-informe"
+main = "src/index.js"
+compatibility_date = "2025-06-01"
+account_id = "85f7056427611b1d4b8733ca46c69ba8"
+
+[triggers]
+crons = ["30 10 * * *"]
+
+[[r2_buckets]]
+binding = "AUDIO"
+bucket_name = "radionovelas-audio"
+
+[vars]
+GA_PROPERTY = "558311193"
+ESTRENO = "2026-10-16"
