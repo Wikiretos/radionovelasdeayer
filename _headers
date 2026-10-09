@@ -1,0 +1,12 @@
+/*.mp3
+  Cache-Control: public, max-age=31536000, immutable
+/*.webp
+  Cache-Control: public, max-age=31536000, immutable
+/*.html
+  Cache-Control: public, max-age=300
+/
+  Cache-Control: public, max-age=300
+/capitulos
+  Cache-Control: public, max-age=300
+/cap-*
+  Cache-Control: public, max-age=300
