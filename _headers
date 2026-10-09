@@ -10,3 +10,7 @@
   Cache-Control: public, max-age=300
 /cap-*
   Cache-Control: public, max-age=300
+/audio/*
+  X-Robots-Tag: noindex
+/sitemap.xml
+  Cache-Control: public, max-age=300
