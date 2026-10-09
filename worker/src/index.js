@@ -102,6 +102,8 @@ async function generar(env) {
   const meta = { httpMetadata: { contentType: "application/json; charset=utf-8", cacheControl: "public, max-age=300" } };
   await env.AUDIO.put("datos/informe.json", cuerpo, meta);
   await env.AUDIO.put(`datos/informe-${ayer}.json`, cuerpo, meta);
+  // Copia en texto plano: algunos lectores automáticos no aceptan application/json.
+  await env.AUDIO.put("datos/informe.txt", cuerpo, { httpMetadata: { contentType: "text/plain; charset=utf-8", cacheControl: "public, max-age=300" } });
   return out;
 }
 
