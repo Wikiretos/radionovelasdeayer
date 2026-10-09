@@ -55,7 +55,8 @@ async function generar(env) {
     ayer: { startDate: ayer, endDate: ayer },
     sem: { startDate: hace(7), endDate: ayer },
     sem_anterior: { startDate: hace(14), endDate: hace(8) },
-    acumulado: { startDate: env.ESTRENO, endDate: ayer },
+    // Antes del estreno, el acumulado cubre los últimos 30 días (pruebas); después, desde el estreno.
+    acumulado: { startDate: env.ESTRENO <= ayer ? env.ESTRENO : hace(30), endDate: ayer },
   };
   const U = ["totalUsers", "newUsers", "sessions"];
   const EVENTOS = ["play", "progreso", "complete", "share_click", "canal_click", "toda_serie_click"];
