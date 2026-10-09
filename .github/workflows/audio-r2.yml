@@ -1,0 +1,25 @@
+# Sube a R2 los MP3 que cambien en audio/. Secreto necesario: CLOUDFLARE_API_TOKEN (permiso Workers R2 Storage: Edit).
+name: Audio a R2
+on:
+  push:
+    branches: [main]
+    paths: ['audio/**']
+jobs:
+  subir:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 2 }
+      - name: Subir MP3 nuevos o cambiados
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: 85f7056427611b1d4b8733ca46c69ba8
+        run: |
+          set -e
+          ARCHIVOS=$(git diff --name-only --diff-filter=AM HEAD~1 HEAD -- 'audio/*.mp3' || true)
+          [ -z "$ARCHIVOS" ] && ARCHIVOS=$(ls audio/*.mp3)
+          for f in $ARCHIVOS; do
+            n=$(basename "$f")
+            echo "→ $n"
+            npx --yes wrangler@3 r2 object put "radionovelas-audio/$n" --file "$f" --content-type audio/mpeg --cache-control "public, max-age=31536000, immutable"
+          done
