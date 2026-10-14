@@ -30,6 +30,7 @@ const SC_PROPIEDAD = "sc-domain:radionovelasdeayer.com";
 const SC_URL = `https://searchconsole.googleapis.com/webmasters/v3/sites/${encodeURIComponent(SC_PROPIEDAD)}/searchAnalytics/query`;
 const SC_DESDE_MIN = "2026-09-14";
 const EMBUDO_DESDE = "2026-10-09";
+const INSPECCION_MAX = 15; // URL del sitemap inspeccionadas por corrida (cuida el límite de subrequests del Worker)
 
 // ===== Autenticación (un token para GA4 y Search Console) =====
 function b64url(buf) {
@@ -210,12 +211,15 @@ async function leerSitemap(url, profundidad = 0) {
 
 async function generarSeo(env, token) {
   const out = { generado: new Date().toISOString(), hoy: hace(0), datos_hasta: null, propiedad_sc: SC_PROPIEDAD, pais: "col",
-    estado: { search_console: "ok", sitemap: "ok", ga4: "ok" }, periodos: {}, keywords: [], agregado_radionovela: {},
+    estado: { search_console: "ok", sitemap: "ok", ga4: "ok", inspeccion: "ok" }, periodos: {}, keywords: [], agregado_radionovela: {},
+    indexacion: { revisadas: null, indexadas: null, nuevas_hoy: [], lista: [] },
     por_dia: [], paginas: [], indexadas: { sitemap_total: null, con_impresiones_28: null, sin_impresiones: [] },
     embudo_organico: {}, posts: [], top_consultas: [],
     nota: "Search Console entrega datos con 2 a 3 días de retraso; datos_hasta es el último día con filas. " +
           "Keywords: coincidencia exacta sin mayúsculas ni tildes, país Colombia. " +
-          "Embudo orgánico: fuente = seo, sin ciudades de centros de datos." };
+          "Embudo orgánico: fuente = seo, sin ciudades de centros de datos. " +
+          "indexacion: estado real en Google de cada URL del sitemap (API de inspección de URL); " +
+          "nuevas_hoy = URL que Google indexó desde la corrida anterior." };
 
   // --- Search Console ---
   let scOk = false, porPaginaD28 = null;
@@ -312,6 +316,39 @@ async function generarSeo(env, token) {
     }
   } catch (e) {
     out.estado.sitemap = { error: String(e.message || e).slice(0, 220) };
+  }
+
+  // --- Indexación (API de inspección de URL de Search Console) ---
+  // Estado real de indexación de cada URL del sitemap y fecha en que Google la indexó por primera vez
+  // (se arrastra del seo.txt anterior). Límite de la API: 2.000 consultas/día; aquí, máx. INSPECCION_MAX por corrida.
+  try {
+    let previo = {};
+    try {
+      const o = await env.AUDIO.get("datos/seo.txt");
+      if (o) for (const f of (JSON.parse(await o.text()).indexacion?.lista || [])) previo[f.url] = f;
+    } catch { previo = {}; }
+    // Primera corrida (sin historial): no se puede saber qué es nuevo; indexada_desde queda null = "antes del primer registro".
+    const primera = Object.keys(previo).length === 0;
+    const lista = [];
+    for (const u of urls.slice(0, INSPECCION_MAX)) {
+      const r = await fetch("https://searchconsole.googleapis.com/v1/urlInspection/index:inspect", { method: "POST",
+        headers: { authorization: `Bearer ${token}`, "content-type": "application/json" },
+        body: JSON.stringify({ inspectionUrl: SITIO + (u.ruta === "/" ? "/" : u.ruta), siteUrl: SC_PROPIEDAD, languageCode: "es" }) });
+      if (!r.ok) throw new Error(`${r.status} ${(await r.text()).replace(/\s+/g, " ").slice(0, 160)}`);
+      const s = (await r.json()).inspectionResult?.indexStatusResult || {};
+      const indexada = s.verdict === "PASS";
+      const ant = previo[u.ruta];
+      lista.push({ url: u.ruta, indexada, estado: s.coverageState || null,
+        ultimo_rastreo: s.lastCrawlTime ? s.lastCrawlTime.slice(0, 10) : null,
+        canonical_google: s.googleCanonical ? rutaDe(s.googleCanonical) : null,
+        indexada_desde: indexada ? (ant?.indexada ? ant.indexada_desde : (primera ? null : hace(0))) : null,
+        nueva_hoy: indexada && !primera && !(ant && ant.indexada) });
+    }
+    out.indexacion = { revisadas: lista.length, indexadas: lista.filter(f => f.indexada).length,
+      nuevas_hoy: lista.filter(f => f.nueva_hoy).map(f => f.url), lista };
+  } catch (e) {
+    out.estado.inspeccion = { error: String(e.message || e).slice(0, 220) };
+    out.indexacion = { revisadas: null, indexadas: null, nuevas_hoy: [], lista: [] };
   }
 
   // --- GA4: embudo orgánico y posts ---
