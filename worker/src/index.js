@@ -213,6 +213,7 @@ async function generarSeo(env, token) {
   const out = { generado: new Date().toISOString(), hoy: hace(0), datos_hasta: null, propiedad_sc: SC_PROPIEDAD, pais: "col",
     estado: { search_console: "ok", sitemap: "ok", ga4: "ok", inspeccion: "ok" }, periodos: {}, keywords: [], agregado_radionovela: {},
     indexacion: { revisadas: null, indexadas: null, nuevas_hoy: [], lista: [] },
+    diagnostico: {},
     por_dia: [], paginas: [], indexadas: { sitemap_total: null, con_impresiones_28: null, sin_impresiones: [] },
     embudo_organico: {}, posts: [], top_consultas: [],
     nota: "Search Console entrega datos con 2 a 3 días de retraso; datos_hasta es el último día con filas. " +
@@ -247,10 +248,23 @@ async function generarSeo(env, token) {
         clusPorDia[d] = clusPorDia[d] || Object.fromEntries(CLUSTERS.map(x => [x, { impresiones: 0, clics: 0 }]));
         clusPorDia[d][c].impresiones += r.impressions; clusPorDia[d][c].clics += r.clicks;
       }
-      out.por_dia = serie.map(r => ({ date: r.keys[0], impresiones: r.impressions, clics: r.clicks,
-        posicion: r.impressions ? Math.round(r.position * 10) / 10 : null,
-        clusters: clusPorDia[r.keys[0]] || Object.fromEntries(CLUSTERS.map(x => [x, { impresiones: 0, clics: 0 }])) }))
-        .sort((a, b) => a.date.localeCompare(b.date));
+      // Serie completa desde `desde` hasta H: Search Console solo devuelve días con filas; los demás van en cero.
+      const porFecha = Object.fromEntries(serie.map(r => [r.keys[0], r]));
+      const ceros = () => Object.fromEntries(CLUSTERS.map(x => [x, { impresiones: 0, clics: 0 }]));
+      out.por_dia = [];
+      for (let d = desde; d <= H; d = sumar(d, 1)) {
+        const r = porFecha[d];
+        out.por_dia.push({ date: d, impresiones: r ? r.impressions : 0, clics: r ? r.clicks : 0,
+          posicion: r && r.impressions ? Math.round(r.position * 10) / 10 : null,
+          clusters: clusPorDia[d] || ceros() });
+      }
+      // Registro de filas crudas por llamada (para diagnosticar diferencias con la interfaz de Search Console).
+      out.diagnostico = { filas: { serie_fecha: serie.length, serie_fecha_pagina: serPag.length,
+        ...Object.fromEntries(Object.entries(QP).map(([k, v]) => [`consulta_pagina_${k}`, v.length])) },
+        impresiones: { serie_fecha: serie.reduce((s, r) => s + r.impressions, 0),
+          serie_fecha_pagina: serPag.reduce((s, r) => s + r.impressions, 0) },
+        nota: "Las impresiones agregadas por fecha y las desglosadas por página o consulta no tienen que cuadrar: " +
+              "Search Console oculta del desglose las impresiones de muy bajo volumen (privacidad)." };
 
       // Páginas (28 días).
       const pag = {};
