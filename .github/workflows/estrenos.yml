@@ -1,0 +1,22 @@
+# Cada día a las 6:05 a. m. de Colombia: quita noindex y agrega al sitemap los capítulos ya estrenados.
+name: Estrenos diarios
+on:
+  schedule:
+    - cron: '5 11 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  liberar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Liberar capítulos estrenados
+        run: python3 .github/scripts/estrenos.py
+      - name: Publicar
+        run: |
+          if git diff --quiet; then echo "Nada que publicar"; exit 0; fi
+          git config user.name "estrenos-bot"
+          git config user.email "estrenos-bot@users.noreply.github.com"
+          git commit -am "Estreno: capítulo liberado para Google ($(TZ=America/Bogota date +%F))"
+          git push
