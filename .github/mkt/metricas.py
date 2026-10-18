@@ -132,6 +132,7 @@ def main():
             for p in pl["piezas"]:
                 planes[p["id"]] = (pl["semana"], p)
     errores, filas, yt_ids = [], [], []
+    estado = {k: v for k, v in estado.items() if not k.startswith("_")}
     for pid, regs in estado.items():
         for pl, reg in regs.items():
             if pl == "yt" and reg.get("id"):

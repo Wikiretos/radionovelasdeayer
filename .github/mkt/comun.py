@@ -61,7 +61,7 @@ def leer_publico(ruta, defecto=None):
 
 def semanas():
     """Planes semanales en .github/mkt/semanas/AAAA-Www.json"""
-    return sorted((MKT / "semanas").glob("*.json"))
+    return sorted(p for p in (MKT / "semanas").glob("*.json") if re.fullmatch(r"\d{4}-W\d{2}\.json", p.name))
 
 
 def aprobaciones(semana):

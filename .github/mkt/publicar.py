@@ -168,8 +168,17 @@ def main():
         if a.subir and not a.simular:
             subprocess.run(a.subir, shell=True, check=True)
 
+    # reintentos autorizados por Andrés: semanas/reintentos.json = [{"id": "w43-01", "plataforma": "fb", "clave": "r1"}]
+    rp = MKT / "semanas" / "reintentos.json"
+    usados = estado.setdefault("_reintentos", [])
+    for r in (json.loads(rp.read_text()) if rp.exists() else []):
+        k = f"{r['id']}/{r['plataforma']}/{r.get('clave', '')}"
+        if k not in usados and r["plataforma"] in estado.get(r["id"], {}):
+            log(f"reintento autorizado: {k}")
+            estado[r["id"]].pop(r["plataforma"]); usados.append(k); guardar()
+
     hoy = ahora.strftime("%Y-%m-%d")
-    cuenta = {k: sum(1 for pe in estado.values() for pl, v in pe.items() if pl == k and str(v.get("fecha", "")).startswith(hoy) and v.get("id"))
+    cuenta = {k: sum(1 for pid, pe in estado.items() if not pid.startswith("_") for pl, v in pe.items() if pl == k and str(v.get("fecha", "")).startswith(hoy) and v.get("id"))
               for k in CONFIG["max_por_dia"]}
     for ruta_plan in semanas():
         if ruta_plan.name.endswith(".aprobaciones.json"):

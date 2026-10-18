@@ -7,7 +7,7 @@ r2put(){ npx --yes wrangler@3 r2 object put "$R/$1" --file "$2" --content-type "
 
 render(){
   HOY=$(TZ=America/Bogota date +%Y-%m-%d)
-  for f in .github/mkt/semanas/*.json; do
+  for f in .github/mkt/semanas/[0-9][0-9][0-9][0-9]-W[0-9][0-9].json; do
     case "$f" in *.aprobaciones.json) continue;; esac
     SEM=$(basename "$f" .json)
     FIN=$(python3 -c "import json;p=json.load(open('$f'));print(max(x['fecha'] for x in p['piezas']))")
