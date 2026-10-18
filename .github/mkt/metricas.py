@@ -141,8 +141,10 @@ def main():
     for pid, regs in estado.items():
         sem, p = planes.get(pid, (None, {}))
         for pl, reg in regs.items():
+            txt = (p.get("texto") or {}).get({"yt": "yt_titulo"}.get(pl, pl), "") + " " + ((p.get("texto") or {}).get("yt_desc", "") if pl == "yt" else "")
             fila = {"id": pid, "semana": sem, "plataforma": pl, "tipo": p.get("tipo"), "familia": p.get("familia"),
-                    "fecha": reg.get("fecha"), "url": reg.get("url")}
+                    "fecha": reg.get("fecha"), "url": reg.get("url"), "hashtags": sorted(set(h.lower() for h in __import__("re").findall(r"#\w+", txt))),
+                    "ilustracion_nueva": bool(p.get("ilustracion"))}
             if reg.get("error") or reg.get("vencida") or reg.get("en_curso"):
                 fila["estado"] = "error" if reg.get("error") else "vencida" if reg.get("vencida") else "error"
                 fila["error"] = reg.get("error") or ("se cortó a mitad de la publicación: revisar a mano en la red si salió" if reg.get("en_curso") else None)
@@ -169,6 +171,13 @@ def main():
         for g in acc.values():
             g["vistas_promedio"] = round(g["vistas"] / g["piezas"], 1) if g["piezas"] else 0
         return dict(acc)
+    por_hashtag = defaultdict(lambda: {"piezas": 0, "vistas": 0})
+    for f in filas:
+        if f.get("estado") != "publicada": continue
+        for h in f.get("hashtags", []):
+            por_hashtag[h]["piezas"] += 1; por_hashtag[h]["vistas"] += int(f.get("metricas", {}).get("vistas") or 0)
+    for g in por_hashtag.values():
+        g["vistas_promedio"] = round(g["vistas"] / g["piezas"], 1)
     top = sorted([f for f in filas if f.get("estado") == "publicada"], key=lambda f: -(f.get("metricas", {}).get("vistas") or 0))[:10]
     # pendientes de TikTok (a mano): aprobadas con tt, de hoy y mañana
     tiktok = []
@@ -181,7 +190,7 @@ def main():
                 tiktok.append({"id": pid, "fecha": f, "hora": apr.get("hora", p.get("hora")), "texto": txt.get("tiktok", ""),
                                "video": f"{CONFIG['r2_publico']}/mkt/{sem}/{pid}.mp4"})
     salida = {"generado": datetime.now(ZoneInfo("UTC")).strftime("%Y-%m-%dT%H:%M:%SZ"), "cuentas": cuentas(token, errores),
-              "piezas": filas, "por_familia": resumen("familia"), "por_tipo": resumen("tipo"), "por_plataforma": resumen("plataforma"),
+              "piezas": filas, "por_familia": resumen("familia"), "por_tipo": resumen("tipo"), "por_plataforma": resumen("plataforma"), "por_hashtag": dict(por_hashtag), "por_ilustracion": resumen("ilustracion_nueva"),
               "top10": [{"id": f["id"], "plataforma": f["plataforma"], "familia": f["familia"], "vistas": f["metricas"].get("vistas"), "url": f["url"]} for f in top],
               "errores_publicacion": [f for f in filas if f.get("estado") == "error"],
               "tiktok_pendientes": tiktok, "errores_metricas": errores,
