@@ -305,7 +305,13 @@ def video(p, voz, subs, cap_cta, tmp, destino):
          "-map", "[a]", "-c:a", "aac", "-b:a", "128k", "-ar", "44100", str(audio)])
     # ilustración: nueva (Gemini, vertical a pantalla completa) o del catálogo (franja con paneo)
     usd = 0.0
-    if p.get("ilustracion"):
+    if p.get("ilustracion_de"):  # misma ilustración de otra pieza (A/B en que solo cambia otra cosa): sin costo nuevo
+        src = destino / f"{p['ilustracion_de']}-ilu.jpg"
+        if not src.exists():
+            from comun import url_media
+            datos = http("GET", url_media(p["_semana"], f"{p['ilustracion_de']}-ilu.jpg"), cabeceras={"User-Agent": "mkt"}, crudo=True)
+            src = tmp / "ilu_de.jpg"; src.write_bytes(datos)
+    elif p.get("ilustracion"):
         src, usd = ilustrar.generar(p["ilustracion"], "video", destino / f"{p['id']}-ilu.jpg")
     else:
         src = imagen_fuente(p.get("imagen", "tienda"))
@@ -430,7 +436,7 @@ def carrusel(p, destino):
     return archivos, usd
 
 
-CAMPOS_MEDIA = ("tipo", "fragmento", "escena", "carrusel", "imagen", "ilustracion", "gancho", "serie_titulo", "reintento")
+CAMPOS_MEDIA = ("tipo", "fragmento", "escena", "carrusel", "imagen", "ilustracion", "ilustracion_de", "gancho", "serie_titulo", "reintento")
 
 
 def huella(p):
@@ -458,6 +464,7 @@ def main():
             resultado["piezas"][p["id"]] = previo[p["id"]]
             continue
         nuevas += 1
+        p["_semana"] = plan["semana"]
         log("→", p["id"], p["tipo"])
         try:
             for k, v in (p.get("texto") or {}).items():

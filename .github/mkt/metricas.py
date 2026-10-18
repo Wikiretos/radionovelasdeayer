@@ -13,7 +13,10 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from comun import CONFIG, ErrorPieza, http, log, semanas, aprobaciones
+from comun import CONFIG, ErrorPieza, http, leer_publico, log, semanas, aprobaciones
+
+UMBRAL_AB = 1.3        # la variante gana si supera a la otra en 30 % o más
+MIN_VISTAS_AB = 300    # y entre las dos suman al menos esto a las 48 h
 
 TZ = ZoneInfo(CONFIG["zona"])
 G = CONFIG["graph"]
@@ -121,6 +124,7 @@ def cuentas(token, err):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--estado", required=True); ap.add_argument("--salida", required=True)
+    ap.add_argument("--historial", help="historial.json (foto de métricas a las 48 h por pieza y plataforma); se actualiza en el sitio")
     a = ap.parse_args()
     estado = json.loads(Path(a.estado).read_text()) if Path(a.estado).exists() else {}
     token = os.environ.get("META_PAGE_TOKEN", "")
@@ -159,6 +163,72 @@ def main():
             except Exception:
                 pass
             filas.append(fila)
+    # foto a las 48 h (comparación justa entre piezas y para A/B)
+    hist = json.loads(Path(a.historial).read_text()) if a.historial and Path(a.historial).exists() else {}
+    for f in filas:
+        k = f"{f['id']}/{f['plataforma']}"
+        if f.get("estado") == "publicada" and k not in hist and 40 <= (f.get("horas_publicada") or 0) <= 72:
+            hist[k] = {"horas": f["horas_publicada"], **{m: f["metricas"].get(m) for m in ("vistas", "compartidos", "comentarios", "me_gusta", "saved", "reach")}}
+        if k in hist:
+            f["a_48h"] = hist[k]
+    if a.historial:
+        Path(a.historial).write_text(json.dumps(hist, ensure_ascii=False, indent=1))
+    # costo de producción por pieza (render.json de cada semana)
+    costo = {}
+    for sem in sorted({s for s, _ in planes.values()}):
+        try:
+            for pid, r in ((leer_publico(f"mkt/{sem}/render.json", {}) or {}).get("piezas") or {}).items():
+                if r.get("ok"):
+                    costo[pid] = float(r.get("usd_aprox") or 0)
+        except ErrorPieza as e:
+            errores.append(f"render.json {sem}: {e}")
+    por_pieza = defaultdict(lambda: {"vistas": 0, "compartidos": 0, "plataformas": []})
+    for f in filas:
+        if f.get("estado") != "publicada": continue
+        g = por_pieza[f["id"]]; g["plataformas"].append(f["plataforma"])
+        g["vistas"] += int(f.get("metricas", {}).get("vistas") or 0); g["compartidos"] += int(f.get("metricas", {}).get("compartidos") or 0)
+    costos = []
+    for pid, g in por_pieza.items():
+        usd = costo.get(pid)
+        costos.append({"id": pid, "semana": planes.get(pid, (None,))[0], "usd_produccion": usd, "vistas_todas_las_redes": g["vistas"],
+                       "usd_por_mil_vistas": round(usd / g["vistas"] * 1000, 3) if usd is not None and g["vistas"] else None,
+                       "plataformas": g["plataformas"]})
+        for f in filas:
+            if f["id"] == pid: f["usd_produccion_pieza"] = usd
+    total_usd = round(sum(c["usd_produccion"] or 0 for c in costos), 3)
+    total_vistas = sum(c["vistas_todas_las_redes"] for c in costos)
+    # experimentos A/B
+    experimentos = []
+    grupos = defaultdict(dict)
+    for pid, (sem, p) in planes.items():
+        if p.get("ab"):
+            grupos[(sem, p["ab"]["experimento"])][p["ab"]["variante"]] = p
+    for (sem, nombre), vs in grupos.items():
+        if set(vs) != {"A", "B"}: continue
+        A, B = vs["A"], vs["B"]
+        metrica = A["ab"].get("metrica", "vistas")
+        res = {"semana": sem, "experimento": nombre, "variable": A["ab"]["variable"], "hipotesis": A["ab"].get("hipotesis"),
+               "metrica": metrica, "A": A["id"], "B": B["id"], "por_plataforma": {}}
+        for pl in A.get("plataformas", []):
+            fa = next((f for f in filas if f["id"] == A["id"] and f["plataforma"] == pl), None)
+            fb_ = next((f for f in filas if f["id"] == B["id"] and f["plataforma"] == pl), None)
+            if not fa or not fb_: continue
+            va, vb = (fa.get("a_48h") or {}).get(metrica), (fb_.get("a_48h") or {}).get(metrica)
+            if va is None or vb is None:
+                veredicto = "esperando 48 h"
+            elif (fa.get("a_48h", {}).get("vistas") or 0) + (fb_.get("a_48h", {}).get("vistas") or 0) < MIN_VISTAS_AB:
+                veredicto = "muestra insuficiente"
+            elif va >= vb * UMBRAL_AB and va > 0:
+                veredicto = "gana A"
+            elif vb >= va * UMBRAL_AB and vb > 0:
+                veredicto = "gana B"
+            else:
+                veredicto = "sin diferencia clara"
+            res["por_plataforma"][pl] = {"A": va, "B": vb, "veredicto": veredicto}
+        vers = [x["veredicto"] for x in res["por_plataforma"].values()]
+        res["veredicto"] = ("gana A" if vers.count("gana A") > len(vers) / 2 else "gana B" if vers.count("gana B") > len(vers) / 2
+                            else "esperando 48 h" if "esperando 48 h" in vers or not vers else "sin diferencia clara")
+        experimentos.append(res)
     # resúmenes
     def resumen(clave):
         acc = defaultdict(lambda: {"piezas": 0, "vistas": 0, "compartidos": 0, "comentarios": 0})
@@ -194,6 +264,11 @@ def main():
               "top10": [{"id": f["id"], "plataforma": f["plataforma"], "familia": f["familia"], "vistas": f["metricas"].get("vistas"), "url": f["url"]} for f in top],
               "errores_publicacion": [f for f in filas if f.get("estado") == "error"],
               "tiktok_pendientes": tiktok, "errores_metricas": errores,
+              "costos": {"total_usd_produccion": total_usd, "vistas_totales": total_vistas,
+                         "usd_por_mil_vistas": round(total_usd / total_vistas * 1000, 3) if total_vistas else None,
+                         "pauta_usd": 0, "por_pieza": sorted(costos, key=lambda c: c["id"]),
+                         "nota": "Producción = ilustraciones + voces (Gemini). Publicar y medir no cuesta. La pauta, cuando la haya, se suma aparte."},
+              "experimentos": experimentos,
               "nota": "vistas: FB=reproducciones de Reel (o alcance en carrusel), IG=views (o alcance), YT=viewCount. Métricas acumuladas desde la publicación."}
     Path(a.salida).write_text(json.dumps(salida, ensure_ascii=False, indent=1))
     log(f"Métricas: {len(filas)} filas, {len(errores)} errores de métricas")

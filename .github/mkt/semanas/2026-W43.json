@@ -1,7 +1,7 @@
 {
  "semana": "2026-W43",
  "creado": "2026-10-18T19:30:00-05:00",
- "hipotesis": "Piloto v2: ilustraciones nuevas en el estilo de la casa (una por pieza), primera prueba de datos curiosos con fuente, hashtags con marca + nicho + tendencia, y escenas escritas con las reglas del guionista.",
+ "hipotesis": "Piloto v3: ilustraciones nuevas en el estilo de la casa, datos curiosos con fuente, hashtags con marca + nicho + tendencia, escenas con las reglas del guionista y 2 primeros A/B: (1) ¿qué gancho retiene más en el mismo clip? (2) ¿la ilustración nueva rinde más que la imagen de catálogo?",
  "tendencias": [
   {
    "tema": "Búsquedas en tendencia en Colombia (7 días): dominan política y fútbol",
@@ -56,7 +56,52 @@
     "tiktok": "Dos años mandando un sobre cada miércoles… y esta noche dijeron su nombre 📻 Capítulo 1 gratis: enlace en el perfil. #radionovelasdeayer #radionovela #nostalgia #colombia",
     "comentario": "El capítulo 1 completo, gratis, aquí 👉 https://radionovelasdeayer.com/cap-1?f=fb"
    },
-   "por_que": "Clímax del cap. 1 (el premio): el gancho dramático más claro de la serie."
+   "por_que": "Clímax del cap. 1 (el premio): el gancho dramático más claro de la serie.",
+   "ab": {
+    "experimento": "w43-gancho",
+    "variante": "A",
+    "variable": "gancho",
+    "metrica": "vistas",
+    "hipotesis": "Un gancho de espera ('dos años mandando un sobre') retiene más que uno de resultado."
+   },
+   "costo_estimado": 0.0504
+  },
+  {
+   "id": "w43-07",
+   "tipo": "fragmento",
+   "familia": "dramatico",
+   "fecha": "2026-10-21",
+   "hora": "07:00",
+   "plataformas": [
+    "fb",
+    "ig",
+    "yt",
+    "tt"
+   ],
+   "gancho": "Esta noche dijeron su nombre por la radio",
+   "fragmento": {
+    "capitulo": 1,
+    "inicio": 902.5,
+    "fin": 949.9
+   },
+   "texto": {
+    "fb": "Dos años mandando un sobre cada miércoles al concurso de la radio… y esta noche dijeron su nombre. 📻\n\n¿Usted qué habría hecho con cincuenta mil pesos de 1958?\n\nEscuche el capítulo 1 completo, gratis: https://radionovelasdeayer.com/cap-1?f=fb",
+    "ig": "Dos años mandando un sobre cada miércoles… y esta noche dijeron su nombre. 📻\n\n¿Usted qué habría hecho con cincuenta mil pesos de 1958?\n\nCapítulo 1 completo y gratis: enlace en el perfil.\n\n#radionovelasdeayer #radionovela #nostalgia #radiocolombiana",
+    "yt_titulo": "Se ganó el concurso de la radio después de dos años 📻 #radionovela #Shorts",
+    "yt_desc": "La Hora de la Fortuna, capítulo 1. Escúchelo completo y gratis: https://radionovelasdeayer.com/cap-1?f=yt",
+    "tiktok": "Dos años mandando un sobre cada miércoles… y esta noche dijeron su nombre 📻 Capítulo 1 gratis: enlace en el perfil. #radionovelasdeayer #radionovela #nostalgia #colombia",
+    "comentario": "El capítulo 1 completo, gratis, aquí 👉 https://radionovelasdeayer.com/cap-1?f=fb"
+   },
+   "por_que": "B del A/B de gancho: mismo clip e imagen, gancho de resultado.",
+   "ab": {
+    "experimento": "w43-gancho",
+    "variante": "B",
+    "variable": "gancho",
+    "metrica": "vistas",
+    "hipotesis": "Un gancho de espera ('dos años mandando un sobre') retiene más que uno de resultado."
+   },
+   "ilustracion_de": "w43-01",
+   "costo_estimado": 0.0
   },
   {
    "id": "w43-02",
@@ -94,7 +139,15 @@
     "tiktok": "¿En su pueblo también había un Saturnino? 😅 Desde el capítulo 1, gratis: enlace en el perfil. #radionovelasdeayer #radionovela #humor #nostalgia",
     "comentario": "Empiece desde el capítulo 1, gratis 👉 https://radionovelasdeayer.com/cap-1?f=fb"
    },
-   "por_que": "Humor costumbrista: la familia que el plan espera que más se comparta."
+   "por_que": "Humor costumbrista: la familia que el plan espera que más se comparta.",
+   "ab": {
+    "experimento": "w43-imagen",
+    "variante": "A",
+    "variable": "ilustracion",
+    "metrica": "vistas",
+    "hipotesis": "La ilustración nueva de la escena retiene más que la imagen de catálogo (cartel de siempre)."
+   },
+   "costo_estimado": 0.0504
   },
   {
    "id": "w43-03",
@@ -138,18 +191,18 @@
     "fb": "¿Sabe cómo sonaban los caballos, la lluvia y las puertas en las radionovelas? 📻 Con cosas de la casa.\n\n¿Usted se acuerda de algún sonido de la radio de antes?\n\nEscuche una radionovela de las de antes, gratis: https://radionovelasdeayer.com/cap-1?f=fb",
     "ig": "¿Sabe cómo sonaban los caballos, la lluvia y las puertas en las radionovelas? 📻 Con cosas de la casa.\n\n¿Usted se acuerda de algún sonido de la radio de antes?\n\nGratis: enlace en el perfil.\n\n#radionovelasdeayer #radionovela #nostalgia #historiadecolombia"
    },
-   "por_que": "Primer dato curioso: prueba si los datos de época atraen público nuevo (guardados y compartidos) más allá de quien ya sigue la trama."
+   "por_que": "Primer dato curioso: prueba si los datos de época atraen público nuevo (guardados y compartidos) más allá de quien ya sigue la trama.",
+   "costo_estimado": 0.0504
   },
   {
    "id": "w43-04",
    "tipo": "fragmento",
    "familia": "dramatico",
    "fecha": "2026-10-21",
-   "hora": "07:00",
+   "hora": "17:00",
    "plataformas": [
     "fb",
     "ig",
-    "yt",
     "tt"
    ],
    "ilustracion": {
@@ -170,12 +223,11 @@
    "texto": {
     "fb": "El ganador murió de la dicha… y en diez días llega el delegado con la plata. ¿Alguna vez le vio la cara? 🤫\n\n¿Usted le seguiría la idea a misiá Obdulia?\n\nDesde el capítulo 1, gratis: https://radionovelasdeayer.com/cap-1?f=fb",
     "ig": "El ganador murió de la dicha… y en diez días llega el delegado con la plata. ¿Alguna vez le vio la cara? 🤫\n\n¿Usted le seguiría la idea a misiá Obdulia?\n\nDesde el capítulo 1, gratis: enlace en el perfil.\n\n#radionovelasdeayer #radionovela #nostalgia #suspenso",
-    "yt_titulo": "Todo un pueblo y un plan para no perder el premio 🤫 #radionovela #Shorts",
-    "yt_desc": "La Hora de la Fortuna, capítulo 2. Desde el capítulo 1, gratis: https://radionovelasdeayer.com/cap-1?f=yt",
     "tiktok": "¿Usted le seguiría la idea a misiá Obdulia? 🤫 Desde el capítulo 1, gratis: enlace en el perfil. #radionovelasdeayer #radionovela #nostalgia #suspenso",
     "comentario": "Desde el capítulo 1, gratis 👉 https://radionovelasdeayer.com/cap-1?f=fb"
    },
-   "por_que": "La premisa de la serie en 50 s: el plan del pueblo."
+   "por_que": "La premisa de la serie en 50 s: el plan del pueblo.",
+   "costo_estimado": 0.0504
   },
   {
    "id": "w43-05",
@@ -244,7 +296,8 @@
     "tiktok": "¿Usted alguna vez quedó apuntado en la libreta de la tienda? 📒 Gratis: enlace en el perfil. #radionovelasdeayer #nostalgia #humor #tiendadebarrio",
     "comentario": "La radionovela completa, gratis 👉 https://radionovelasdeayer.com/cap-1?f=fb"
    },
-   "por_que": "Primera escena original: ¿una escena nueva corta rinde igual o mejor que un fragmento?"
+   "por_que": "Primera escena original: ¿una escena nueva corta rinde igual o mejor que un fragmento?",
+   "costo_estimado": 0.0725
   },
   {
    "id": "w43-06",
@@ -303,7 +356,45 @@
     "tiktok": "¿En su casa cuándo llegó el primer televisor? 📺 Radionovela gratis: enlace en el perfil. #radionovelasdeayer #nostalgia #historiadecolombia #colombia",
     "comentario": "Una radionovela de las de antes, gratis 👉 https://radionovelasdeayer.com/cap-1?f=fb"
    },
-   "por_que": "Dato de época con voz del locutor: prueba de tráfico paralelo (gente que busca historia y nostalgia, no la novela)."
+   "por_que": "Dato de época con voz del locutor: prueba de tráfico paralelo (gente que busca historia y nostalgia, no la novela).",
+   "costo_estimado": 0.0728
+  },
+  {
+   "id": "w43-08",
+   "tipo": "fragmento",
+   "familia": "costumbre",
+   "fecha": "2026-10-22",
+   "hora": "12:30",
+   "plataformas": [
+    "fb",
+    "ig",
+    "yt",
+    "tt"
+   ],
+   "gancho": "Lo pusieron a ensayar para hacerse pasar por el muerto",
+   "fragmento": {
+    "capitulo": 3,
+    "inicio": 633.4,
+    "fin": 669.3
+   },
+   "texto": {
+    "fb": "—¿Y si me da la risa? A mí con los nervios me da la risa. En los velorios me ha pasado. 😅\n\n¿En su pueblo también había un Saturnino?\n\nLa Hora de la Fortuna, desde el capítulo 1, gratis: https://radionovelasdeayer.com/cap-1?f=fb",
+    "ig": "—¿Y si me da la risa? A mí con los nervios me da la risa. En los velorios me ha pasado. 😅\n\n¿En su pueblo también había un Saturnino?\n\nDesde el capítulo 1, gratis: enlace en el perfil.\n\n#radionovelasdeayer #radionovela #humor #nostalgia",
+    "yt_titulo": "El sacristán que tenía que hacerse pasar por el muerto 😅 #radionovela #Shorts",
+    "yt_desc": "La Hora de la Fortuna, capítulo 3. Empiece desde el capítulo 1, gratis: https://radionovelasdeayer.com/cap-1?f=yt",
+    "tiktok": "¿En su pueblo también había un Saturnino? 😅 Desde el capítulo 1, gratis: enlace en el perfil. #radionovelasdeayer #radionovela #humor #nostalgia",
+    "comentario": "Empiece desde el capítulo 1, gratis 👉 https://radionovelasdeayer.com/cap-1?f=fb"
+   },
+   "por_que": "B del A/B de imagen: mismo clip y textos, con el cartel de catálogo. Mide si vale la pena pagar ilustraciones.",
+   "ab": {
+    "experimento": "w43-imagen",
+    "variante": "B",
+    "variable": "ilustracion",
+    "metrica": "vistas",
+    "hipotesis": "La ilustración nueva de la escena retiene más que la imagen de catálogo (cartel de siempre)."
+   },
+   "imagen": "banner",
+   "costo_estimado": 0.0
   }
  ],
  "nostalgia": [
@@ -312,5 +403,36 @@
    "pieza": "w43-03",
    "texto": "Buenas tardes. Hacemos radionovelas como las de antes, gratis, para la gente que creció oyendo la radio. Le comparto un carrusel con un dato bonito: en las radionovelas los ruidos se hacían a mano, con cocos, papel celofán, velas y botellas. Si le parece bien publicarlo en su página, con mucho gusto le damos el crédito. Se escucha completa en radionovelasdeayer.com"
   }
- ]
+ ],
+ "referentes": [
+  {
+   "canal": "yt",
+   "quien": "Kalimán en RTVCPlay (radionovela clásica, por temporadas)",
+   "que_hacen": "Una franquicia de radionovela conocida, organizada por temporadas con títulos propios.",
+   "fuente": "https://www.elpais.com.co/entretenimiento/cine-series-y-radionovelas-conozca-la-programacion-retro-de-rtvcplay.html",
+   "que_aprendemos": "Cada serie con identidad fuerte y títulos de temporada recordables; en YouTube, listas por serie. La medición automática de YouTube arranca el miércoles con la API."
+  },
+  {
+   "canal": "fb",
+   "quien": "Grupo 'Antigua Catamarca' (Argentina): de 100 a más de 30.000 integrantes con fotos de antaño",
+   "que_hacen": "Fotos históricas cuidadas, el creador conversa con cada comentario y la gente aporta sus propias fotos.",
+   "fuente": "https://www.elancasti.com.ar/edicion-impresa/el-grupo-antigua-catamarca-supero-los-30000-integrantes-n575204",
+   "que_aprendemos": "Pedir recuerdos y fotos propias en los comentarios y responder a cada uno; buscar grupos colombianos equivalentes para ofrecer piezas."
+  },
+  {
+   "canal": "ig",
+   "quien": "Tendencia nostálgica 'volver a otra época' en redes (2026)",
+   "que_hacen": "Contenido de 'así éramos' que la gente comparte para identificarse.",
+   "fuente": "https://www.bluradio.com/tecnologia/tendencias/2026-revive-el-espiritu-de-2016-asi-nacio-la-tendencia-nostalgica-que-domina-las-redes-sociales-so35",
+   "que_aprendemos": "Carruseles de 'así era en 1958' con pregunta de identificación al final."
+  },
+  {
+   "canal": "tt",
+   "quien": "Adultos mayores que triunfan en TikTok (Lillian Droniak ~9 M, The Old Gays ~11 M)",
+   "que_hacen": "Humor desenfadado sobre la vejez, incluso sobre la muerte, rompiendo estereotipos.",
+   "fuente": "https://www.noticiasrcn.com/tendencias/adultos-mayores-que-la-rompieron-y-triunfan-en-tiktok-445195",
+   "que_aprendemos": "Nuestra premisa (un muerto que el pueblo finge vivo) es humor sobre la muerte con ternura: empujar los clips de Saturnino haciéndose el muerto en TikTok."
+  }
+ ],
+ "costo_estimado_semana": 0.347
 }

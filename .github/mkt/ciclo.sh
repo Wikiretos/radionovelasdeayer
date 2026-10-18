@@ -54,6 +54,12 @@ personajes(){
   done
 }
 
+competencia(){
+  python3 .github/mkt/competencia.py --salida competencia.json
+  r2put datos/competencia.txt competencia.json "text/plain; charset=utf-8" no-store
+  echo "subido datos/competencia.txt"
+}
+
 bajar(){
   # solo un 404 real significa "sin estado"; cualquier otro fallo detiene para no publicar dos veces
   c=$(curl -s -o estado.json -w '%{http_code}' "$PUBLICO/mkt/estado.json?v=$(date +%s)" || echo 000)
@@ -69,7 +75,10 @@ publicar(){
 }
 
 metricas(){
-  python3 .github/mkt/metricas.py --estado estado.json --salida redes.json
+  c=$(curl -s -o historial.json -w '%{http_code}' "$PUBLICO/mkt/historial.json?v=$(date +%s)" || echo 000)
+  if [ "$c" = 404 ]; then echo '{}' > historial.json; elif [ "$c" != 200 ]; then echo "ERROR: no se pudo leer mkt/historial.json (HTTP $c)"; return 1; fi
+  python3 .github/mkt/metricas.py --estado estado.json --salida redes.json --historial historial.json
+  r2put mkt/historial.json historial.json application/json no-store
   r2put datos/redes.txt redes.json "text/plain; charset=utf-8" no-store
   echo "subido datos/redes.txt"
 }

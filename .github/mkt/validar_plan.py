@@ -30,20 +30,33 @@ MODERNAS = ["celular", "internet", "computador", "correo electrónico", "chat", 
             "salud mental", "terapia", "estrés", "fin de semana", "pareja", "mi ex", "crush", "date", "wow", "man", "bro", "genial",
             "básicamente", "definitivamente", "al final del día", "hacer sentido", "eventualmente", "dispositivo", "batería", "o sea"]
 ESTILO = json.loads((MKT / "estilo" / "estilo.json").read_text())
+CANALES = {"fb", "ig", "yt", "tt"}
+VARIABLES_AB = {"gancho", "ilustracion", "hora", "texto", "hashtags", "duracion", "tipo", "familia", "fondo", "inicio"}
+USD_IMAGEN = ESTILO["usd_por_imagen"]
+USD_SEG_VOZ = 25 * 20 / 1e6  # 25 tokens de audio por segundo, US$20 por millón
+PALABRAS_SEG = 117 / 60
+
+
+def costo_estimado(p):
+    """US$ estimado de producir la pieza (ilustraciones + voces). Publicar y medir no cuesta."""
+    imgs = (1 if p.get("ilustracion") and not p.get("ilustracion_de") else 0) + sum(1 for d in (p.get("carrusel") or {}).get("diapositivas", []) if d.get("ilustracion"))
+    pal = sum(len(re.sub(r"\[[^\]]*\]", "", l.get("texto", "")).split()) for l in (p.get("escena") or {}).get("lineas", []))
+    return round(imgs * USD_IMAGEN + (pal / PALABRAS_SEG) * USD_SEG_VOZ * 1.15, 4)  # +15 % por la dirección enviada
 PLATAFORMAS = {"fb", "ig", "yt", "tt"}
 FONDOS = {None, "colchon_tierno", "colchon_tension", "tiple_de_cinco", "sintonia_concurso"}
 
 
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("plan"); ap.add_argument("--estrenados", type=int, default=10)
-    a = ap.parse_args()
-    plan = json.loads(Path(a.plan).read_text())
+    ap.add_argument("--escribir-costos", action="store_true", help="guarda costo_estimado en cada pieza del plan")
+    args = ap.parse_args()
+    plan = json.loads(Path(args.plan).read_text())
     voces = json.loads((MKT / "datos" / "voces.json").read_text())
     imagenes = {p.stem for p in (MKT / "imagenes").iterdir()}
     mal = []
     if not re.fullmatch(r"\d{4}-W\d{2}", plan.get("semana", "")):
         mal.append("semana debe ser AAAA-Www")
-    if Path(a.plan).stem != plan.get("semana"):
+    if Path(args.plan).stem != plan.get("semana"):
         mal.append("el archivo debe llamarse <semana>.json")
     tend = plan.get("tendencias") or []
     if not tend:
@@ -51,14 +64,29 @@ def main():
     for t in tend:
         if not str(t.get("fuente", "")).startswith("http") or not t.get("tema"):
             mal.append(f"tendencia sin tema o sin fuente URL: {t}")
+    refs = plan.get("referentes") or []
+    for c in CANALES:
+        rc = [r for r in refs if r.get("canal") == c]
+        if not rc:
+            mal.append(f"falta 'referentes' del canal {c} (competencia o virales 50+; si no hubo datos verificables, una entrada con sin_dato: true y la razón)")
+        for r in rc:
+            if not r.get("sin_dato") and (not str(r.get("fuente", "")).startswith("http") or not r.get("que_aprendemos")):
+                mal.append(f"referente {c} sin fuente URL o sin 'que_aprendemos': {str(r)[:80]}")
     ids = set()
     por_dia = {}
+    exps = {}
     for p in plan.get("piezas", []):
         pid = p.get("id", "?"); e = lambda m: mal.append(f"{pid}: {m}")
         if pid in ids: e("id repetido")
         ids.add(pid)
         if not re.fullmatch(r"[a-z0-9-]{3,30}", pid): e("id inválido (minúsculas, números, guiones)")
         if p.get("tipo") not in TIPOS: e("tipo inválido")
+        if p.get("ab"):
+            ab = p["ab"]
+            if ab.get("variante") not in ("A", "B") or not ab.get("experimento") or ab.get("variable") not in VARIABLES_AB or not ab.get("hipotesis"):
+                e(f"ab incompleto: necesita experimento, variante A|B, variable ({', '.join(sorted(VARIABLES_AB))}) e hipotesis")
+            else:
+                exps.setdefault(ab["experimento"], []).append(p)
         if p.get("familia") not in FAMILIAS: e(f"familia inválida {p.get('familia')}")
         try:
             f = date.fromisoformat(p["fecha"]); datetime.strptime(p["hora"], "%H:%M")
@@ -73,7 +101,11 @@ def main():
         for pl in pls & {"fb", "ig", "yt"}:
             por_dia[(p.get("fecha"), pl)] = por_dia.get((p.get("fecha"), pl), 0) + 1
         if p.get("tipo") != "carrusel":
-            if not p.get("ilustracion") and p.get("imagen") not in imagenes: e(f"falta 'ilustracion' (o 'imagen' del catálogo: {sorted(imagenes)})")
+            if p.get("ilustracion_de"):
+                otra = next((x for x in plan["piezas"] if x.get("id") == p["ilustracion_de"]), None)
+                if not otra or not otra.get("ilustracion") or plan["piezas"].index(otra) > plan["piezas"].index(p):
+                    e("ilustracion_de debe apuntar a una pieza ANTERIOR del mismo plan que tenga 'ilustracion'")
+            elif not p.get("ilustracion") and p.get("imagen") not in imagenes: e(f"falta 'ilustracion' (o 'imagen' del catálogo: {sorted(imagenes)})")
             if len(p.get("gancho", "")) > 60: e("gancho > 60 caracteres")
         t = p.get("texto") or {}
         req = {"fb": "fb" in pls, "ig": "ig" in pls, "yt_titulo": "yt" in pls, "yt_desc": "yt" in pls, "tiktok": "tt" in pls}
@@ -109,7 +141,7 @@ def main():
         if p.get("tipo") == "fragmento":
             fr = p.get("fragmento") or {}
             cap = fr.get("capitulo")
-            if not isinstance(cap, int) or not 1 <= cap <= a.estrenados: e(f"capítulo {cap} no estrenado o inválido")
+            if not isinstance(cap, int) or not 1 <= cap <= args.estrenados: e(f"capítulo {cap} no estrenado o inválido")
             else:
                 tp = MKT / "datos" / f"tiempos-cap{cap}.json"
                 if not tp.exists(): e(f"falta {tp.name}")
@@ -143,10 +175,36 @@ def main():
             for d in ds:
                 if d.get("imagen") and d["imagen"] not in imagenes: e(f"imagen '{d['imagen']}' no existe")
                 if len(d.get("texto", "")) > 260: e("texto de diapositiva > 260 caracteres")
+    for nombre, ps in exps.items():
+        vs = sorted(x["ab"]["variante"] for x in ps)
+        if vs != ["A", "B"]:
+            mal.append(f"experimento {nombre}: debe tener exactamente una A y una B (tiene {vs})"); continue
+        a, b = sorted(ps, key=lambda x: x["ab"]["variante"])
+        var = a["ab"]["variable"]
+        if b["ab"]["variable"] != var: mal.append(f"experimento {nombre}: A y B prueban variables distintas")
+        if set(a.get("plataformas", [])) != set(b.get("plataformas", [])): mal.append(f"experimento {nombre}: A y B deben ir a las mismas plataformas")
+        if var == "ilustracion" and (a.get("ilustracion"), a.get("imagen")) == (b.get("ilustracion"), b.get("imagen")): mal.append(f"experimento {nombre}: A y B tienen la misma imagen")
+        clave = {"gancho": "gancho", "hora": "hora", "texto": "texto", "tipo": "tipo", "familia": "familia"}.get(var)
+        if clave and a.get(clave) == b.get(clave): mal.append(f"experimento {nombre}: A y B tienen el mismo '{clave}', no prueban nada")
+        if var != "hora" and a.get("hora") != b.get("hora"): mal.append(f"experimento {nombre}: A y B deben salir a la misma hora (en días distintos) para que solo cambie '{var}'")
+    if len(exps) < 2:
+        mal.append(f"la semana necesita al menos 2 experimentos A/B (tiene {len(exps)})")
     for (f, pl), n in por_dia.items():
         if n > CONFIG["max_por_dia"][pl]: mal.append(f"{f} {pl}: {n} piezas (máx. {CONFIG['max_por_dia'][pl]})")
     if mal:
         print("PLAN CON PROBLEMAS:\n- " + "\n- ".join(mal)); sys.exit(1)
+    total = 0
+    print("Costo estimado por pieza (US$):")
+    for p in plan.get("piezas", []):
+        c = costo_estimado(p); total += c
+        print(f"  {p.get('id')}: {c:.3f}" + (f"  (declarado {p['costo_estimado']})" if "costo_estimado" in p else ""))
+    print(f"Total estimado de la semana: US$ {total:.2f}")
+    if args.escribir_costos:
+        for p in plan["piezas"]:
+            p["costo_estimado"] = costo_estimado(p)
+        plan["costo_estimado_semana"] = round(total, 3)
+        Path(args.plan).write_text(json.dumps(plan, ensure_ascii=False, indent=1))
+        print("costo_estimado escrito en el plan")
     print(f"Plan válido: {len(ids)} piezas")
 
 
