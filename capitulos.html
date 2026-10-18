@@ -8,132 +8,307 @@
 <meta property="og:image" content="https://radionovelasdeayer.com/cartel.webp"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:type" content="image/webp"><meta property="og:image:alt" content="Cartel de La Hora de la Fortuna">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Radionovelas completas para escuchar · La Hora de la Fortuna · Radionovelas de ayer"><meta name="twitter:description" content="Radionovelas completas para escuchar gratis, capítulo por capítulo. Radio novelas colombianas como las de antes: La Hora de la Fortuna, una cada mañana a las seis."><meta name="twitter:image" content="https://radionovelasdeayer.com/cartel.webp"><meta name="twitter:image:alt" content="Cartel de La Hora de la Fortuna">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Lora:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Imbue:wght@400;500&family=Albert+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "PodcastSeries", "@id": "https://radionovelasdeayer.com/la-hora-de-la-fortuna#serie", "name": "La Hora de la Fortuna", "description": "Radionovelas completas para escuchar gratis, capítulo por capítulo. Radio novelas colombianas como las de antes: La Hora de la Fortuna, una cada mañana a las seis.", "url": "https://radionovelasdeayer.com/capitulos", "inLanguage": "es-CO", "image": "https://radionovelasdeayer.com/cartel.webp", "author": {"@type": "Organization", "name": "Radionovelas de ayer", "url": "https://radionovelasdeayer.com/", "logo": "https://radionovelasdeayer.com/cartel.webp"}, "publisher": {"@type": "Organization", "name": "Radionovelas de ayer", "url": "https://radionovelasdeayer.com/", "logo": "https://radionovelasdeayer.com/cartel.webp"}, "webFeed": ""}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://radionovelasdeayer.com/"}, {"@type": "ListItem", "position": 2, "name": "Capítulos", "item": "https://radionovelasdeayer.com/capitulos"}]}]}</script>
-<style>/* Un radio de tubos en una columna. Tema único, oscuro y cálido. Todo lo tocable ≥ 64 px; letra ≥ 20 px. */
+<style>/* Radionovelas de ayer: la radio es el reproductor. Tokens y reglas en DESIGN.md (§5). Cada sección es un campo de un solo color. */
 :root{
-  --madera:#3a1d0f; --madera2:#5a2e17; --tela:#2a1a10; --crema:#f6e8c8; --crema2:#d9c6a0;
-  --ambar:#ffb53a; --ambar2:#ff8c1a; --dorado:#c9a24a; --sombra:rgba(0,0,0,.55);
-  --display:'Yeseva One',Georgia,serif; --cuerpo:'Lora',Georgia,'Times New Roman',serif;
   color-scheme:dark;
+  --bg:#0e0803; --surface:#1b1714; --ink:#f5f1ea; --muted:#b3aba1;
+  --accent:#f2a23a; --accent-ink:#1a0f04;
+  --estante:#26403f; --estante-paso:#1e3433;
+  --noche:#1a2733; --noche-paso:#14202a;
+  --papel:#ece7dd; --papel-ink:#17120e; --papel-muted:#5a5048; --papel-acento:#8c4f00;
+  --wa:#1d6b3b;
+  --display:'Imbue','Bodoni 72 Oldstyle','Didot',Georgia,serif;
+  --texto:'Albert Sans','Helvetica Neue',Arial,sans-serif;
+  --s-small:17px; --s-body:20px; --s-lead:clamp(24px,1.2rem + 1vw,30px);
+  --s-head:clamp(44px,1.6rem + 5vw,84px); --s-serie:clamp(34px,10.5vw,52px);
+  --margen:max(16px,env(safe-area-inset-left,0px)); --margen-d:max(16px,env(safe-area-inset-right,0px));
+  --ease:cubic-bezier(.2,.7,.2,1); --ease-salida:cubic-bezier(.16,1,.3,1);
 }
-html,body{height:100%}
-body{margin:0;background:var(--tela);color:var(--crema);font-family:var(--cuerpo);font-size:20px;line-height:1.4;
-  background-image:radial-gradient(ellipse at 50% 0%,#4a2a16 0%,var(--tela) 70%)}
 *{box-sizing:border-box}
-button{font:inherit;color:inherit;cursor:pointer;border:0;background:none;-webkit-tap-highlight-color:transparent}
-button:focus-visible,a:focus-visible,summary:focus-visible{outline:4px solid var(--ambar);outline-offset:3px}
-h1,h2,p{margin:0;font-weight:400}
-.vista{display:flex;flex-direction:column;gap:16px;max-width:520px;margin:0 auto;padding:8px 16px 32px}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--texto);font-size:var(--s-body);line-height:1.55;-webkit-font-smoothing:antialiased}
+body.con-barra{padding-bottom:calc(88px + env(safe-area-inset-bottom,0px))}
+::selection{background:var(--accent);color:var(--accent-ink)}
+h1,h2,h3,p,dl,dd,ul,ol{margin:0}
+ul,ol{padding:0;list-style:none}
+a{color:inherit}
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;-webkit-tap-highlight-color:transparent}
+:focus-visible{outline:4px solid var(--accent);outline-offset:3px}
+.hoja :focus-visible,.pie :focus-visible{outline-color:var(--papel-ink)}
+.caja{padding-left:var(--margen);padding-right:var(--margen-d)}
+.display{font-family:var(--display);font-weight:400;text-transform:uppercase;letter-spacing:-.01em;line-height:.9;text-wrap:balance}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
-.radio{background:linear-gradient(180deg,var(--madera2),var(--madera));border-radius:24px 24px 16px 16px;padding:10px 10px 16px;
-  box-shadow:0 18px 40px var(--sombra),inset 0 2px 0 rgba(255,255,255,.12),inset 0 -3px 0 rgba(0,0,0,.4);display:flex;flex-direction:column;gap:10px}
-.cartel{display:block;width:100%;max-width:100%;height:auto;border-radius:12px;box-shadow:inset 0 0 0 4px #2b160a,0 4px 10px rgba(0,0,0,.4)}
-.dial{background:#1a0f08;border-radius:12px;padding:10px 12px 8px;box-shadow:inset 0 0 0 3px #0d0704;display:flex;flex-direction:column;gap:6px;transition:box-shadow 1s ease}
-.encendido .dial{box-shadow:inset 0 0 0 3px #0d0704,inset 0 0 22px rgba(255,181,58,.45)}
-.lettering{text-align:center;font-family:var(--display);color:var(--ambar);font-size:1.6rem;line-height:1.15;text-wrap:balance}
-.lettering img{max-width:100%;height:auto;display:block;margin:0 auto}
-.capn{text-align:center;color:var(--ambar);font-family:var(--display);font-size:1.1rem;line-height:1.25;text-wrap:balance}
-.contexto{text-align:center;color:var(--crema);font-size:1rem;line-height:1.35;max-width:38ch;margin:0 auto}
-.escala{position:relative;height:26px;background:repeating-linear-gradient(90deg,rgba(255,181,58,.25) 0 2px,transparent 2px 10%),#120a05;border-radius:6px;overflow:hidden;transition:background-color 1s}
-.encendido .escala{background-color:#2a1808}
-.escala .luz{position:absolute;inset:0;width:0%;background:linear-gradient(90deg,rgba(255,181,58,.18),rgba(255,181,58,.5));transition:width .5s linear}
-.escala .aguja{position:absolute;top:0;bottom:0;left:0%;width:4px;background:#ff3b2f;box-shadow:0 0 8px #ff3b2f;transition:left .5s linear,opacity .6s;opacity:0}
-.encendido .escala .aguja{opacity:1}
-.tiempos{display:flex;justify-content:space-between;font-size:.85rem;color:var(--crema2);font-variant-numeric:tabular-nums}
+/* ---------- Escena: marca, serie y la radio ---------- */
+.portada{display:grid;justify-items:center}
+.escena{display:grid;justify-items:center;gap:14px;padding-block:20px 0;text-align:center;width:100%}
+.marca{font-size:var(--s-small);color:var(--muted)}
+.serie{font-size:var(--s-serie);color:var(--ink)}
+@media (max-height:720px) and (max-width:899px){.marca{display:none}.escena{padding-top:12px;gap:8px}}
 
-.perillas{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;margin-top:4px}
-.perilla{height:76px;width:100%;max-width:120px;border-radius:38px;background:radial-gradient(circle at 35% 30%,#4a3a2c,#1b120b 70%);
-  box-shadow:0 6px 12px rgba(0,0,0,.6),inset 0 2px 0 rgba(255,255,255,.15);color:var(--crema);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;line-height:1;justify-self:center}
-.perilla .flechas{font-size:1.1rem;letter-spacing:-.1em}
-.perilla small{font-size:1rem;color:var(--crema2)}
-.perilla.play{width:116px;height:116px;max-width:none;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffd37a,var(--ambar2) 60%,#b85c00);color:#2a1606;box-shadow:0 8px 18px rgba(0,0,0,.6),0 0 0 6px #1a0f08,0 0 0 9px var(--dorado)}
-.perilla.play .ico{width:54px;height:54px;color:#2a1606}
-.perilla.play:active{transform:scale(.96)}
-.sonando .perilla.play{box-shadow:0 8px 18px rgba(0,0,0,.6),0 0 0 6px #1a0f08,0 0 0 9px var(--dorado),0 0 28px rgba(255,181,58,.6)}
-.gancho{text-align:center;font-style:italic;color:var(--crema2);font-size:1rem;max-width:36ch;margin:4px auto 0}
-.oyentes{text-align:center;color:var(--dorado);font-size:.9rem}
+/* ---------- La radio ---------- */
+.aparato{position:relative;width:min(100%,460px);container-type:inline-size}
+.mueble{position:relative}
+.mueble > img{width:100%;height:auto}
+.luz-dial{position:absolute;left:7.03%;top:31.25%;width:86.06%;height:20.51%;background:var(--accent);mix-blend-mode:multiply;opacity:0;transition:opacity 1.8s ease-in;pointer-events:none}
+.encendido .luz-dial{opacity:.25}
+.sonando .luz-dial{opacity:.55}
+.escala{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.escala text{font-family:var(--texto);font-weight:600;font-size:21px;fill:#3b2914;text-anchor:middle;dominant-baseline:middle}
+.escala .min{font-size:16px;font-weight:500}
+.aguja{transform:translateX(var(--x,0px));transition:transform .5s linear}
+.sintonizando .aguja{animation:sintoniza 1.1s cubic-bezier(.4,0,.2,1) both}
+@keyframes sintoniza{0%{transform:translateX(0)}45%{transform:translateX(430px)}75%{transform:translateX(90px)}100%{transform:translateX(var(--x,0px))}}
+.onda{position:absolute;left:7.03%;top:5.37%;width:86.06%;height:20.2%;mix-blend-mode:multiply;pointer-events:none}
+.pantalla{position:absolute;left:9%;top:37.9%;width:82%;height:13%;display:grid;place-items:center;padding:0 3%;background:rgba(239,228,198,.84);color:#2a1a0b;text-align:center;font-weight:500;font-size:5.4cqw;line-height:1.18;pointer-events:none;opacity:0;transition:opacity .35s}
+.pantalla.ver{opacity:1}
+.pantalla span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-wrap:balance}
+.placa-radio{overflow:hidden;position:absolute;left:29.7%;top:57.62%;width:40.6%;height:8.98%;display:grid;place-items:center;font-family:var(--display);text-transform:uppercase;font-size:6.2cqw;line-height:1;color:#21130a;pointer-events:none}
+.placa-radio span{white-space:nowrap;padding:0 4%}
+.placa-radio.dos span{white-space:normal;text-align:center;line-height:.95;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.placa-radio.estado{padding:0 3%;overflow:visible}   /* el esmalte sobresale un poco del bronce para que el aviso quepa completo a 15 px como mínimo */
+.placa-radio.estado::before{content:"";position:absolute;inset:-16% 2%;background:#5a1209;border-radius:3px}
+.placa-radio.estado span{position:relative;color:#f8ecd2;font-family:var(--texto);text-transform:none;font-weight:700;white-space:normal;text-align:center;line-height:1;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.placa-radio.pausa span{animation:parpadea 1.4s ease-in-out infinite}
+@keyframes parpadea{50%{opacity:.35}}
+.perilla-img{position:absolute;aspect-ratio:1;border-radius:50%;padding:0;transition:transform .15s var(--ease)}
+.perilla-img::after{content:"";position:absolute;inset:-12px;border-radius:50%}
+.perilla-img img{width:100%;height:100%;transform:rotate(var(--giro,0deg));transition:transform .35s var(--ease-salida)}
+.perilla-img:active{transform:scale(.95)}
+.perilla-img:focus-visible{outline-offset:4px}
+.perilla-img.atras{left:11.64%;top:75.98%;width:14.3%}
+.perilla-img.play{left:38.85%;top:72.95%;width:22.3%}
+.perilla-img.adelante{left:73.82%;top:75.98%;width:14.3%}
+.perilla-img .salto{position:absolute;inset:22%;width:56%;height:56%;color:#f3e6c8;pointer-events:none}
+.perilla-img .ico-p{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none;color:#2a1606}
+.perilla-img .ico-p svg{width:40%;height:40%}
 
-.placa{background:linear-gradient(180deg,#e0bd63,#a67c2e);color:#2a1606;border-radius:8px;padding:10px 14px;text-align:center;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 2px 4px rgba(0,0,0,.5);min-height:64px;display:flex;flex-direction:column;justify-content:center}
-.placa small{display:block;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;opacity:.75}
-.placa b{font-family:var(--display);font-weight:400;font-size:1.3rem;line-height:1.1}
-.placa .placa-texto{margin-top:8px;font-size:1.1rem;line-height:1.35;min-height:2.7em;border-top:1px solid rgba(42,22,6,.25);padding-top:8px}
+/* ---------- Bajo la radio: retomar y fin ---------- */
+.fin{display:grid;gap:14px;width:100%;max-width:460px;padding-top:4px}
+.fin .boton.wa{min-height:76px;font-size:22px;padding-inline:20px}
+.fin-aviso{color:var(--muted);font-size:var(--s-small);text-align:center}
+.fin.entra-fin{animation:sube .5s var(--ease) both}
+@keyframes sube{from{opacity:0;transform:translateY(16px)}}
+.continuar{width:100%;max-width:460px}
 
-.botones{display:flex;flex-direction:column;gap:10px}
-.boton{min-height:64px;border-radius:14px;background:var(--madera2);color:var(--crema);font-size:1.05rem;padding:10px 16px;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 3px 0 #22120a;text-align:center;display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;width:100%}
-.boton.principal{background:linear-gradient(180deg,#ffc24f,var(--ambar2));color:#2a1606;font-family:var(--display);font-size:1.25rem;min-height:80px;box-shadow:0 5px 0 #8a4300}
-.boton.principal .ico{color:#2a1606}
-.boton.wa{background:#1f6b3a}
-.boton.secundario{background:rgba(0,0,0,.25);border:1px solid rgba(255,181,58,.3)}
-.boton:disabled{opacity:.7;cursor:default}
-.ico{width:26px;height:26px;flex:none;color:var(--dorado)}
-.boton.wa .ico{color:var(--crema)}
-.enlace{background:none;color:var(--crema2);font-size:1rem;text-decoration:underline;text-underline-offset:4px;padding:10px;min-height:48px;align-self:center;display:inline-flex;align-items:center}
-.enlace.activo{color:var(--ambar)}
-.migas{display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap}
+/* ---------- Botones y enlaces ---------- */
+.acciones{display:grid;gap:12px}
+.boton{min-height:64px;border-radius:999px;display:flex;align-items:center;justify-content:center;gap:12px;padding:12px 28px;font-weight:500;font-size:var(--s-body);line-height:1.25;text-align:center;text-decoration:none;transition:background-color .2s,transform .15s var(--ease)}
+.boton:active{transform:scale(.97)}
+.boton svg{width:28px;height:28px;flex:none}
+.boton.wa{background:var(--wa);color:#fff}
+.boton.wa:hover{background:#238046}
+.boton.principal{background:var(--accent);color:var(--accent-ink)}
+.boton.principal:hover{background:#ffb24e}
+.boton.claro{background:var(--surface);color:var(--ink)}
+.boton.claro:hover{background:#2a241f}
+.boton:disabled{cursor:default;color:var(--muted)}
+.enlace{min-height:64px;display:inline-flex;align-items:center;justify-content:center;font-size:var(--s-body);text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:2px;color:var(--ink)}
 
-.fin{display:none;text-align:center;background:rgba(0,0,0,.28);border-radius:16px;padding:16px;border:1px solid rgba(255,181,58,.3)}
-.fin.ver{display:flex;flex-direction:column;gap:14px}
-.fin h2{font-family:var(--display);color:var(--ambar);font-size:1.4rem}
+/* ---------- El capítulo ---------- */
+.radio{padding-block:28px 72px;display:grid;justify-items:center;gap:28px;text-align:center}
+.radio > *{max-width:600px;width:100%}
+.capitulo{display:grid;gap:12px}
+.capitulo .num{display:block;font-family:var(--texto);font-size:var(--s-lead);color:var(--accent);font-weight:500;line-height:1.3;text-transform:none;letter-spacing:0}
+.capitulo .titulo{display:block;font-size:var(--s-head)}
+.capitulo .titulo-cap{font-weight:400}
+.h1-seo{font-family:var(--texto);font-size:var(--s-lead);font-weight:500;line-height:1.25;text-wrap:balance}
+.contexto{color:var(--ink)}
+.gancho{font-size:var(--s-body);color:var(--muted);font-style:italic}
+.oyentes{font-size:var(--s-small);color:var(--muted)}
 
-.lista{display:flex;flex-direction:column;gap:10px;margin:0;padding:0;list-style:none}
-.cap{display:flex;align-items:center;gap:12px;min-height:72px;padding:10px 14px;border-radius:14px;background:rgba(0,0,0,.25);border:1px solid rgba(255,181,58,.15);width:100%;text-align:left;color:inherit;text-decoration:none}
-.cap .num{font-family:var(--display);font-size:1.4rem;color:var(--dorado);width:40px;flex:none;text-align:center}
-.cap .info{flex:1;min-width:0}.cap .info b{display:block;font-weight:600;font-size:1rem}.cap .info span{font-size:.9rem;color:var(--crema2)}
-.cap.hoy{background:linear-gradient(180deg,#5a2e17,#3a1d0f);border-color:var(--ambar)}
-.cap.hoy .num{color:var(--ambar)}
-.cap.pronto{opacity:.75}
-.cap .ico{width:28px;height:28px}
-.mas summary{cursor:pointer;min-height:56px;display:flex;align-items:center;justify-content:center;color:var(--crema2);font-size:1rem;text-decoration:underline;text-underline-offset:4px;list-style:none}
-.mas summary::-webkit-details-marker{display:none}
-.mas[open] summary{margin-bottom:10px}
-.aviso{font-size:.95rem;color:var(--crema2);text-align:center}
+/* ---------- Franjas de navegación ---------- */
+.franjas{display:grid}
+.franjas a{min-height:64px;display:flex;align-items:center;padding:0 var(--margen-d) 0 var(--margen);font-size:var(--s-body);font-weight:500;text-decoration:none;transition:padding-left .25s var(--ease)}
+.franjas a:hover{padding-left:calc(var(--margen) + 10px)}
+.f-trata{background:var(--surface);color:var(--ink)}
+.f-caps{background:var(--estante);color:var(--ink)}
+.f-guion{background:#2c241d;color:var(--ink)}
+.f-pie{background:var(--papel);color:var(--papel-ink)}
 
-.guion{background:rgba(0,0,0,.2);border-radius:14px;padding:4px 14px;border:1px solid rgba(255,181,58,.15)}
-.guion summary{cursor:pointer;min-height:56px;display:flex;align-items:center;color:var(--crema2);font-size:1rem}
-.guion dl{margin:0 0 14px;display:flex;flex-direction:column;gap:12px}
-.guion .renglon{display:flex;flex-direction:column;gap:2px}
-.guion dt{font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dorado)}
-.guion dd{margin:0;font-size:1rem}
-.pie{text-align:center;font-size:.85rem;color:var(--crema2);opacity:.85;padding-top:8px;border-top:1px solid rgba(255,181,58,.15)}
-@media (prefers-reduced-motion:reduce){.escala .luz,.escala .aguja,.dial,.escala{transition:none}}
+/* ---------- De qué trata ---------- */
+.trata{background:var(--surface);padding-top:72px;overflow:hidden}
+.trata .arriba{display:grid;gap:28px;padding-bottom:40px}
+.trata h2{font-size:clamp(40px,1.4rem + 4.4vw,84px)}
+.leyendas{display:grid;gap:4px;font-size:var(--s-small);color:var(--muted);max-width:34ch}
+.sinopsis{display:grid;gap:20px;max-width:52ch;padding-bottom:56px}
+.panorama,.panorama img{width:100%}
+.panorama img{height:auto;aspect-ratio:4/5;object-fit:cover}
 
-.h1-seo{text-align:center;color:var(--crema);font-family:var(--cuerpo);font-weight:600;font-size:1.05rem;line-height:1.3;text-wrap:balance}
-.texto-seo{display:flex;flex-direction:column;gap:12px;max-width:65ch;margin:0 auto;font-size:1rem;color:var(--crema)}
-.texto-seo h2{font-family:var(--display);color:var(--ambar);font-size:1.15rem;line-height:1.25;margin-top:6px}
-.texto-seo p{margin:0}
-.texto-seo a{color:var(--ambar);text-underline-offset:4px}
-.sinopsis{background:rgba(0,0,0,.2);border-radius:14px;padding:14px 16px;border:1px solid rgba(255,181,58,.15)}
-.cap .info i{display:block;font-style:italic;font-size:.9rem;color:var(--crema2);margin-top:2px}
-.post{display:flex;flex-direction:column;gap:12px;max-width:65ch;margin:0 auto}
-.post h1{font-family:var(--display);color:var(--ambar);font-size:1.6rem;line-height:1.2;text-wrap:balance}
-.post .fecha,.post .migas-post{font-size:.9rem;color:var(--crema2)}
-.post .migas-post a,.cuerpo-post a{color:var(--ambar)}
-.cuerpo-post{display:flex;flex-direction:column;gap:12px;font-size:1rem}
-.cuerpo-post h2{font-family:var(--display);color:var(--ambar);font-size:1.2rem;margin-top:8px}
-.cuerpo-post p,.cuerpo-post ul,.cuerpo-post ol{margin:0}
-.cuerpo-post img{max-width:100%;height:auto;border-radius:12px}
-.escuchelo{display:flex;flex-direction:column;gap:12px;max-width:65ch;margin:0 auto;background:rgba(0,0,0,.28);border-radius:16px;padding:16px;border:1px solid rgba(255,181,58,.3)}
-.escuchelo h2{font-family:var(--display);color:var(--ambar);font-size:1.3rem}
-.escuchelo p{margin:0}.escuchelo a:not(.boton){color:var(--ambar)}
+/* ---------- Texto (portada y lista) ---------- */
+.texto{background:var(--surface);padding-block:64px}
+.texto .cuerpo{display:grid;gap:20px;max-width:60ch;margin:0 auto}
+.texto a{color:var(--accent);text-underline-offset:4px}
 
-.cuerpo-post .guion-cita{font-style:italic;padding-left:18px;border-left:3px solid rgba(255,181,58,.35);color:var(--crema2)}
+/* ---------- La programación ---------- */
+.programa{background:var(--estante);padding-block:72px}
+.hoja{--borde:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='12'%3E%3Ccircle cx='12' cy='12' r='12' fill='%23ece7dd'/%3E%3C/svg%3E");
+  position:relative;max-width:680px;margin:0 auto;background:var(--papel);color:var(--papel-ink);padding:36px 24px 40px;display:grid;grid-template-columns:minmax(0,1fr);gap:36px}
+.hoja::before,.hoja::after{content:"";position:absolute;left:0;right:0;height:12px;background:var(--borde) repeat-x;background-size:24px 12px}
+.hoja::before{top:-12px}
+.hoja::after{bottom:-12px;transform:scaleY(-1)}
+.hoja header{display:grid;gap:10px;text-align:center}
+.hoja h2{font-size:clamp(34px,1.2rem + 4vw,72px);color:var(--papel-ink)}
+.hoja .nota{font-size:var(--s-small);color:var(--papel-muted)}
+.cuenta{font-size:var(--s-lead);line-height:1.25;font-weight:500;text-align:center;font-variant-numeric:tabular-nums;text-wrap:balance}
+.cuenta b{font-weight:600;color:var(--papel-acento)}
+.grupo{display:grid;grid-template-columns:minmax(0,1fr);gap:20px}
+.grupo h3{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:34px;line-height:1;text-align:center}
+.item{display:grid;grid-template-columns:1fr auto;column-gap:16px;row-gap:4px;align-items:baseline;text-decoration:none;color:inherit}
+a.item{border-radius:6px;transition:background-color .2s}
+a.item:hover .t{text-decoration:underline;text-underline-offset:4px}
+.item .t{font-weight:600;font-size:var(--s-body);line-height:1.3;min-width:0}
+.item .d{font-variant-numeric:tabular-nums;font-size:var(--s-small);white-space:nowrap}
+.item .s{grid-column:1/-1;font-size:var(--s-small);color:var(--papel-muted);line-height:1.45}
+.item.hoy .d,.item.oyendo .d{color:var(--papel-acento);font-weight:600}
+.item.pronto{color:var(--papel-muted)}
+.hoja footer{text-align:center;font-size:var(--s-small);color:var(--papel-muted)}
+
+/* ---------- Guion ---------- */
+.guion{background:#2c241d;padding-block:56px}
+.guion details{max-width:680px;margin:0 auto}
+.guion summary{list-style:none;cursor:pointer;min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:var(--s-lead);font-weight:500}
+.guion summary::-webkit-details-marker{display:none}
+.guion dl{display:grid;gap:20px;padding-top:24px}
+.guion dt{font-weight:600;color:var(--accent);font-size:var(--s-small)}
+.guion dd{font-size:var(--s-body)}
+.chev{position:relative;width:16px;height:16px;flex:none}
+.chev::before,.chev::after{content:"";position:absolute;top:7px;width:10px;height:2.5px;background:currentColor;border-radius:2px;transition:transform .25s var(--ease)}
+.chev::before{left:0;transform:rotate(40deg)}
+.chev::after{right:0;transform:rotate(-40deg)}
+details[open] .chev::before{transform:rotate(-40deg)}
+details[open] .chev::after{transform:rotate(40deg)}
+
+/* ---------- Posts: modo leer ---------- */
+.post{padding-block:28px 64px}
+.post .medida{max-width:62ch;margin:0 auto;display:grid;gap:20px}
+.post .migas-post{font-size:var(--s-small);color:var(--muted)}
+.post .migas-post a{color:var(--ink);text-underline-offset:4px;display:inline-flex;align-items:center;min-height:64px}
+.post h1{font-size:clamp(40px,1.4rem + 4vw,72px)}
+.post .fecha{font-size:var(--s-small);color:var(--muted);font-variant-numeric:tabular-nums}
+.cuerpo-post{display:grid;gap:20px}
+.cuerpo-post h2{font-family:var(--display);font-weight:400;text-transform:uppercase;letter-spacing:-.01em;line-height:.95;font-size:clamp(30px,1rem + 3vw,48px);text-wrap:balance;padding-top:24px}
+.cuerpo-post h3{font-size:var(--s-lead);font-weight:600;line-height:1.25;padding-top:8px}
+.cuerpo-post ul,.cuerpo-post ol{display:grid;gap:10px;padding-left:1.2em}
+.cuerpo-post ul{list-style:disc}.cuerpo-post ol{list-style:decimal}
+.cuerpo-post a{color:var(--accent);text-underline-offset:4px}
+.cuerpo-post img{max-width:100%;height:auto}
+.cuerpo-post table{width:100%;border-collapse:collapse;font-size:var(--s-small);font-variant-numeric:tabular-nums}
+.cuerpo-post th,.cuerpo-post td{text-align:left;padding:10px 8px;vertical-align:top}
+.cuerpo-post thead th{background:var(--surface)}
+.cuerpo-post tbody tr:nth-child(even){background:var(--surface)}
+.cuerpo-post .guion-cita{font-style:italic;color:var(--ink);background:var(--surface);padding:16px 18px}
+.cuerpo-post blockquote{margin:0;background:var(--surface);padding:16px 18px}
+.escuchelo{background:var(--surface);padding-block:64px 72px}
+.escuchelo .escena{padding-top:0}
+.escuchelo .lead{max-width:40ch;text-align:center}
+.escuchelo .acciones{width:100%;max-width:460px}
+.escuchelo .boton.claro{background:var(--bg)}
+.escuchelo .boton.claro:hover{background:#2a241f}
+.escuchelo a:not(.boton){color:var(--accent);text-underline-offset:4px}
+
+/* ---------- Pie ---------- */
+.pie{background:var(--papel);color:var(--papel-ink);min-height:92svh;display:grid;grid-template-rows:auto 1fr auto;padding-block:48px 24px}
+.pie .cols{display:grid;grid-template-columns:1fr 1fr;gap:32px 24px;font-size:var(--s-small)}
+.pie .cols b{display:block;font-weight:600;margin-bottom:6px}
+.pie .cols li{color:var(--papel-muted)}
+.pie .cols a{color:var(--papel-ink);text-underline-offset:4px;display:inline-flex;align-items:center;min-height:64px}
+.palabra{display:grid;gap:6px;padding-top:15svh}
+.palabra svg{width:100%;height:auto;display:block}
+.palabra text{font-family:var(--display);fill:var(--papel-ink);text-transform:uppercase}
+.palabra .ancha{display:none}
+
+/* ---------- Barra que sigue sonando ---------- */
+.barra{position:fixed;left:0;right:0;bottom:0;z-index:20;display:flex;align-items:center;gap:14px;
+  padding:10px var(--margen-d) calc(10px + env(safe-area-inset-bottom,0px)) var(--margen);
+  background:var(--b-bg,var(--surface));color:var(--b-ink,var(--ink));transform:translateY(110%);transition:transform .35s var(--ease),background-color .3s,color .3s}
+.barra.ver{transform:none}
+.barra .perilla{flex:none;width:64px;height:64px;border-radius:50%;display:grid;place-content:center;background:var(--accent);color:var(--accent-ink);transition:transform .15s var(--ease)}
+.barra .perilla:active{transform:scale(.94)}
+.barra .perilla svg{width:30px;height:30px}
+.barra .txt{min-width:0;line-height:1.25}
+.barra .txt b{display:block;font-weight:600;font-size:18px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.barra .txt span{font-size:16px;opacity:.8;font-variant-numeric:tabular-nums}
+.barra .pista{flex:1;height:10px;background:rgba(127,127,127,.28);border-radius:999px;overflow:hidden;display:none}
+.barra .pista i{display:block;height:100%;width:0;background:var(--accent);border-radius:999px}
+
+/* ---------- Entradas ---------- */
+.pre{opacity:0;transform:translateY(24px)}
+.entra{transition:opacity .7s var(--ease),transform .7s var(--ease)}
+
+/* ---------- Pantalla ancha ---------- */
+@media (min-width:900px){
+  .portada{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;column-gap:48px;min-height:100svh;padding-inline:max(32px,4vw);justify-items:stretch}
+  .escena{padding-block:40px}
+  .portada .aparato{width:min(100%,520px,calc((100svh - 370px) * .806))}
+  .serie{font-size:clamp(60px,5.6vw,104px)}
+  .capitulo .titulo{font-size:clamp(48px,4.4vw,72px)}
+  .radio{padding-block:40px;justify-items:start;text-align:left}
+  .radio.cabeza-lista{justify-items:center;text-align:center;padding-block:24px 64px}
+  .franjas{grid-template-columns:repeat(4,1fr)}
+  .franjas a{padding:0 20px;min-height:72px}
+  .trata{padding-top:140px}
+  .trata .arriba{grid-template-columns:repeat(12,1fr);column-gap:24px}
+  .trata h2{grid-column:1/8}
+  .leyendas{grid-column:9/13;align-self:end}
+  .sinopsis{margin-left:calc(100%/12*1);padding-bottom:96px}
+  .panorama img{aspect-ratio:21/9}
+  .programa,.texto{padding-block:140px}
+  .hoja{padding:56px 64px 60px}
+  .pie .cols{grid-template-columns:repeat(4,1fr)}
+  .palabra .ancha{display:block}.palabra .partida{display:none}
+  .barra .pista{display:block}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .fin.entra-fin,.placa-radio.pausa span{animation:none}
+  .perilla-img img,.pantalla,.luz-dial,.aguja,.entra,.barra,.franjas a{transition:none}
+  .pre{opacity:1;transform:none}
+}
 </style></head><body>
-<main class="vista">
-  <div class="radio" style="gap:10px">
-    <img class="cartel" src="cartel-600.webp" width="600" height="315" alt="La Hora de la Fortuna">
-    <div class="dial"><h1 class="h1-seo">Radionovelas completas para escuchar</h1><p class="contexto">Diez capítulos. Uno nuevo cada mañana a las 6:00 a. m.</p></div>
+<main id="contenido">
+<header class="escena caja" id="arriba">
+  <p class="marca">Radionovelas de ayer presenta</p>
+  <p class="serie display">La Hora de la Fortuna</p>
+</header>
+<section class="radio cabeza-lista caja" id="escuchar" data-campo="bg">
+  <div class="capitulo"><h1 class="titulo display">Radionovelas completas para escuchar</h1><p class="contexto">Diez capítulos. Uno nuevo cada mañana a las 6:00 a. m.</p></div>
+</section>
+<section class="programa caja" id="capitulos" data-campo="estante">
+  <div class="hoja" id="programa" data-e>
+    <header>
+      <h2 class="display">La programación</h2>
+      <p class="nota">Un capítulo nuevo cada mañana a las 6:00 a. m., hora de Colombia.</p>
+    </header>
+    <p class="cuenta" id="cuenta"></p>
+    <div class="grupo" id="grupo-ya"><h3>Ya salió</h3><a class="item" data-n="1" href="/cap-1" data-interno><span class="t">1. El hombre de los sobres</span><span class="d" data-fecha="vie 16 oct">vie 16 oct</span><span class="s">Eutimio, el más pobre del pueblo, lleva dos años mandando sobres a la radio. Esta noche dicen su nombre.</span></a><a class="item" data-n="2" href="/cap-2" data-interno><span class="t">2. El secreto de todo el pueblo</span><span class="d" data-fecha="sáb 17 oct">sáb 17 oct</span><span class="s">Eutimio murió de la dicha y el premio se entrega en persona. Obdulia tiene una idea que el padre no quiere oír.</span></a><a class="item" data-n="3" href="/cap-3" data-interno><span class="t">3. Llegó antes de tiempo</span><span class="d" data-fecha="dom 18 oct">dom 18 oct</span><span class="s">Saturnino ensaya para ser Eutimio. Tienen ocho días. De la flota del viernes se baja alguien que no esperaban.</span></a></div>
+    <div class="grupo" id="grupo-viene"><h3>Lo que viene</h3><div class="item pronto" data-n="4"><span class="t">4. La gripa de Eutimio</span><span class="d" data-fecha="lun 19 oct">lun 19 oct</span><span class="s" hidden>Obdulia inventa una gripa, el forastero pregunta por una muerta de hace treinta años y don Belisario vio una tumba nueva.</span></div><div class="item pronto" data-n="5"><span class="t">5. El precio del silencio</span><span class="d" data-fecha="mar 20 oct">mar 20 oct</span><span class="s" hidden>Obdulia cierra un trato con don Belisario y el delegado por fin ve a Eutimio. Pero pide quedarse a solas con él.</span></div><div class="item pronto" data-n="6"><span class="t">6. Lo que dice el libro</span><span class="d" data-fecha="mié 21 oct">mié 21 oct</span><span class="s" hidden>Saturnino responde por un muerto, el forastero se vuelve frío y el padre Severo abre un libro que llevaba treinta años cerrado.</span></div><div class="item pronto" data-n="7"><span class="t">7. Las cartas del rancho</span><span class="d" data-fecha="jue 22 oct">jue 22 oct</span></div><div class="item pronto" data-n="8"><span class="t">8. El otro don Régulo</span><span class="d" data-fecha="vie 23 oct">vie 23 oct</span></div><div class="item pronto" data-n="9"><span class="t">9. Me llamo Álvaro</span><span class="d" data-fecha="sáb 24 oct">sáb 24 oct</span></div><div class="item pronto" data-n="10"><span class="t">10. El premio de Eutimio</span><span class="d" data-fecha="dom 25 oct">dom 25 oct</span></div></div>
+    <footer>Si llega tarde, el capítulo lo espera donde lo dejó.</footer>
   </div>
-  <section class="texto-seo"><p>Estos son los capítulos de La Hora de la Fortuna, completos, en orden, para escuchar cuando quiera. Cada uno dura menos de veinte minutos y sale a las seis de la mañana, uno por día. Si es la primera vez que llega, empiece por el uno: la historia se entiende desde ahí y cada capítulo arranca recordando lo que pasó en el anterior, como hacían las radio novelas de antes para el que se había perdido la del día.</p><p>Pasa en Guatancuy, un pueblo de tierra fría, en octubre de 1958. El hombre más pobre del pueblo se gana un concurso de la radio, y lo que el pueblo hace con esa noticia es lo que aquí se cuenta. El capítulo de hoy aparece destacado; el de mañana dice a qué hora sale. Si prefiere oírlos de noche, también sirven: nadie le va a apurar.</p><p>Quiénes son los personajes y de qué trata la historia: <a href="/la-hora-de-la-fortuna" data-interno>La Hora de la Fortuna</a>.</p></section>
-  <ul class="lista" id="lista"></ul>
-  <details class="mas" id="mas"><summary id="mas-titulo"></summary><ul class="lista" id="lista-mas"></ul></details>
-  <div class="migas"><a class="enlace" href="/" data-interno>Portada</a></div>
-  
-</main><script>
-const CFG={"prod": true, "base": "https://radionovelasdeayer.com/", "caps": ["El hombre de los sobres", "El secreto de todo el pueblo", "Llegó antes de tiempo", "La gripa de Eutimio", "El precio del silencio", "Lo que dice el libro", "Las cartas del rancho", "El otro don Régulo", "Me llamo Álvaro", "El premio de Eutimio"], "ganchos": ["¿Usted qué haría si se ganara el premio de la radio… y el pueblo entero se enterara?", "¿Usted cree que un pueblo entero puede guardar un secreto?", "¿Y si el que llega de la capital no es quien dice ser?", "¿Cuánto aguanta una mentira cuando todos la cuidan?", "¿Usted cree que el padre Severo aguanta callado?", "¿Qué pasa cuando alguien abre la libreta de Carmenza?", "¿A quién le escribía Eutimio todos esos años?", "¿Y si hay dos hombres con el mismo nombre?", "¿Usted cree que Álvaro perdona?", "¿Quién se queda al final con la fortuna?"], "estreno": "2026-10-16", "canal": "", "serie": "La Hora de la Fortuna", "marca": "Radionovelas de ayer", "contexto": "Guatancuy, 1958: el hombre más pobre del pueblo se gana la lotería y todos se enteran.", "dur": 19, "oyentes_hoy": null, "sinopsis_cortas": {"1": "Eutimio, el más pobre del pueblo, lleva dos años mandando sobres a la radio. Esta noche dicen su nombre.", "2": "Eutimio murió de la dicha y el premio se entrega en persona. Obdulia tiene una idea que el padre no quiere oír.", "3": "Saturnino ensaya para ser Eutimio. Tienen ocho días. De la flota del viernes se baja alguien que no esperaban.", "4": "Obdulia inventa una gripa, el forastero pregunta por una muerta de hace treinta años y don Belisario vio una tumba nueva.", "5": "Obdulia cierra un trato con don Belisario y el delegado por fin ve a Eutimio. Pero pide quedarse a solas con él."}};
-const ICO={"wa": "<svg class=\"ico\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.2 14.8l-.3-.2-2.6.7.7-2.5-.2-.3A8 8 0 0 1 12 4zm-3 4.5c-.2 0-.5 0-.8.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.2 5 4.4 2.5 1 3 .8 3.5.7.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4l-.5-.3-1.8-.9c-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6.3-.5v-.5l-.8-2c-.2-.5-.4-.4-.6-.4z\"/></svg>", "play": "<svg class=\"ico\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M7 4.5v15a1 1 0 0 0 1.5.9l12-7.5a1 1 0 0 0 0-1.8l-12-7.5A1 1 0 0 0 7 4.5z\"/></svg>", "check": "<svg class=\"ico\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M4 12.5l5 5L20 6.5\"/></svg>", "reloj": "<svg class=\"ico\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"9\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\"/><path fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" d=\"M12 7v5.5l3.5 2\"/></svg>", "cerrado": "<svg class=\"ico\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"5\" y=\"10\" width=\"14\" height=\"10\" rx=\"2\" fill=\"currentColor\"/><path d=\"M8 10V7a4 4 0 0 1 8 0v3\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\"/></svg>", "campana": "<svg class=\"ico\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M12 2a1.5 1.5 0 0 1 1.5 1.5V4a6 6 0 0 1 4.5 5.8V14l2 2.5V18H4v-1.5L6 14V9.8A6 6 0 0 1 10.5 4v-.5A1.5 1.5 0 0 1 12 2zm-2.5 17h5a2.5 2.5 0 0 1-5 0z\"/></svg>", "repetir": "<svg class=\"ico\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M4 12a8 8 0 0 1 13.7-5.6L20 8.5M20 4v4.5h-4.5M20 12a8 8 0 0 1-13.7 5.6L4 15.5M4 20v-4.5h4.5\"/></svg>"};
+</section>
+<section class="texto caja" data-campo="surface"><div class="cuerpo"><p>Estos son los capítulos de La Hora de la Fortuna, completos, en orden, para escuchar cuando quiera. Cada uno dura menos de veinte minutos y sale a las seis de la mañana, uno por día. Si es la primera vez que llega, empiece por el uno: la historia se entiende desde ahí y cada capítulo arranca recordando lo que pasó en el anterior, como hacían las radio novelas de antes para el que se había perdido la del día.</p><p>Pasa en Guatancuy, un pueblo de tierra fría, en octubre de 1958. El hombre más pobre del pueblo se gana un concurso de la radio, y lo que el pueblo hace con esa noticia es lo que aquí se cuenta. El capítulo de hoy aparece destacado; el de mañana dice a qué hora sale. Si prefiere oírlos de noche, también sirven: nadie le va a apurar.</p><p>Quiénes son los personajes y de qué trata la historia: <a href="/la-hora-de-la-fortuna" data-interno>La Hora de la Fortuna</a>.</p></div></section>
+</main>
+<footer class="pie caja" id="pie" data-campo="papel">
+  <div class="cols">
+    <div><b>La serie</b><ul><li><a href="/la-hora-de-la-fortuna" data-interno>La Hora de la Fortuna</a></li><li><a href="/capitulos" data-interno>Todos los capítulos</a></li><li><a href="/" data-interno>Inicio</a></li></ul></div>
+    <div><b>Para leer</b><ul><li><a href="/que-es-una-radionovela" data-interno>Qué es una radionovela</a></li><li><a href="/radionovelas-colombianas" data-interno>Radionovelas colombianas</a></li><li><a href="/radionovelas" data-interno>Radionovelas</a></li></ul></div>
+    <div><b>Horario</b><ul><li>Un capítulo nuevo cada mañana a las 6:00 a. m., hora de Colombia.</li></ul></div>
+    <div><b>Compartir</b><ul><li><a id="wa3" href="#" target="_blank" rel="noopener">Mandar el capítulo 1 por WhatsApp</a></li></ul></div>
+  </div>
+  <div></div>
+  <div class="palabra" aria-label="Radionovelas de ayer">
+    <svg class="ancha" viewBox="0 0 1000 118" aria-hidden="true"><text x="500" y="108" text-anchor="middle" font-size="148">Radionovelas de ayer</text></svg>
+    <svg class="partida" viewBox="0 0 1000 178" aria-hidden="true"><text x="500" y="166" text-anchor="middle" font-size="224">Radionovelas</text></svg>
+    <svg class="partida" viewBox="0 0 1000 178" aria-hidden="true"><text x="500" y="166" text-anchor="middle" font-size="224">de ayer</text></svg>
+  </div>
+</footer>
+<script>
+window.CFG={"prod": true, "base": "https://radionovelasdeayer.com/", "caps": ["El hombre de los sobres", "El secreto de todo el pueblo", "Llegó antes de tiempo", "La gripa de Eutimio", "El precio del silencio", "Lo que dice el libro", "Las cartas del rancho", "El otro don Régulo", "Me llamo Álvaro", "El premio de Eutimio"], "ganchos": ["¿Usted qué haría si se ganara el premio de la radio… y el pueblo entero se enterara?", "¿Usted cree que un pueblo entero puede guardar un secreto?", "¿Y si el que llega de la capital no es quien dice ser?", "¿Cuánto aguanta una mentira cuando todos la cuidan?", "¿Usted cree que el padre Severo aguanta callado?", "¿Qué pasa cuando alguien abre la libreta de Carmenza?", "¿A quién le escribía Eutimio todos esos años?", "¿Y si hay dos hombres con el mismo nombre?", "¿Usted cree que Álvaro perdona?", "¿Quién se queda al final con la fortuna?"], "estreno": "2026-10-16", "canal": "", "serie": "La Hora de la Fortuna", "marca": "Radionovelas de ayer", "contexto": "Guatancuy, 1958: el hombre más pobre del pueblo se gana el concurso de la radio y todos se enteran.", "dur": 19, "oyentes_hoy": null, "existentes": [1, 2, 3, 4, 5, 6], "gancho": "¿Usted qué haría si se ganara el premio de la radio… y el pueblo entero se enterara?", "pagina": "lista"};
+const ICO={"wa": "<svg class=\"ico\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.2 14.8l-.3-.2-2.6.7.7-2.5-.2-.3A8 8 0 0 1 12 4zm-3 4.5c-.2 0-.5 0-.8.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.2 5 4.4 2.5 1 3 .8 3.5.7.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4l-.5-.3-1.8-.9c-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6.3-.5v-.5l-.8-2c-.2-.5-.4-.4-.6-.4z\"/></svg>", "play": "<svg class=\"ico\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M7 4.5v15a1 1 0 0 0 1.5.9l12-7.5a1 1 0 0 0 0-1.8l-12-7.5A1 1 0 0 0 7 4.5z\"/></svg>", "check": "<svg class=\"ico\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M4 12.5l5 5L20 6.5\"/></svg>", "reloj": "<svg class=\"ico\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"9\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\"/><path fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" d=\"M12 7v5.5l3.5 2\"/></svg>", "cerrado": "<svg class=\"ico\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"5\" y=\"10\" width=\"14\" height=\"10\" rx=\"2\" fill=\"currentColor\"/><path d=\"M8 10V7a4 4 0 0 1 8 0v3\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\"/></svg>", "campana": "<svg class=\"ico\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M12 2a1.5 1.5 0 0 1 1.5 1.5V4a6 6 0 0 1 4.5 5.8V14l2 2.5V18H4v-1.5L6 14V9.8A6 6 0 0 1 10.5 4v-.5A1.5 1.5 0 0 1 12 2zm-2.5 17h5a2.5 2.5 0 0 1-5 0z\"/></svg>", "pausa": "<svg class=\"ico\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"5\" y=\"4\" width=\"5\" height=\"16\" rx=\"1\" fill=\"currentColor\"/><rect x=\"14\" y=\"4\" width=\"5\" height=\"16\" rx=\"1\" fill=\"currentColor\"/></svg>", "repetir": "<svg class=\"ico\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M4 12a8 8 0 0 1 13.7-5.6L20 8.5M20 4v4.5h-4.5M20 12a8 8 0 0 1-13.7 5.6L4 15.5M4 20v-4.5h4.5\"/></svg>"};
 // ===== Medición =====
 // IDs vacíos = no se carga nada. En el sitio real: META_PIXEL_ID y uno de GA4_ID / PLAUSIBLE_DOMAIN.
 const MEDICION = {"META_PIXEL_ID": "", "GA4_ID": "G-QPL2GQV6XG", "PLAUSIBLE_DOMAIN": ""};
@@ -156,11 +331,14 @@ document.querySelectorAll('a[data-interno]').forEach(a=>{ a.href=conF(a.getAttri
   if(MEDICION.PLAUSIBLE_DOMAIN){ const s=document.createElement('script'); s.defer=true; s.dataset.domain=MEDICION.PLAUSIBLE_DOMAIN; s.src='https://plausible.io/js/script.manual.pageview-props.tagged-events.js'; document.head.appendChild(s); window.plausible=window.plausible||function(){(window.plausible.q=window.plausible.q||[]).push(arguments)}; plausible('pageview',{props:{fuente:F}}); }
 })();
 window.EVENTOS=[];
+// CFG se declara como window.CFG en build.py: así capitulo llega con su número y no en 0.
+// pagina: cap | portada | lista | post. Lo que abre WhatsApp o un canal sale con beacon para no perderse al salir.
+const BEACON=['share_click','canal_click'];
 function medir(nombre, datos){
-  const d=Object.assign({capitulo:(window.CFG&&CFG.n)||0, fuente:F}, datos||{});
+  const d=Object.assign({capitulo:(window.CFG&&CFG.n)||0, fuente:F, pagina:(window.CFG&&CFG.pagina)||''}, datos||{});
   EVENTOS.push([nombre,d]);
   if(window.fbq) fbq('trackCustom', nombre, d);
-  if(window.gtag) gtag('event', nombre, d);
+  if(window.gtag) gtag('event', nombre, BEACON.includes(nombre)?Object.assign({transport_type:'beacon'},d):d);
   if(window.plausible) plausible(nombre, {props:d});
 }
 
@@ -178,30 +356,43 @@ function urlCap1(){ const u=new URL(CFG.prod?CFG.base+'cap-1':'cap-1.html',locat
 function textoWA(gancho){ return 'Oiga, le mando una radionovela como las de antes. '+CFG.serie+'. '+gancho+' Toque aquí y dele a la perilla naranja: '+urlCap1(); }
 function prepararWA(el, gancho){ if(!el) return; el.href='https://wa.me/?text='+encodeURIComponent(textoWA(gancho)); el.addEventListener('click',()=>medir('share_click',{donde:el.id})); }
 
-// Lista: capítulos publicados (el de hoy destacado), el de mañana, y el resto colapsado.
-const ul=$('lista'), ulMas=$('lista-mas'), T=CFG.caps.length;
-let ultimoPub=0; for(let n=1;n<=T;n++) if(publicado(n)) ultimoPub=n;
-function fila(n, clase, ico, sub, href){
-  const el=document.createElement(href?'a':'div'); el.className='cap '+clase; if(href) el.href=href;
-  el.innerHTML='<span class="num">'+n+'</span><span class="info"><b></b><span></span><i></i></span>'+ico;
-  el.querySelector('.info b').textContent=CFG.caps[n-1]; el.querySelector('.info span').textContent=sub;
-  const sc=(CFG.sinopsis_cortas||{})[n]; if(sc) el.querySelector('.info i').textContent=sc; else el.querySelector('.info i').remove();
-  const li=document.createElement('li'); li.appendChild(el); return li;
+// ===== Pie: compartir y la marca ajustada a su propio ancho, sin estirar letras =====
+prepararWA($('wa3'), CFG.gancho);
+function ajustarMarca(){ document.querySelectorAll('.palabra svg').forEach(s=>{ const tx=s.querySelector('text'); try{ const b=tx.getBBox(); if(b.width) s.setAttribute('viewBox',[b.x,b.y,b.width,b.height].map(v=>v.toFixed(1)).join(' ')); }catch(e){} }); }
+ajustarMarca(); if(document.fonts&&document.fonts.ready) document.fonts.ready.then(ajustarMarca);
+
+// ===== La programación (DESIGN.md §4): fechas desde ESTRENO, 6 a. m. hora de Colombia, sin depender del reloj del visitante. =====
+// build.py la deja impresa con enlaces para lo que ya salió al generar; aquí se pone al día a la hora real.
+function pintarProgramacion(){
+  const hoja=$('programa'); if(!hoja) return;
+  const ya=$('grupo-ya'), viene=$('grupo-viene');
+  let hoy=0; for(let n=1;n<=CFG.caps.length;n++) if(publicado(n)) hoy=n;
+  hoja.querySelectorAll('.item').forEach(el=>{
+    const n=+el.dataset.n, sale=publicado(n) && CFG.existentes.includes(n), oyendo=CFG.pagina==='cap' && n===CFG.n;
+    if(sale && el.tagName!=='A'){   // salió después de generar la página: se vuelve enlace y pasa a "Ya salió"
+      const a=document.createElement('a'); a.className=el.className; a.dataset.n=n; a.innerHTML=el.innerHTML; a.href=conF(rutaCap(n));
+      el.replaceWith(a); ya.appendChild(a); el=a;
+      const s=a.querySelector('.s'); if(s) s.hidden=false;
+    }
+    el.classList.toggle('pronto',!sale); el.classList.toggle('hoy',sale && n===hoy && !oyendo); el.classList.toggle('oyendo',oyendo);
+    const d=el.querySelector('.d'); d.textContent=oyendo?'Está oyendo este':(sale && n===hoy?'Hoy':d.dataset.fecha);
+  });
+  viene.hidden=!viene.querySelector('.item');
+  const sig=hoy+1;
+  if(sig>CFG.caps.length){ $('cuenta').textContent='Ya salieron los diez capítulos.'; return; }
+  const falta=fechaCap(sig).getTime()-Date.now(), h=Math.floor(falta/36e5), m=Math.floor(falta%36e5/6e4);
+  const cuanto=h>0?(h+(h===1?' hora':' horas')+' y '+m+(m===1?' minuto':' minutos')):(m+(m===1?' minuto':' minutos'));
+  $('cuenta').innerHTML='El capítulo '+sig+' sale en <b></b>.'; $('cuenta').querySelector('b').textContent=cuanto;
 }
-for(let n=1;n<=ultimoPub;n++){
-  const oido=leer('cap'+n+'_fin')==='1', hoy=n===ultimoPub;
-  ul.appendChild(fila(n, hoy?'hoy':'', oido?ICO.check:ICO.play, oido?'Ya lo escuchó':(hoy?'El capítulo de hoy':'Disponible'), conF(rutaCap(n))));
+pintarProgramacion(); setInterval(pintarProgramacion,30000);
+
+/* ---- entradas: solo lo que está por debajo al cargar, siempre desde un estado visible si el script falla ---- */
+if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+  const piezas=[...document.querySelectorAll('[data-e]')].filter(el=>el.getBoundingClientRect().top>innerHeight);
+  piezas.forEach(el=>el.classList.add('pre'));
+  const io=new IntersectionObserver(es=>{ es.forEach(e=>{ if(!e.isIntersecting) return; const el=e.target, hermanos=[...el.parentElement.querySelectorAll(':scope > [data-e].pre')]; const i=Math.max(0,hermanos.indexOf(el));
+    el.classList.add('entra'); el.style.transitionDelay=(i*80)+'ms'; requestAnimationFrame(()=>el.classList.remove('pre')); io.unobserve(el); }); },{rootMargin:'0px 0px -10% 0px'});
+  piezas.forEach(el=>io.observe(el));
 }
-const sig=ultimoPub+1;
-if(sig<=T){
-  const cuando=fechaTexto(sig); const txt=cuando.startsWith('mañana')?'Mañana a las 6':cuando.charAt(0).toUpperCase()+cuando.slice(1).replace(' a las 6 a. m.',' a las 6');
-  ul.appendChild(fila(sig,'pronto',ICO.reloj,ultimoPub===0?'Estrena '+txt.charAt(0).toLowerCase()+txt.slice(1):txt));
-  const resto=T-sig;
-  if(resto>0){
-    const NUM=['','uno','dos','tres','cuatro','cinco','seis','siete','ocho','nueve','diez'];
-    $('mas-titulo').textContent='y '+NUM[resto]+' más, uno cada mañana';
-    for(let n=sig+1;n<=T;n++) ulMas.appendChild(fila(n,'pronto',ICO.reloj,'Sale '+fechaTexto(n)));
-  } else $('mas').hidden=true;
-} else $('mas').hidden=true;
 
 </script></body></html>
