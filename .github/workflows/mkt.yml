@@ -12,7 +12,7 @@ on:
     inputs:
       tarea: { description: 'render | publicar | metricas | todo', default: 'todo' }
       simular: { description: 'publicar sin enviar (true/false)', default: 'false' }
-concurrency: { group: redes, cancel-in-progress: false }
+concurrency: { group: "redes-${{ github.event.schedule == '20 10 * * *' && 'metricas' || 'publicar' }}", cancel-in-progress: false }
 permissions: { contents: write }
 env:
   CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -52,10 +52,11 @@ jobs:
         env: { GH_TOKEN: '${{ github.token }}' }
         run: .github/mkt/ciclo.sh previas
       - name: Bajar estado
-        if: steps.toca.outputs.publicar == 'true' || steps.toca.outputs.metricas == 'true'
+        id: bajar
+        if: always() && (steps.toca.outputs.publicar == 'true' || steps.toca.outputs.metricas == 'true')
         run: .github/mkt/ciclo.sh bajar
       - name: Publicar aprobadas
-        if: steps.toca.outputs.publicar == 'true'
+        if: always() && steps.bajar.outcome == 'success' && steps.toca.outputs.publicar == 'true'
         env:
           META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
@@ -64,7 +65,7 @@ jobs:
           SIMULAR: ${{ github.event.inputs.simular }}
         run: .github/mkt/ciclo.sh publicar
       - name: Métricas
-        if: steps.toca.outputs.metricas == 'true'
+        if: always() && steps.bajar.outcome == 'success' && steps.toca.outputs.metricas == 'true'
         env:
           META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}

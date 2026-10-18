@@ -1,5 +1,5 @@
 """Utilidades compartidas del pipeline de redes (render, publicar, métricas)."""
-import json, os, re, sys, time, urllib.error, urllib.parse, urllib.request
+import http.client, json, os, re, sys, time, urllib.error, urllib.parse, urllib.request
 from pathlib import Path
 
 MKT = Path(__file__).resolve().parent
@@ -44,7 +44,7 @@ def http(metodo, url, datos=None, cabeceras=None, json_body=None, timeout=120, c
         detalle = e.read().decode("utf8", "replace")[:800]
         detalle = re.sub(r"access_token=[^&\s\"]+", "access_token=***", detalle)
         raise ErrorPieza(f"HTTP {e.code} {metodo} {url.split('?')[0]}: {detalle}")
-    except (urllib.error.URLError, TimeoutError, ConnectionError, OSError) as e:
+    except (urllib.error.URLError, TimeoutError, ConnectionError, OSError, http.client.HTTPException, json.JSONDecodeError) as e:
         raise ErrorPieza(f"red {metodo} {url.split('?')[0]}: {e}")
 
 
@@ -69,8 +69,9 @@ def aprobaciones(semana):
     return json.loads(p.read_text()) if p.exists() else {}
 
 
-def url_media(semana, nombre):
-    return f"{R2_PUBLICO}/mkt/{semana}/{nombre}"
+def url_media(semana, nombre, version=None):
+    """version (la huella del render) evita que la caché entregue un medio viejo tras re-renderizar."""
+    return f"{R2_PUBLICO}/mkt/{semana}/{nombre}" + (f"?v={version}" if version else "")
 
 
 def log(*a):

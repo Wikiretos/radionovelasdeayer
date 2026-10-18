@@ -418,9 +418,9 @@ def main():
                     imgs = carrusel(p, destino); r = {"ok": True, "imagenes": imgs, "vista_previa": imgs[0]}
                 else:
                     raise ErrorPieza(f"tipo desconocido {p['tipo']}")
-        except ErrorPieza as e:
+        except Exception as e:
             log("   ERROR:", e)
-            r = {"ok": False, "error": str(e)}
+            r = {"ok": False, "error": f"{'' if isinstance(e, ErrorPieza) else type(e).__name__ + ': '}{e}"[:600]}
         r["huella"] = h
         resultado["piezas"][p["id"]] = r
     (destino / "render.json").write_text(json.dumps(resultado, ensure_ascii=False, indent=1))

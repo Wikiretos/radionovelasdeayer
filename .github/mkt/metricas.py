@@ -20,7 +20,7 @@ G = CONFIG["graph"]
 
 FB_REEL = ["blue_reels_play_count", "fb_reels_total_plays", "post_impressions_unique", "post_video_avg_time_watched",
            "post_video_social_actions", "post_video_followers"]
-FB_POST = ["post_impressions_unique", "post_clicks", "post_reactions_by_type_total"]
+FB_POST = ["post_media_view", "post_impressions_unique", "post_clicks", "post_reactions_by_type_total"]
 IG_REEL = ["views", "reach", "likes", "comments", "shares", "saved", "total_interactions", "ig_reels_avg_watch_time", "follows"]
 IG_CAR = ["views", "reach", "likes", "comments", "shares", "saved", "total_interactions", "follows"]
 
@@ -57,7 +57,7 @@ def fb(reg, tipo, token, err):
                     m[d["name"]] = valor(d)
         except ErrorPieza as e:
             err.append(f"fb video_insights: {str(e)[:160]}")
-    m["vistas"] = m.get("blue_reels_play_count") or m.get("fb_reels_total_plays") or m.get("post_impressions_unique")
+    m["vistas"] = m.get("blue_reels_play_count") or m.get("fb_reels_total_plays") or m.get("post_media_view") or m.get("post_impressions_unique")
     return m
 
 
@@ -143,9 +143,10 @@ def main():
         for pl, reg in regs.items():
             fila = {"id": pid, "semana": sem, "plataforma": pl, "tipo": p.get("tipo"), "familia": p.get("familia"),
                     "fecha": reg.get("fecha"), "url": reg.get("url")}
-            if reg.get("error") or reg.get("vencida"):
-                fila["estado"] = "error" if reg.get("error") else "vencida"
-                fila["error"] = reg.get("error"); filas.append(fila); continue
+            if reg.get("error") or reg.get("vencida") or reg.get("en_curso"):
+                fila["estado"] = "error" if reg.get("error") else "vencida" if reg.get("vencida") else "error"
+                fila["error"] = reg.get("error") or ("se cortó a mitad de la publicación: revisar a mano en la red si salió" if reg.get("en_curso") else None)
+                filas.append(fila); continue
             err = []
             fila["estado"] = "publicada"
             if reg.get("aviso"): fila["aviso"] = reg["aviso"]

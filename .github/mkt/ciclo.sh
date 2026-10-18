@@ -10,7 +10,8 @@ render(){
   for f in .github/mkt/semanas/[0-9][0-9][0-9][0-9]-W[0-9][0-9].json; do
     case "$f" in *.aprobaciones.json) continue;; esac
     SEM=$(basename "$f" .json)
-    FIN=$(python3 -c "import json;p=json.load(open('$f'));print(max(x['fecha'] for x in p['piezas']))")
+    if ! python3 .github/mkt/validar_plan.py "$f"; then echo "ERROR: plan $SEM inválido; no se renderiza"; continue; fi
+    FIN=$(python3 -c "import json;p=json.load(open('$f'));print(max([x['fecha'] for x in p['piezas']] or ['0000']))")
     if [[ "$FIN" < "$HOY" ]]; then echo "$SEM ya pasó"; continue; fi
     rm -rf salida && mkdir salida
     curl -sf "$PUBLICO/mkt/$SEM/render.json?v=$(date +%s)" -o previo.json || echo '{}' > previo.json
@@ -23,11 +24,12 @@ render(){
         *-prev.mp4) continue;;
         *.mp4) r2put "mkt/$SEM/$n" "$a" video/mp4 "public, max-age=31536000";;
         *.jpg) r2put "mkt/$SEM/$n" "$a" image/jpeg "public, max-age=31536000";;
-        render.json) r2put "mkt/$SEM/$n" "$a" application/json no-store;;
         *) continue;;
       esac
       echo "subido mkt/$SEM/$n"
     done
+    r2put "mkt/$SEM/render.json" salida/render.json application/json no-store   # al final: solo si todos los medios subieron
+    echo "subido mkt/$SEM/render.json"
   done
 }
 
@@ -44,7 +46,13 @@ previas(){
   echo "rama mkt-medios actualizada"
 }
 
-bajar(){ curl -sf "$PUBLICO/mkt/estado.json?v=$(date +%s)" -o estado.json || echo '{}' > estado.json; }
+bajar(){
+  # solo un 404 real significa "sin estado"; cualquier otro fallo detiene para no publicar dos veces
+  c=$(curl -s -o estado.json -w '%{http_code}' "$PUBLICO/mkt/estado.json?v=$(date +%s)" || echo 000)
+  if [ "$c" = 404 ]; then echo '{}' > estado.json
+  elif [ "$c" != 200 ]; then echo "ERROR: no se pudo leer mkt/estado.json (HTTP $c)"; return 1; fi
+  python3 -c 'import json;json.load(open("estado.json"))'
+}
 
 publicar(){
   S=""; [ "${SIMULAR:-false}" = true ] && S="--simular"

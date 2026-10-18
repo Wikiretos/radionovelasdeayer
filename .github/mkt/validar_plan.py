@@ -49,6 +49,7 @@ def main():
         if p.get("familia") not in FAMILIAS: e(f"familia inválida {p.get('familia')}")
         try:
             f = date.fromisoformat(p["fecha"]); datetime.strptime(p["hora"], "%H:%M")
+            if not re.fullmatch(r"\d{2}:\d{2}", p["hora"]): raise ValueError
             iso = f.isocalendar()
             if f"{iso[0]}-W{iso[1]:02d}" != plan.get("semana"): e("fecha fuera de la semana del plan")
         except Exception:

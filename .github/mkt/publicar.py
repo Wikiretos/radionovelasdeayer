@@ -13,7 +13,7 @@ Reglas: un intento por pieza y plataforma; si falla, queda el error y NO se rein
 se marcan "vencida" y no salen. TikTok no se publica aquí (va a mano).
 Secretos (entorno): META_PAGE_TOKEN, YT_CLIENT_ID, YT_CLIENT_SECRET, YT_REFRESH_TOKEN.
 """
-import argparse, json, os, subprocess, sys, time
+import argparse, json, os, re, subprocess, sys, time
 from datetime import datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -36,23 +36,30 @@ def texto_final(p, apr, clave):
 
 # ---------- Facebook ----------
 
-def fb_reel(p, apr, semana, token):
+def fb_reel(p, apr, semana, token, hv=None):
     page = CONFIG["meta_page_id"]
     ini = http("POST", f"{G}/{page}/video_reels", {"upload_phase": "start", "access_token": token})
     vid = ini["video_id"]
-    http("POST", ini["upload_url"], cabeceras={"Authorization": f"OAuth {token}", "file_url": url_media(semana, p["id"] + ".mp4")})
+    http("POST", ini["upload_url"], cabeceras={"Authorization": f"OAuth {token}", "file_url": url_media(semana, p["id"] + ".mp4", hv)})
     http("POST", f"{G}/{page}/video_reels", {"upload_phase": "finish", "video_id": vid, "video_state": "PUBLISHED",
                                               "description": texto_final(p, apr, "fb"), "access_token": token})
-    # espera a que quede publicado (máx. ~4 min)
-    for _ in range(24):
-        st = http("GET", f"{G}/{vid}?fields=status,permalink_url&access_token={token}")
-        fase = (st.get("status") or {}).get("video_status")
-        if fase in ("ready", "published") or (st.get("status") or {}).get("publishing_phase", {}).get("status") == "complete":
-            break
-        if fase == "error":
-            raise ErrorPieza(f"Facebook rechazó el video: {st.get('status')}")
-        time.sleep(10)
-    r = {"id": vid, "url": st.get("permalink_url") and ("https://www.facebook.com" + st["permalink_url"] if st["permalink_url"].startswith("/") else st["permalink_url"])}
+    # ya está publicado; desde aquí nada puede convertirlo en "error"
+    r = {"id": vid}
+    try:
+        for _ in range(24):
+            st = http("GET", f"{G}/{vid}?fields=status,permalink_url&access_token={token}")
+            sts = st.get("status") or {}
+            if sts.get("video_status") == "error" or (sts.get("publishing_phase") or {}).get("status") == "error":
+                r["aviso"] = f"Facebook reporta error después de publicar: {sts}"; break
+            if (sts.get("publishing_phase") or {}).get("status") == "complete":
+                pl = st.get("permalink_url") or ""
+                r["url"] = ("https://www.facebook.com" + pl) if pl.startswith("/") else (pl or None)
+                break
+            time.sleep(10)
+        else:
+            r["aviso"] = "publicación sin confirmar tras 4 min"
+    except ErrorPieza as e:
+        r["aviso"] = f"no se pudo confirmar la publicación: {e}"
     com = texto_final(p, apr, "comentario")
     if com:
         try:
@@ -72,6 +79,8 @@ def fb_fotos(p, apr, semana, render, token):
     for i, m in enumerate(ids):
         datos[f"attached_media[{i}]"] = json.dumps(m)
     post = http("POST", f"{G}/{page}/feed", datos)
+    if "id" not in post:
+        raise ErrorPieza(f"Facebook no devolvió id del post: {post}")
     return {"id": post["id"], "url": f"https://www.facebook.com/{post['id']}"}
 
 
@@ -91,15 +100,21 @@ def ig_esperar(cid, token):
 def ig_publicar(cid, token):
     ig = CONFIG["meta_ig_user_id"]
     m = http("POST", f"{G}/{ig}/media_publish", {"creation_id": cid, "access_token": token})
-    info = http("GET", f"{G}/{m['id']}?fields=permalink&access_token={token}")
-    return {"id": m["id"], "url": info.get("permalink")}
+    if "id" not in m:
+        raise ErrorPieza(f"Instagram no devolvió id: {m}")
+    r = {"id": m["id"]}
+    try:
+        r["url"] = http("GET", f"{G}/{m['id']}?fields=permalink&access_token={token}").get("permalink")
+    except ErrorPieza as e:
+        r["aviso"] = f"publicado, sin enlace: {e}"
+    return r
 
 
-def ig_reel(p, apr, semana, token):
+def ig_reel(p, apr, semana, token, hv=None):
     ig = CONFIG["meta_ig_user_id"]
-    c = http("POST", f"{G}/{ig}/media", {"media_type": "REELS", "video_url": url_media(semana, p["id"] + ".mp4"),
+    c = http("POST", f"{G}/{ig}/media", {"media_type": "REELS", "video_url": url_media(semana, p["id"] + ".mp4", hv),
                                          "caption": texto_final(p, apr, "ig"), "share_to_feed": "true",
-                                         "cover_url": url_media(semana, p["id"] + ".jpg"), "access_token": token})
+                                         "cover_url": url_media(semana, p["id"] + ".jpg", hv), "access_token": token})
     ig_esperar(c["id"], token)
     return ig_publicar(c["id"], token)
 
@@ -129,13 +144,13 @@ def yt_token():
     return r["access_token"]
 
 
-def yt_short(p, apr, semana):
+def yt_short(p, apr, semana, hv=None):
     tok = yt_token()
-    video = http("GET", url_media(semana, p["id"] + ".mp4"), cabeceras={"User-Agent": "mkt"}, crudo=True, timeout=300)
-    titulo = texto_final(p, apr, "yt_titulo")[:95]
+    video = http("GET", url_media(semana, p["id"] + ".mp4", hv), cabeceras={"User-Agent": "mkt"}, crudo=True, timeout=300)
+    titulo = re.sub(r"[<>]", "", texto_final(p, apr, "yt_titulo"))[:95]
     meta = {"snippet": {"title": titulo, "description": texto_final(p, apr, "yt_desc"), "categoryId": "24",
                         "defaultLanguage": "es-419", "defaultAudioLanguage": "es-419",
-                        "tags": ["radionovela", "radionovelas", "radionovelas colombianas", "nostalgia", "La Hora de la Fortuna"]},
+                        "tags": ["radionovela", "radionovelas", "radionovelas colombianas", "nostalgia", p.get("serie_titulo", "La Hora de la Fortuna")]},
             "status": {"privacyStatus": "public", "selfDeclaredMadeForKids": False}}
     if CONFIG.get("yt_contenido_sintetico") is not None:  # declaración de contenido alterado/sintético de YouTube (decisión de Andrés)
         meta["status"]["containsSyntheticMedia"] = bool(CONFIG["yt_contenido_sintetico"])
@@ -144,6 +159,8 @@ def yt_short(p, apr, semana):
               b"\r\n--" + limite + b"\r\nContent-Type: video/mp4\r\n\r\n" + video + b"\r\n--" + limite + b"--")
     r = http("POST", "https://www.googleapis.com/upload/youtube/v3/videos?uploadType=multipart&part=snippet,status", cuerpo,
              cabeceras={"Authorization": f"Bearer {tok}", "Content-Type": "multipart/related; boundary=" + limite.decode()}, timeout=600)
+    if "id" not in r:
+        raise ErrorPieza(f"YouTube no devolvió id: {str(r)[:300]}")
     res = {"id": r["id"], "url": f"https://www.youtube.com/shorts/{r['id']}"}
     priv = (r.get("status") or {}).get("privacyStatus")
     if priv != "public":
@@ -166,7 +183,11 @@ def main():
     def guardar():
         ruta.write_text(json.dumps(estado, ensure_ascii=False, indent=1))
         if a.subir and not a.simular:
-            subprocess.run(a.subir, shell=True, check=True)
+            for intento in range(3):
+                if subprocess.run(a.subir, shell=True).returncode == 0:
+                    return
+                time.sleep(10)
+            raise SystemExit("No se pudo subir estado.json a R2 tras 3 intentos. Detenido para no duplicar publicaciones.")
 
     # reintentos autorizados por Andrés: semanas/reintentos.json = [{"id": "w43-01", "plataforma": "fb", "clave": "r1"}]
     rp = MKT / "semanas" / "reintentos.json"
@@ -191,7 +212,10 @@ def main():
             apr = aprs.get(p["id"], {})
             if apr.get("estado") != "aprobado":
                 continue
-            cuando = datetime.fromisoformat(f"{apr.get('fecha', p['fecha'])}T{apr.get('hora', p['hora'])}").replace(tzinfo=TZ)
+            try:
+                cuando = datetime.strptime(f"{apr.get('fecha', p['fecha'])} {apr.get('hora', p['hora'])}", "%Y-%m-%d %H:%M").replace(tzinfo=TZ)
+            except (ValueError, KeyError) as e:
+                log(f"   {p.get('id')}: fecha/hora inválida ({e}); se salta"); continue
             if cuando > ahora:
                 continue
             for pl in p.get("plataformas", []):
@@ -207,25 +231,29 @@ def main():
                 if render is None:
                     render = (leer_publico(f"mkt/{sem}/render.json", {}) or {}).get("piezas", {})
                 rp = render.get(p["id"])
-                if not rp or not rp.get("ok"):
+                if not rp:
+                    continue  # aún sin render: se intenta en el siguiente ciclo
+                if not rp.get("ok"):
                     reg[pl] = {"error": "sin medios renderizados (render.json)", "fecha": ahora.isoformat()}; guardar(); continue
                 if p["tipo"] == "carrusel" and pl == "yt":
                     continue
                 log(f"→ {p['id']} {pl}")
                 if a.simular:
                     log("   (simulado)"); continue
+                hv = rp.get("huella")
+                reg[pl] = {"en_curso": True, "fecha": ahora.isoformat(), "semana": sem}; guardar()  # marca antes: nunca se publica dos veces
                 try:
                     if pl == "fb":
-                        r = fb_fotos(p, apr, sem, rp, token) if p["tipo"] == "carrusel" else fb_reel(p, apr, sem, token)
+                        r = fb_fotos(p, apr, sem, rp, token) if p["tipo"] == "carrusel" else fb_reel(p, apr, sem, token, hv)
                     elif pl == "ig":
-                        r = ig_carrusel(p, apr, sem, rp, token) if p["tipo"] == "carrusel" else ig_reel(p, apr, sem, token)
+                        r = ig_carrusel(p, apr, sem, rp, token) if p["tipo"] == "carrusel" else ig_reel(p, apr, sem, token, hv)
                     else:
-                        r = yt_short(p, apr, sem)
+                        r = yt_short(p, apr, sem, hv)
                     r["fecha"] = datetime.now(TZ).isoformat(); r["semana"] = sem
                     cuenta[pl] = cuenta.get(pl, 0) + 1
                     log("   OK", r.get("url"))
-                except ErrorPieza as e:
-                    r = {"error": str(e), "fecha": datetime.now(TZ).isoformat(), "semana": sem}
+                except Exception as e:  # cualquier fallo queda registrado; el ciclo sigue con las demás
+                    r = {"error": f"{type(e).__name__}: {e}"[:900], "fecha": datetime.now(TZ).isoformat(), "semana": sem}
                     log("   ERROR", e)
                 reg[pl] = r
                 guardar()
