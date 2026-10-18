@@ -60,6 +60,12 @@ competencia(){
   echo "subido datos/competencia.txt"
 }
 
+verificar(){
+  python3 .github/mkt/verificar.py --salida verificacion.json
+  r2put datos/verificacion.txt verificacion.json "text/plain; charset=utf-8" no-store
+  echo "subido datos/verificacion.txt"
+}
+
 bajar(){
   # solo un 404 real significa "sin estado"; cualquier otro fallo detiene para no publicar dos veces
   c=$(curl -s -o estado.json -w '%{http_code}' "$PUBLICO/mkt/estado.json?v=$(date +%s)" || echo 000)

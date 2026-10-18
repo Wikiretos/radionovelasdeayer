@@ -11,7 +11,7 @@ on:
     - cron: '0 2 * * 4'     # competencia en YouTube (miércoles 9 p. m. Colombia)
   workflow_dispatch:
     inputs:
-      tarea: { description: 'render | publicar | metricas | personajes | competencia | todo', default: 'todo' }
+      tarea: { description: 'render | publicar | metricas | personajes | competencia | verificar | todo', default: 'todo' }
       simular: { description: 'publicar sin enviar (true/false)', default: 'false' }
 concurrency: { group: "redes-${{ (github.event.schedule == '20 10 * * *' || github.event.schedule == '0 2 * * 4') && 'lectura' || 'publicar' }}", cancel-in-progress: false }
 permissions: { contents: write }
@@ -31,15 +31,15 @@ jobs:
         run: |
           T="${{ github.event.inputs.tarea }}"
           E="${{ github.event_name }}"; S="${{ github.event.schedule }}"
-          R=false; P=false; M=false; H=false; C=false
+          R=false; P=false; M=false; H=false; C=false; V=false
           if [ "$E" = push ]; then R=true; P=true; fi
           if [ "$E" = schedule ] && [ "$S" = '7 * * * *' ]; then P=true; fi
           if [ "$E" = schedule ] && [ "$S" = '20 10 * * *' ]; then M=true; fi
           if [ "$E" = schedule ] && [ "$S" = '0 2 * * 4' ]; then C=true; fi
           if [ "$E" = workflow_dispatch ]; then
-            case "$T" in render) R=true;; publicar) P=true;; metricas) M=true;; personajes) H=true;; competencia) C=true;; *) R=true; P=true; M=true;; esac
+            case "$T" in render) R=true;; publicar) P=true;; metricas) M=true;; personajes) H=true;; competencia) C=true;; verificar) V=true;; *) R=true; P=true; M=true;; esac
           fi
-          echo "render=$R" >> $GITHUB_OUTPUT; echo "publicar=$P" >> $GITHUB_OUTPUT; echo "metricas=$M" >> $GITHUB_OUTPUT; echo "personajes=$H" >> $GITHUB_OUTPUT; echo "competencia=$C" >> $GITHUB_OUTPUT
+          echo "render=$R" >> $GITHUB_OUTPUT; echo "publicar=$P" >> $GITHUB_OUTPUT; echo "metricas=$M" >> $GITHUB_OUTPUT; echo "personajes=$H" >> $GITHUB_OUTPUT; echo "competencia=$C" >> $GITHUB_OUTPUT; echo "verificar=$V" >> $GITHUB_OUTPUT
           echo "render=$R publicar=$P metricas=$M"
       - name: Dependencias
         run: |
@@ -85,3 +85,12 @@ jobs:
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
         run: .github/mkt/ciclo.sh competencia
+      - name: Verificar secretos (no publica nada)
+        if: always() && steps.toca.outputs.verificar == 'true'
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+        run: .github/mkt/ciclo.sh verificar
