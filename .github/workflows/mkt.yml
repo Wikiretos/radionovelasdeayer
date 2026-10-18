@@ -1,0 +1,91 @@
+# Pipeline de redes: renderiza piezas, publica las aprobadas y trae métricas.
+# Secretos: CLOUDFLARE_API_TOKEN (ya existe), GEMINI_API_KEY, META_PAGE_TOKEN, YT_CLIENT_ID, YT_CLIENT_SECRET, YT_REFRESH_TOKEN.
+name: Redes
+on:
+  push:
+    branches: [main]
+    paths: ['.github/mkt/semanas/**', '.github/mkt/*.py', '.github/workflows/mkt.yml']
+  schedule:
+    - cron: '7 * * * *'     # publicar (cada hora)
+    - cron: '20 10 * * *'   # métricas (5:20 a. m. Colombia)
+  workflow_dispatch:
+    inputs:
+      tarea: { description: 'render | publicar | metricas | todo', default: 'todo' }
+      simular: { description: 'publicar sin enviar (true/false)', default: 'false' }
+concurrency: { group: redes, cancel-in-progress: false }
+env:
+  CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+  CLOUDFLARE_ACCOUNT_ID: 85f7056427611b1d4b8733ca46c69ba8
+  R2: radionovelas-audio
+  PUBLICO: https://audio.radionovelasdeayer.com
+jobs:
+  redes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - name: Qué toca
+        id: toca
+        run: |
+          T="${{ github.event.inputs.tarea }}"
+          E="${{ github.event_name }}"; S="${{ github.event.schedule }}"
+          R=false; P=false; M=false
+          if [ "$E" = push ]; then R=true; P=true; fi
+          if [ "$E" = schedule ] && [ "$S" = '7 * * * *' ]; then P=true; fi
+          if [ "$E" = schedule ] && [ "$S" = '20 10 * * *' ]; then M=true; fi
+          if [ "$E" = workflow_dispatch ]; then
+            case "$T" in render) R=true;; publicar) P=true;; metricas) M=true;; *) R=true; P=true; M=true;; esac
+          fi
+          echo "render=$R" >> $GITHUB_OUTPUT; echo "publicar=$P" >> $GITHUB_OUTPUT; echo "metricas=$M" >> $GITHUB_OUTPUT
+          echo "render=$R publicar=$P metricas=$M"
+      - name: Dependencias
+        run: |
+          pip install -q pillow
+          if [ "${{ steps.toca.outputs.render }}" = true ]; then sudo apt-get -qq update && sudo apt-get -qq install -y ffmpeg >/dev/null; fi
+      - name: Renderizar piezas nuevas o cambiadas
+        if: steps.toca.outputs.render == 'true'
+        env: { GEMINI_API_KEY: '${{ secrets.GEMINI_API_KEY }}' }
+        run: |
+          set -e
+          HOY=$(TZ=America/Bogota date +%Y-%m-%d)
+          for f in .github/mkt/semanas/*.json; do
+            case "$f" in *.aprobaciones.json) continue;; esac
+            SEM=$(basename "$f" .json)
+            FIN=$(python3 -c "import json,sys;p=json.load(open('$f'));print(max(x['fecha'] for x in p['piezas']))")
+            [ "$FIN" \< "$HOY" ] && { echo "$SEM ya pasó"; continue; }
+            rm -rf salida && mkdir salida
+            curl -sf "$PUBLICO/mkt/$SEM/render.json?v=$(date +%s)" -o previo.json || echo '{}' > previo.json
+            python3 .github/mkt/render.py "$f" --salida salida --previo previo.json
+            for a in salida/*; do
+              n=$(basename "$a")
+              case "$n" in *.mp4) ct=video/mp4;; *.jpg) ct=image/jpeg;; *.json) ct=application/json;; *) continue;; esac
+              cc="public, max-age=31536000"; [ "$n" = render.json ] && cc="no-store"
+              npx --yes wrangler@3 r2 object put "$R/mkt/$SEM/$n" --file "$a" --content-type "$ct" --cache-control "$cc" >/dev/null
+              echo "subido mkt/$SEM/$n"
+            done
+          done
+      - name: Bajar estado
+        if: steps.toca.outputs.publicar == 'true' || steps.toca.outputs.metricas == 'true'
+        run: curl -sf "$PUBLICO/mkt/estado.json?v=$(date +%s)" -o estado.json || echo '{}' > estado.json
+      - name: Publicar aprobadas
+        if: steps.toca.outputs.publicar == 'true'
+        env:
+          META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+        run: |
+          S=""; [ "${{ github.event.inputs.simular }}" = true ] && S="--simular"
+          python3 .github/mkt/publicar.py --estado estado.json $S \
+            --subir "npx --yes wrangler@3 r2 object put $R/mkt/estado.json --file estado.json --content-type application/json --cache-control no-store >/dev/null"
+      - name: Métricas
+        if: steps.toca.outputs.metricas == 'true'
+        env:
+          META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+        run: |
+          python3 .github/mkt/metricas.py --estado estado.json --salida redes.json
+          npx --yes wrangler@3 r2 object put "$R/datos/redes.txt" --file redes.json --content-type "text/plain; charset=utf-8" --cache-control no-store >/dev/null
+          echo "subido datos/redes.txt"

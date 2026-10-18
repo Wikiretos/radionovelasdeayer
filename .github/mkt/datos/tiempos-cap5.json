@@ -1,0 +1,637 @@
+{
+ "serie": "la-hora-de-la-fortuna",
+ "capitulo": 5,
+ "titulo": "El precio del silencio",
+ "lineas": [
+  {
+   "personaje": "locutor",
+   "texto": "[solemne] Radionovelas de ayer presenta… La Hora de la Fortuna. Capítulo cinco: El precio del silencio.",
+   "inicio": 2.5,
+   "fin": 13.42
+  },
+  {
+   "personaje": "locutor",
+   "texto": "Con la actuación de Leonor Villaveces como Carmenza Rincón, Betsabé Moncada como misiá Obdulia, Gonzalo Urdaneta como don Belisario Umaña, Pompilio Rozo como Saturnino Cuervo y Hernán Casallas como el forastero. Y la narración de Luis Carlos Franco.",
+   "inicio": 13.92,
+   "fin": 34.45
+  },
+  {
+   "personaje": "locutor",
+   "texto": "En el capítulo anterior, misiá Obdulia inventó que Eutimio Chitiva estaba en cama con una gripa contagiosa, y el forastero aceptó esperar, pero fijó su plazo: el martes a las seis se va en la flota, con el premio entregado o sin entregar. Se hospedó en la casa cural. En la tienda preguntó por la vida de Eutimio y nombró a Rosa, la difunta esposa, un nombre que en Guatancuy ya nadie pronuncia; al padre Severo le quedó la espina. Y esa noche, con la lluvia encima, don Belisario Umaña llegó a la tienda: había visto una tumba nueva detrás de la iglesia. Le exigió a Carmenza la mitad del premio a cambio de callar. Escuchemos.",
+   "inicio": 36.45,
+   "fin": 90.81
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "[alarmada] ¿La mitad? ¡Virgen Santísima! ¿Y sumercé qué le dijo, mija?",
+   "inicio": 92.31,
+   "fin": 98.16
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[cansada] Nada, madrina. Se puso la ruana y se fue. Y yo no pegué el ojo en toda la noche.",
+   "inicio": 98.66,
+   "fin": 105.56
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "Ese hombre no perdona una, Carmenza. Yo no es por hablar, pero desde que don Belisario le pidió que se casara con él y sumercé le dijo que no, ese hombre anda buscando cómo cobrárselo.",
+   "inicio": 106.06,
+   "fin": 119.83
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[con firmeza] No le voy a dar gusto. Ya lo pensé, madrina. Hoy mismo le cuento todo a don Régulo.",
+   "inicio": 120.33,
+   "fin": 126.62
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "[sobresaltada] ¿Cómo así que todo?",
+   "inicio": 127.12,
+   "fin": 128.92
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "Todo. Que don Eutimio se murió el miércoles, que lo enterramos a escondidas y que el que tose en el rancho es Saturnino. Que se lleve su premio y nos deje en paz. Yo no nací para esto.",
+   "inicio": 129.42,
+   "fin": 143.58
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "[bajando el tono, grave] Siéntese, mija. Y óigame. ¿Sumercé sabe a quién hunde si habla?",
+   "inicio": 145.58,
+   "fin": 152.32
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "A nadie, madrina. Yo le digo que me lo inventé yo sola. Y yo respondo.",
+   "inicio": 152.82,
+   "fin": 158.07
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "Eso no se lo cree nadie, Carmenza. Si sumercé habla, se hunde Saturnino, que lleva cuatro días con la ruana de un muerto. Se hunde el padre Severo, que enterró a un cristiano de madrugada sin avisarle a nadie. Y se hunden los vecinos que dijeron que sí.",
+   "inicio": 158.57,
+   "fin": 178.22
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "[grave] Eso que hicimos tiene nombre, mija: engañar a una fábrica para cobrar un premio. Si la fábrica nos denuncia, se llevan preso a Saturnino. Y a sumercé también.",
+   "inicio": 178.72,
+   "fin": 190.84
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[dolida] Eso no es justo, madrina.",
+   "inicio": 192.84,
+   "fin": 195.32
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "Justo no es nada de esto, mija. Pero ya estamos adentro. Y si sumercé habla, el delegado se sube a la flota, la fábrica vuelve a sortear la plata, y Guatancuy se queda como está: con la escuela sin techo y cargando agua de la pila.",
+   "inicio": 195.82,
+   "fin": 215.23
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[amarga] Y si no hablo, la mitad se la lleva don Belisario. Hagamos cuentas, madrina: esa mitad no es para la escuela. Es para él.",
+   "inicio": 215.73,
+   "fin": 226.57
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "[persuasiva] Es menos de lo que soñamos, Carmenza. Pero la mitad de cincuenta mil son veinticinco mil pesos. Con eso se entecha la escuela, o se pone el agua. A cada vecino le tocará menos de lo que sobre, pero algo le toca. Y sigue siendo más plata de la que este pueblo ha visto junta.",
+   "inicio": 227.07,
+   "fin": 248.83
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[con la voz apagada] Dios me perdone, madrina. A mí nada de esto me cuadra.",
+   "inicio": 250.83,
+   "fin": 255.09
+  },
+  {
+   "personaje": "belisario",
+   "texto": "[con autoridad] Buenos días. ¿Se puede, o interrumpo?",
+   "inicio": 257.49,
+   "fin": 261.39
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "[disimulando] Don Belisario. Siga, siga. ¿Cómo amaneció?",
+   "inicio": 261.89,
+   "fin": 266.25
+  },
+  {
+   "personaje": "belisario",
+   "texto": "Bien, Obdulia. Muy bien. Vengo de misa, como ustedes. La homilía estuvo larga hoy. Carmenza, tráigame un tinto.",
+   "inicio": 266.75,
+   "fin": 274.32
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[seca] Ya le sirvo, don Belisario.",
+   "inicio": 274.82,
+   "fin": 277.46
+  },
+  {
+   "personaje": "belisario",
+   "texto": "¿Y qué, mijita? ¿Pensaron en lo que hablamos anoche? Porque yo sí.",
+   "inicio": 277.96,
+   "fin": 282.46
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[tensa] Don Belisario, yo quería decirle una cosa.",
+   "inicio": 282.96,
+   "fin": 286.64
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "[interrumpiendo, con firmeza] No, espérese, mija. Sí, lo pensamos, don Belisario. Y aquí la que habla soy yo, porque la idea fue mía. Carmenza entró a esto por hacerme caso.",
+   "inicio": 286.54,
+   "fin": 297.67
+  },
+  {
+   "personaje": "belisario",
+   "texto": "[irónico] Ya me parecía, Obdulia. Eso de la gripa suena a cuento de los suyos.",
+   "inicio": 298.17,
+   "fin": 302.87
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "[resuelta] La mitad, don Belisario. Cuando esa plata llegue a este pueblo, la mitad es suya. Y sumercé no vuelve a nombrar lo que vio en el cementerio, ni delante del delegado ni delante de nadie.",
+   "inicio": 303.37,
+   "fin": 317.06
+  },
+  {
+   "personaje": "belisario",
+   "texto": "[satisfecho] Trato hecho, Obdulia. Y desde este momento, yo no vi nada y yo no sé nada. El que calla también cobra, mijita.",
+   "inicio": 317.56,
+   "fin": 325.58
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[con firmeza] Queda claro, don Belisario. La mitad, y ni un peso más.",
+   "inicio": 326.08,
+   "fin": 330.94
+  },
+  {
+   "personaje": "belisario",
+   "texto": "[con desdén] Ni un peso más, Carmenza. Pero óigame bien esto.",
+   "inicio": 331.44,
+   "fin": 335.41
+  },
+  {
+   "personaje": "belisario",
+   "texto": "[con energía] Ese hombre se va el martes a las seis. Si se sube a la flota sin entregar el premio, la fábrica vuelve a sortear, y aquí no ve un peso ni la escuela, ni ustedes, ni yo. Así que mañana mismo le enseñan a su enfermo.",
+   "inicio": 336.91,
+   "fin": 350.05
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "[sobresaltada] ¿Mañana? Saturnino no está listo, don Belisario.",
+   "inicio": 350.55,
+   "fin": 354.6
+  },
+  {
+   "personaje": "belisario",
+   "texto": "[cortante] Mañana, Obdulia. Lunes. Yo no voy a esperar a que ese hombre se vaya con el premio en el maletín.",
+   "inicio": 355.1,
+   "fin": 360.29
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[extrañada] Don Belisario, ¿y de cuándo acá le cogió tanto apuro?",
+   "inicio": 360.79,
+   "fin": 364.89
+  },
+  {
+   "personaje": "belisario",
+   "texto": "[seco, evasivo] Porque los negocios se cierran rápido, mijita, o no se cierran. Yo quiero este asunto cerrado y esa plata en el pueblo. Mañana. Entonces más le vale a Saturnino que tosa bonito cuando hable con el delegado.",
+   "inicio": 366.89,
+   "fin": 380.56
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "[cansada, con la voz apagada] Ay, mija… Mañana. Vaya búsqueme a Saturnino, que esta tarde ensayamos hasta que oscurezca.",
+   "inicio": 384.96,
+   "fin": 394.37
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[preocupada] Madrina, ¿y a don Régulo qué le digo?",
+   "inicio": 394.87,
+   "fin": 398.16
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "Que Eutimio ya se siente mejor, y que mañana, al caer la tarde, lo puede recibir. Allá no hay sino una vela, y con eso basta: con esa oscurana no le reconoce la cara ni su propia madre.",
+   "inicio": 398.66,
+   "fin": 412.11
+  },
+  {
+   "personaje": "locutor",
+   "texto": "Lunes trece de octubre, por la tarde. Llueve sobre Guatancuy. El domingo, Carmenza le avisó al forastero que Eutimio podía recibirlo hoy, al caer la tarde. Faltan pocas horas para la visita, y al forastero le queda un día en el pueblo. En el rancho de Eutimio, misiá Obdulia dirige el último ensayo.",
+   "inicio": 418.61,
+   "fin": 448.57
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "[angustiado] Con el perdón de la sotana, misiá Obdulia, pero yo así no puedo. Esta cobija huele a humo y me hace toser de verdad.",
+   "inicio": 449.07,
+   "fin": 459.37
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "Mejor, Saturnino. Que tosa de verdad. Y la cobija, hasta la nariz. Más. Que no se le vean sino los ojos.",
+   "inicio": 459.87,
+   "fin": 469.04
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "[ahogado] Es que así no respiro, misiá Obdulia.",
+   "inicio": 469.54,
+   "fin": 473.43
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "Un enfermo de gripa no respira parejo, Saturnino: resuella, como con el pecho apretado. Carmenza, mija, cierre esa ventana, que entra luz.",
+   "inicio": 473.93,
+   "fin": 485.79
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "Ya está, madrina. Con la lluvia y la ventana cerrada, aquí no se ve ni la mano.",
+   "inicio": 486.29,
+   "fin": 492.37
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "[con firmeza] Así tiene que estar cuando llegue. Y sumercé, Saturnino, oiga bien lo que le voy a decir. Hable lo menos que pueda.",
+   "inicio": 492.87,
+   "fin": 502.96
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "¿Y si me pregunta algo, misiá Obdulia?",
+   "inicio": 503.46,
+   "fin": 506.44
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "Dice \"sí, señor\" o \"Dios se lo pague\". Y si insiste, tose. Eutimio hablaba poquito. Perdón: habla poquito.",
+   "inicio": 506.94,
+   "fin": 518.3
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[dolida] Madrina, por Dios.",
+   "inicio": 518.8,
+   "fin": 520.44
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "Ya sé, mija. Se me salió. Pero delante de ese hombre, Eutimio está vivo, y punto. Carmenza, hágale de delegado. Pregúntele algo.",
+   "inicio": 520.94,
+   "fin": 532.46
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[imitando una voz gruesa, incómoda] Buenas tardes, don Eutimio. ¿Cómo se siente?",
+   "inicio": 532.96,
+   "fin": 537.33
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "[imitando una voz cascada] Ahí, señor… ahí vamos. Si Dios no dispone otra cosa.",
+   "inicio": 537.83,
+   "fin": 544.04
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "[complacida] Eso. Igualito. Siga, mija.",
+   "inicio": 546.68,
+   "fin": 551.02
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[imitando una voz gruesa] ¿Y usted desde cuándo manda sobres al concurso, don Eutimio?",
+   "inicio": 551.52,
+   "fin": 557.05
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "[imitando una voz cascada] Dos años, señor. Todos los miércoles. Yo compro el chocolate en la tienda y guardo las envolturas.",
+   "inicio": 557.55,
+   "fin": 566.04
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "[con firmeza, alzando un poco la voz] ¡Sumercé no compra nada, Saturnino! Eutimio no tiene ni para el pan. Las envolturas se las guarda Carmenza, de las que dejan los clientes.",
+   "inicio": 566.54,
+   "fin": 577.12
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "Y el sobre y la estampilla se los fío yo. Eso lo sabe todo el pueblo, Saturnino. Y también el delegado, porque yo misma se lo conté.",
+   "inicio": 577.62,
+   "fin": 587.68
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "[desesperado] ¡Yo de Eutimio no me sé sino la tos, Carmenza! Treinta años viviendo en el mismo pueblo que ese hombre y nunca le pregunté nada.",
+   "inicio": 588.18,
+   "fin": 597.14
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[muy triste, melancólica] Nadie le preguntaba nada, Saturnino. Treinta años ahí, barriendo el atrio, cargando agua, velando enfermos que ni eran suyos. Y a ninguno se nos ocurrió preguntarle quién era ni qué pena traía.",
+   "inicio": 600.14,
+   "fin": 617.72
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "[con la voz apagada] Cuatro días metido en este rancho, Carmenza. Oyendo las campanas que toca otro, sin asomarme ni a la pila. Y pensando que a don Eutimio le tocó vivir así toda la vida: solo, y sin que nadie viniera.",
+   "inicio": 619.72,
+   "fin": 635.53
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "Ya falta poco, Saturnino. El sábado se acaba esto.",
+   "inicio": 636.03,
+   "fin": 641.51
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "[angustiado] Y el padre, que cuatro días lleva sin mirarme, misiá Obdulia. Yo le estoy robando a Dios y a la fábrica al mismo tiempo.",
+   "inicio": 642.01,
+   "fin": 649.51
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "[persuasiva] A Dios no le está robando nada, Saturnino. Y a la fábrica tampoco: esa plata ya es de Eutimio. Sumercé lo que hace es que esa plata se quede en Guatancuy, para el techo y para el agua. Eso es caridad, no robo.",
+   "inicio": 650.01,
+   "fin": 666.54
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "[resignado] Dominus vobiscum, y que sea lo que Dios quiera.",
+   "inicio": 667.04,
+   "fin": 671.9
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[preocupada] ¿Y si le pide la cédula, madrina?",
+   "inicio": 672.4,
+   "fin": 675.22
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "Se la da y ya. Está en el bolsillo de la ruana. Esa cédula es de hace años: la foto está amarilla y borrosa de vieja. Y si la mira mucho, sumercé le dice que se la tomaron de joven, cuando le salió el documento.",
+   "inicio": 675.72,
+   "fin": 691.76
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "¿Y si me quita la cobija?",
+   "inicio": 692.26,
+   "fin": 694.67
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "Nadie le va a quitar la cobija a un enfermo y correr el riesgo de que se le pegue la gripa, Saturnino. Para eso la inventé.",
+   "inicio": 695.17,
+   "fin": 703.58
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[nerviosa] Ya van a ser las cinco y media, madrina. Ese hombre ya debe venir en camino.",
+   "inicio": 704.08,
+   "fin": 709.88
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "Entonces yo me voy. Si ese hombre me ve adentro del rancho, se cae lo de la gripa que se pega. Sumercé, mija, lo espera afuera, en la puerta, y entra con él a alumbrarle. Y sumercé, Saturnino, ya sabe.",
+   "inicio": 710.38,
+   "fin": 725.03
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "[con la voz apagada] Ya sé, misiá Obdulia. Hablo lo menos que pueda. Y si me aprietan, toso.",
+   "inicio": 725.53,
+   "fin": 732.53
+  },
+  {
+   "personaje": "locutor",
+   "texto": "Lunes, cinco y media de la tarde. Ya oscurece. Bajo la lluvia, el forastero sube la calle hasta el rancho de Eutimio Chitiva, en la salida del pueblo, donde Carmenza lo espera en la puerta.",
+   "inicio": 740.94,
+   "fin": 756.82
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[cohibida] Don Régulo. Buenas tardes. Llegó empapado.",
+   "inicio": 757.32,
+   "fin": 762.36
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "[contenido] Buenas tardes, señorita Carmenza. Eso no importa. ¿Él está adentro?",
+   "inicio": 762.86,
+   "fin": 769.26
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[con cautela] Está, don Régulo. Pero le advierto: está muy débil, y la gripa todavía se pega. Si quiere, lo saluda desde la puerta.",
+   "inicio": 769.76,
+   "fin": 781.47
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "[con firmeza contenida] A mí la gripa no me asusta, señorita. Vine hasta aquí para verlo. Abra, por favor.",
+   "inicio": 781.97,
+   "fin": 788.63
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "Entonces entro con sumercé, que adentro está oscuro y hay que alumbrar.",
+   "inicio": 789.13,
+   "fin": 793.78
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "Espere, que prendo una vela.",
+   "inicio": 798.9,
+   "fin": 800.78
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[suave] Don Eutimio… aquí está el señor del concurso. Don Régulo Peñaranda. Vino a saludarlo.",
+   "inicio": 806.46,
+   "fin": 813.88
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "[imitando una voz cascada, débil] Buenas… buenas tardes, señor. Perdone que no me levante.",
+   "inicio": 816.52,
+   "fin": 822.5
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[inquieta] ¿Don Régulo? ¿Se siente bien?",
+   "inicio": 826.0,
+   "fin": 828.56
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "[con la voz apagada, conmovido] Sí… Sí, señorita. Es el frío.",
+   "inicio": 829.06,
+   "fin": 833.94
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "[contenido, despacio] Buenas tardes, don Eutimio. ¿Cómo se siente?",
+   "inicio": 834.44,
+   "fin": 838.26
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "[imitando una voz cascada] Ahí, señor… ahí vamos. Si Dios no dispone otra cosa.",
+   "inicio": 838.76,
+   "fin": 844.16
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "[despacio] Me presento, don Eutimio. Régulo Peñaranda, delegado de Chocolate El Arrebol y del concurso La Hora de la Fortuna. Vengo a anunciarle lo que usted ya sabe: ganó usted un premio de cincuenta mil pesos.",
+   "inicio": 846.8,
+   "fin": 862.76
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "[imitando una voz cascada] Ay, señor… que Dios se lo pague a sumercé.",
+   "inicio": 863.26,
+   "fin": 867.0
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[nerviosa] Don Eutimio tiene su cédula ahí, en la ruana, don Régulo. Si quiere verla.",
+   "inicio": 869.5,
+   "fin": 874.83
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "[contenido] No hace falta, señorita. Eso se revisa el día de la entrega. Ya vi lo que vine a ver.",
+   "inicio": 875.33,
+   "fin": 881.2
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[extrañada] ¿Cómo así, don Régulo? ¿La entrega no es hoy?",
+   "inicio": 881.7,
+   "fin": 885.36
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "[medido] Hoy no, señorita. ¿Usted cree que yo ando con cincuenta mil pesos en el bolsillo, en una flota? Yo voy adelante: compruebo que el ganador existe, conozco el pueblo, hago unas preguntas. Y mañana bajo al pueblo grande y le pongo un telegrama a la fábrica.",
+   "inicio": 885.86,
+   "fin": 903.54
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[con cautela] Don Régulo, ¿y entonces quién trae la plata?",
+   "inicio": 904.04,
+   "fin": 907.47
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "La casa la manda el sábado, en carro propio, con dos empleados y un papel firmado. Y se entrega en acto público, como dijo la radio.",
+   "inicio": 907.97,
+   "fin": 919.83
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[extrañada] ¿El sábado? ¿Y el martes, don Régulo? Sumercé dijo que se iba mañana a las seis. Que la fábrica lo esperaba.",
+   "inicio": 920.33,
+   "fin": 929.47
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "[despacio, con peso] Mañana voy al pueblo grande a poner el telegrama, y vuelvo. Yo no dejo un asunto a medias, señorita Carmenza. Me quedo hasta que la casa entregue el premio.",
+   "inicio": 929.97,
+   "fin": 940.94
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[aliviada, casi sin creerlo] Entonces… entonces se queda.",
+   "inicio": 943.44,
+   "fin": 946.58
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "Me quedo hasta el sábado, señorita. Si el padre me sigue dando posada.",
+   "inicio": 947.08,
+   "fin": 951.78
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[aliviada] Se la da, don Régulo. Y yo misma le llevo mañana el almuerzo a la casa cural.",
+   "inicio": 952.28,
+   "fin": 957.74
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "[contenido] Señorita Carmenza, hágame un favor. Déjeme a solas con don Eutimio un momento.",
+   "inicio": 959.74,
+   "fin": 967.16
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[alarmada] ¿A solas? Es que… es que está muy débil, don Régulo. Y la gripa se pega.",
+   "inicio": 969.16,
+   "fin": 976.6
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "[con firmeza contenida] Un momento, nada más. Es parte de mi trabajo. Espéreme afuera, por favor.",
+   "inicio": 977.1,
+   "fin": 983.03
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[con duda] Bueno… si sumercé lo dice. Cualquier cosa, me llama. Don Eutimio, yo estoy aquí afuera.",
+   "inicio": 983.53,
+   "fin": 990.82
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "[imitando una voz cascada, nervioso] Bueno, mijita. Bueno.",
+   "inicio": 991.32,
+   "fin": 993.85
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "[con la voz apagada, despacio] Don Eutimio, perdóneme. Lo que le voy a preguntar no es cosa de la fábrica. Es cosa mía.",
+   "inicio": 1002.4,
+   "fin": 1009.45
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "[con la voz apagada, muy despacio] Una sola pregunta, y me voy. ¿Usted tuvo un hijo?",
+   "inicio": 1011.95,
+   "fin": 1017.12
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "[imitando una voz cascada, nervioso] Eh… eh, señor… ¿un hijo?",
+   "inicio": 1023.83,
+   "fin": 1027.12
+  },
+  {
+   "personaje": "locutor",
+   "texto": "¿Qué le responderá Saturnino Cuervo a semejante pregunta? ¿Y por qué le interesa tanto al forastero la vida de Eutimio Chitiva? No deje de escuchar mañana el próximo capítulo de La Hora de la Fortuna… en Radionovelas de ayer.",
+   "inicio": 1031.76,
+   "fin": 1052.92
+  }
+ ]
+}

@@ -1,0 +1,577 @@
+{
+ "serie": "la-hora-de-la-fortuna",
+ "capitulo": 2,
+ "titulo": "El secreto de todo el pueblo",
+ "lineas": [
+  {
+   "personaje": "locutor",
+   "texto": "[solemne] Radionovelas de ayer presenta… La Hora de la Fortuna. Capítulo dos: El secreto de todo el pueblo.",
+   "inicio": 2.5,
+   "fin": 14.36
+  },
+  {
+   "personaje": "locutor",
+   "texto": "Con la actuación de Leonor Villaveces como Carmenza Rincón, Pompilio Rozo como Saturnino Cuervo, Betsabé Moncada como misiá Obdulia, Aurelio Santamaría como el padre Severo y Rigoberto Alcázar como el animador de La Hora de la Fortuna. Y la narración de Luis Carlos Franco.",
+   "inicio": 14.86,
+   "fin": 37.59
+  },
+  {
+   "personaje": "locutor",
+   "texto": "En el capítulo anterior, Eutimio Chitiva, el hombre más pobre de Guatancuy, llevaba dos años mandando sobres al concurso de la radio. Decía que con el premio iría a la capital, a buscar a alguien. Y esa noche de miércoles, en la tienda de Carmenza Rincón, la radio dijo su nombre: cincuenta mil pesos. Eutimio no gritó ni brincó. Dijo que iba por su cédula, y salió. El pueblo celebró sin él. Pasó una hora, y no volvió. Carmenza subió hasta el rancho con Saturnino Cuervo, el sacristán. Golpeó la puerta una vez. Golpeó otra. Y nadie respondió. Escuchemos.",
+   "inicio": 39.59,
+   "fin": 100.24
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "Saturnino, esta puerta no tiene candado, solo la tranca. Ayúdeme a quitarla.",
+   "inicio": 101.74,
+   "fin": 108.35
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "¿Quitarla, Carmenza? ¿Y si… y si el viejo se asusta? Con el perdón de la sotana del padre Severo, uno no se mete así en casa ajena.",
+   "inicio": 108.85,
+   "fin": 118.93
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[con firmeza] Quítela, Saturnino.",
+   "inicio": 119.43,
+   "fin": 121.52
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "Don Eutimio… don Eutimio, soy yo, Carmenza. No se ve nada. Saturnino, ¿tiene con qué alumbrar?",
+   "inicio": 126.64,
+   "fin": 135.81
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "Tengo los fósforos de la sacristía, Carmenza. Tenga. Y ahí… ahí encima del baúl se ve un cabo de vela.",
+   "inicio": 136.31,
+   "fin": 145.12
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "Mírelo, Carmenza. Ahí está, sentado en el catre. Y con la cédula en la mano. Se quedó dormido, el viejo. ¡Eutimio! Despierte, hombre, que lo está esperando todo Guatancuy.",
+   "inicio": 148.8,
+   "fin": 162.25
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "Don Eutimio, despierte, que se lo ganó. Deme la mano y lo ayudo a…",
+   "inicio": 162.75,
+   "fin": 169.15
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[con la voz quebrada] Está… está frío, Saturnino.",
+   "inicio": 172.65,
+   "fin": 176.47
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "¿Cómo que frío? Será el frío del rancho, Carmenza, que aquí hiela. Sacúdalo un poquito.",
+   "inicio": 176.97,
+   "fin": 184.49
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "No es el frío del rancho. Don Eutimio no respira, Saturnino. Don Eutimio se nos murió.",
+   "inicio": 184.99,
+   "fin": 193.04
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "[asustado, alzando la voz] ¡Ave María Purísima! En el nombre del Padre y del Hijo… ¡Carmenza, se murió! ¡Se murió el viejo!",
+   "inicio": 193.54,
+   "fin": 201.74
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[conteniendo el llanto] Dos años, Saturnino. Dos años esperando que la radio dijera su nombre. Y la noche en que por fin lo dice… se sienta en su catre, y se muere.",
+   "inicio": 202.24,
+   "fin": 216.92
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "Pero mírele la cara, Carmenza. Está… está sonriendo. Yo nunca había visto a Eutimio sonreír así. Se murió de la dicha.",
+   "inicio": 217.42,
+   "fin": 228.63
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[llorando] De la dicha. Cincuenta mil pesos, y no alcanzó ni a tocarlos. Toda la vida pobre, Saturnino, y se muere la noche en que deja de serlo.",
+   "inicio": 229.13,
+   "fin": 243.78
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "[con la voz quebrada] Y yo esta tarde riéndome de él, Carmenza. Diciendo que primero se ganaba el premio la mula de don Belisario. Dios me perdone. Eutimio, perdóneme, hombre.",
+   "inicio": 244.28,
+   "fin": 257.45
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[muy triste, con la voz apagada] Ya habrá tiempo de rezar, Saturnino. Ahora necesito que me ayude.",
+   "inicio": 257.95,
+   "fin": 263.33
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "[con la voz quebrada, muy triste] ¿Y qué hago, Carmenza? Yo con difuntos no sé sino tocar las campanas.",
+   "inicio": 263.83,
+   "fin": 270.07
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[muy triste, con la voz apagada] Baje a la casa cural, Saturnino, y tráigame al padre Severo. Y por el camino… ni una palabra a nadie, que la gente está de fiesta.",
+   "inicio": 270.57,
+   "fin": 282.46
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "[con la voz quebrada, muy triste] Ni una palabra, Carmenza. Yo… yo soy una tumba. ¿Y usted se queda aquí sola, con el finado?",
+   "inicio": 282.96,
+   "fin": 292.52
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[muy triste, melancólica] Yo me quedo. Él amaneció sentado en mi puerta la noche en que se agravó mi papá. Ahora me toca a mí acompañarlo.",
+   "inicio": 293.02,
+   "fin": 303.1
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[muy triste, melancólica, con la voz quebrada] Se lo ganó, don Eutimio. Dijeron su nombre, clarito, para que lo oyera todo el país. ¿Y ahora quién va a ir a la capital? ¿A quién era que usted quería ir a buscar?",
+   "inicio": 311.15,
+   "fin": 326.04
+  },
+  {
+   "personaje": "locutor",
+   "texto": "Saturnino Cuervo prometió no decir una palabra. No aguantó ni dos cuadras: lo contó en la primera puerta, y de puerta en puerta lo supo todo Guatancuy. La fiesta se apaga y cada quien se va para su casa. Cuando Carmenza vuelve a la tienda, cerca de las diez, solo queda misiá Obdulia.",
+   "inicio": 334.54,
+   "fin": 362.15
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "¡Carmenza, mija! Venga para acá, que está helada. ¿Es verdad lo que anda contando Saturnino de puerta en puerta? ¿Es verdad que Eutimio se murió?",
+   "inicio": 364.56,
+   "fin": 374.8
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "Es verdad, madrina. Y eso que le pedí a Saturnino que no dijera nada: ese hombre es un chismoso. Lo encontramos sentado en el catre, con la cédula en la mano. Allá quedó el padre Severo, rezándole.",
+   "inicio": 375.3,
+   "fin": 391.6
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "¡Virgen Santísima! Y nosotros aquí tomando cerveza a nombre de él. Yo recogí las botellas, mija, y dejé el radio prendido, porque dijeron que iban a repetir el nombre del ganador del concurso.",
+   "inicio": 392.1,
+   "fin": 406.94
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "Déjelo, madrina. Ya casi quitan la luz.",
+   "inicio": 407.44,
+   "fin": 411.28
+  },
+  {
+   "personaje": "animador",
+   "texto": "[por el radio] ¡Atención, amigos oyentes! Radio Cordillera repite la gran noticia de esta noche. El ganador de La Hora de la Fortuna es don Eutimio Chitiva, de Guatancuy. ¡Cincuenta mil pesos, por cortesía de Chocolate El Arrebol!",
+   "inicio": 415.78,
+   "fin": 435.26
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "Óigalo, mija. Y el pobre ya no lo oye.",
+   "inicio": 435.76,
+   "fin": 439.21
+  },
+  {
+   "personaje": "animador",
+   "texto": "[por el radio] El delegado de la casa patrocinadora, don Régulo Peñaranda, viajará a Guatancuy el sábado dieciocho de octubre, en la flota de las cuatro de la tarde. Entregará el premio en persona, en acto público, al ganador con su cédula en la mano.",
+   "inicio": 439.71,
+   "fin": 462.36
+  },
+  {
+   "personaje": "animador",
+   "texto": "[por el radio] Y recuerde: si pasados diez días no hay a quién entregarlo, los cincuenta mil pesos se sortean de nuevo, aquí, en La Hora de la Fortuna. Chocolate El Arrebol… ¡el que madruga con usted!",
+   "inicio": 462.86,
+   "fin": 477.23
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "¿Oyó eso, madrina? Si no hay a quién entregarlo, lo vuelven a sortear.",
+   "inicio": 477.73,
+   "fin": 482.51
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "¿Cómo que lo vuelven a sortear? Esa plata es de Eutimio, así esté muerto. Que se la den al pueblo, que fue el que lo aguantó toda la vida.",
+   "inicio": 483.01,
+   "fin": 494.06
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "No es así de fácil, madrina. Páseme esa envoltura de chocolate que está en la repisa. Aquí atrás hay una letra menuda, y yo nunca la había leído.",
+   "inicio": 494.56,
+   "fin": 505.45
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "A ver… Dice: premio personal. En caso de fallecimiento del ganador, se entregará a sus herederos de ley.",
+   "inicio": 505.95,
+   "fin": 515.88
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "¿Herederos de qué, mija?",
+   "inicio": 516.38,
+   "fin": 518.78
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "De ley, madrina. La familia. Los hijos, los hermanos, la mujer.",
+   "inicio": 519.28,
+   "fin": 525.26
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "Yo no es por hablar, mija, pero… ¿y si fuera cierto lo del niño de las monjas?",
+   "inicio": 525.76,
+   "fin": 532.22
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "Madrina, treinta años lleva ese cuento, y aquí nunca vino nadie a preguntar por don Eutimio. Ni una carta le llegó. Don Eutimio no tenía a nadie.",
+   "inicio": 532.72,
+   "fin": 544.5
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "Entonces esa plata se pierde. ¡Ave María Purísima! Lo único bueno que le ha tocado a Guatancuy en toda la vida. Con lo que se podría hacer aquí con cincuenta mil pesos…",
+   "inicio": 545.0,
+   "fin": 557.98
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "Don Eutimio esperó ese premio dos años, madrina. Y en diez días, si no hay a quién dárselo, se lo gana otro pueblo.",
+   "inicio": 558.48,
+   "fin": 567.34
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "Mija, dígame una cosa. Ese delegado que viene de la capital… ¿alguna vez le ha visto la cara a Eutimio?",
+   "inicio": 567.84,
+   "fin": 576.12
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "¿Qué se la va a haber visto, madrina? Si don Eutimio nunca salió de Guatancuy.",
+   "inicio": 576.62,
+   "fin": 582.91
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "Entonces el delegado no sabe cómo es Eutimio. No sabe si es alto o bajito, ni qué voz tiene.",
+   "inicio": 583.41,
+   "fin": 593.49
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "¿Y eso qué importa, madrina? Los muertos no cobran premios.",
+   "inicio": 593.99,
+   "fin": 598.96
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "Los muertos no, mija. Pero… ¿y si alguien se hiciera pasar por él? Diez días no más. Un viejo del pueblo, con la ruana de Eutimio y la cédula en la mano.",
+   "inicio": 599.46,
+   "fin": 613.36
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[con firmeza, alzando un poco la voz] ¡Madrina! ¿Sumercé se está oyendo? A don Eutimio no lo hemos enterrado todavía. Y eso que dice es un engaño.",
+   "inicio": 613.86,
+   "fin": 621.59
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "Yo no dije nada, mija. Yo solo pregunté. Pero piénselo: el techo de la escuela, el agua…",
+   "inicio": 622.09,
+   "fin": 631.49
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "¡Ay! Se apagó el radio. Quitaron la luz, mija. Ya son las diez.",
+   "inicio": 637.46,
+   "fin": 642.63
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "Prenda la vela, madrina. Y no me hable más de eso.",
+   "inicio": 643.13,
+   "fin": 647.05
+  },
+  {
+   "personaje": "locutor",
+   "texto": "Medianoche. La tienda de Carmenza sigue abierta, a la luz de una vela. Nadie en Guatancuy ha podido dormir, y los vecinos se han ido arrimando a la puerta.",
+   "inicio": 653.55,
+   "fin": 669.28
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "Buenas noches, Carmenza. Buenas, misiá Obdulia. Con permiso. Allá dejé al padre Severo, rezándole al finado. Y… y aquí afuera está medio pueblo, que nadie duerme.",
+   "inicio": 671.69,
+   "fin": 685.01
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "Siga, Saturnino, y deje la puerta abierta, que los de afuera también oigan.",
+   "inicio": 685.51,
+   "fin": 690.16
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "Carmenza, mija, cuéntele a Saturnino lo que dijo la radio. Y lo que dice la envoltura.",
+   "inicio": 690.66,
+   "fin": 697.4
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "La radio dijo que si en diez días no hay a quién entregarle el premio, lo vuelven a sortear. Y la envoltura dice que, muerto el ganador, la plata es de sus herederos. Y don Eutimio no tenía a nadie, Saturnino.",
+   "inicio": 697.9,
+   "fin": 711.27
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "¿Entonces… entonces los cincuenta mil pesos se pierden?",
+   "inicio": 711.77,
+   "fin": 716.26
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "A menos que el delegado encuentre a Eutimio vivo.",
+   "inicio": 716.76,
+   "fin": 721.26
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "¿Vivo? ¡Si yo mismo lo vi, misiá Obdulia! Estaba frío.",
+   "inicio": 721.76,
+   "fin": 727.56
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "Vivo de mentiras, Saturnino. Que alguien del pueblo se haga pasar por él cuando venga el delegado, y reciba la plata. Yo no es por hablar, pero eso ya lo dije yo, y Carmenza me regañó.",
+   "inicio": 728.06,
+   "fin": 743.16
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "[asustado, alzando la voz] ¡Ave María Purísima! Con el perdón de la sotana, misiá Obdulia, eso… eso es engañar a la radio, y a la capital, y a la fábrica de chocolate. ¡Eso es pecado mortal!",
+   "inicio": 743.66,
+   "fin": 757.47
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "Eso mismo le dije yo, Saturnino.",
+   "inicio": 757.97,
+   "fin": 760.72
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "¿Y es pecado ponerle techo a la escuela, mija? Los niños reciben la lección con el aguacero encima. ¿Es pecado que las viejas no carguemos más agua desde la pila?",
+   "inicio": 761.22,
+   "fin": 773.76
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "Si esta noche Eutimio pudiera hablar, Carmenza, ¿qué cree que diría de esa plata? ¿Que se la lleven para otro pueblo?",
+   "inicio": 774.26,
+   "fin": 783.87
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "No. Don Eutimio vivió ayudándole a todo el que se lo pedía, y nunca cobró. Él habría querido que esa plata le sirviera a Guatancuy. Y sí… sí sería muy triste que se perdiera.",
+   "inicio": 786.37,
+   "fin": 801.94
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "¿Entonces sí, mija? Mire que podríamos ponerle techo a la escuela, traer el agua hasta las casas… y repartirnos lo que sobre.",
+   "inicio": 802.44,
+   "fin": 812.13
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[con duda] No sé, madrina. Eso no me cuadra. Es… es decirle una mentira a todo el país.",
+   "inicio": 812.63,
+   "fin": 822.11
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "Es una mentira de diez días, mija. Y los vecinos de la puerta ya dijeron que sí, que yo les pregunté.",
+   "inicio": 822.61,
+   "fin": 830.21
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "Está bien, madrina. Dios me perdone. Pero con una condición: de lo que sobre, yo no recibo un centavo. Y todo queda apuntado en mi libreta, peso por peso.",
+   "inicio": 832.21,
+   "fin": 847.7
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "Entonces hay que enterrarlo antes de que amanezca. Y sin campanas, Saturnino, que las campanas se oyen hasta el pueblo grande.",
+   "inicio": 848.2,
+   "fin": 856.77
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "¿Sin campanas? ¿Y qué le digo yo al padre Severo, misiá Obdulia? Él no… él no sabe nada de esto.",
+   "inicio": 857.27,
+   "fin": 864.4
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "Al padre se lo digo yo, Saturnino. Déjemelo a mí.",
+   "inicio": 864.9,
+   "fin": 868.72
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "Buenas noches, hijos. Vi la vela desde la plaza. Ya le recé a Eutimio. Murió en paz: en treinta y dos años pocas veces he visto una cara tan tranquila.",
+   "inicio": 871.12,
+   "fin": 887.69
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "¡Padre Severo! Justo estábamos hablando de sumercé. Ni que Dios lo hubiera mandado. Siga y se sienta, que le tenemos que contar una cosa.",
+   "inicio": 888.19,
+   "fin": 897.72
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "Cuente, Obdulia, que a usted nunca le ha costado trabajo.",
+   "inicio": 898.22,
+   "fin": 903.86
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "Padre, la radio dijo que el premio de Eutimio se entrega en persona. Y que si en diez días no hay a quién entregarlo, lo vuelven a sortear. Eutimio no dejó a nadie. Esa plata se pierde.",
+   "inicio": 904.36,
+   "fin": 920.22
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "¿Y qué quiere que haga yo, Obdulia?",
+   "inicio": 920.72,
+   "fin": 924.53
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "Que lo enterremos esta misma noche, padre, sin campanas, para que nadie fuera de Guatancuy sepa que se murió. Y cuando venga el delegado, uno del pueblo se hace pasar por Eutimio y recibe los cincuenta mil pesos.",
+   "inicio": 925.03,
+   "fin": 940.29
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "Es para ponerle techo a la escuela, padre. Para traer el agua.",
+   "inicio": 940.79,
+   "fin": 945.8
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "¿Me está pidiendo que esconda a un difunto, Obdulia? ¿Y que ponga a otro en su lugar?",
+   "inicio": 946.3,
+   "fin": 956.6
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "Diez días, padre. Diez días no más.",
+   "inicio": 957.1,
+   "fin": 961.51
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "[con firmeza, alzando un poco la voz] Eso es un engaño, Obdulia. Y el engaño es pecado, aquí y en la capital. Con el párroco de este pueblo no cuenten.",
+   "inicio": 962.01,
+   "fin": 975.33
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "Padre Severo, nadie le está pidiendo que diga mentiras…",
+   "inicio": 975.83,
+   "fin": 980.8
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "Yo no digo mentiras, Carmenza. Nunca las he dicho, y a los setenta años no voy a aprender. Y de usted, hija, no lo esperaba.",
+   "inicio": 981.3,
+   "fin": 995.43
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "A Eutimio lo entierro, sí. Dar sepultura a un cristiano es mi deber sagrado, y eso no se le niega a nadie. Pero lo otro no lo acepto. Ni lo bendigo.",
+   "inicio": 995.93,
+   "fin": 1012.78
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "No lo acepte, padre. Pero tampoco lo cuente. Tómelo como una confesión: sumercé acaba de oír un pecado. Y lo que un cura oye en confesión no se lo puede decir a nadie.",
+   "inicio": 1013.28,
+   "fin": 1028.04
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "Con el perdón de la sotana, padre… en eso misiá Obdulia tiene razón. El secreto de confesión es sagrado.",
+   "inicio": 1028.54,
+   "fin": 1036.35
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "[con firmeza] No quiero oír una palabra más. Saturnino, traiga la pala y dos velas. Voy a preparar el entierro.",
+   "inicio": 1038.85,
+   "fin": 1051.57
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "Misiá Obdulia… ¿y cuando llegue el delegado? Va a pedir que le muestren a Eutimio Chitiva. Con su cédula en la mano, dijo la radio.",
+   "inicio": 1061.78,
+   "fin": 1069.88
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "Y se lo vamos a mostrar, Saturnino. El delegado no le conoce la cara.",
+   "inicio": 1070.38,
+   "fin": 1076.15
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "¿Mostrarle a quién? ¿De dónde vamos a sacar otro viejo flaco, encorvado, de esa misma estatura…? [pausa] ¿Por qué me miran todos?",
+   "inicio": 1076.65,
+   "fin": 1085.43
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "Esta noche lo enterramos. Y mañana, Saturnino, sumercé amanece siendo Eutimio Chitiva.",
+   "inicio": 1085.93,
+   "fin": 1094.21
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "[aterrado, alzando la voz] ¿Yo? ¿Cómo así que yo?",
+   "inicio": 1094.71,
+   "fin": 1097.53
+  },
+  {
+   "personaje": "locutor",
+   "texto": "¿Podrá un sacristán asustadizo ocupar el lugar del hombre que esta madrugada van a enterrar sin campanas? ¿Y guardará el padre Severo semejante secreto? No deje de escuchar mañana el próximo capítulo de La Hora de la Fortuna… en Radionovelas de ayer.",
+   "inicio": 1104.24,
+   "fin": 1130.05
+  }
+ ]
+}

@@ -1,0 +1,643 @@
+{
+ "serie": "la-hora-de-la-fortuna",
+ "capitulo": 6,
+ "titulo": "Lo que dice el libro",
+ "lineas": [
+  {
+   "personaje": "locutor",
+   "texto": "[solemne] Radionovelas de ayer presenta… La Hora de la Fortuna. Capítulo seis: Lo que dice el libro.",
+   "inicio": 2.5,
+   "fin": 12.32
+  },
+  {
+   "personaje": "locutor",
+   "texto": "Con la actuación de Pompilio Rozo como Saturnino Cuervo, Hernán Casallas como el forastero, Leonor Villaveces como Carmenza Rincón, Betsabé Moncada como misiá Obdulia y Aurelio Santamaría como el padre Severo. Y la narración de Luis Carlos Franco.",
+   "inicio": 12.82,
+   "fin": 34.95
+  },
+  {
+   "personaje": "locutor",
+   "texto": "En el capítulo anterior, misiá Obdulia cerró el trato con don Belisario Umaña: la mitad del premio a cambio de su silencio. Y exigió que el delegado viera a Eutimio Chitiva ese mismo lunes. Al caer la tarde, el forastero fue al rancho a conocer al ganador, y Saturnino Cuervo lo recibió en el catre, haciéndose pasar por Eutimio. El forastero dijo que la fábrica mandaría la plata el sábado y que él se quedaría hasta ese día. Después pidió quedarse a solas con el enfermo, y le hizo una pregunta muy extraña para un delegado de concurso: si alguna vez había tenido un hijo. Escuchemos.",
+   "inicio": 36.95,
+   "fin": 84.8
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "[imitando una voz cascada, nervioso] ¿Un hijo, señor? No… no, señor. Ninguno.",
+   "inicio": 88.8,
+   "fin": 94.05
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "[con la voz apagada] Piénselo bien, don Eutimio. ¿Nunca tuvo un hijo? ¿Ni de joven, cuando vivía su esposa?",
+   "inicio": 96.69,
+   "fin": 103.43
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "[cansado] Yo siempre fui solo, señor. Dios no me dio esa bendición. Y solo me voy a morir, si Dios no dispone otra cosa.",
+   "inicio": 105.93,
+   "fin": 114.34
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "[helado, muy despacio] Entiendo, don Eutimio. Entiendo. Era… era lo único que quería saber.",
+   "inicio": 117.84,
+   "fin": 126.04
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "[imitando una voz cascada, inquieto] Señor, ¿le pasa algo? Se quedó muy callado.",
+   "inicio": 126.54,
+   "fin": 131.79
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "[seco, contenido] No me pasa nada. Es el frío de este pueblo. Que se mejore, don Eutimio. Buenas noches.",
+   "inicio": 132.29,
+   "fin": 138.75
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[inquieta] Don Régulo, ¿ya terminó? ¿Cómo lo vio?",
+   "inicio": 141.15,
+   "fin": 144.84
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "[seco] Sí, señorita Carmenza. Todo en orden. El hombre existe y el premio es suyo.",
+   "inicio": 145.34,
+   "fin": 152.68
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[extrañada] Don Régulo, sumercé está… está como raro. ¿Le dijo algo don Eutimio?",
+   "inicio": 153.18,
+   "fin": 160.26
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "[seco, cortante] Nada que importe, señorita. Mañana bajo al pueblo grande en la flota de las seis, a poner el telegrama. Buenas noches.",
+   "inicio": 160.76,
+   "fin": 170.21
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[cohibida] Buenas noches, don Régulo. Vaya con Dios, que la calle está hecha un barrial.",
+   "inicio": 170.71,
+   "fin": 176.64
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[inquieta] Saturnino, ya se fue. ¿Qué le preguntó ese hombre?",
+   "inicio": 181.55,
+   "fin": 186.28
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "[angustiado] Ay, Carmenza… Con el perdón de la sotana, pero yo creo que la embarré. Me preguntó si yo había tenido un hijo. Si Eutimio había tenido un hijo.",
+   "inicio": 186.78,
+   "fin": 197.83
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[sorprendida] ¿Un hijo? ¿Y eso qué tiene que ver con el concurso?",
+   "inicio": 198.33,
+   "fin": 202.85
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "[desconcertado] Eso mismo me pregunto yo. Y dijo que no era cosa de la fábrica, Carmenza. Que era cosa de él.",
+   "inicio": 203.35,
+   "fin": 211.39
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[inquieta] ¿Y sumercé qué le respondió?",
+   "inicio": 213.39,
+   "fin": 215.95
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "[con la voz apagada] Que ninguno. Que Eutimio siempre fue solo. ¿Qué más iba a decirle? Lo único que yo sé de eso es el cuento de misiá Obdulia, y eso es de oídas.",
+   "inicio": 216.45,
+   "fin": 227.97
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[pensativa] Lo del niño que dejó donde unas monjas. Eso lo dice madrina desde hace años, Saturnino. Don Eutimio nunca lo dijo.",
+   "inicio": 228.47,
+   "fin": 238.53
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "[angustiado] Pues ese hombre se quedó mudo, Carmenza. Como si yo le hubiera dado una mala noticia. Y se fue.",
+   "inicio": 239.03,
+   "fin": 246.4
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[resuelta] Saturnino, mañana ese hombre baja al pueblo grande desde las seis y no vuelve hasta la flota de las cuatro. Sumercé aprovecha y busca al padre Severo.",
+   "inicio": 248.4,
+   "fin": 258.9
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "[dolido] El padre no me habla, Carmenza. Cinco días lleva sin mirarme a la cara.",
+   "inicio": 259.4,
+   "fin": 264.78
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[con firmeza] Pues lo busca en la sacristía y se lo cuenta, aunque no le hable. El padre es el único en este pueblo que conoció a don Eutimio de joven.",
+   "inicio": 265.28,
+   "fin": 274.21
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "[resignado] Dominus vobiscum, Carmenza. Y que el padre no me saque a escobazos.",
+   "inicio": 274.71,
+   "fin": 281.16
+  },
+  {
+   "personaje": "locutor",
+   "texto": "Martes catorce, por la mañana. Dejó de llover, y el forastero bajó al pueblo grande en la flota de las seis. En la sacristía de la iglesia, el padre Severo recoge los ornamentos de la misa de siete. Faltan cuatro días para que llegue el carro de la fábrica.",
+   "inicio": 287.66,
+   "fin": 317.39
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "[cohibido] Buenos días, padre Severo. Con permiso… Ya toqué las campanas de la misa de siete y ya recogí todo.",
+   "inicio": 325.1,
+   "fin": 332.68
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "[temeroso] Padre, yo sé que sumercé no me habla desde el entierro. Pero tiene que oírme. Vengo a contarle lo que pasó anoche en el rancho de Eutimio.",
+   "inicio": 335.18,
+   "fin": 348.32
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "[seco, cortante] De lo que pasa en ese rancho yo no quiero saber nada, Saturnino.",
+   "inicio": 348.82,
+   "fin": 354.7
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "[atropellado] Es que el delegado fue anoche a ver a Eutimio, padre. Y me encontró a mí, con la cobija hasta la nariz, con el perdón de la sotana.",
+   "inicio": 355.2,
+   "fin": 363.63
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "[seco] Saturnino. Ya le dije que no.",
+   "inicio": 364.13,
+   "fin": 368.23
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "[angustiado] Pero después pidió quedarse a solas conmigo, padre. Y me preguntó una cosa. Me preguntó si yo… si Eutimio había tenido un hijo.",
+   "inicio": 368.73,
+   "fin": 378.79
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "[inquieto] Padre… padre, ¿me oyó?",
+   "inicio": 382.29,
+   "fin": 384.9
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "[muy quieto, despacio] Lo oí, Saturnino. Lo oí. ¿Y qué le respondió usted?",
+   "inicio": 385.4,
+   "fin": 391.1
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "[con la voz apagada] Que ninguno, padre. Que Eutimio siempre fue solo. ¿Qué más iba a decirle?",
+   "inicio": 391.6,
+   "fin": 397.29
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "[angustiado] Padre, ¿hice mal? Misiá Obdulia lleva años regando un cuento por el pueblo: que Eutimio dejó un niño donde unas monjas. ¿Sumercé sabe si eso es verdad?",
+   "inicio": 399.79,
+   "fin": 411.73
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "[evasivo, lento] Hay cosas que se dicen en este pueblo desde hace treinta años, Saturnino. Y hay cosas que uno promete no decir.",
+   "inicio": 412.23,
+   "fin": 424.27
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "[confundido] Eso no es ni sí ni no, padre.",
+   "inicio": 424.77,
+   "fin": 427.93
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "[grave] No, Saturnino. No es ni sí ni no. Y no me pregunte más.",
+   "inicio": 428.43,
+   "fin": 436.56
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "[pensativo, despacio] Dígame una cosa. ¿Y qué cara puso ese hombre cuando usted le dijo que no?",
+   "inicio": 438.56,
+   "fin": 445.17
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "[pensativo] Con esa vela no se le veía bien, padre. Pero se quedó mudo, como cuando a uno le dan una mala noticia.",
+   "inicio": 445.67,
+   "fin": 455.49
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "[grave, resuelto] Saturnino, tráigame la llave del armario de los libros de la parroquia.",
+   "inicio": 458.99,
+   "fin": 467.24
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "[sorprendido] ¿La del armario donde sumercé guarda los libros de bautizos y entierros, padre? Ese armario no se abre sino para asentar un bautizo o un entierro.",
+   "inicio": 467.74,
+   "fin": 477.44
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "[grave] Por eso mismo. Tráigamela. Y déjeme solo, Saturnino.",
+   "inicio": 477.94,
+   "fin": 484.31
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "[temeroso] Padre, ¿y qué va a buscar sumercé en los libros viejos?",
+   "inicio": 484.81,
+   "fin": 489.02
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "[lento, cansado] Algo que yo mismo escribí, hijo, hace mucho tiempo. Y que hubiera preferido no tener que volver a leer.",
+   "inicio": 489.52,
+   "fin": 499.52
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "[grave] Váyase. Y dígale a Carmenza que esta noche, después del rosario, la espero aquí.",
+   "inicio": 500.02,
+   "fin": 510.08
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "[sorprendido] ¿A Carmenza? Pero si sumercé tampoco le habla a ella, padre.",
+   "inicio": 510.58,
+   "fin": 517.92
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "[grave, apurado] Hoy sí. Vaya, Saturnino, vaya corriendo.",
+   "inicio": 518.42,
+   "fin": 523.28
+  },
+  {
+   "personaje": "locutor",
+   "texto": "Ese mismo martes, pasadas las cuatro de la tarde. En la tienda, misiá Obdulia acaba de volver del rancho de Eutimio, de dejarle el caldo a Saturnino.",
+   "inicio": 536.99,
+   "fin": 551.72
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "[intrigada, bajando la voz] Mija, yo no es por hablar, pero cuando le dejé el caldo a Saturnino lo encontré pálido. Dice que fue donde el padre, y que el padre se quedó muy preocupado. ¿Sumercé ya fue a hablar con él?",
+   "inicio": 552.22,
+   "fin": 565.23
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[seria] Todavía no, madrina. Esta mañana, cuando volvía de la sacristía, Saturnino se asomó a la tienda y me dijo que el padre me espera esta noche, después del rosario.",
+   "inicio": 565.73,
+   "fin": 575.55
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "[sorprendida] ¿A sumercé? Si el padre no le habla desde el entierro.",
+   "inicio": 576.05,
+   "fin": 580.62
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[inquieta] Y hay más, madrina: el padre le pidió a Saturnino la llave del armario de los libros de la parroquia.",
+   "inicio": 581.12,
+   "fin": 587.89
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "[suspicaz] ¡Ave María Purísima! ¿Y a qué fue Saturnino donde el padre, mija? A mí no me quiso contar.",
+   "inicio": 588.39,
+   "fin": 594.79
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[con cautela] Por lo que pasó anoche en el rancho, madrina. El delegado le preguntó si don Eutimio había tenido un hijo.",
+   "inicio": 595.29,
+   "fin": 603.7
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "[escandalizada] ¡Virgen Santísima! ¿Lo del niño de las monjas? ¿Y ese señor cómo va a saber de eso, si eso lo decimos aquí de oídas desde hace treinta años?",
+   "inicio": 604.2,
+   "fin": 616.24
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[seria] No sé, madrina. Igual que no sé cómo sabía el nombre de doña Rosa. Él dice que la fábrica averigua la vida de sus ganadores.",
+   "inicio": 616.74,
+   "fin": 626.46
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "[dubitativa] Yo no es por hablar, pero el domingo lo vi en la misa de siete: no comulgó, y no le quitó los ojos al padre Severo en toda la misa.",
+   "inicio": 626.96,
+   "fin": 638.01
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[con firmeza] Madrina, eso es cosa de él y de Dios.",
+   "inicio": 638.51,
+   "fin": 642.85
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "[seco] Buenas tardes, señorita Carmenza. Señora.",
+   "inicio": 645.25,
+   "fin": 648.94
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[cohibida, animándose] Don Régulo. Buenas tardes. ¿Ya volvió del pueblo grande? Le llevé el almuerzo a la casa cural y encontré la puerta cerrada.",
+   "inicio": 649.44,
+   "fin": 658.45
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "[seco, cortés] Sí, señorita, ya volví. Y el telegrama ya está puesto: la fábrica manda el carro el sábado, como le dije. Lo del almuerzo se lo agradezco. No era necesario.",
+   "inicio": 658.95,
+   "fin": 669.95
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "[amable] Siéntese, don Régulo, que Carmenza le sirve un chocolate.",
+   "inicio": 670.45,
+   "fin": 674.42
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "[seco] No, señora, muchas gracias. Vine a pagar lo que debo. Señorita Carmenza, desde el sábado le debo un chocolate. Ahí le dejo la plata en el mostrador.",
+   "inicio": 674.92,
+   "fin": 685.73
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[dolida, sorprendida] Don Régulo, eso se lo había fiado yo. Como le fío a don Eutimio.",
+   "inicio": 686.23,
+   "fin": 693.13
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "[seco, cortante] Prefiero no deber nada en este pueblo, señorita. Me quedo hasta el sábado porque dije que me quedaba. A cumplir. Nada más.",
+   "inicio": 693.63,
+   "fin": 701.88
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[dolida] Don Régulo, ¿le dieron alguna mala noticia en el pueblo grande?",
+   "inicio": 704.38,
+   "fin": 709.24
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "[seco, apagado] No me pasó nada, señorita Carmenza. Ya vi lo que vine a ver. Con permiso. Señora.",
+   "inicio": 709.74,
+   "fin": 716.56
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "[asombrada] Mija, ¿y a ese hombre qué le picó? El sábado era todo señorita Carmenza, y hoy ni se sentó.",
+   "inicio": 720.97,
+   "fin": 728.91
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[dolida, con la voz apagada] No sé, madrina. Anoche salió así del rancho, y hoy volvió igual. Y lo único que le dijo fue que nunca tuvo un hijo.",
+   "inicio": 729.41,
+   "fin": 738.5
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "[pensativa] Mija… ¿y si lo que ese hombre quería oír era otra cosa?",
+   "inicio": 740.5,
+   "fin": 745.23
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[seca] Hagamos cuentas, madrina: él pregunta por el hijo, Saturnino le dice que ninguno, y él se pone así. Eso no me cuadra por ningún lado.",
+   "inicio": 745.73,
+   "fin": 754.76
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "[grave] Pues esta noche el padre le va a decir algo, mija. Y yo no es por hablar, pero un cura no saca los libros viejos por gusto.",
+   "inicio": 755.26,
+   "fin": 764.12
+  },
+  {
+   "personaje": "locutor",
+   "texto": "Martes catorce, de noche. Vuelve a llover sobre Guatancuy. Terminado el rosario, Carmenza cruza la plaza hasta la sacristía, donde el padre Severo la espera con un libro abierto sobre la mesa.",
+   "inicio": 770.62,
+   "fin": 790.08
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[cohibida] Padre Severo… Buenas noches. Saturnino me dijo que sumercé me esperaba.",
+   "inicio": 794.04,
+   "fin": 799.97
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "[lento, cansado] Siga, hija. Cierre la puerta, que entra el frío. Y siéntese.",
+   "inicio": 800.47,
+   "fin": 807.99
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[dolida] Padre, yo sé que sumercé está bravo conmigo. Y tiene razón. Yo no debí meterme en esto nunca.",
+   "inicio": 813.79,
+   "fin": 821.84
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "[lento, grave] No, Carmenza. No la mandé llamar para regañarla. Para eso ya es tarde. La mandé llamar porque hoy tengo que decir una cosa que prometí callar hace treinta años.",
+   "inicio": 821.74,
+   "fin": 838.38
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "[grave] Y usted es la única en este pueblo a la que se la puedo decir.",
+   "inicio": 838.88,
+   "fin": 845.78
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[inquieta] ¿Es por lo que ese hombre le preguntó a Saturnino, padre? ¿Lo del hijo?",
+   "inicio": 846.28,
+   "fin": 851.97
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "[grave] Sí, hija. Por eso.",
+   "inicio": 852.47,
+   "fin": 855.68
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "[lento, solemne] Este libro que tengo aquí es el de bautismos de mil novecientos veintiocho. Hace treinta años. Yo llevaba dos años de párroco en Guatancuy, y Eutimio Chitiva era un muchacho de treinta y dos, casado con Rosa.",
+   "inicio": 857.68,
+   "fin": 877.46
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "[grave] Ese año Rosa tuvo un niño. El parto fue muy difícil, y Rosa no se volvió a levantar de la cama. A los pocos días se murió.",
+   "inicio": 880.86,
+   "fin": 897.4
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "[grave, despacio] Yo la enterré, y esa misma semana bauticé al niño aquí, en la pila de esta iglesia. Lo escribí yo mismo, con esta letra.",
+   "inicio": 897.9,
+   "fin": 911.14
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[con la voz quebrada] Entonces… entonces es cierto. Lo que dice madrina. Don Eutimio sí tuvo un hijo.",
+   "inicio": 913.64,
+   "fin": 921.66
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "[grave] Sí, hija. Es cierto. Eutimio sí tenía a alguien. Yo lo bauticé.",
+   "inicio": 922.16,
+   "fin": 929.14
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[angustiada] ¿Y qué pasó con ese niño, padre?",
+   "inicio": 931.64,
+   "fin": 934.8
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "[lento, con pesar] Eutimio quedó viudo, sin tierra, con un jornal que no le alcanzaba ni para él, y con un niño de pecho que nadie podía amamantar. El niño se le estaba enfermando, hija.",
+   "inicio": 935.3,
+   "fin": 956.35
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[angustiada] ¿Y entonces qué hizo, padre?",
+   "inicio": 956.85,
+   "fin": 959.15
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "[con pesar] Se lo llevó a la capital, donde las Hermanas de la Caridad, que recibían niños huérfanos, para que no se le muriera de hambre. Les dejó dicho que volvería por él apenas tuviera con qué criarlo.",
+   "inicio": 959.65,
+   "fin": 975.59
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "[muy triste, con la voz apagada] Volvió solo, hija. Y no volvió a ser el mismo. Desde entonces no pasaba del atrio, y más de una noche lo encontré llorando ahí, en las gradas de la iglesia.",
+   "inicio": 977.59,
+   "fin": 993.29
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "[con pesar] Me pidió que no se lo contara a nadie: le daba vergüenza no haber podido criar a su propio hijo. Yo le di mi palabra. Y treinta años la cumplí. Hasta hoy.",
+   "inicio": 993.79,
+   "fin": 1011.68
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[angustiada] Padre, ¿y por qué hoy?",
+   "inicio": 1014.18,
+   "fin": 1016.43
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "[grave, con firmeza] Porque hasta ayer esto era una picardía de pueblo, hija. Una plata que se perdía y que ustedes querían para la escuela. Dios me perdone, pero yo callé.",
+   "inicio": 1016.93,
+   "fin": 1033.78
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "[con firmeza] Hoy ya no. Si ese niño vive, y yo no sé que haya muerto, ese premio es suyo. Usted misma leyó lo que dice la envoltura.",
+   "inicio": 1034.28,
+   "fin": 1048.64
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[con la voz quebrada] En caso de fallecimiento, a sus herederos de ley. Yo misma la leí, padre. Y dije que don Eutimio no tenía a nadie.",
+   "inicio": 1049.14,
+   "fin": 1059.72
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "[grave, despacio] Entonces usted ya lo sabe, hija. Esto dejó de ser una picardía. Le están robando a un huérfano.",
+   "inicio": 1060.22,
+   "fin": 1074.51
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[conteniendo el llanto] Dios me perdone, padre… Y yo creyendo que lo hacía por el pueblo.",
+   "inicio": 1078.01,
+   "fin": 1084.15
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "[con ternura cansada] Usted no ha robado nada todavía, Carmenza. La plata no ha llegado. Todavía se puede hacer lo que es debido.",
+   "inicio": 1084.65,
+   "fin": 1097.14
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[angustiada] ¿Y cómo, padre? Ese niño tendría hoy treinta años. Puede estar en la capital o en cualquier parte. ¿Cómo se busca a un hombre que nadie ha visto?",
+   "inicio": 1097.64,
+   "fin": 1107.7
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "[grave, lento] Por el nombre, hija. Todo cristiano bautizado tiene uno, y el de este niño está escrito aquí.",
+   "inicio": 1108.2,
+   "fin": 1119.4
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[con la voz quebrada] ¿Y cómo se llama? ¿Cómo se llama ese niño?",
+   "inicio": 1121.9,
+   "fin": 1125.58
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "[despacio, grave] Álvaro, hija. Álvaro Chitiva.",
+   "inicio": 1129.99,
+   "fin": 1134.25
+  },
+  {
+   "personaje": "locutor",
+   "texto": "Un nombre escrito hace treinta años acaba de salir del libro. ¿Dónde está hoy ese Álvaro Chitiva, el hijo que Eutimio dejó donde unas monjas? ¿Y qué va a hacer Carmenza, ahora que sabe que el premio tiene dueño? No deje de escuchar mañana el próximo capítulo de La Hora de la Fortuna… en Radionovelas de ayer.",
+   "inicio": 1142.46,
+   "fin": 1175.87
+  }
+ ]
+}

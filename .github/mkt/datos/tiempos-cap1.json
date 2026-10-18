@@ -1,0 +1,571 @@
+{
+ "serie": "la-hora-de-la-fortuna",
+ "capitulo": 1,
+ "titulo": "El hombre de los sobres",
+ "lineas": [
+  {
+   "personaje": "locutor",
+   "texto": "[solemne] Radionovelas de ayer presenta… La Hora de la Fortuna. Capítulo uno: El hombre de los sobres. Una historia de tierra fría, de cuando la fortuna llegaba por el radio.",
+   "inicio": 2.5,
+   "fin": 20.11
+  },
+  {
+   "personaje": "locutor",
+   "texto": "Con la actuación de Anselmo Cifuentes como Eutimio Chitiva, Leonor Villaveces como Carmenza Rincón, Betsabé Moncada como misiá Obdulia, Pompilio Rozo como Saturnino Cuervo, Aurelio Santamaría como el padre Severo y Rigoberto Alcázar como el animador de La Hora de la Fortuna. Y la narración de Luis Carlos Franco.",
+   "inicio": 20.61,
+   "fin": 49.63
+  },
+  {
+   "personaje": "locutor",
+   "texto": "Guatancuy. Un pueblo de tierra fría, a tres horas de flota de la capital. Corre el mes de octubre de mil novecientos cincuenta y ocho. Ochenta casas de tapia, una plaza empedrada, una iglesia y una pila de agua. Tres radios en todo el pueblo, una sola flota al día, y luz eléctrica apenas de seis a diez de la noche. Aquí vive Carmenza Rincón, la tendera, que todo lo apunta en su libreta. Misiá Obdulia, su madrina, que todo lo oye. Saturnino Cuervo, el sacristán, que todo lo repite. Y Eutimio Chitiva, el hombre más pobre de Guatancuy, que cada semana, desde hace dos años, manda un sobre al concurso de la radio. Hoy es miércoles. Escuchemos.",
+   "inicio": 50.13,
+   "fin": 106.42
+  },
+  {
+   "personaje": "eutimio",
+   "texto": "Buenos días, doña Carmenza. Con permiso… ¿se puede?",
+   "inicio": 109.83,
+   "fin": 116.05
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "Siga, don Eutimio, siga, que afuera está helando. ¿Cómo amaneció?",
+   "inicio": 116.55,
+   "fin": 122.24
+  },
+  {
+   "personaje": "eutimio",
+   "texto": "Amanecí, doña Carmenza, que ya es ganancia. Si Dios no dispone otra cosa, aquí sigo.",
+   "inicio": 122.74,
+   "fin": 133.95
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "Hoy es miércoles, don Eutimio, así que ya sé a qué viene. Por el sobre y la estampilla para el concurso de la radio. El de la otra semana.",
+   "inicio": 134.45,
+   "fin": 143.77
+  },
+  {
+   "personaje": "eutimio",
+   "texto": "[ríe suavemente] Un sobre y una estampilla. Y… y fiados, doña Carmenza, qué pena con sumercé. Esta semana no hubo mandados, y sin mandados no hay ni para el chocolate.",
+   "inicio": 144.27,
+   "fin": 160.13
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "Hagamos cuentas, don Eutimio. Aquí en la libreta me debe un peso con cuarenta. Con el sobre y la estampilla, un peso con sesenta.",
+   "inicio": 160.63,
+   "fin": 169.67
+  },
+  {
+   "personaje": "eutimio",
+   "texto": "Anótelo ahí, doña Carmenza, que yo se lo pago. Con mandados… con lo que sumercé disponga. Yo a usted no le quedo mal.",
+   "inicio": 170.17,
+   "fin": 182.21
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "Yo sé que no, don Eutimio. [pausa] Y sin chocolate no hay envolturas. Por eso le guardé una cosa. Tenga.",
+   "inicio": 182.71,
+   "fin": 191.07
+  },
+  {
+   "personaje": "eutimio",
+   "texto": "¿Las… las envolturas?",
+   "inicio": 191.57,
+   "fin": 194.73
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "Las tres envolturas de Chocolate El Arrebol, las que pide el concurso. Tres envolturas en un sobre, con el nombre y el pueblo. Y no le cuente a nadie que se las guardo, que después todo Guatancuy me pide.",
+   "inicio": 195.23,
+   "fin": 210.96
+  },
+  {
+   "personaje": "eutimio",
+   "texto": "Dios se lo pague, sumercé. El sobre de esta noche ya está allá en la capital. Lo mandé hace ocho días.",
+   "inicio": 211.46,
+   "fin": 222.3
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "¿Y este, entonces?",
+   "inicio": 222.8,
+   "fin": 224.73
+  },
+  {
+   "personaje": "eutimio",
+   "texto": "Este es para el sorteo del otro miércoles, doña Carmenza. Cada semana sortean, y cada semana hay que mandar sobre nuevo. Ya van… van dos años de sobres.",
+   "inicio": 225.23,
+   "fin": 239.83
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "Dos años perdiendo cada miércoles, y dos años de estampillas. Eso es lo que no me cuadra. Don Eutimio, dígame una cosa. ¿Usted qué haría si se ganara esos cincuenta mil pesos?",
+   "inicio": 240.33,
+   "fin": 254.02
+  },
+  {
+   "personaje": "eutimio",
+   "texto": "[en voz baja] Me iría para la capital, doña Carmenza.",
+   "inicio": 255.52,
+   "fin": 259.26
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "¿Para la capital? ¿Y a qué, don Eutimio?",
+   "inicio": 259.76,
+   "fin": 263.78
+  },
+  {
+   "personaje": "eutimio",
+   "texto": "A buscar a alguien. [pausa] Pero bien presentado, doña Carmenza. Con vestido de paño. Con zapatos. Sin la vergüenza de llegar de limosnero.",
+   "inicio": 264.28,
+   "fin": 278.2
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[sorprendida] ¿A buscar a quién, don Eutimio?",
+   "inicio": 280.2,
+   "fin": 282.89
+  },
+  {
+   "personaje": "eutimio",
+   "texto": "A alguien que… que hace mucho no veo. [pausa] Y que no sabe que lo busco.",
+   "inicio": 283.39,
+   "fin": 291.15
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[con ternura] Ay, don Eutimio. Ya está desvariando otra vez, con este frío. Siéntese ahí en el bulto y le sirvo una aguapanela, que tiene las manos moradas.",
+   "inicio": 291.65,
+   "fin": 303.98
+  },
+  {
+   "personaje": "eutimio",
+   "texto": "No, sumercé, no, que tengo que escribirlo bien. El sobre se va mañana en la flota de las seis. Eutimio Chitiva. Guatancuy. Con letra clara, para que el señor del radio no se me enrede.",
+   "inicio": 304.48,
+   "fin": 323.94
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "Escríbalo aquí en el mostrador, que hay luz. Y la aguapanela se la toma, don Eutimio, que esa no se la anoto.",
+   "inicio": 324.44,
+   "fin": 332.38
+  },
+  {
+   "personaje": "eutimio",
+   "texto": "Dios se lo pague, sumercé. Esta semana sí, doña Carmenza. Esta semana sí.",
+   "inicio": 332.88,
+   "fin": 342.13
+  },
+  {
+   "personaje": "locutor",
+   "texto": "Esa misma tarde, en la tienda de Carmenza Rincón, a la hora en que las vecinas bajan por el pan.",
+   "inicio": 348.63,
+   "fin": 357.67
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "Buenas y santas, Carmenza, mija. Véndame media libra de chocolate y un pan de a cinco. Y a propósito, mija: ¿es verdad que esta mañana estuvo aquí Eutimio, otra vez con lo del sobre?",
+   "inicio": 360.08,
+   "fin": 374.84
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "Buenas tardes, madrina. Estuvo, sí señora. Como todos los miércoles.",
+   "inicio": 375.34,
+   "fin": 381.19
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "¡Ave María Purísima! Otro sobre. Ese hombre se ha gastado en estampillas lo que no se ha gastado en comida.",
+   "inicio": 381.69,
+   "fin": 390.62
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "Siga, Saturnino, que ya le tengo listas las velas para el padre Severo.",
+   "inicio": 393.03,
+   "fin": 398.33
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "Buenas tardes, Carmenza. Buenas, misiá Obdulia. [ríe] ¿Otra vez el sobre de Eutimio? Yo creo que esos sobres ni siquiera llegan a la capital. Se… se han de perder por el camino.",
+   "inicio": 398.83,
+   "fin": 413.04
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "Saturnino, usted es el sacristán, no el pregonero. Vino por las velas del padre Severo, no a hablar de mis clientes. Son doce velas. Hagamos cuentas.",
+   "inicio": 413.54,
+   "fin": 424.8
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "Con el perdón de la sotana del padre, Carmenza, pero es que… ¡cincuenta mil pesos para Eutimio Chitiva! Primero se los gana la mula de don Belisario.",
+   "inicio": 425.3,
+   "fin": 435.88
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "[en voz baja] Yo no es por hablar, mija, pero a ese pobre no es la plata lo que lo tiene así. Acérquense. Dicen… dicen que de joven, cuando se le murió la mujer, quedó con un niño de brazos. Y sin con qué.",
+   "inicio": 436.38,
+   "fin": 451.5
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "Madrina, ese cuento es más viejo que la iglesia.",
+   "inicio": 452.0,
+   "fin": 455.01
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "Cuento viejo será. Pero dicen que se fue para la capital con el niño envuelto en la ruana… y que volvió solo. Que lo dejó donde unas monjas. Y que de ahí se le corrió la teja, y por eso anda hablando solo por los caminos.",
+   "inicio": 455.51,
+   "fin": 471.91
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "[apurado] Eso sí lo he oído yo. En el nombre del Padre y del Hijo… Dicen que por eso no pasa de la puerta de la iglesia. Dominus vobiscum, y que Dios lo perdone.",
+   "inicio": 472.41,
+   "fin": 483.75
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[con firmeza, alzando un poco la voz] ¿Alguno de ustedes vio a ese niño? ¿Lo vio usted, Saturnino? ¿Lo vio sumercé, madrina? Nadie. Llevan treinta años repitiendo un chisme que nadie puede probar.",
+   "inicio": 484.25,
+   "fin": 497.99
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "Yo no lo inventé, mija. Eso lo dice todo el pueblo desde antes de que usted naciera.",
+   "inicio": 498.49,
+   "fin": 505.15
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "Yo lo que sé es otra cosa. Que don Eutimio le barre el atrio al padre sin que nadie le pague. Que nunca me ha negado un saludo. Y que la noche en que se agravó mi papá, el único que amaneció sentado en esa puerta fue él.",
+   "inicio": 505.65,
+   "fin": 520.25
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "No se ponga brava, Carmenza. Si yo al viejo lo estimo. Lo que pasa es que… que es una lástima. Un pobre esperando que la radio diga su nombre.",
+   "inicio": 520.75,
+   "fin": 532.12
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[con firmeza] Esta noche prendo el radio a las ocho, como todos los miércoles. Y don Eutimio se sienta junto a la puerta, como todos los miércoles. Y el que se ría de él en mi tienda, Saturnino, no vuelve a oír la radio aquí.",
+   "inicio": 532.62,
+   "fin": 549.52
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "¡Virgen Santísima, qué genio! Por eso es que no se ha casado, mija.",
+   "inicio": 550.02,
+   "fin": 556.31
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "Son sesenta centavos, madrina. Y las velas, Saturnino, se las apunto al padre.",
+   "inicio": 556.81,
+   "fin": 562.35
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "Apúnteselas, apúnteselas. Y… y guárdeme puesto esta noche, Carmenza. Que yo no me río. Yo oigo calladito.",
+   "inicio": 562.85,
+   "fin": 572.41
+  },
+  {
+   "personaje": "locutor",
+   "texto": "Cae la tarde sobre Guatancuy. En la plaza, junto a la pila de agua, un hombre espera al párroco con un sobre en la mano.",
+   "inicio": 578.91,
+   "fin": 591.09
+  },
+  {
+   "personaje": "eutimio",
+   "texto": "Padre Severo… padre, sumercé perdone que lo ataje aquí en plena plaza.",
+   "inicio": 591.59,
+   "fin": 597.44
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "Eutimio, hijo. Para usted siempre tengo tiempo. ¿Qué trae ahí, tan apretado?",
+   "inicio": 597.94,
+   "fin": 606.98
+  },
+  {
+   "personaje": "eutimio",
+   "texto": "El sobre, padre. El del concurso de la otra semana. Mañana se va en la flota. Yo quería… si no es mucho pedir… que sumercé me lo bendijera.",
+   "inicio": 607.48,
+   "fin": 624.48
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "[ríe suavemente, con cariño] ¿Bendecir un sobre de chocolate? En treinta y dos años de cura en este pueblo me han traído a bendecir vacas, semillas y hasta un camión. Un sobre, nunca.",
+   "inicio": 624.98,
+   "fin": 639.48
+  },
+  {
+   "personaje": "eutimio",
+   "texto": "Es que ya van dos años mandando sobres, padre, y nunca dicen mi nombre. Uno solo… uno solo no puede.",
+   "inicio": 639.98,
+   "fin": 650.82
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "Dios no se afana, Eutimio. Él tiene su hora, y a nosotros nos toca esperarla con paciencia. [pausa] Démelo acá.",
+   "inicio": 651.32,
+   "fin": 663.96
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "[en voz baja] Señor, dale a este hombre la suerte que la vida le ha negado. Y si es tu voluntad, que esta vez sea su nombre el que digan. Amén.",
+   "inicio": 664.46,
+   "fin": 678.28
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "Téngalo, Eutimio.",
+   "inicio": 678.78,
+   "fin": 680.87
+  },
+  {
+   "personaje": "eutimio",
+   "texto": "Dios se lo pague, padre Severo.",
+   "inicio": 681.37,
+   "fin": 684.51
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "Quédese sentado un rato, Eutimio, no se vaya tan rápido, que hace rato no conversamos. [pausa] ¿Todavía piensa en eso?",
+   "inicio": 685.01,
+   "fin": 699.82
+  },
+  {
+   "personaje": "eutimio",
+   "texto": "Todos los días, padre.",
+   "inicio": 702.82,
+   "fin": 705.51
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "¿Todos?",
+   "inicio": 706.01,
+   "fin": 707.47
+  },
+  {
+   "personaje": "eutimio",
+   "texto": "Todos. Cuando amanece. Cuando llega la luz. Y cuando la quitan. [pausa] Más cuando la quitan.",
+   "inicio": 707.97,
+   "fin": 718.71
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "Yo le dije una vez que hablara, hijo. Que en este pueblo lo iban a entender.",
+   "inicio": 719.21,
+   "fin": 726.5
+  },
+  {
+   "personaje": "eutimio",
+   "texto": "No, padre. Sumercé me dio su palabra. Eso es entre Dios, sumercé y yo. Un hombre que… [pausa] No. Con qué cara.",
+   "inicio": 727.0,
+   "fin": 746.04
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "Mi palabra la tiene, Eutimio. Yo no ando contando lo que no es mío. Pero hay silencios que pesan más que una ruana mojada.",
+   "inicio": 746.54,
+   "fin": 757.88
+  },
+  {
+   "personaje": "eutimio",
+   "texto": "Si me gano ese premio, padre, se acaba el silencio. Voy… voy y arreglo lo que tengo que arreglar. Si Dios no dispone otra cosa.",
+   "inicio": 758.38,
+   "fin": 772.54
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "¿Y si no se lo gana?",
+   "inicio": 773.04,
+   "fin": 775.41
+  },
+  {
+   "personaje": "eutimio",
+   "texto": "Mando otro sobre el miércoles que viene.",
+   "inicio": 775.91,
+   "fin": 780.64
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "[ríe suavemente] Ay, Eutimio…",
+   "inicio": 781.14,
+   "fin": 783.47
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "[con ternura] Vaya con Dios, Eutimio. Y abríguese, que esta noche hiela.",
+   "inicio": 783.97,
+   "fin": 790.94
+  },
+  {
+   "personaje": "locutor",
+   "texto": "Las ocho de la noche. En la tienda de Carmenza Rincón no cabe un alma: es miércoles, y el radio de tubos ya está caliente.",
+   "inicio": 797.44,
+   "fin": 809.33
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "Carmenza, mija, súbale a ese radio, que ya va a empezar. Y cállese un momento, Saturnino, que no me deja oír.",
+   "inicio": 809.83,
+   "fin": 817.64
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "Ya va, madrina, ya va. Don Eutimio, éntrese, no se me quede en la puerta, que se hiela.",
+   "inicio": 818.14,
+   "fin": 824.88
+  },
+  {
+   "personaje": "eutimio",
+   "texto": "Aquí estoy bien, doña Carmenza. Desde aquí oigo. Y no… no estorbo.",
+   "inicio": 825.38,
+   "fin": 832.27
+  },
+  {
+   "personaje": "animador",
+   "texto": "[por el radio] ¡Muy buenas noches, amigos oyentes! Desde los estudios de Radio Cordillera, en la capital, llega hasta su hogar… ¡La Hora de la Fortuna! El programa que cada miércoles sortea una fortuna entre sus oyentes, por cortesía de Chocolate El Arrebol… ¡el que madruga con usted!",
+   "inicio": 843.8,
+   "fin": 869.74
+  },
+  {
+   "personaje": "animador",
+   "texto": "[por el radio] Recuerde, señora. Recuerde, caballero. Tres envolturas de Chocolate El Arrebol en un sobre, con su nombre y su pueblo. El premio mayor lo entrega en persona el delegado de la casa patrocinadora, en acto público, y el ganador lo recibe con su cédula en la mano. ¡Cincuenta mil pesos!",
+   "inicio": 870.24,
+   "fin": 892.89
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "Cincuenta mil pesos… Con eso se le pone techo a la escuela, se trae el agua, y todavía sobra.",
+   "inicio": 893.39,
+   "fin": 902.03
+  },
+  {
+   "personaje": "animador",
+   "texto": "[por el radio] Y ahora, amigos míos… silencio en los hogares. Una niña del público, con los ojos vendados, mete la mano en la tómbola… revuelve… revuelve entre miles y miles de sobres… ¡y ya tiene uno!",
+   "inicio": 902.53,
+   "fin": 922.07
+  },
+  {
+   "personaje": "animador",
+   "texto": "[por el radio] Lo abro. Tres envolturas, en regla. Y el nombre dice…",
+   "inicio": 922.57,
+   "fin": 930.38
+  },
+  {
+   "personaje": "animador",
+   "texto": "[por el radio] ¡El ganador de esta noche es… Eutimio Chitiva… de Guatancuy! ¡Cincuenta mil pesos!",
+   "inicio": 936.92,
+   "fin": 949.93
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "[gritando de alegría] ¡Virgen Santísima! ¡Dijo Guatancuy! ¡Carmenza, dijo Guatancuy!",
+   "inicio": 951.93,
+   "fin": 959.53
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[gritando de alegría] ¡Dijo Eutimio Chitiva! ¡Don Eutimio! ¡Don Eutimio, es usted! ¡Se lo ganó!",
+   "inicio": 960.03,
+   "fin": 968.0
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "[gritando] ¡Se lo ganó! ¡Virgen Santísima, se lo ganó el viejo!",
+   "inicio": 968.5,
+   "fin": 973.46
+  },
+  {
+   "personaje": "animador",
+   "texto": "[por el radio] ¡Felicitaciones, don Eutimio, allá en Guatancuy! Espere usted noticias de esta emisora. Y no lo olvide: Chocolate El Arrebol… ¡el que madruga con usted!",
+   "inicio": 973.96,
+   "fin": 989.29
+  },
+  {
+   "personaje": "eutimio",
+   "texto": "[sobrecogido, incrédulo] Se me hizo el milagro… [pausa] Voy por la cédula, doña Carmenza. Ya vuelvo.",
+   "inicio": 990.79,
+   "fin": 998.13
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "¿Y ese hombre por qué no brinca, mija? Se gana cincuenta mil pesos y sale como si fuera a misa. ¡Eutimio!",
+   "inicio": 1000.54,
+   "fin": 1008.74
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[riendo, emocionada] Es que no lo cree, madrina. Fue por la cédula. ¡Dos años de sobres, y se lo ganó! ¡Se lo ganó!",
+   "inicio": 1009.24,
+   "fin": 1017.81
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "¡Cerveza para todos, mija, que hoy paga Eutimio! ¡Que viva Guatancuy!",
+   "inicio": 1019.31,
+   "fin": 1025.03
+  },
+  {
+   "personaje": "locutor",
+   "texto": "El pueblo celebra. Pero pasa una hora, y Eutimio Chitiva no vuelve. Carmenza sube hasta el rancho, a la salida del pueblo, con el sacristán detrás.",
+   "inicio": 1028.53,
+   "fin": 1044.31
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "Carmenza, espere… espéreme, que este camino está muy oscuro y yo… yo de noche no veo. ¿Ese es el rancho?",
+   "inicio": 1045.81,
+   "fin": 1054.95
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[con duda] Ese es, Saturnino. Y está… está sin luz. Ni una vela.",
+   "inicio": 1055.45,
+   "fin": 1062.19
+  },
+  {
+   "personaje": "saturnino",
+   "texto": "Se habrá dormido. Con el perdón de la sotana, a mí me dicen cincuenta mil pesos y no duermo en un mes.",
+   "inicio": 1062.69,
+   "fin": 1070.82
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[desconcertada] Don Eutimio dijo que iba por la cédula y volvía. Y él nunca falta a su palabra. Eso no me cuadra.",
+   "inicio": 1071.32,
+   "fin": 1079.73
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "¡Don Eutimio! ¡Abra, que lo está esperando todo el pueblo para celebrar!",
+   "inicio": 1081.78,
+   "fin": 1086.97
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[asustada, alzando la voz] ¡Don Eutimio! ¿Don Eutimio?…",
+   "inicio": 1091.02,
+   "fin": 1094.16
+  },
+  {
+   "personaje": "locutor",
+   "texto": "¿Por qué no volvió Eutimio Chitiva, la noche en que por fin se ganó el premio que tanto esperó? ¿Y a quién quería ir a buscar a la capital el que, hasta hace unas horas, era el hombre más pobre de Guatancuy? No deje de escuchar mañana el próximo capítulo de La Hora de la Fortuna… en Radionovelas de ayer.",
+   "inicio": 1100.87,
+   "fin": 1128.27
+  }
+ ]
+}

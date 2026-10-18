@@ -1,0 +1,745 @@
+{
+ "serie": "la-hora-de-la-fortuna",
+ "capitulo": 4,
+ "titulo": "La gripa de Eutimio",
+ "lineas": [
+  {
+   "personaje": "locutor",
+   "texto": "[solemne] Radionovelas de ayer presenta… La Hora de la Fortuna. Capítulo cuatro: La gripa de Eutimio.",
+   "inicio": 2.5,
+   "fin": 13.39
+  },
+  {
+   "personaje": "locutor",
+   "texto": "Con la actuación de Leonor Villaveces como Carmenza Rincón, Betsabé Moncada como misiá Obdulia, Hernán Casallas como el forastero, Aurelio Santamaría como el padre Severo y Gonzalo Urdaneta como don Belisario Umaña. Y la narración de Luis Carlos Franco.",
+   "inicio": 13.89,
+   "fin": 37.69
+  },
+  {
+   "personaje": "locutor",
+   "texto": "En el capítulo anterior, el sacristán Saturnino Cuervo aceptó hacerse pasar por Eutimio Chitiva, por la escuela y no por la plata. Con la ruana del difunto puesta y la cédula en el bolsillo, ensayó en el rancho hasta sonar igual que él. El viernes a las cuatro, Carmenza y misiá Obdulia fueron a la plaza a esperar la flota. De ella bajó un forastero de sombrero y maletín que preguntó por Eutimio Chitiva. Cuando Obdulia le preguntó si era don Régulo Peñaranda, el delegado del concurso, él dijo que sí: se había adelantado ocho días. Y le pidió a Carmenza que lo llevara de inmediato a donde Eutimio Chitiva. Escuchemos.",
+   "inicio": 39.69,
+   "fin": 95.67
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[con duda] Ahora mismo… Don Régulo, es que… es que ahora mismo no se puede.",
+   "inicio": 97.17,
+   "fin": 102.34
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "[seco] ¿Cómo que no se puede, señorita Carmenza? Vengo de tres horas de flota. ¿Dónde vive el señor Eutimio Chitiva?",
+   "inicio": 102.84,
+   "fin": 111.05
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "[nerviosa] A la salida del pueblo, don Régulo. Pero a ese rancho no entra nadie desde el miércoles. Eutimio está con gripa.",
+   "inicio": 111.55,
+   "fin": 119.59
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "¿Con gripa?",
+   "inicio": 120.09,
+   "fin": 121.29
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "Con una gripa de las malas, sí señor. Fiebre, tos, el pecho cerrado. Y de las que se pegan. En este frío, una gripa así se lleva a un viejo en una semana.",
+   "inicio": 121.79,
+   "fin": 135.46
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "[conteniendo la preocupación] ¿Tan grave está?",
+   "inicio": 136.96,
+   "fin": 138.42
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "Grave no, don Régulo. Pero tampoco como para recibir visitas. Yo le dejo el caldo en la puerta y me devuelvo. Ni yo entro.",
+   "inicio": 138.92,
+   "fin": 148.32
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "[con interés contenido] ¿Y hace cuánto está así, señorita Carmenza?",
+   "inicio": 148.82,
+   "fin": 151.46
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[con la voz apagada] Desde el miércoles por la noche, don Régulo.",
+   "inicio": 153.46,
+   "fin": 156.91
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "¿Y hay médico en el pueblo?",
+   "inicio": 157.41,
+   "fin": 159.97
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "Aquí no hay médico, don Régulo. Hay botica en el pueblo grande, a una hora. Aquí a los enfermos los cuidamos entre todas: aguapanela caliente, cobija y rosario.",
+   "inicio": 160.47,
+   "fin": 173.48
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "[con firmeza contenida] Entiendo. Y con la emoción de recibir semejante premio, un hombre así se puede empeorar. Puedo esperar unos días.",
+   "inicio": 175.48,
+   "fin": 184.12
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "[aliviada] Eso, don Régulo, espere. Ocho días tiene sumercé. Y en ocho días una gripa se va sola. ¿Sí o qué, mija?",
+   "inicio": 184.62,
+   "fin": 192.75
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[con duda] Si Dios quiere, madrina.",
+   "inicio": 193.25,
+   "fin": 195.47
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "[con firmeza] Ocho días no, señora. La fábrica me espera en la capital el martes. Eso es en cuatro días. El martes a las seis me voy en la flota, con el premio entregado o sin entregar.",
+   "inicio": 195.97,
+   "fin": 208.38
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "[nerviosa] El martes… Bueno, don Régulo. De aquí al martes Dios dirá.",
+   "inicio": 210.38,
+   "fin": 216.1
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "[con cansancio] ¿Y dónde se queda uno en este pueblo? No vi hotel.",
+   "inicio": 216.6,
+   "fin": 220.72
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "Hotel no hay, don Régulo. Pero en mi casa tengo una pieza desocupada. Sumercé se puede quedar en mi casa sin ninguna molestia.",
+   "inicio": 221.22,
+   "fin": 230.86
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "No quiero incomodar, señora. Mejor le pregunto al señor cura si me abre un campito en la casa cural. En los pueblos los padres siempre reciben al que viene de lejos. Y si es del caso, le pago la posada.",
+   "inicio": 231.36,
+   "fin": 244.74
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "[nerviosa] Al padre… Sí, claro, don Régulo. El padre Severo no le niega techo a nadie.",
+   "inicio": 245.24,
+   "fin": 252.06
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[susurra, alarmada] Madrina… ¿con el padre?",
+   "inicio": 252.56,
+   "fin": 255.61
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "[susurra] ¿Y qué le digo, mija? ¿Que no? El padre no dice mentiras, pero tampoco anda contando nada. Mejor disimule.",
+   "inicio": 256.11,
+   "fin": 266.41
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "¿Decían algo, señoras?",
+   "inicio": 266.91,
+   "fin": 268.94
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "Que la casa cural queda aquí mismo, don Régulo, al pie de la iglesia. Yo lo acompaño.",
+   "inicio": 269.44,
+   "fin": 275.32
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "Una cosa más, señorita Carmenza. ¿Cómo se dio cuenta el señor Eutimio de que había ganado?",
+   "inicio": 275.82,
+   "fin": 282.12
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "Lo oyó por la radio, don Régulo, en mi tienda, parado junto a la puerta. Dos años llevaba mandando sobres, todos los miércoles, hasta que por fin le salió el nombre.",
+   "inicio": 282.62,
+   "fin": 295.6
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "[con interés contenido] ¿Y cómo lo tomó?",
+   "inicio": 296.1,
+   "fin": 297.43
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[muy triste, melancólica] Se puso contento. Dijo que se le había hecho el milagro. Y se fue para su rancho.",
+   "inicio": 297.93,
+   "fin": 305.82
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "[con la voz apagada] Dos años de sobres.",
+   "inicio": 307.82,
+   "fin": 309.86
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "Mañana paso por su tienda, señorita Carmenza, a tomarme un chocolate. Me gustaría seguir hablando del señor Chitiva y conocer un poco el pueblo.",
+   "inicio": 310.36,
+   "fin": 319.13
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "[con cansancio] Ahora voy a hablar con el padre, a ver si puedo descansar después de semejante viaje.",
+   "inicio": 319.63,
+   "fin": 326.92
+  },
+  {
+   "personaje": "obdulia",
+   "texto": "Camine, don Régulo, que yo lo acompaño a donde el padre. Y con cuidado, que esas piedras están mojadas y uno se resbala.",
+   "inicio": 327.42,
+   "fin": 336.28
+  },
+  {
+   "personaje": "locutor",
+   "texto": "Sábado once de octubre, por la mañana. Al forastero le quedan tres días en Guatancuy. En la tienda de Carmenza Rincón, cumple su palabra.",
+   "inicio": 342.78,
+   "fin": 356.68
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "Buenos días, señorita Carmenza. ¿Se puede?",
+   "inicio": 359.08,
+   "fin": 362.4
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[sorprendida, cohibida] Don Régulo. Siga, siga y se sienta. Aquí en el banco, junto al mostrador. ¿Durmió?",
+   "inicio": 362.9,
+   "fin": 369.64
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "Poco. La casa cural es fría y el señor cura es de pocas palabras. Pero se duerme en paz. ¿Me da el chocolate que me prometió?",
+   "inicio": 370.14,
+   "fin": 380.2
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "Ya se lo bato. ¿Con queso?",
+   "inicio": 380.7,
+   "fin": 383.7
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "Como lo tome la gente de aquí.",
+   "inicio": 384.2,
+   "fin": 386.45
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[con una sonrisa] Entonces con queso y con almojábana. Y le advierto una cosa: aquí el chocolate es El Arrebol. Si no le gusta, usted mismo le lleva la queja a la fábrica donde trabaja.",
+   "inicio": 386.95,
+   "fin": 399.41
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "[con una sonrisa contenida] Tomo nota de la queja, señorita.",
+   "inicio": 399.91,
+   "fin": 403.23
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "Tenga. Cuidado, que está… está hirviendo.",
+   "inicio": 403.73,
+   "fin": 407.7
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "Gracias. Permítame una pregunta, señorita Carmenza. El señor Chitiva, ¿siempre ha vivido solo?",
+   "inicio": 408.2,
+   "fin": 415.46
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[con cautela] Desde que yo tengo memoria, don Régulo. Él solo, en su rancho. ¿Por qué pregunta?",
+   "inicio": 415.96,
+   "fin": 422.36
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "Porque la fábrica quiere saber quién es el ganador. A los dueños de El Arrebol les gusta decir que le cambian la vida a la gente. Y para eso quieren conocer esa vida. ¿De qué vive?",
+   "inicio": 422.86,
+   "fin": 435.19
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "De mandados. Carga agua de la pila para las casas y barre el atrio de la iglesia, sin que nadie le pague por eso.",
+   "inicio": 435.69,
+   "fin": 445.01
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "[grave] Entonces es pobre. ¿Y cómo hace para comer?",
+   "inicio": 445.51,
+   "fin": 448.96
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[con ternura] Entre todos lo ayudamos, don Régulo. Yo le fío en la tienda. Y al final siempre paga, con plata o con mandados. Don Eutimio no le queda mal a nadie.",
+   "inicio": 449.46,
+   "fin": 461.84
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "Usted habla de él con cariño.",
+   "inicio": 462.34,
+   "fin": 464.43
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[con la voz quebrada] Cuando mi papá se agravó, hace tres años, el único que veló toda la noche en esa puerta fue don Eutimio. Sin que nadie se lo pidiera. Eso no se olvida.",
+   "inicio": 465.93,
+   "fin": 478.18
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "[contenido, casi con ternura] No. Eso no se olvida.",
+   "inicio": 480.18,
+   "fin": 483.03
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[cohibida] Sumercé pregunta mucho por él, don Régulo.",
+   "inicio": 483.53,
+   "fin": 487.97
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "Es mi trabajo, señorita. Conocer al ganador antes de entregarle el premio.",
+   "inicio": 488.47,
+   "fin": 493.85
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "¿Y familia? ¿No tenía a nadie?",
+   "inicio": 494.35,
+   "fin": 497.33
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[con cautela] Dicen cosas, don Régulo. En un pueblo siempre dicen cosas. Yo no las repito. Lo que yo sé es que es viudo, y que es muy reservado con su vida.",
+   "inicio": 497.83,
+   "fin": 509.27
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "¿Y doña Rosa, la mujer, hace cuánto murió?",
+   "inicio": 509.77,
+   "fin": 513.67
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[extrañada] ¿Rosa? ¿Y sumercé cómo sabe que se llamaba Rosa?",
+   "inicio": 516.17,
+   "fin": 520.69
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "[rápido, contenido] La fábrica averigua la vida de sus ganadores, señorita. Para eso me mandan.",
+   "inicio": 521.19,
+   "fin": 526.72
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "Ah… Pues eso fue hace mucho. Treinta años, dicen. Yo ni había nacido. En este pueblo ya nadie la nombra.",
+   "inicio": 527.22,
+   "fin": 535.56
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "[con la voz apagada] Treinta años… Hace treinta años.",
+   "inicio": 536.06,
+   "fin": 539.5
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "¿Cuánto le debo, señorita Carmenza?",
+   "inicio": 541.5,
+   "fin": 543.96
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "Nada. La casa invita.",
+   "inicio": 544.46,
+   "fin": 546.94
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "No se moleste, señorita. Prefiero pagarlo.",
+   "inicio": 547.44,
+   "fin": 550.68
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[con una sonrisa] Hoy no, don Régulo. Se lo fío, como le fío a don Eutimio. Mañana, si vuelve, me paga.",
+   "inicio": 551.18,
+   "fin": 558.6
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "[con una sombra de sonrisa] Entonces quedo debiendo, como el señor Chitiva. Mañana vuelvo a pagar. Hasta luego, señorita Carmenza.",
+   "inicio": 559.1,
+   "fin": 567.15
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[cansada, con la voz apagada] Ay, Dios… Dios me perdone.",
+   "inicio": 571.55,
+   "fin": 574.97
+  },
+  {
+   "personaje": "locutor",
+   "texto": "Sábado por la tarde. En la casa cural, pegada a la iglesia, el padre Severo Forero le sirve aguapanela a su huésped.",
+   "inicio": 581.47,
+   "fin": 592.76
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "Siéntese, hijo. Tome aguapanela, que a esta hora el frío se mete hasta los huesos.",
+   "inicio": 598.56,
+   "fin": 608.2
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "Gracias, padre. Permítame una pregunta. ¿Hace cuánto conoce usted a Eutimio Chitiva?",
+   "inicio": 608.7,
+   "fin": 616.04
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "[muy despacio] Hace treinta y dos años que soy el párroco de Guatancuy, hijo. Aquí conozco a todo el mundo. A los vivos y a los muertos.",
+   "inicio": 616.54,
+   "fin": 630.83
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "Dicen que está con gripa. Que no puede recibir a nadie.",
+   "inicio": 631.33,
+   "fin": 635.67
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "¿Quién dice?",
+   "inicio": 638.17,
+   "fin": 639.66
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "La señora Obdulia. Y la señorita Carmenza.",
+   "inicio": 640.16,
+   "fin": 644.49
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "[muy despacio] Ajá.",
+   "inicio": 644.99,
+   "fin": 646.25
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "¿Es cierto, padre?",
+   "inicio": 646.75,
+   "fin": 648.39
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "¿Le sirvo más aguapanela, hijo?",
+   "inicio": 650.89,
+   "fin": 653.35
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "[seco] Usted no me contestó, padre.",
+   "inicio": 653.85,
+   "fin": 656.3
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "[sereno, cansado] Yo no soy médico, hijo. De la salud de Eutimio le hablarán los que lo cuidan. Yo me ocupo de las almas.",
+   "inicio": 656.8,
+   "fin": 668.9
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "[midiendo las palabras] Entiendo. Un cura guarda muchas cosas.",
+   "inicio": 669.4,
+   "fin": 673.21
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "[cansado] Más de las que quisiera.",
+   "inicio": 673.71,
+   "fin": 676.35
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "Entonces le pregunto otra cosa, padre. Me dijeron que Eutimio es viudo. ¿Usted enterró a Rosa?",
+   "inicio": 676.85,
+   "fin": 685.05
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "[muy despacio, con la voz baja] ¿Y a usted quién le habló de Rosa, hijo?",
+   "inicio": 688.05,
+   "fin": 694.71
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "[rápido, contenido] La fábrica averigua la vida de sus ganadores, padre.",
+   "inicio": 695.21,
+   "fin": 699.32
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "[muy despacio] La fábrica averigua.",
+   "inicio": 699.82,
+   "fin": 702.82
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "[muy triste, melancólico] Yo enterré a Rosa, sí. En mil novecientos veintiocho. Hace treinta años. En este pueblo ya nadie dice ese nombre. Ni Eutimio.",
+   "inicio": 705.32,
+   "fin": 719.48
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "[con la voz apagada] ¿Ni él?",
+   "inicio": 719.98,
+   "fin": 720.63
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "Ni él. Hay dolores que uno guarda bajo llave, hijo. Así como yo guardo lo que me cuentan en confesión.",
+   "inicio": 721.13,
+   "fin": 732.57
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "¿Y usted de dónde es, hijo?",
+   "inicio": 733.07,
+   "fin": 736.05
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "De la capital, padre.",
+   "inicio": 736.55,
+   "fin": 738.43
+  },
+  {
+   "personaje": "padre_severo",
+   "texto": "[sereno] Está bien, hijo. Vaya a descansar. Mañana hay misa de siete, por si quiere acompañarnos.",
+   "inicio": 740.43,
+   "fin": 749.16
+  },
+  {
+   "personaje": "alvaro",
+   "texto": "[con la voz apagada] Allá estaré, padre. Hace mucho que no oigo una misa.",
+   "inicio": 749.66,
+   "fin": 752.79
+  },
+  {
+   "personaje": "locutor",
+   "texto": "Sábado, ocho de la noche. Llueve sobre Guatancuy. Esa tarde, en la flota de las cuatro, volvió de la capital don Belisario Umaña: el hombre más rico del pueblo, dueño del único camión, de la carretera que él mismo mandó hacer y de las fincas donde trabaja medio Guatancuy. Y con la lluvia encima, golpea en la puerta de la tienda.",
+   "inicio": 764.6,
+   "fin": 798.01
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[alzando la voz, hacia la puerta] ¡Ya cerré! ¿Quién es?",
+   "inicio": 800.05,
+   "fin": 802.14
+  },
+  {
+   "personaje": "belisario",
+   "texto": "[con autoridad] Carmenza, soy Belisario. Ábrame, que me estoy mojando.",
+   "inicio": 802.64,
+   "fin": 806.54
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[tensa] Don Belisario. Buenas noches. No sabía que había vuelto.",
+   "inicio": 808.94,
+   "fin": 814.95
+  },
+  {
+   "personaje": "belisario",
+   "texto": "Llegué en la flota de las cuatro, mijita. Cuélgueme esa ruana por ahí, que viene empapada. ¿Me da un tinto?",
+   "inicio": 815.45,
+   "fin": 822.22
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "Siéntese. Ya le sirvo.",
+   "inicio": 822.72,
+   "fin": 824.81
+  },
+  {
+   "personaje": "belisario",
+   "texto": "Qué viaje, Carmenza. Ocho días haciendo negocios en la capital. Y el miércoles por la noche, en la pensión, prendo el radio… y oigo el nombre de este pueblo. Y el de Eutimio Chitiva.",
+   "inicio": 825.31,
+   "fin": 838.76
+  },
+  {
+   "personaje": "belisario",
+   "texto": "[con desprecio, sin alzar la voz] Cincuenta mil pesos. Ahora resulta que el viejo ese va a tener más plata que yo.",
+   "inicio": 839.26,
+   "fin": 844.56
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[con cautela] Todo el pueblo lo oyó, don Belisario. Aquí mismo.",
+   "inicio": 845.06,
+   "fin": 849.48
+  },
+  {
+   "personaje": "belisario",
+   "texto": "Me imagino. Y yo pensé: llego, lo felicito, le doy la mano. Un hombre que cargó agua para mi casa veinte años. ¿Y qué me encuentro?",
+   "inicio": 849.98,
+   "fin": 859.22
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "¿Qué se encuentra?",
+   "inicio": 859.72,
+   "fin": 861.08
+  },
+  {
+   "personaje": "belisario",
+   "texto": "[pausado] Que nadie me da razón de él. Pregunto en la plaza, y me cambian el tema. Subo al rancho, y tiene la tranca puesta por dentro. Adentro alguien tose. Pero no abre.",
+   "inicio": 861.58,
+   "fin": 871.43
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "Don Eutimio está con gripa, don Belisario. Una gripa de las malas. No recibe a nadie.",
+   "inicio": 871.93,
+   "fin": 878.67
+  },
+  {
+   "personaje": "belisario",
+   "texto": "[irónico, sin reírse] Eso me dijo Obdulia. Con las mismas palabras. Palabra por palabra, Carmenza. Como si se las hubieran aprendido.",
+   "inicio": 879.17,
+   "fin": 886.77
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[con firmeza] Es que así es, don Belisario.",
+   "inicio": 888.77,
+   "fin": 891.02
+  },
+  {
+   "personaje": "belisario",
+   "texto": "Puede ser. A propósito, mijita: bajando del rancho pasé por el cementerio, detrás de la iglesia, a visitar a mi esposa, que en paz descanse. Como siempre que vuelvo de viaje.",
+   "inicio": 891.52,
+   "fin": 903.98
+  },
+  {
+   "personaje": "belisario",
+   "texto": "[despacio] Y al lado de ella hay tierra fresca. Removida. Una tumba nueva. Y en este pueblo, que yo sepa, nadie se ha muerto.",
+   "inicio": 905.48,
+   "fin": 913.89
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[tensa] ¿Qué está queriendo insinuar, don Belisario?",
+   "inicio": 916.39,
+   "fin": 919.03
+  },
+  {
+   "personaje": "belisario",
+   "texto": "[despacio, en voz baja] Aquí no se mueve una hoja sin que yo sepa, Carmenza. Y en esta tienda movieron un muerto.",
+   "inicio": 921.53,
+   "fin": 929.21
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[temblando] Don Belisario…",
+   "inicio": 935.42,
+   "fin": 937.51
+  },
+  {
+   "personaje": "belisario",
+   "texto": "No me diga nada, mijita. No hace falta. Eutimio Chitiva se murió. ¿Cuándo?",
+   "inicio": 938.01,
+   "fin": 944.23
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[con la voz quebrada] El miércoles por la noche, don Belisario. Apenas lo anunciaron como ganador.",
+   "inicio": 944.73,
+   "fin": 951.54
+  },
+  {
+   "personaje": "belisario",
+   "texto": "[sin sorpresa] Pobre viejo. Y ustedes lo enterraron a escondidas, y le van a hacer creer al delegado que está vivo. Para cobrar.",
+   "inicio": 952.04,
+   "fin": 959.38
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[con firmeza, alzando un poco la voz] Eso lo acordó todo el pueblo, don Belisario. Para poner el agua y entechar la escuela. Es por el bien de todo Guatancuy.",
+   "inicio": 959.88,
+   "fin": 969.13
+  },
+  {
+   "personaje": "belisario",
+   "texto": "[con pereza] Todo el pueblo. Qué bonito. Yo puse la carretera de este pueblo, Carmenza. Y gracias a mis fincas aquí la gente tiene trabajo. Este pueblo a mí me debe.",
+   "inicio": 969.63,
+   "fin": 978.8
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "Esa plata no es mía, don Belisario. Ni suya.",
+   "inicio": 979.3,
+   "fin": 983.87
+  },
+  {
+   "personaje": "belisario",
+   "texto": "Tampoco es de la escuela, mijita. Es de un muerto. Y los muertos no reclaman.",
+   "inicio": 984.37,
+   "fin": 989.54
+  },
+  {
+   "personaje": "carmenza",
+   "texto": "[muy preocupada, con la voz quebrada] ¿Qué… qué quiere, don Belisario?",
+   "inicio": 991.54,
+   "fin": 994.84
+  },
+  {
+   "personaje": "belisario",
+   "texto": "[despacio, en voz baja] Quiero la mitad de ese premio para mí, mijita. La mitad. O mañana me siento a tomar un tinto con el tal delegado ese.",
+   "inicio": 997.34,
+   "fin": 1008.02
+  },
+  {
+   "personaje": "locutor",
+   "texto": "¿Pagará Guatancuy el precio del silencio de don Belisario Umaña? ¿Y qué pasará cuando el delegado se encuentre, por fin, con el hombre que reemplaza a Eutimio Chitiva? No deje de escuchar mañana el próximo capítulo de La Hora de la Fortuna… en Radionovelas de ayer.",
+   "inicio": 1014.73,
+   "fin": 1040.22
+  }
+ ]
+}

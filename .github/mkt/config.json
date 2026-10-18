@@ -1,0 +1,14 @@
+{
+  "r2_publico": "https://audio.radionovelasdeayer.com",
+  "r2_bucket": "radionovelas-audio",
+  "sitio": "https://radionovelasdeayer.com",
+  "graph": "https://graph.facebook.com/v26.0",
+  "meta_page_id": "1361349237061420",
+  "meta_ig_user_id": "17841415101741264",
+  "zona": "America/Bogota",
+  "tts_modelo": "gemini-2.5-flash-preview-tts",
+  "tts_modelo_pro": "gemini-2.5-pro-preview-tts",
+  "tts_pro_para": ["alvaro"],
+  "duracion_max_video": 58,
+  "max_por_dia": {"fb": 4, "ig": 4, "yt": 3}
+}
