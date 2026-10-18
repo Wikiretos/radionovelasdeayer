@@ -17,6 +17,7 @@ from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from comun import MKT, REPO, CONFIG, ErrorPieza, validar_texto, http, log
+import ilustrar
 
 W, H, FPS = 1080, 1920, 30
 BG = (14, 8, 3); INK = (245, 241, 234); MUTED = (179, 171, 161); ACCENT = (242, 162, 58)
@@ -92,6 +93,26 @@ def lamina_base(dst, serie_titulo, pie):
     d.text((W / 2, 140), "RADIONOVELAS DE AYER", font=f1, fill=MUTED, anchor="mm")
     d.text((W / 2, 215), serie_titulo, font=f2, fill=ACCENT, anchor="mm")
     d.text((W / 2, 1590), pie, font=f3, fill=INK, anchor="mm")
+    im.save(dst)
+
+
+def marco_vertical(dst, serie_titulo, pie):
+    """Capa transparente para ilustración a pantalla completa: degradados, cabecera y pie."""
+    im = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    px = im.load()
+    for y in range(H):
+        if y < 330:
+            a = int(225 * (1 - y / 330) ** 1.2)
+        elif y > 980:
+            a = int(min(240, 240 * ((y - 980) / 420) ** 0.9))
+        else:
+            a = 0
+        for x in range(W):
+            px[x, y] = (14, 8, 3, a)
+    d = ImageDraw.Draw(im)
+    d.text((W / 2, 140), "RADIONOVELAS DE AYER", font=fuente(F_TEXTO, 34, 500), fill=MUTED, anchor="mm")
+    d.text((W / 2, 215), serie_titulo, font=fuente(F_DISPLAY, 78, 600), fill=ACCENT, anchor="mm")
+    d.text((W / 2, 1590), pie, font=fuente(F_TEXTO, 38, 600), fill=INK, anchor="mm")
     im.save(dst)
 
 
@@ -282,21 +303,36 @@ def video(p, voz, subs, cap_cta, tmp, destino):
          "-filter_complex", f"[1]volume=-10dB,afade=t=in:d=0.4,afade=t=out:st={CIERRE_S-0.8}:d=0.8,adelay={int(dur_voz*1000)}|{int(dur_voz*1000)}[c];"
                             f"[0][c]amix=inputs=2:normalize=0,atrim=0:{total},loudnorm=I=-15:TP=-1.5:LRA=11[a]",
          "-map", "[a]", "-c:a", "aac", "-b:a", "128k", "-ar", "44100", str(audio)])
-    # ilustración con paneo lento
-    src = imagen_fuente(p.get("imagen", "tienda"))
-    ilu = tmp / "ilu.png"
+    # ilustración: nueva (Gemini, vertical a pantalla completa) o del catálogo (franja con paneo)
+    usd = 0.0
+    if p.get("ilustracion"):
+        src, usd = ilustrar.generar(p["ilustracion"], "video", destino / f"{p['id']}-ilu.jpg")
+    else:
+        src = imagen_fuente(p.get("imagen", "tienda"))
     im = Image.open(src).convert("RGB")
-    esc = IMG_H / im.height
-    im = im.resize((max(W + 2, int(im.width * esc)), IMG_H), Image.LANCZOS)
-    im.save(ilu)
-    entradas = ["-loop", "1", "-framerate", str(FPS), "-i", str(base),
-                "-loop", "1", "-framerate", str(FPS), "-i", str(ilu),
-                "-i", str(audio)]
-    f = [f"[1]crop={W}:{IMG_H}:x='(iw-{W})*t/{total:.2f}':y=0[ilu]",
-         f"[0][ilu]overlay=0:{IMG_Y}[b0]",
-         f"[2]showwaves=s=900x110:mode=cline:scale=sqrt:rate={FPS}:colors=white:draw=full,format=gray,lut=y='if(gt(val,20),255,0)'[m]",
-         f"color=c=0xf2a23a:s=900x110:r={FPS},format=rgba[col]", "[col][m]alphamerge[ola]",
-         f"[b0][ola]overlay=90:{WAVE_Y}[b1]"]
+    ilu = tmp / "ilu.png"
+    ola = [f"[2]showwaves=s=900x110:mode=cline:scale=sqrt:rate={FPS}:colors=white:draw=full,format=gray,lut=y='if(gt(val,20),255,0)'[m]",
+           f"color=c=0xf2a23a:s=900x110:r={FPS},format=rgba[col]", "[col][m]alphamerge[ola]"]
+    if im.height > im.width:
+        # pantalla completa con acercamiento lento (8 %) y marco con degradados
+        ew, eh = int(W * 1.08), int(H * 1.08)
+        esc = max(ew / im.width, eh / im.height)
+        im = im.resize((int(im.width * esc) + 1, int(im.height * esc) + 1), Image.LANCZOS); im.save(ilu)
+        marco = tmp / "marco.png"; marco_vertical(marco, serie, CONFIG["sitio"].replace("https://", "") + " · gratis")
+        entradas = ["-loop", "1", "-framerate", str(FPS), "-i", str(marco),
+                    "-loop", "1", "-framerate", str(FPS), "-i", str(ilu),
+                    "-i", str(audio)]
+        f = [f"[1]crop={W}:{H}:x='(iw-{W})*(0.5+0.5*t/{total:.2f})':y='(ih-{H})*(1-t/{total:.2f})'[ilu]",
+             "[ilu][0]overlay=0:0[b0]", *ola, f"[b0][ola]overlay=90:{WAVE_Y}[b1]"]
+    else:
+        esc = IMG_H / im.height
+        im = im.resize((max(W + 2, int(im.width * esc)), IMG_H), Image.LANCZOS)
+        im.save(ilu)
+        entradas = ["-loop", "1", "-framerate", str(FPS), "-i", str(base),
+                    "-loop", "1", "-framerate", str(FPS), "-i", str(ilu),
+                    "-i", str(audio)]
+        f = [f"[1]crop={W}:{IMG_H}:x='(iw-{W})*t/{total:.2f}':y=0[ilu]",
+             f"[0][ilu]overlay=0:{IMG_Y}[b0]", *ola, f"[b0][ola]overlay=90:{WAVE_Y}[b1]"]
     ult, k = "b1", 3
     if p.get("gancho"):
         g = tmp / "gancho.png"; png_texto(g, p["gancho"], tam=70, banda=True, alto=IMG_H)
@@ -332,7 +368,7 @@ def video(p, voz, subs, cap_cta, tmp, destino):
     # portada: fotograma a los 1,2 s
     run(["ffmpeg", "-y", "-loglevel", "error", "-ss", "1.2", "-i", str(destino / f"{p['id']}.mp4"), "-frames:v", "1", "-q:v", "3",
          str(destino / f"{p['id']}.jpg")])
-    return round(total, 1)
+    return round(total, 1), usd
 
 
 def carrusel(p, destino):
@@ -341,8 +377,31 @@ def carrusel(p, destino):
     diapos = car["diapositivas"]
     if not 2 <= len(diapos) <= 10:
         raise ErrorPieza("el carrusel necesita de 2 a 10 diapositivas")
+    usd = 0.0
     for i, dp in enumerate(diapos, 1):
         validar_texto(dp.get("titulo", "") + " " + dp.get("texto", ""), f"diapositiva {i}")
+        if dp.get("ilustracion"):  # lámina a sangre con texto abajo sobre degradado
+            ruta, u = ilustrar.generar(dp["ilustracion"], "carrusel", destino / f"{p['id']}-ilu{i}.jpg"); usd += u
+            ilu = Image.open(ruta).convert("RGB")
+            esc = max(1080 / ilu.width, 1350 / ilu.height)
+            ilu = ilu.resize((int(ilu.width * esc) + 1, int(ilu.height * esc) + 1), Image.LANCZOS).crop((0, 0, 1080, 1350))
+            capa = Image.new("RGBA", (1080, 1350), (0, 0, 0, 0)); cp = capa.load()
+            for yy in range(700, 1350):
+                for xx in range(1080):
+                    cp[xx, yy] = (14, 8, 3, int(235 * ((yy - 700) / 650) ** 0.8))
+            im = Image.alpha_composite(ilu.convert("RGBA"), capa).convert("RGB")
+            d = ImageDraw.Draw(im)
+            lt = envolver(d, dp.get("titulo", ""), fuente(F_DISPLAY, 88, 600), 940) if dp.get("titulo") else []
+            lx = [l for parr in (dp.get("texto") or "").split("\n") for l in envolver(d, parr, fuente(F_TEXTO, 50, 500), 940)]
+            y = 1230 - len(lt) * 104 - len(lx) * 66
+            for l in lt:
+                d.text((70, y), l, font=fuente(F_DISPLAY, 88, 600), fill=ACCENT); y += 104
+            for l in lx:
+                d.text((70, y), l, font=fuente(F_TEXTO, 50, 500), fill=INK); y += 66
+            d.text((70, 1270), "Radionovelas de ayer", font=fuente(F_TEXTO, 32, 600), fill=ACCENT)
+            d.text((1010, 1270), f"{i}/{len(diapos)}", font=fuente(F_TEXTO, 32, 500), fill=ACCENT, anchor="ra")
+            nombre = f"{p['id']}-{i}.jpg"; im.save(destino / nombre, quality=90); archivos.append(nombre)
+            continue
         im = Image.new("RGB", (1080, 1350), PAPEL if dp.get("papel", i > 1) else BG)
         d = ImageDraw.Draw(im)
         oscuro = not dp.get("papel", i > 1)
@@ -368,10 +427,10 @@ def carrusel(p, destino):
         nombre = f"{p['id']}-{i}.jpg"
         im.save(destino / nombre, quality=90)
         archivos.append(nombre)
-    return archivos
+    return archivos, usd
 
 
-CAMPOS_MEDIA = ("tipo", "fragmento", "escena", "carrusel", "imagen", "gancho", "serie_titulo", "reintento")
+CAMPOS_MEDIA = ("tipo", "fragmento", "escena", "carrusel", "imagen", "ilustracion", "gancho", "serie_titulo", "reintento")
 
 
 def huella(p):
@@ -407,15 +466,16 @@ def main():
                 tmp = Path(td)
                 if p["tipo"] == "fragmento":
                     voz, subs, cap = audio_fragmento(p, tmp)
-                    dur = video(p, voz, subs, cap, tmp, destino)
-                    r = {"ok": True, "video": f"{p['id']}.mp4", "portada": f"{p['id']}.jpg", "vista_previa": f"{p['id']}-prev.mp4", "segundos": dur}
+                    dur, usd_img = video(p, voz, subs, cap, tmp, destino)
+                    r = {"ok": True, "video": f"{p['id']}.mp4", "portada": f"{p['id']}.jpg", "vista_previa": f"{p['id']}-prev.mp4", "segundos": dur,
+                         "usd_aprox": usd_img}
                 elif p["tipo"] == "escena":
                     voz, subs, cap, tokens = audio_escena(p, tmp, a.sin_tts)
-                    dur = video(p, voz, subs, cap, tmp, destino)
+                    dur, usd_img = video(p, voz, subs, cap, tmp, destino)
                     r = {"ok": True, "video": f"{p['id']}.mp4", "portada": f"{p['id']}.jpg", "vista_previa": f"{p['id']}-prev.mp4", "segundos": dur,
-                         "tts_tokens_salida": tokens, "usd_aprox": round(tokens * 20 / 1e6, 4)}
+                         "tts_tokens_salida": tokens, "usd_aprox": round(tokens * 20 / 1e6 + usd_img, 4)}
                 elif p["tipo"] == "carrusel":
-                    imgs = carrusel(p, destino); r = {"ok": True, "imagenes": imgs, "vista_previa": imgs[0]}
+                    imgs, usd_img = carrusel(p, destino); r = {"ok": True, "imagenes": imgs, "vista_previa": imgs[0], "usd_aprox": usd_img}
                 else:
                     raise ErrorPieza(f"tipo desconocido {p['tipo']}")
         except Exception as e:

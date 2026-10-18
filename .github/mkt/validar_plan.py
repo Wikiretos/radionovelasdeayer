@@ -22,7 +22,14 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from comun import MKT, CONFIG, ErrorPieza, validar_texto
 
 TIPOS = {"fragmento", "escena", "carrusel"}
-FAMILIAS = {"dramatico", "costumbre", "recuerdo", "personaje", "pregunta"}
+FAMILIAS = {"dramatico", "costumbre", "recuerdo", "personaje", "pregunta", "dato"}
+MARCA = "#radionovelasdeayer"
+# Del guionista: nada de esto en boca de un personaje ni del locutor.
+MODERNAS = ["celular", "internet", "computador", "correo electrónico", "chat", "en línea", "aplicación", "video", "selfie", "ok",
+            "cool", "parce", "parcero", "bacano", "literal", "súper", "full", "brutal", "empoderar", "tóxico", "resiliencia",
+            "salud mental", "terapia", "estrés", "fin de semana", "pareja", "mi ex", "crush", "date", "wow", "man", "bro", "genial",
+            "básicamente", "definitivamente", "al final del día", "hacer sentido", "eventualmente", "dispositivo", "batería", "o sea"]
+ESTILO = json.loads((MKT / "estilo" / "estilo.json").read_text())
 PLATAFORMAS = {"fb", "ig", "yt", "tt"}
 FONDOS = {None, "colchon_tierno", "colchon_tension", "tiple_de_cinco", "sintonia_concurso"}
 
@@ -38,6 +45,12 @@ def main():
         mal.append("semana debe ser AAAA-Www")
     if Path(a.plan).stem != plan.get("semana"):
         mal.append("el archivo debe llamarse <semana>.json")
+    tend = plan.get("tendencias") or []
+    if not tend:
+        mal.append("falta 'tendencias' (investigación de la semana: [{tema, fuente, uso}])")
+    for t in tend:
+        if not str(t.get("fuente", "")).startswith("http") or not t.get("tema"):
+            mal.append(f"tendencia sin tema o sin fuente URL: {t}")
     ids = set()
     por_dia = {}
     for p in plan.get("piezas", []):
@@ -60,7 +73,7 @@ def main():
         for pl in pls & {"fb", "ig", "yt"}:
             por_dia[(p.get("fecha"), pl)] = por_dia.get((p.get("fecha"), pl), 0) + 1
         if p.get("tipo") != "carrusel":
-            if p.get("imagen") not in imagenes: e(f"imagen '{p.get('imagen')}' no existe")
+            if not p.get("ilustracion") and p.get("imagen") not in imagenes: e(f"falta 'ilustracion' (o 'imagen' del catálogo: {sorted(imagenes)})")
             if len(p.get("gancho", "")) > 60: e("gancho > 60 caracteres")
         t = p.get("texto") or {}
         req = {"fb": "fb" in pls, "ig": "ig" in pls, "yt_titulo": "yt" in pls, "yt_desc": "yt" in pls, "tiktok": "tt" in pls}
@@ -68,7 +81,26 @@ def main():
             if need and not t.get(k): e(f"falta texto.{k}")
         if len(t.get("ig", "")) > 2200: e("texto.ig > 2200")
         if len(t.get("yt_titulo", "")) > 95: e("yt_titulo > 95")
-        if t.get("ig") and len(re.findall(r"#\w+", t["ig"])) > 5: e("más de 5 hashtags en ig")
+        tags = lambda k: [h.lower() for h in re.findall(r"#\w+", t.get(k, ""))]
+        for k, lo, hi in (("ig", 3, 5), ("tiktok", 3, 5)):
+            if t.get(k):
+                n = tags(k)
+                if not lo <= len(n) <= hi: e(f"texto.{k}: {len(n)} hashtags (deben ser {lo} a {hi})")
+                if MARCA not in n: e(f"texto.{k}: falta {MARCA}")
+        if len(tags("fb")) > 2: e("texto.fb: más de 2 hashtags")
+        if len(tags("yt_titulo") + tags("yt_desc")) > 4: e("YouTube: más de 4 hashtags entre título y descripción")
+        if p.get("familia") == "dato":
+            fu = p.get("fuentes") or []
+            if not fu or not all(str(x).startswith("http") for x in fu): e("un dato curioso necesita 'fuentes' (URL verificables)")
+            if not p.get("dato"): e("falta 'dato': la afirmación exacta que se verificó")
+        il_list = [p.get("ilustracion")] + [d.get("ilustracion") for d in (p.get("carrusel") or {}).get("diapositivas", [])]
+        for il in [x for x in il_list if x]:
+            if not il.get("escena"): e("ilustración sin 'escena'")
+            if len(il.get("personajes") or []) > 4: e("ilustración con más de 4 personajes")
+            for per in il.get("personajes") or []:
+                c = ESTILO["personajes"].get(per)
+                if not c: e(f"ilustración: personaje desconocido {per}")
+                elif not c.get("ref"): e(f"ilustración: {per} no tiene hoja de personaje aprobada")
         for k, v in t.items():
             try: validar_texto(v, f"texto.{k}")
             except ErrorPieza as x: e(str(x))
@@ -93,6 +125,13 @@ def main():
             pal = 0
             for l in es.get("lineas", []):
                 if l.get("personaje") not in voces: e(f"personaje sin voz {l.get('personaje')}")
+                txt = re.sub(r"\[[^\]]*\]", "", l.get("texto", "")).strip()
+                if not l.get("emocion"): e(f"línea sin 'emocion': {txt[:40]}")
+                if len(txt.split()) < 4: e(f"línea de menos de 4 palabras (falla en la voz): {txt}")
+                if txt.endswith("…") or txt.endswith("..."): e(f"línea terminada en puntos suspensivos (sale cortada): {txt[:40]}")
+                for w in MODERNAS:
+                    if re.search(r"(?<![\wáéíóúñ])" + re.escape(w) + r"(?![\wáéíóúñ])", txt, re.I): e(f"palabra moderna prohibida '{w}': {txt[:50]}")
+                if re.search(r"\b(pues|mire|vea|¿oyó\?)[.!?]?$", txt, re.I): e(f"muletilla de relleno al final: {txt[:50]}")
                 pal += len(re.sub(r"\[[^\]]*\]", "", l.get("texto", "")).split())
                 try: validar_texto(l.get("texto", ""), "escena")
                 except ErrorPieza as x: e(str(x))

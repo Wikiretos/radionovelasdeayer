@@ -46,6 +46,14 @@ previas(){
   echo "rama mkt-medios actualizada"
 }
 
+personajes(){
+  # hojas de personaje pendientes (estilo.json → ref null): se generan para aprobación de Andrés
+  mkdir -p medios/personajes
+  for n in $(python3 -c "import json;e=json.load(open('.github/mkt/estilo/estilo.json'));print(' '.join(k for k,v in e['personajes'].items() if not v.get('ref')))"); do
+    python3 .github/mkt/ilustrar.py personaje "$n" --salida "medios/personajes/$n.jpg" && echo "hoja de personaje: $n"
+  done
+}
+
 bajar(){
   # solo un 404 real significa "sin estado"; cualquier otro fallo detiene para no publicar dos veces
   c=$(curl -s -o estado.json -w '%{http_code}' "$PUBLICO/mkt/estado.json?v=$(date +%s)" || echo 000)

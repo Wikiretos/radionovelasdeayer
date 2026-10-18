@@ -1,0 +1,23 @@
+{
+ "version": 1,
+ "modelo": "gemini-nano-banana-2.1",
+ "tamano": "2K",
+ "usd_por_imagen": 0.0504,
+ "referencias_estilo": ["referencias/banner.jpg"],
+ "estilo": "Ilustración pintada a mano en el estilo exacto de la imagen de referencia: afiche e historieta latinoamericana de mediados del siglo veinte, trazo de tinta visible, sombreado con semitono (puntos de imprenta) y grano de papel envejecido. Paleta cálida de ámbar, ocre, terracota y sepia, con contrapunto de azules y verdes fríos del páramo. Luz de bombillo, vela o atardecer, con sombras profundas. Época: 1958, pueblo inventado de tierra fría en los Andes colombianos: casas de tapia blanca y teja de barro, calles empedradas, montañas con niebla, ruanas, sombreros de fieltro, pañoletas negras, radios de tubos, velas, costales.",
+ "reglas": "Sin ningún texto, letra, número legible, logo ni marca. Nada fotográfico ni 3D. Nada moderno (cables, plástico, carros modernos, celulares). Rostros expresivos y dignos, sin caricatura ni burla. Apto para todo público.",
+ "encuadres": {
+  "video": {"aspect_ratio": "9:16", "nota": "Composición vertical. El sujeto principal en el tercio superior y central; el tercio inferior más oscuro y sencillo, porque ahí van los subtítulos."},
+  "carrusel": {"aspect_ratio": "4:5", "nota": "Composición vertical 4:5, sujeto centrado, fondo sencillo."}
+ },
+ "personajes": {
+  "carmenza": {"ref": "personajes/carmenza.jpg", "aspecto": "mujer de 27 años, cabello castaño oscuro recogido con un lápiz, delantal blanco sobre blusa terracota, mirada seria y tierna, libreta de fiados"},
+  "eutimio": {"ref": "personajes/eutimio.jpg", "aspecto": "campesino de 62 años que aparenta 80, muy flaco, barba gris de días, sombrero de fieltro gastado, ruana raída color arena, manos huesudas, mirada humilde"},
+  "obdulia": {"ref": "personajes/obdulia.jpg", "aspecto": "señora de 61 años, pelo blanco, pañoleta negra sobre la cabeza y los hombros, blusa terracota, gesto de quien escucha detrás de la puerta"},
+  "saturnino": {"ref": "personajes/saturnino.jpg", "aspecto": "sacristán de 58 años, flaco y encorvado, pelo gris despeinado, saco viejo verde oliva, cara de susto permanente"},
+  "padre_severo": {"ref": null, "aspecto": "cura de 70 años, sotana negra con alzacuello, pelo blanco escaso, arrugas profundas, ojos cansados y bondadosos, manos sobre un breviario", "pendiente": "La figura del cura en el banner parece de 40 años; la biblia dice 70. Falta su hoja de personaje aprobada."},
+  "alvaro": {"ref": null, "aspecto": "hombre de 30 años de ciudad, delgado, vestido de paño gris oscuro gastado pero cuidado, sombrero de ala corta, maleta de cartón, rostro serio y contenido", "pendiente": "Falta su hoja de personaje aprobada."},
+  "belisario": {"ref": null, "aspecto": "hacendado de 55 años, corpulento, bigote espeso, sombrero de jipa, ruana fina de lana oscura, botas, gesto altanero", "pendiente": "Falta su hoja de personaje aprobada."},
+  "regulo": {"ref": null, "aspecto": "funcionario de ciudad de 50 años, flaco, gafas redondas, traje de paño café, corbata delgada, maletín de cuero, reloj de bolsillo en la mano", "pendiente": "Falta su hoja de personaje aprobada."}
+ }
+}

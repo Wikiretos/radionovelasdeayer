@@ -10,7 +10,7 @@ on:
     - cron: '20 10 * * *'   # métricas (5:20 a. m. Colombia)
   workflow_dispatch:
     inputs:
-      tarea: { description: 'render | publicar | metricas | todo', default: 'todo' }
+      tarea: { description: 'render | publicar | metricas | personajes | todo', default: 'todo' }
       simular: { description: 'publicar sin enviar (true/false)', default: 'false' }
 concurrency: { group: "redes-${{ github.event.schedule == '20 10 * * *' && 'metricas' || 'publicar' }}", cancel-in-progress: false }
 permissions: { contents: write }
@@ -30,14 +30,14 @@ jobs:
         run: |
           T="${{ github.event.inputs.tarea }}"
           E="${{ github.event_name }}"; S="${{ github.event.schedule }}"
-          R=false; P=false; M=false
+          R=false; P=false; M=false; H=false
           if [ "$E" = push ]; then R=true; P=true; fi
           if [ "$E" = schedule ] && [ "$S" = '7 * * * *' ]; then P=true; fi
           if [ "$E" = schedule ] && [ "$S" = '20 10 * * *' ]; then M=true; fi
           if [ "$E" = workflow_dispatch ]; then
-            case "$T" in render) R=true;; publicar) P=true;; metricas) M=true;; *) R=true; P=true; M=true;; esac
+            case "$T" in render) R=true;; publicar) P=true;; metricas) M=true;; personajes) H=true;; *) R=true; P=true; M=true;; esac
           fi
-          echo "render=$R" >> $GITHUB_OUTPUT; echo "publicar=$P" >> $GITHUB_OUTPUT; echo "metricas=$M" >> $GITHUB_OUTPUT
+          echo "render=$R" >> $GITHUB_OUTPUT; echo "publicar=$P" >> $GITHUB_OUTPUT; echo "metricas=$M" >> $GITHUB_OUTPUT; echo "personajes=$H" >> $GITHUB_OUTPUT
           echo "render=$R publicar=$P metricas=$M"
       - name: Dependencias
         run: |
@@ -47,8 +47,12 @@ jobs:
         if: steps.toca.outputs.render == 'true'
         env: { GEMINI_API_KEY: '${{ secrets.GEMINI_API_KEY }}' }
         run: .github/mkt/ciclo.sh render
+      - name: Hojas de personaje pendientes
+        if: steps.toca.outputs.personajes == 'true'
+        env: { GEMINI_API_KEY: '${{ secrets.GEMINI_API_KEY }}' }
+        run: .github/mkt/ciclo.sh personajes
       - name: Vistas previas a la rama mkt-medios
-        if: steps.toca.outputs.render == 'true'
+        if: always() && (steps.toca.outputs.render == 'true' || steps.toca.outputs.personajes == 'true')
         env: { GH_TOKEN: '${{ github.token }}' }
         run: .github/mkt/ciclo.sh previas
       - name: Bajar estado
