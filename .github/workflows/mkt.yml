@@ -4,7 +4,7 @@ name: Redes
 on:
   push:
     branches: [main]
-    paths: ['.github/mkt/semanas/**', '.github/mkt/*.py', '.github/workflows/mkt.yml']
+    paths: ['.github/mkt/semanas/**', '.github/mkt/*.py', '.github/mkt/*.sh', '.github/workflows/mkt.yml']
   schedule:
     - cron: '7 * * * *'     # publicar (cada hora)
     - cron: '20 10 * * *'   # métricas (5:20 a. m. Colombia)
@@ -13,6 +13,7 @@ on:
       tarea: { description: 'render | publicar | metricas | todo', default: 'todo' }
       simular: { description: 'publicar sin enviar (true/false)', default: 'false' }
 concurrency: { group: redes, cancel-in-progress: false }
+permissions: { contents: write }
 env:
   CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
   CLOUDFLARE_ACCOUNT_ID: 85f7056427611b1d4b8733ca46c69ba8
@@ -45,28 +46,14 @@ jobs:
       - name: Renderizar piezas nuevas o cambiadas
         if: steps.toca.outputs.render == 'true'
         env: { GEMINI_API_KEY: '${{ secrets.GEMINI_API_KEY }}' }
-        run: |
-          set -e
-          HOY=$(TZ=America/Bogota date +%Y-%m-%d)
-          for f in .github/mkt/semanas/*.json; do
-            case "$f" in *.aprobaciones.json) continue;; esac
-            SEM=$(basename "$f" .json)
-            FIN=$(python3 -c "import json,sys;p=json.load(open('$f'));print(max(x['fecha'] for x in p['piezas']))")
-            [ "$FIN" \< "$HOY" ] && { echo "$SEM ya pasó"; continue; }
-            rm -rf salida && mkdir salida
-            curl -sf "$PUBLICO/mkt/$SEM/render.json?v=$(date +%s)" -o previo.json || echo '{}' > previo.json
-            python3 .github/mkt/render.py "$f" --salida salida --previo previo.json
-            for a in salida/*; do
-              n=$(basename "$a")
-              case "$n" in *.mp4) ct=video/mp4;; *.jpg) ct=image/jpeg;; *.json) ct=application/json;; *) continue;; esac
-              cc="public, max-age=31536000"; [ "$n" = render.json ] && cc="no-store"
-              npx --yes wrangler@3 r2 object put "$R/mkt/$SEM/$n" --file "$a" --content-type "$ct" --cache-control "$cc" >/dev/null
-              echo "subido mkt/$SEM/$n"
-            done
-          done
+        run: .github/mkt/ciclo.sh render
+      - name: Vistas previas a la rama mkt-medios
+        if: steps.toca.outputs.render == 'true'
+        env: { GH_TOKEN: '${{ github.token }}' }
+        run: .github/mkt/ciclo.sh previas
       - name: Bajar estado
         if: steps.toca.outputs.publicar == 'true' || steps.toca.outputs.metricas == 'true'
-        run: curl -sf "$PUBLICO/mkt/estado.json?v=$(date +%s)" -o estado.json || echo '{}' > estado.json
+        run: .github/mkt/ciclo.sh bajar
       - name: Publicar aprobadas
         if: steps.toca.outputs.publicar == 'true'
         env:
@@ -74,10 +61,8 @@ jobs:
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
-        run: |
-          S=""; [ "${{ github.event.inputs.simular }}" = true ] && S="--simular"
-          python3 .github/mkt/publicar.py --estado estado.json $S \
-            --subir "npx --yes wrangler@3 r2 object put $R/mkt/estado.json --file estado.json --content-type application/json --cache-control no-store >/dev/null"
+          SIMULAR: ${{ github.event.inputs.simular }}
+        run: .github/mkt/ciclo.sh publicar
       - name: Métricas
         if: steps.toca.outputs.metricas == 'true'
         env:
@@ -85,7 +70,4 @@ jobs:
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
-        run: |
-          python3 .github/mkt/metricas.py --estado estado.json --salida redes.json
-          npx --yes wrangler@3 r2 object put "$R/datos/redes.txt" --file redes.json --content-type "text/plain; charset=utf-8" --cache-control no-store >/dev/null
-          echo "subido datos/redes.txt"
+        run: .github/mkt/ciclo.sh metricas

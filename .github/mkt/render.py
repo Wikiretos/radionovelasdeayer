@@ -326,6 +326,9 @@ def video(p, voz, subs, cap_cta, tmp, destino):
          "-map", "[v]", "-map", "2:a", "-t", f"{total:.2f}", "-r", str(FPS),
          "-c:v", "libx264", "-preset", "medium", "-crf", "21", "-profile:v", "high", "-pix_fmt", "yuv420p",
          "-c:a", "copy", "-movflags", "+faststart", str(destino / f"{p['id']}.mp4")])
+    # vista previa liviana para la página de aprobación (540×960)
+    run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(destino / f"{p['id']}.mp4"), "-vf", "scale=540:960", "-c:v", "libx264",
+         "-preset", "veryfast", "-crf", "30", "-c:a", "aac", "-b:a", "64k", "-movflags", "+faststart", str(destino / f"{p['id']}-prev.mp4")])
     # portada: fotograma a los 1,2 s
     run(["ffmpeg", "-y", "-loglevel", "error", "-ss", "1.2", "-i", str(destino / f"{p['id']}.mp4"), "-frames:v", "1", "-q:v", "3",
          str(destino / f"{p['id']}.jpg")])
@@ -392,7 +395,7 @@ def main():
             continue
         h = huella(p)
         pv = previo.get(p["id"], {})
-        if pv.get("huella") == h and not str(pv.get("error", "")).startswith("falta "):  # falta de secreto sí se reintenta
+        if pv.get("huella") == h and not str(pv.get("error", "")).startswith("falta ") and (pv.get("vista_previa") or not pv.get("ok")):  # falta de secreto sí se reintenta
             resultado["piezas"][p["id"]] = previo[p["id"]]
             continue
         nuevas += 1
@@ -405,14 +408,14 @@ def main():
                 if p["tipo"] == "fragmento":
                     voz, subs, cap = audio_fragmento(p, tmp)
                     dur = video(p, voz, subs, cap, tmp, destino)
-                    r = {"ok": True, "video": f"{p['id']}.mp4", "portada": f"{p['id']}.jpg", "segundos": dur}
+                    r = {"ok": True, "video": f"{p['id']}.mp4", "portada": f"{p['id']}.jpg", "vista_previa": f"{p['id']}-prev.mp4", "segundos": dur}
                 elif p["tipo"] == "escena":
                     voz, subs, cap, tokens = audio_escena(p, tmp, a.sin_tts)
                     dur = video(p, voz, subs, cap, tmp, destino)
-                    r = {"ok": True, "video": f"{p['id']}.mp4", "portada": f"{p['id']}.jpg", "segundos": dur,
+                    r = {"ok": True, "video": f"{p['id']}.mp4", "portada": f"{p['id']}.jpg", "vista_previa": f"{p['id']}-prev.mp4", "segundos": dur,
                          "tts_tokens_salida": tokens, "usd_aprox": round(tokens * 20 / 1e6, 4)}
                 elif p["tipo"] == "carrusel":
-                    r = {"ok": True, "imagenes": carrusel(p, destino)}
+                    imgs = carrusel(p, destino); r = {"ok": True, "imagenes": imgs, "vista_previa": imgs[0]}
                 else:
                     raise ErrorPieza(f"tipo desconocido {p['tipo']}")
         except ErrorPieza as e:
