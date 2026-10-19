@@ -1,0 +1,83 @@
+{
+ "semana": "2026-W43",
+ "generado": "2026-10-19T10:54:41Z",
+ "piezas": {
+  "w43-01": {
+   "ok": true,
+   "video": "w43-01.mp4",
+   "portada": "w43-01.jpg",
+   "vista_previa": "w43-01-prev.mp4",
+   "segundos": 55.0,
+   "usd_aprox": 0.0504,
+   "huella": "b7d4eedd97c7"
+  },
+  "w43-07": {
+   "ok": true,
+   "video": "w43-07.mp4",
+   "portada": "w43-07.jpg",
+   "vista_previa": "w43-07-prev.mp4",
+   "segundos": 55.0,
+   "usd_aprox": 0.0,
+   "huella": "7f93a057c737"
+  },
+  "w43-02": {
+   "ok": true,
+   "video": "w43-02.mp4",
+   "portada": "w43-02.jpg",
+   "vista_previa": "w43-02-prev.mp4",
+   "segundos": 56.8,
+   "usd_aprox": 0.0504,
+   "huella": "c82e971d22a5"
+  },
+  "w43-03": {
+   "ok": true,
+   "imagenes": [
+    "w43-03-1.jpg",
+    "w43-03-2.jpg",
+    "w43-03-3.jpg",
+    "w43-03-4.jpg"
+   ],
+   "vista_previa": "w43-03-1.jpg",
+   "usd_aprox": 0.0504,
+   "huella": "d355aa03f8db"
+  },
+  "w43-04": {
+   "ok": true,
+   "video": "w43-04.mp4",
+   "portada": "w43-04.jpg",
+   "vista_previa": "w43-04-prev.mp4",
+   "segundos": 54.9,
+   "usd_aprox": 0.0504,
+   "huella": "e54ba4d89255"
+  },
+  "w43-05": {
+   "ok": true,
+   "video": "w43-05.mp4",
+   "portada": "w43-05.jpg",
+   "vista_previa": "w43-05-prev.mp4",
+   "segundos": 38.2,
+   "tts_tokens_salida": 862,
+   "usd_aprox": 0.0676,
+   "huella": "fcfdfac0adc8"
+  },
+  "w43-06": {
+   "ok": true,
+   "video": "w43-06.mp4",
+   "portada": "w43-06.jpg",
+   "vista_previa": "w43-06-prev.mp4",
+   "segundos": 41.1,
+   "tts_tokens_salida": 936,
+   "usd_aprox": 0.0691,
+   "huella": "c729a50a5ac1"
+  },
+  "w43-08": {
+   "ok": true,
+   "video": "w43-08.mp4",
+   "portada": "w43-08.jpg",
+   "vista_previa": "w43-08-prev.mp4",
+   "segundos": 56.8,
+   "usd_aprox": 0.0,
+   "huella": "dd125a3a3b76"
+  }
+ }
+}
