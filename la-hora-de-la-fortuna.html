@@ -217,6 +217,8 @@ details[open] .chev::after{transform:rotate(40deg)}
 .pie .cols b{display:block;font-weight:600;margin-bottom:6px}
 .pie .cols li{color:var(--papel-muted)}
 .pie .cols a{color:var(--papel-ink);text-underline-offset:4px;display:inline-flex;align-items:center;min-height:64px}
+.pie .legal{display:flex;flex-wrap:wrap;column-gap:18px;margin-top:16px;font-size:var(--s-small)}
+.pie .legal a{color:var(--papel-ink);text-underline-offset:4px;display:inline-flex;align-items:center;min-height:64px}
 .palabra{display:grid;gap:6px;padding-top:15svh}
 .palabra svg{width:100%;height:auto;display:block}
 .palabra text{font-family:var(--display);fill:var(--papel-ink);text-transform:uppercase}
@@ -386,7 +388,7 @@ details[open] .chev::after{transform:rotate(40deg)}
     <div><b>Horario</b><ul><li>Un capítulo nuevo cada mañana a las 6:00 a. m., hora de Colombia.</li></ul></div>
     <div><b>Compartir</b><ul><li><a id="wa3" href="#" target="_blank" rel="noopener">Mandar el capítulo 1 por WhatsApp</a></li></ul></div>
   </div>
-  <div></div>
+  <div><ul class="legal" aria-label="Sobre el sitio"><li><a href="/privacidad" data-interno>Privacidad</a></li><li><a href="/terminos" data-interno>Términos</a></li><li><a href="/eliminacion-datos" data-interno>Borrar datos</a></li></ul></div>
   <div class="palabra" aria-label="Radionovelas de ayer">
     <svg class="ancha" viewBox="0 0 1000 118" aria-hidden="true"><text x="500" y="108" text-anchor="middle" font-size="148">Radionovelas de ayer</text></svg>
     <svg class="partida" viewBox="0 0 1000 178" aria-hidden="true"><text x="500" y="166" text-anchor="middle" font-size="224">Radionovelas</text></svg>
@@ -402,7 +404,7 @@ window.CFG={"prod": true, "base": "https://radionovelasdeayer.com/", "caps": ["E
 const ICO={"wa": "<svg class=\"ico\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.2 14.8l-.3-.2-2.6.7.7-2.5-.2-.3A8 8 0 0 1 12 4zm-3 4.5c-.2 0-.5 0-.8.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.2 5 4.4 2.5 1 3 .8 3.5.7.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4l-.5-.3-1.8-.9c-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6.3-.5v-.5l-.8-2c-.2-.5-.4-.4-.6-.4z\"/></svg>", "play": "<svg class=\"ico\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M7 4.5v15a1 1 0 0 0 1.5.9l12-7.5a1 1 0 0 0 0-1.8l-12-7.5A1 1 0 0 0 7 4.5z\"/></svg>", "check": "<svg class=\"ico\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M4 12.5l5 5L20 6.5\"/></svg>", "reloj": "<svg class=\"ico\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"9\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\"/><path fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" d=\"M12 7v5.5l3.5 2\"/></svg>", "cerrado": "<svg class=\"ico\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"5\" y=\"10\" width=\"14\" height=\"10\" rx=\"2\" fill=\"currentColor\"/><path d=\"M8 10V7a4 4 0 0 1 8 0v3\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\"/></svg>", "campana": "<svg class=\"ico\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M12 2a1.5 1.5 0 0 1 1.5 1.5V4a6 6 0 0 1 4.5 5.8V14l2 2.5V18H4v-1.5L6 14V9.8A6 6 0 0 1 10.5 4v-.5A1.5 1.5 0 0 1 12 2zm-2.5 17h5a2.5 2.5 0 0 1-5 0z\"/></svg>", "pausa": "<svg class=\"ico\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"5\" y=\"4\" width=\"5\" height=\"16\" rx=\"1\" fill=\"currentColor\"/><rect x=\"14\" y=\"4\" width=\"5\" height=\"16\" rx=\"1\" fill=\"currentColor\"/></svg>", "repetir": "<svg class=\"ico\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M4 12a8 8 0 0 1 13.7-5.6L20 8.5M20 4v4.5h-4.5M20 12a8 8 0 0 1-13.7 5.6L4 15.5M4 20v-4.5h4.5\"/></svg>"};
 // ===== Medición =====
 // IDs vacíos = no se carga nada. En el sitio real: META_PIXEL_ID y uno de GA4_ID / PLAUSIBLE_DOMAIN.
-const MEDICION = {"META_PIXEL_ID": "", "GA4_ID": "G-QPL2GQV6XG", "PLAUSIBLE_DOMAIN": ""};
+const MEDICION = {"META_PIXEL_ID": "1634036255114486", "GA4_ID": "G-QPL2GQV6XG", "PLAUSIBLE_DOMAIN": ""};
 const $ = id => document.getElementById(id);
 const guardar = (k,v)=>{try{localStorage.setItem(k,v)}catch(e){}};
 const leer = k=>{try{return localStorage.getItem(k)}catch(e){return null}};
