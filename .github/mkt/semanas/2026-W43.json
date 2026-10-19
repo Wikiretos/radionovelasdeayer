@@ -1,7 +1,7 @@
 {
  "semana": "2026-W43",
  "creado": "2026-10-18T19:30:00-05:00",
- "hipotesis": "Piloto v3: ilustraciones nuevas en el estilo de la casa, datos curiosos con fuente, hashtags con marca + nicho + tendencia, escenas con las reglas del guionista y 2 primeros A/B: (1) ¿qué gancho retiene más en el mismo clip? (2) ¿la ilustración nueva rinde más que la imagen de catálogo?",
+ "hipotesis": "Piloto v3 (arranca el domingo 18 por ser la primera semana): ilustraciones nuevas en el estilo de la casa, datos curiosos con fuente, hashtags con marca + nicho + tendencia, escenas con las reglas del guionista y 2 primeros A/B: (1) ¿qué gancho retiene más en el mismo clip? (2) ¿la ilustración nueva rinde más que la imagen de catálogo?",
  "tendencias": [
   {
    "tema": "Búsquedas en tendencia en Colombia (7 días): dominan política y fútbol",
@@ -24,7 +24,7 @@
    "id": "w43-01",
    "tipo": "fragmento",
    "familia": "dramatico",
-   "fecha": "2026-10-20",
+   "fecha": "2026-10-19",
    "hora": "07:00",
    "plataformas": [
     "fb",
@@ -45,8 +45,8 @@
    "gancho": "Dos años mandando un sobre cada miércoles…",
    "fragmento": {
     "capitulo": 1,
-    "inicio": 902.5,
-    "fin": 949.9
+    "inicio": 922.3,
+    "fin": 973.8
    },
    "texto": {
     "fb": "Dos años mandando un sobre cada miércoles al concurso de la radio… y esta noche dijeron su nombre. 📻\n\n¿Usted qué habría hecho con cincuenta mil pesos de 1958?\n\nEscuche el capítulo 1 completo, gratis: https://radionovelasdeayer.com/cap-1?f=fb",
@@ -56,7 +56,7 @@
     "tiktok": "Dos años mandando un sobre cada miércoles… y esta noche dijeron su nombre 📻 Capítulo 1 gratis: enlace en el perfil. #radionovelasdeayer #radionovela #nostalgia #colombia",
     "comentario": "El capítulo 1 completo, gratis, aquí 👉 https://radionovelasdeayer.com/cap-1?f=fb"
    },
-   "por_que": "Clímax del cap. 1 (el premio): el gancho dramático más claro de la serie.",
+   "por_que": "Clímax del cap. 1 (el premio), recortado en frases completas: el gancho dramático más claro sin revelar nada de lo que viene.",
    "ab": {
     "experimento": "w43-gancho",
     "variante": "A",
@@ -70,7 +70,7 @@
    "id": "w43-07",
    "tipo": "fragmento",
    "familia": "dramatico",
-   "fecha": "2026-10-21",
+   "fecha": "2026-10-20",
    "hora": "07:00",
    "plataformas": [
     "fb",
@@ -81,8 +81,8 @@
    "gancho": "Esta noche dijeron su nombre por la radio",
    "fragmento": {
     "capitulo": 1,
-    "inicio": 902.5,
-    "fin": 949.9
+    "inicio": 922.3,
+    "fin": 973.8
    },
    "texto": {
     "fb": "Dos años mandando un sobre cada miércoles al concurso de la radio… y esta noche dijeron su nombre. 📻\n\n¿Usted qué habría hecho con cincuenta mil pesos de 1958?\n\nEscuche el capítulo 1 completo, gratis: https://radionovelasdeayer.com/cap-1?f=fb",
@@ -101,14 +101,13 @@
     "hipotesis": "Un gancho de espera ('dos años mandando un sobre') retiene más que uno de resultado."
    },
    "ilustracion_de": "w43-01",
-   "costo_estimado": 0.0,
-   "reintento": 1
+   "costo_estimado": 0.0
   },
   {
    "id": "w43-02",
    "tipo": "fragmento",
    "familia": "costumbre",
-   "fecha": "2026-10-20",
+   "fecha": "2026-10-19",
    "hora": "12:30",
    "plataformas": [
     "fb",
@@ -117,30 +116,30 @@
     "tt"
    ],
    "ilustracion": {
-    "escena": "En un rancho humilde con catre y baúl con candado, Saturnino, envuelto en una ruana vieja y con el sombrero de Eutimio, ensaya hacerse el anciano, encorvado y nervioso, mientras Obdulia lo dirige con el dedo levantado y Carmenza los mira preocupada desde la puerta.",
+    "escena": "En la tienda del pueblo, de tarde, misiá Obdulia se inclina sobre el mostrador con cara de chisme mientras compra chocolate y pan; Carmenza, detrás del mostrador, la escucha con paciencia; Saturnino entra por la puerta con una sonrisa burlona.",
     "personajes": [
-     "saturnino",
      "obdulia",
-     "carmenza"
+     "carmenza",
+     "saturnino"
     ],
-    "lugar": "rancho de Eutimio",
+    "lugar": "tienda",
     "momento": "tarde"
    },
-   "gancho": "Lo pusieron a ensayar para hacerse pasar por el muerto",
+   "gancho": "En todo pueblo había una que se enteraba de todo",
    "fragmento": {
-    "capitulo": 3,
-    "inicio": 633.4,
-    "fin": 669.3
+    "capitulo": 1,
+    "inicio": 360.0,
+    "fin": 413.3
    },
    "texto": {
-    "fb": "—¿Y si me da la risa? A mí con los nervios me da la risa. En los velorios me ha pasado. 😅\n\n¿En su pueblo también había un Saturnino?\n\nLa Hora de la Fortuna, desde el capítulo 1, gratis: https://radionovelasdeayer.com/cap-1?f=fb",
-    "ig": "—¿Y si me da la risa? A mí con los nervios me da la risa. En los velorios me ha pasado. 😅\n\n¿En su pueblo también había un Saturnino?\n\nDesde el capítulo 1, gratis: enlace en el perfil.\n\n#radionovelasdeayer #radionovela #humor #nostalgia",
-    "yt_titulo": "El sacristán que tenía que hacerse pasar por el muerto 😅 #radionovela #Shorts",
-    "yt_desc": "La Hora de la Fortuna, capítulo 3. Empiece desde el capítulo 1, gratis: https://radionovelasdeayer.com/cap-1?f=yt",
-    "tiktok": "¿En su pueblo también había un Saturnino? 😅 Desde el capítulo 1, gratis: enlace en el perfil. #radionovelasdeayer #radionovela #humor #nostalgia",
-    "comentario": "Empiece desde el capítulo 1, gratis 👉 https://radionovelasdeayer.com/cap-1?f=fb"
+    "fb": "—¿Es verdad que esta mañana estuvo aquí Eutimio, otra vez con lo del sobre? 👀\n\n¿En su pueblo quién era la que se enteraba de todo?\n\nLa Hora de la Fortuna, desde el capítulo 1, gratis: https://radionovelasdeayer.com/cap-1?f=fb",
+    "ig": "—¿Es verdad que esta mañana estuvo aquí Eutimio, otra vez con lo del sobre? 👀\n\n¿En su pueblo quién era la que se enteraba de todo?\n\nDesde el capítulo 1, gratis: enlace en el perfil.\n\n#radionovelasdeayer #radionovela #humor #nostalgia",
+    "yt_titulo": "La vecina que se enteraba de todo en la tienda del pueblo 👀 #radionovela #Shorts",
+    "yt_desc": "La Hora de la Fortuna, capítulo 1. Escúchelo completo y gratis: https://radionovelasdeayer.com/cap-1?f=yt",
+    "tiktok": "¿En su pueblo quién era la que se enteraba de todo? 👀 Capítulo 1 gratis: enlace en el perfil. #radionovelasdeayer #radionovela #humor #nostalgia",
+    "comentario": "El capítulo 1 completo, gratis 👉 https://radionovelasdeayer.com/cap-1?f=fb"
    },
-   "por_que": "Humor costumbrista: la familia que el plan espera que más se comparta.",
+   "por_que": "Humor costumbrista del cap. 1 (el chisme de la tienda): se identifica cualquiera que creció en un pueblo y no revela nada de la trama.",
    "ab": {
     "experimento": "w43-imagen",
     "variante": "A",
@@ -154,8 +153,8 @@
    "id": "w43-03",
    "tipo": "carrusel",
    "familia": "dato",
-   "fecha": "2026-10-20",
-   "hora": "17:00",
+   "fecha": "2026-10-18",
+   "hora": "22:00",
    "plataformas": [
     "fb",
     "ig"
@@ -199,7 +198,7 @@
    "id": "w43-04",
    "tipo": "fragmento",
    "familia": "dramatico",
-   "fecha": "2026-10-21",
+   "fecha": "2026-10-20",
    "hora": "17:00",
    "plataformas": [
     "fb",
@@ -207,34 +206,34 @@
     "tt"
    ],
    "ilustracion": {
-    "escena": "En la trastienda, a la luz de una vela, Obdulia se inclina hacia Carmenza con un secreto en la boca; Carmenza sostiene una envoltura de chocolate y la mira con duda.",
+    "escena": "En la tienda, de mañana, Eutimio, flaco y con la ruana gastada, escribe despacio su nombre en un sobre sobre el mostrador; Carmenza, al otro lado, lo mira con ternura y curiosidad; afuera se ve la neblina del páramo.",
     "personajes": [
-     "obdulia",
+     "eutimio",
      "carmenza"
     ],
-    "lugar": "trastienda",
-    "momento": "noche"
+    "lugar": "tienda",
+    "momento": "mañana"
    },
-   "gancho": "¿Y si el delegado nunca le vio la cara?",
+   "gancho": "¿A quién quería ir a buscar a la capital?",
    "fragmento": {
-    "capitulo": 2,
-    "inicio": 525.8,
-    "fin": 576.1
+    "capitulo": 1,
+    "inicio": 240.0,
+    "fin": 291.4
    },
    "texto": {
-    "fb": "El ganador murió de la dicha… y en diez días llega el delegado con la plata. ¿Alguna vez le vio la cara? 🤫\n\n¿Usted le seguiría la idea a misiá Obdulia?\n\nDesde el capítulo 1, gratis: https://radionovelasdeayer.com/cap-1?f=fb",
-    "ig": "El ganador murió de la dicha… y en diez días llega el delegado con la plata. ¿Alguna vez le vio la cara? 🤫\n\n¿Usted le seguiría la idea a misiá Obdulia?\n\nDesde el capítulo 1, gratis: enlace en el perfil.\n\n#radionovelasdeayer #radionovela #nostalgia #suspenso",
-    "tiktok": "¿Usted le seguiría la idea a misiá Obdulia? 🤫 Desde el capítulo 1, gratis: enlace en el perfil. #radionovelasdeayer #radionovela #nostalgia #suspenso",
-    "comentario": "Desde el capítulo 1, gratis 👉 https://radionovelasdeayer.com/cap-1?f=fb"
+    "fb": "—¿Usted qué haría si se ganara esos cincuenta mil pesos?\n—Me iría para la capital… a buscar a alguien. 📻\n\n¿A quién cree usted que quiere buscar don Eutimio?\n\nEl capítulo 1 completo, gratis: https://radionovelasdeayer.com/cap-1?f=fb",
+    "ig": "—¿Usted qué haría si se ganara esos cincuenta mil pesos?\n—Me iría para la capital… a buscar a alguien. 📻\n\n¿A quién cree usted que quiere buscar don Eutimio?\n\nCapítulo 1 completo y gratis: enlace en el perfil.\n\n#radionovelasdeayer #radionovela #nostalgia #misterio",
+    "tiktok": "¿A quién cree usted que quiere buscar don Eutimio? 📻 Capítulo 1 gratis: enlace en el perfil. #radionovelasdeayer #radionovela #nostalgia #misterio",
+    "comentario": "El capítulo 1 completo, gratis 👉 https://radionovelasdeayer.com/cap-1?f=fb"
    },
-   "por_que": "La premisa de la serie en 50 s: el plan del pueblo.",
+   "por_que": "Deja la pregunta que el propio cap. 1 plantea (¿a quién va a buscar?) sin contestarla.",
    "costo_estimado": 0.0504
   },
   {
    "id": "w43-05",
    "tipo": "escena",
    "familia": "costumbre",
-   "fecha": "2026-10-21",
+   "fecha": "2026-10-20",
    "hora": "12:30",
    "plataformas": [
     "fb",
@@ -304,7 +303,7 @@
    "id": "w43-06",
    "tipo": "escena",
    "familia": "dato",
-   "fecha": "2026-10-21",
+   "fecha": "2026-10-19",
    "hora": "19:30",
    "plataformas": [
     "fb",
@@ -364,7 +363,7 @@
    "id": "w43-08",
    "tipo": "fragmento",
    "familia": "costumbre",
-   "fecha": "2026-10-22",
+   "fecha": "2026-10-21",
    "hora": "12:30",
    "plataformas": [
     "fb",
@@ -372,19 +371,19 @@
     "yt",
     "tt"
    ],
-   "gancho": "Lo pusieron a ensayar para hacerse pasar por el muerto",
+   "gancho": "En todo pueblo había una que se enteraba de todo",
    "fragmento": {
-    "capitulo": 3,
-    "inicio": 633.4,
-    "fin": 669.3
+    "capitulo": 1,
+    "inicio": 360.0,
+    "fin": 413.3
    },
    "texto": {
-    "fb": "—¿Y si me da la risa? A mí con los nervios me da la risa. En los velorios me ha pasado. 😅\n\n¿En su pueblo también había un Saturnino?\n\nLa Hora de la Fortuna, desde el capítulo 1, gratis: https://radionovelasdeayer.com/cap-1?f=fb",
-    "ig": "—¿Y si me da la risa? A mí con los nervios me da la risa. En los velorios me ha pasado. 😅\n\n¿En su pueblo también había un Saturnino?\n\nDesde el capítulo 1, gratis: enlace en el perfil.\n\n#radionovelasdeayer #radionovela #humor #nostalgia",
-    "yt_titulo": "El sacristán que tenía que hacerse pasar por el muerto 😅 #radionovela #Shorts",
-    "yt_desc": "La Hora de la Fortuna, capítulo 3. Empiece desde el capítulo 1, gratis: https://radionovelasdeayer.com/cap-1?f=yt",
-    "tiktok": "¿En su pueblo también había un Saturnino? 😅 Desde el capítulo 1, gratis: enlace en el perfil. #radionovelasdeayer #radionovela #humor #nostalgia",
-    "comentario": "Empiece desde el capítulo 1, gratis 👉 https://radionovelasdeayer.com/cap-1?f=fb"
+    "fb": "—¿Es verdad que esta mañana estuvo aquí Eutimio, otra vez con lo del sobre? 👀\n\n¿En su pueblo quién era la que se enteraba de todo?\n\nLa Hora de la Fortuna, desde el capítulo 1, gratis: https://radionovelasdeayer.com/cap-1?f=fb",
+    "ig": "—¿Es verdad que esta mañana estuvo aquí Eutimio, otra vez con lo del sobre? 👀\n\n¿En su pueblo quién era la que se enteraba de todo?\n\nDesde el capítulo 1, gratis: enlace en el perfil.\n\n#radionovelasdeayer #radionovela #humor #nostalgia",
+    "yt_titulo": "La vecina que se enteraba de todo en la tienda del pueblo 👀 #radionovela #Shorts",
+    "yt_desc": "La Hora de la Fortuna, capítulo 1. Escúchelo completo y gratis: https://radionovelasdeayer.com/cap-1?f=yt",
+    "tiktok": "¿En su pueblo quién era la que se enteraba de todo? 👀 Capítulo 1 gratis: enlace en el perfil. #radionovelasdeayer #radionovela #humor #nostalgia",
+    "comentario": "El capítulo 1 completo, gratis 👉 https://radionovelasdeayer.com/cap-1?f=fb"
    },
    "por_que": "B del A/B de imagen: mismo clip y textos, con el cartel de catálogo. Mide si vale la pena pagar ilustraciones.",
    "ab": {
@@ -435,5 +434,6 @@
    "que_aprendemos": "Nuestra premisa (un muerto que el pueblo finge vivo) es humor sobre la muerte con ternura: empujar los clips de Saturnino haciéndose el muerto en TikTok."
   }
  ],
- "costo_estimado_semana": 0.347
+ "costo_estimado_semana": 0.347,
+ "desde": "2026-10-18"
 }

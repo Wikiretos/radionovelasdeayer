@@ -15,7 +15,7 @@ Esquema (ver PLAN.md):
                 "por_que": "razón de esta pieza (dato o hipótesis)" } ] }
 """
 import argparse, json, re, sys
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -92,7 +92,9 @@ def main():
             f = date.fromisoformat(p["fecha"]); datetime.strptime(p["hora"], "%H:%M")
             if not re.fullmatch(r"\d{2}:\d{2}", p["hora"]): raise ValueError
             iso = f.isocalendar()
-            if f"{iso[0]}-W{iso[1]:02d}" != plan.get("semana"): e("fecha fuera de la semana del plan")
+            lunes = date.fromisocalendar(int(plan["semana"][:4]), int(plan["semana"][-2:]), 1)
+            adelanto = bool(plan.get("desde")) and date.fromisoformat(plan["desde"]) <= f < lunes  # arranque antes del lunes, con OK de Andrés
+            if f"{iso[0]}-W{iso[1]:02d}" != plan.get("semana") and not adelanto: e("fecha fuera de la semana del plan")
         except Exception:
             e("fecha/hora inválidas")
         pls = set(p.get("plataformas", []))
