@@ -101,7 +101,8 @@
     "hipotesis": "Un gancho de espera ('dos años mandando un sobre') retiene más que uno de resultado."
    },
    "ilustracion_de": "w43-01",
-   "costo_estimado": 0.0
+   "costo_estimado": 0.0,
+   "reintento": 1
   },
   {
    "id": "w43-02",

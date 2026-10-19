@@ -455,12 +455,14 @@ def main():
     previo = json.loads(Path(a.previo).read_text()).get("piezas", {}) if a.previo and Path(a.previo).exists() else {}
     resultado = {"semana": plan["semana"], "generado": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "piezas": {}}
     nuevas = 0
+    renderizadas = set()
     for p in plan["piezas"]:
         if a.solo and p["id"] != a.solo:
             continue
         h = huella(p)
         pv = previo.get(p["id"], {})
-        if pv.get("huella") == h and not str(pv.get("error", "")).startswith("falta ") and (pv.get("vista_previa") or not pv.get("ok")):  # falta de secreto sí se reintenta
+        depende = p.get("ilustracion_de") in renderizadas  # su imagen base cambió en esta corrida
+        if not depende and pv.get("huella") == h and not str(pv.get("error", "")).startswith("falta ") and (pv.get("vista_previa") or not pv.get("ok")):  # falta de secreto sí se reintenta
             resultado["piezas"][p["id"]] = previo[p["id"]]
             continue
         nuevas += 1
@@ -489,6 +491,8 @@ def main():
             log("   ERROR:", e)
             r = {"ok": False, "error": f"{'' if isinstance(e, ErrorPieza) else type(e).__name__ + ': '}{e}"[:600]}
         r["huella"] = h
+        if r.get("ok"):
+            renderizadas.add(p["id"])
         resultado["piezas"][p["id"]] = r
     (destino / "render.json").write_text(json.dumps(resultado, ensure_ascii=False, indent=1))
     malas = [k for k, v in resultado["piezas"].items() if not v["ok"]]
