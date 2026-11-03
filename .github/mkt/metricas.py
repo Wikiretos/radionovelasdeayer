@@ -33,12 +33,21 @@ def valor(d):
     return v if v is not None else d.get("total_value", {}).get("value")
 
 
+def comentarios_ajenos(r):
+    """Comentarios que no son de la página (el publicador deja uno con el enlace al capítulo en cada reel)."""
+    propios = {str(CONFIG["meta_page_id"]), str(CONFIG.get("meta_ig_user_id", ""))}
+    datos = (r.get("comments") or {}).get("data")
+    if datos is None:
+        return 0 if "comments" not in r else r["comments"].get("summary", {}).get("total_count", 0)
+    return sum(1 for c in datos if str((c.get("from") or {}).get("id", "")) not in propios)
+
+
 def fb(reg, tipo, token, err):
     m, oid = {}, reg["id"]
     if tipo == "carrusel":
         try:
-            r = http("GET", f"{G}/{oid}?fields=shares,comments.summary(true).limit(0),reactions.summary(true).limit(0)&access_token={token}")
-            m.update(compartidos=(r.get("shares") or {}).get("count", 0), comentarios=r["comments"]["summary"]["total_count"],
+            r = http("GET", f"{G}/{oid}?fields=shares,comments.limit(100){{from}},reactions.summary(true).limit(0)&access_token={token}")
+            m.update(compartidos=(r.get("shares") or {}).get("count", 0), comentarios=comentarios_ajenos(r),
                      reacciones=r["reactions"]["summary"]["total_count"])
         except (ErrorPieza, KeyError) as e:
             err.append(f"fb campos: {e}")
@@ -50,8 +59,8 @@ def fb(reg, tipo, token, err):
                 err.append(f"fb {k}: {str(e)[:160]}")
     else:
         try:
-            r = http("GET", f"{G}/{oid}?fields=comments.summary(true).limit(0),likes.summary(true).limit(0),length&access_token={token}")
-            m.update(comentarios=r["comments"]["summary"]["total_count"], me_gusta=r["likes"]["summary"]["total_count"], duracion=r.get("length"))
+            r = http("GET", f"{G}/{oid}?fields=comments.limit(100){{from}},likes.summary(true).limit(0),length&access_token={token}")
+            m.update(comentarios=comentarios_ajenos(r), me_gusta=r["likes"]["summary"]["total_count"], duracion=r.get("length"))
         except (ErrorPieza, KeyError) as e:
             err.append(f"fb campos: {e}")
         try:
