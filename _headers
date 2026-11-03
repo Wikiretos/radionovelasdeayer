@@ -14,3 +14,14 @@
   X-Robots-Tag: noindex
 /sitemap.xml
   Cache-Control: public, max-age=300
+/favicon.ico
+  Cache-Control: public, max-age=31536000, immutable
+/icon-*.png
+  Cache-Control: public, max-age=31536000, immutable
+/logo.png
+  Cache-Control: public, max-age=31536000, immutable
+/apple-touch-icon.png
+  Cache-Control: public, max-age=31536000, immutable
+/manifest.webmanifest
+  Content-Type: application/manifest+json
+  Cache-Control: public, max-age=86400

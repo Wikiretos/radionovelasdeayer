@@ -1,0 +1,20 @@
+{
+ "name": "Radionovelas de ayer",
+ "short_name": "Radionovelas de ayer",
+ "start_url": "/",
+ "display": "standalone",
+ "background_color": "#0e0803",
+ "theme_color": "#0e0803",
+ "icons": [
+  {
+   "src": "https://radionovelasdeayer.com/icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "https://radionovelasdeayer.com/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  }
+ ]
+}
