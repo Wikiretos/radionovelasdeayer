@@ -1,0 +1,1061 @@
+{
+ "semana": "2026-W45",
+ "creado": "2026-11-03T12:00:00-05:00",
+ "hipotesis": "Semana corta (miércoles 4 a domingo 8), armada a mano porque el creador del jueves no subió plan. Repite lo que ganó en W43: costumbre (181 vistas promedio contra 92 de dramático) e ilustración nueva (ganó al catálogo en FB y YT). Facebook concentra el alcance (237 promedio); Instagram casi no mueve (6). Pruebas: (1) ilustración nueva contra catálogo, segunda vuelta; (2) gancho en segunda persona ('¿Y si usted estuviera…?', como los Shorts de nostalgia más vistos en Colombia) contra uno descriptivo. Todavía no llega ningún clic de redes al sitio: cada texto cierra con una pregunta de memoria y enlace al cap. 1.",
+ "tendencias": [
+  {
+   "tema": "Búsquedas en tendencia en Colombia (7 días): fútbol, sismos, elecciones de Estados Unidos, política y Noche de brujas",
+   "fuente": "https://trends.google.com/trending?geo=CO&hours=168",
+   "uso": "Descartado: política, tragedias y fútbol no van; Noche de brujas ya pasó."
+  },
+  {
+   "tema": "Shorts de nostalgia en segunda persona ('¿Y si fueras a… en los 2000 en Colombia?'): 61 mil y 33 mil vistas en 30 días",
+   "fuente": "https://audio.radionovelasdeayer.com/datos/competencia.txt",
+   "uso": "A/B w45-gancho-usted: gancho '¿Y si usted estuviera en esta tienda en 1958?'."
+  },
+  {
+   "tema": "Moda en Instagram de verse 'como en los años 80': estética de foto antigua",
+   "fuente": "https://www.publimetro.co/tecnologia/2026/09/07/por-que-se-puso-de-moda-verse-como-en-los-anos-80-en-instagram/",
+   "uso": "Carrusel w45-15 de retratos de época de los personajes."
+  },
+  {
+   "tema": "Historia de la radionovela en Colombia (Kalimán, Radio Continental, escucha en familia)",
+   "fuente": "https://radionacional.co/cultura/historia-colombiana/que-es-una-radionovela-historia-y-evolucion",
+   "uso": "Tres datos curiosos de la semana (w45-03, w45-11, w45-13)."
+  }
+ ],
+ "piezas": [
+  {
+   "id": "w45-01",
+   "tipo": "fragmento",
+   "familia": "personaje",
+   "fecha": "2026-11-04",
+   "hora": "07:00",
+   "plataformas": [
+    "fb",
+    "ig",
+    "yt",
+    "tt"
+   ],
+   "ilustracion": {
+    "escena": "Madrugada de neblina: don Eutimio, flaco y con la ruana gastada, se asoma con el sombrero en la mano a la puerta de la tienda; adentro, Carmenza, detrás del mostrador, le hace señas de que siga mientras sirve una taza de aguapanela humeante.",
+    "personajes": [
+     "eutimio",
+     "carmenza"
+    ],
+    "lugar": "tienda",
+    "momento": "madrugada"
+   },
+   "gancho": "«Amanecí, doña Carmenza, que ya es ganancia»",
+   "fragmento": {
+    "capitulo": 1,
+    "inicio": 109.83,
+    "fin": 143.77
+   },
+   "texto": {
+    "fb": "—¿Cómo amaneció, don Eutimio?\n—Amanecí, doña Carmenza, que ya es ganancia. 📻\n\n¿A quién le oía usted decir «amanecí, que ya es ganancia»?\n\nEscuche el capítulo 1 completo, gratis: https://radionovelasdeayer.com/cap-1?f=fb",
+    "ig": "—¿Cómo amaneció, don Eutimio?\n—Amanecí, doña Carmenza, que ya es ganancia. 📻\n\n¿A quién le oía usted decir «amanecí, que ya es ganancia»?\n\nCapítulo 1 completo y gratis: enlace en el perfil.\n\n#radionovelasdeayer #radionovela #nostalgia #abuelos",
+    "yt_titulo": "«Amanecí, que ya es ganancia»: así saludaba don Eutimio 📻 #radionovela #Shorts",
+    "yt_desc": "La Hora de la Fortuna, una radionovela de las de antes. Escúchela completa y gratis desde el capítulo 1: https://radionovelasdeayer.com/cap-1?f=yt",
+    "tiktok": "¿A quién le oía usted decir «amanecí, que ya es ganancia»? Capítulo 1 gratis: enlace en el perfil. #radionovelasdeayer #radionovela #nostalgia #abuelos",
+    "comentario": "El capítulo 1 completo, gratis 👉 https://radionovelasdeayer.com/cap-1?f=fb"
+   },
+   "por_que": "Costumbre ganó en W43 (181 vistas promedio). Presenta a Eutimio con una frase de abuelo que el público reconoce, sin tocar la trama.",
+   "costo_estimado": 0.0504
+  },
+  {
+   "id": "w45-02",
+   "tipo": "fragmento",
+   "familia": "costumbre",
+   "fecha": "2026-11-04",
+   "hora": "12:30",
+   "plataformas": [
+    "fb",
+    "ig",
+    "yt",
+    "tt"
+   ],
+   "ilustracion": {
+    "escena": "Primer plano del mostrador de la tienda: Carmenza anota con un lápiz en una libreta de fiados abierta, junto a una panela, un sobre con estampilla y una vela; al otro lado, don Eutimio, apenado, aprieta el sombrero contra el pecho.",
+    "personajes": [
+     "carmenza",
+     "eutimio"
+    ],
+    "lugar": "tienda",
+    "momento": "mañana"
+   },
+   "gancho": "Un peso con sesenta en la libreta de fiados",
+   "fragmento": {
+    "capitulo": 1,
+    "inicio": 144.27,
+    "fin": 191.07
+   },
+   "texto": {
+    "fb": "—Aquí en la libreta me debe un peso con cuarenta. Con el sobre y la estampilla, un peso con sesenta. 📒\n\n¿Usted se acuerda de la libreta de fiados de la tienda?\n\nEscuche el capítulo 1 completo, gratis: https://radionovelasdeayer.com/cap-1?f=fb",
+    "ig": "—Aquí en la libreta me debe un peso con cuarenta. Con el sobre y la estampilla, un peso con sesenta. 📒\n\n¿Usted se acuerda de la libreta de fiados de la tienda?\n\nCapítulo 1 completo y gratis: enlace en el perfil.\n\n#radionovelasdeayer #radionovela #nostalgia #tiendadebarrio",
+    "yt_titulo": "Así se fiaba en la tienda del pueblo 📒 #radionovela #Shorts",
+    "yt_desc": "La Hora de la Fortuna, una radionovela de las de antes. Escúchela completa y gratis desde el capítulo 1: https://radionovelasdeayer.com/cap-1?f=yt",
+    "tiktok": "¿Usted se acuerda de la libreta de fiados de la tienda? Capítulo 1 gratis: enlace en el perfil. #radionovelasdeayer #radionovela #nostalgia #colombia",
+    "comentario": "El capítulo 1 completo, gratis 👉 https://radionovelasdeayer.com/cap-1?f=fb"
+   },
+   "por_que": "A del A/B de ilustración: el fiado es el tema que más rindió (escena w43-05, 338 vistas en FB).",
+   "ab": {
+    "experimento": "w45-ilustracion",
+    "variable": "ilustracion",
+    "metrica": "vistas",
+    "hipotesis": "Segunda vuelta: la ilustración nueva de la escena retiene más que la imagen de catálogo (en W43 ganó la ilustración en FB y YT).",
+    "variante": "A"
+   },
+   "costo_estimado": 0.0504
+  },
+  {
+   "id": "w45-03",
+   "tipo": "carrusel",
+   "familia": "dato",
+   "fecha": "2026-11-04",
+   "hora": "17:00",
+   "plataformas": [
+    "fb",
+    "ig"
+   ],
+   "dato": "En 1965 el Circuito Radial Todelar adaptó los libretos mexicanos de la radionovela Kalimán; las 5:30 p. m. se volvieron la hora fija de los colombianos para ir a casa a escuchar la novela.",
+   "fuentes": [
+    "https://radionacional.co/cultura/historia-colombiana/kaliman-y-el-legado-de-las-radionovelas-en-la-radio-colombiana",
+    "https://radionacional.co/cultura/historia-colombiana/que-es-una-radionovela-historia-y-evolucion"
+   ],
+   "carrusel": {
+    "diapositivas": [
+     {
+      "ilustracion": {
+       "escena": "Atardecer en la calle empedrada de un pueblo de tierra fría de los años sesenta: un hombre con ruana y un niño de escuela caminan de prisa hacia una casa de tapia; por la ventana iluminada se ve un radio de tubos sobre una mesa; al fondo, el reloj de la torre de la iglesia.",
+       "lugar": "calle de pueblo",
+       "momento": "atardecer"
+      },
+      "titulo": "¿Por qué todos corrían a la casa a las 5:30?"
+     },
+     {
+      "titulo": "Llegó Kalimán",
+      "texto": "En 1965 la cadena Todelar adaptó los libretos mexicanos de la radionovela Kalimán."
+     },
+     {
+      "titulo": "Hora fija",
+      "texto": "Las 5:30 de la tarde se volvieron la hora fija de los colombianos para ir a casa a escuchar la novela."
+     },
+     {
+      "titulo": "Hoy sigue sonando así",
+      "texto": "La Hora de la Fortuna, una radionovela de las de antes.\nGratis en radionovelasdeayer.com"
+     }
+    ]
+   },
+   "texto": {
+    "fb": "¿Se acuerda de por qué todo el mundo corría a la casa a las 5:30 de la tarde? 📻 Desde 1965, esa era la hora de Kalimán.\n\n¿Usted dónde la oía y con quién?\n\nEscuche una radionovela de las de antes, gratis: https://radionovelasdeayer.com/cap-1?f=fb",
+    "ig": "¿Se acuerda de por qué todo el mundo corría a la casa a las 5:30 de la tarde? 📻 Desde 1965, esa era la hora de Kalimán.\n\n¿Usted dónde la oía y con quién?\n\nGratis: enlace en el perfil.\n\n#radionovelasdeayer #radionovela #nostalgia #kaliman"
+   },
+   "por_que": "Dato de época con fuente; Kalimán es el recuerdo de radio más compartido por el público de 55+.",
+   "costo_estimado": 0.0504
+  },
+  {
+   "id": "w45-04",
+   "tipo": "escena",
+   "familia": "costumbre",
+   "fecha": "2026-11-04",
+   "hora": "19:30",
+   "plataformas": [
+    "fb",
+    "ig",
+    "yt",
+    "tt"
+   ],
+   "ilustracion": {
+    "escena": "En la trastienda, junto al fogón de leña, misiá Obdulia bate con un molinillo de madera el chocolate en una chocolatera de aluminio que echa vapor; Carmenza, a su lado, la mira con paciencia sosteniendo un plato con queso y almojábanas.",
+    "personajes": [
+     "obdulia",
+     "carmenza"
+    ],
+    "lugar": "trastienda",
+    "momento": "mañana"
+   },
+   "gancho": "Así se batía el chocolate de las de antes",
+   "escena": {
+    "fondo": "colchon_tierno",
+    "capitulo_cta": 1,
+    "lineas": [
+     {
+      "personaje": "obdulia",
+      "texto": "Carmenza, mija, ese chocolate así no se bate. Páseme el molinillo y aprenda.",
+      "emocion": "mandona"
+     },
+     {
+      "personaje": "carmenza",
+      "texto": "Madrina, llevo veinte años batiendo chocolate en esta misma chocolatera.",
+      "emocion": "paciente"
+     },
+     {
+      "personaje": "obdulia",
+      "texto": "[con picardía] Veinte años batiéndolo mal, mija. Primero hierve el agua, y después va la pastilla.",
+      "emocion": "pícara"
+     },
+     {
+      "personaje": "obdulia",
+      "texto": "Y luego se le da molinillo entre las dos manos, hasta que suba la espuma.",
+      "emocion": "concentrada"
+     },
+     {
+      "personaje": "carmenza",
+      "texto": "¿Y para qué tanta espuma, madrina, si se la toma igual?",
+      "emocion": "curiosa"
+     },
+     {
+      "personaje": "obdulia",
+      "texto": "[ofendida] ¡Ave María Purísima! Chocolate sin espuma es como misa sin campanas.",
+      "emocion": "ofendida"
+     },
+     {
+      "personaje": "carmenza",
+      "texto": "[ríe suavemente] Está bien, madrina. Bátalo usted, que yo le pongo el queso.",
+      "emocion": "divertida"
+     }
+    ]
+   },
+   "texto": {
+    "fb": "—Chocolate sin espuma es como misa sin campanas. ☕\n\n¿En su casa quién batía el chocolate con molinillo?\n\nLa Hora de la Fortuna, gratis desde el capítulo 1: https://radionovelasdeayer.com/cap-1?f=fb",
+    "ig": "—Chocolate sin espuma es como misa sin campanas. ☕\n\n¿En su casa quién batía el chocolate con molinillo?\n\nCapítulo 1 completo y gratis: enlace en el perfil.\n\n#radionovelasdeayer #radionovela #nostalgia #chocolate",
+    "yt_titulo": "Así se batía el chocolate en el pueblo ☕ #radionovela #Shorts",
+    "yt_desc": "La Hora de la Fortuna, una radionovela de las de antes. Escúchela completa y gratis desde el capítulo 1: https://radionovelasdeayer.com/cap-1?f=yt",
+    "tiktok": "¿En su casa quién batía el chocolate con molinillo? Capítulo 1 gratis: enlace en el perfil. #radionovelasdeayer #radionovela #nostalgia #recetasdelaabuela",
+    "comentario": "El capítulo 1 completo, gratis 👉 https://radionovelasdeayer.com/cap-1?f=fb"
+   },
+   "por_que": "Referente TikTok (Inesita, abuela de 88 años con más de 1 millón de seguidores): recetas de siempre explicadas con ternura. Escena nueva costumbrista, sin trama.",
+   "costo_estimado": 0.0755
+  },
+  {
+   "id": "w45-05",
+   "tipo": "fragmento",
+   "familia": "costumbre",
+   "fecha": "2026-11-05",
+   "hora": "07:00",
+   "plataformas": [
+    "fb",
+    "ig",
+    "yt",
+    "tt"
+   ],
+   "ilustracion": {
+    "escena": "Atardecer en la plaza del pueblo, junto a la pila de agua de piedra: don Eutimio, sentado en el borde de la pila, aprieta con las dos manos un sobre con estampilla contra el pecho y mira hacia la puerta de la iglesia; palomas en el suelo empedrado.",
+    "personajes": [
+     "eutimio"
+    ],
+    "lugar": "plaza",
+    "momento": "atardecer"
+   },
+   "gancho": "Le pidió al cura que le bendijera un sobre",
+   "fragmento": {
+    "capitulo": 1,
+    "inicio": 597.94,
+    "fin": 639.48
+   },
+   "texto": {
+    "fb": "—¿Bendecir un sobre de chocolate? En treinta y dos años de cura me han traído a bendecir vacas, semillas y hasta un camión. Un sobre, nunca. 😅\n\n¿Qué le llevaban a bendecir al cura en su pueblo?\n\nEscuche el capítulo 1 completo, gratis: https://radionovelasdeayer.com/cap-1?f=fb",
+    "ig": "—¿Bendecir un sobre de chocolate? En treinta y dos años de cura me han traído a bendecir vacas, semillas y hasta un camión. Un sobre, nunca. 😅\n\n¿Qué le llevaban a bendecir al cura en su pueblo?\n\nCapítulo 1 completo y gratis: enlace en el perfil.\n\n#radionovelasdeayer #radionovela #nostalgia #pueblo",
+    "yt_titulo": "Le pidió al cura que le bendijera el sobre del concurso 😅 #radionovela #Shorts",
+    "yt_desc": "La Hora de la Fortuna, una radionovela de las de antes. Escúchela completa y gratis desde el capítulo 1: https://radionovelasdeayer.com/cap-1?f=yt",
+    "tiktok": "¿Qué le llevaban a bendecir al cura en su pueblo? Capítulo 1 gratis: enlace en el perfil. #radionovelasdeayer #radionovela #nostalgia #pueblo",
+    "comentario": "El capítulo 1 completo, gratis 👉 https://radionovelasdeayer.com/cap-1?f=fb"
+   },
+   "por_que": "Humor tierno de costumbre (bendecir vacas, semillas, un camión) que reconoce cualquiera que creció en un pueblo.",
+   "costo_estimado": 0.0504
+  },
+  {
+   "id": "w45-06",
+   "tipo": "fragmento",
+   "familia": "costumbre",
+   "fecha": "2026-11-05",
+   "hora": "12:30",
+   "plataformas": [
+    "fb",
+    "ig",
+    "yt",
+    "tt"
+   ],
+   "imagen": "tienda",
+   "gancho": "Un peso con sesenta en la libreta de fiados",
+   "fragmento": {
+    "capitulo": 1,
+    "inicio": 144.27,
+    "fin": 191.07
+   },
+   "texto": {
+    "fb": "—Aquí en la libreta me debe un peso con cuarenta. Con el sobre y la estampilla, un peso con sesenta. 📒\n\n¿Usted se acuerda de la libreta de fiados de la tienda?\n\nEscuche el capítulo 1 completo, gratis: https://radionovelasdeayer.com/cap-1?f=fb",
+    "ig": "—Aquí en la libreta me debe un peso con cuarenta. Con el sobre y la estampilla, un peso con sesenta. 📒\n\n¿Usted se acuerda de la libreta de fiados de la tienda?\n\nCapítulo 1 completo y gratis: enlace en el perfil.\n\n#radionovelasdeayer #radionovela #nostalgia #tiendadebarrio",
+    "yt_titulo": "Así se fiaba en la tienda del pueblo 📒 #radionovela #Shorts",
+    "yt_desc": "La Hora de la Fortuna, una radionovela de las de antes. Escúchela completa y gratis desde el capítulo 1: https://radionovelasdeayer.com/cap-1?f=yt",
+    "tiktok": "¿Usted se acuerda de la libreta de fiados de la tienda? Capítulo 1 gratis: enlace en el perfil. #radionovelasdeayer #radionovela #nostalgia #colombia",
+    "comentario": "El capítulo 1 completo, gratis 👉 https://radionovelasdeayer.com/cap-1?f=fb"
+   },
+   "por_que": "B del A/B de ilustración: mismo clip y textos que w45-02, con la imagen de catálogo de la tienda.",
+   "ab": {
+    "experimento": "w45-ilustracion",
+    "variable": "ilustracion",
+    "metrica": "vistas",
+    "hipotesis": "Segunda vuelta: la ilustración nueva de la escena retiene más que la imagen de catálogo (en W43 ganó la ilustración en FB y YT).",
+    "variante": "B"
+   },
+   "costo_estimado": 0.0
+  },
+  {
+   "id": "w45-07",
+   "tipo": "carrusel",
+   "familia": "recuerdo",
+   "fecha": "2026-11-05",
+   "hora": "17:00",
+   "plataformas": [
+    "fb",
+    "ig"
+   ],
+   "carrusel": {
+    "diapositivas": [
+     {
+      "ilustracion": {
+       "escena": "Mostrador de madera de una tienda de pueblo de tierra fría: una libreta de fiados abierta con un lápiz, panelas apiladas, un manojo de velas, frascos de vidrio con dulces, pastillas de chocolate envueltas en papel sin letras y, en una repisa, un radio de tubos; luz de mañana por la puerta.",
+       "lugar": "tienda",
+       "momento": "mañana"
+      },
+      "titulo": "¿Se acuerda de la tienda de antes?"
+     },
+     {
+      "titulo": "La libreta de fiados",
+      "texto": "Ahí quedaba apuntado todo.\nY se pagaba el sábado, si Dios quería."
+     },
+     {
+      "titulo": "El radio en la repisa",
+      "texto": "Para oír la novela con las vecinas mientras se pesaba el arroz."
+     },
+     {
+      "titulo": "Panela, velas y chocolate",
+      "texto": "Lo de todos los días, por libras y por pastillas."
+     },
+     {
+      "titulo": "En Guatancuy todavía es así",
+      "texto": "La Hora de la Fortuna, una radionovela de las de antes.\nGratis en radionovelasdeayer.com"
+     }
+    ]
+   },
+   "texto": {
+    "fb": "¿Se acuerda de la tienda de antes? 📒 La libreta de fiados, el radio en la repisa, la panela y las velas.\n\n¿Qué era lo que más fiaban en la tienda de su barrio?\n\nEscuche una radionovela de las de antes, gratis: https://radionovelasdeayer.com/cap-1?f=fb",
+    "ig": "¿Se acuerda de la tienda de antes? 📒 La libreta de fiados, el radio en la repisa, la panela y las velas.\n\n¿Qué era lo que más fiaban en la tienda de su barrio?\n\nGratis: enlace en el perfil.\n\n#radionovelasdeayer #radionovela #nostalgia #tiendadebarrio"
+   },
+   "por_que": "Recuerdo de objetos (familia nueva para nosotros): prueba si un carrusel de identificación se comparte más que los datos.",
+   "costo_estimado": 0.0504
+  },
+  {
+   "id": "w45-08",
+   "tipo": "escena",
+   "familia": "costumbre",
+   "fecha": "2026-11-05",
+   "hora": "19:30",
+   "plataformas": [
+    "fb",
+    "ig",
+    "yt",
+    "tt"
+   ],
+   "ilustracion": {
+    "escena": "De noche, en la tienda iluminada con velas: Saturnino duerme sentado en un taburete con la cabeza recostada contra la pared, junto al radio de tubos encendido; misiá Obdulia lo señala riéndose con el rosario en la mano y Carmenza se tapa la boca para no soltar la risa.",
+    "personajes": [
+     "saturnino",
+     "obdulia",
+     "carmenza"
+    ],
+    "lugar": "tienda",
+    "momento": "noche"
+   },
+   "gancho": "El que se dormía oyendo la radionovela",
+   "escena": {
+    "fondo": "colchon_tierno",
+    "capitulo_cta": 1,
+    "lineas": [
+     {
+      "personaje": "obdulia",
+      "texto": "Saturnino, despiértese, que ya se acabó la radionovela de esta noche.",
+      "emocion": "burlona"
+     },
+     {
+      "personaje": "saturnino",
+      "texto": "[sobresaltado] ¿Ya? ¿Cómo así que ya, misiá Obdulia? Si apenas iba empezando.",
+      "emocion": "desconcertado"
+     },
+     {
+      "personaje": "carmenza",
+      "texto": "Saturnino, usted se quedó dormido desde que sonó la sintonía.",
+      "emocion": "divertida"
+     },
+     {
+      "personaje": "saturnino",
+      "texto": "Con el perdón de la sotana, Carmenza, yo estaba oyendo con los ojos cerrados.",
+      "emocion": "digno"
+     },
+     {
+      "personaje": "obdulia",
+      "texto": "¿Ah, sí? Entonces cuéntenos, Saturnino, ¿con quién se casó la muchacha?",
+      "emocion": "pícara"
+     },
+     {
+      "personaje": "saturnino",
+      "texto": "[con duda] Con el muchacho… con el de la voz bonita, misiá Obdulia.",
+      "emocion": "nervioso"
+     },
+     {
+      "personaje": "carmenza",
+      "texto": "[ríe] Ay, Saturnino. Mañana le guardo el puesto, pero con un tinto bien cargado.",
+      "emocion": "tierna"
+     }
+    ]
+   },
+   "texto": {
+    "fb": "—Yo estaba oyendo con los ojos cerrados. 😴\n\n¿En su casa quién se dormía oyendo la radionovela?\n\nLa Hora de la Fortuna, gratis desde el capítulo 1: https://radionovelasdeayer.com/cap-1?f=fb",
+    "ig": "—Yo estaba oyendo con los ojos cerrados. 😴\n\n¿En su casa quién se dormía oyendo la radionovela?\n\nCapítulo 1 completo y gratis: enlace en el perfil.\n\n#radionovelasdeayer #radionovela #nostalgia #humor",
+    "yt_titulo": "El que se dormía oyendo la radionovela 😴 #radionovela #Shorts",
+    "yt_desc": "La Hora de la Fortuna, una radionovela de las de antes. Escúchela completa y gratis desde el capítulo 1: https://radionovelasdeayer.com/cap-1?f=yt",
+    "tiktok": "¿En su casa quién se dormía oyendo la radionovela? Capítulo 1 gratis: enlace en el perfil. #radionovelasdeayer #radionovela #nostalgia #humor",
+    "comentario": "El capítulo 1 completo, gratis 👉 https://radionovelasdeayer.com/cap-1?f=fb"
+   },
+   "por_que": "Repite el formato ganador (escena costumbrista con Saturnino, w43-05: 338 vistas en FB) con otra situación reconocible.",
+   "costo_estimado": 0.0743
+  },
+  {
+   "id": "w45-09",
+   "tipo": "fragmento",
+   "familia": "pregunta",
+   "fecha": "2026-11-06",
+   "hora": "07:00",
+   "plataformas": [
+    "fb",
+    "ig",
+    "yt",
+    "tt"
+   ],
+   "ilustracion": {
+    "escena": "Noche en la tienda: primer plano de un radio de tubos de madera con el dial encendido en ámbar; detrás, misiá Obdulia, con los ojos entrecerrados de ilusión, cuenta con los dedos de una mano, y Saturnino la mira boquiabierto.",
+    "personajes": [
+     "obdulia",
+     "saturnino"
+    ],
+    "lugar": "tienda",
+    "momento": "noche"
+   },
+   "gancho": "¿Qué arreglaría usted con cincuenta mil pesos?",
+   "fragmento": {
+    "capitulo": 1,
+    "inicio": 870.24,
+    "fin": 902.03
+   },
+   "texto": {
+    "fb": "—Cincuenta mil pesos… Con eso se le pone techo a la escuela, se trae el agua, y todavía sobra. 📻\n\n¿Qué era lo primero que le hacía falta a su pueblo?\n\nEscuche el capítulo 1 completo, gratis: https://radionovelasdeayer.com/cap-1?f=fb",
+    "ig": "—Cincuenta mil pesos… Con eso se le pone techo a la escuela, se trae el agua, y todavía sobra. 📻\n\n¿Qué era lo primero que le hacía falta a su pueblo?\n\nCapítulo 1 completo y gratis: enlace en el perfil.\n\n#radionovelasdeayer #radionovela #nostalgia #pueblo",
+    "yt_titulo": "¿Qué haría su pueblo con cincuenta mil pesos de 1958? 📻 #radionovela #Shorts",
+    "yt_desc": "La Hora de la Fortuna, una radionovela de las de antes. Escúchela completa y gratis desde el capítulo 1: https://radionovelasdeayer.com/cap-1?f=yt",
+    "tiktok": "¿Qué era lo primero que le hacía falta a su pueblo? Capítulo 1 gratis: enlace en el perfil. #radionovelasdeayer #radionovela #nostalgia #pueblo",
+    "comentario": "El capítulo 1 completo, gratis 👉 https://radionovelasdeayer.com/cap-1?f=fb"
+   },
+   "por_que": "Dilema que el público responde desde su memoria (lo que le faltaba al pueblo), con el animador de la radio de fondo. No revela nada.",
+   "costo_estimado": 0.0504
+  },
+  {
+   "id": "w45-10",
+   "tipo": "fragmento",
+   "familia": "costumbre",
+   "fecha": "2026-11-06",
+   "hora": "12:30",
+   "plataformas": [
+    "fb",
+    "ig",
+    "yt",
+    "tt"
+   ],
+   "ilustracion": {
+    "escena": "Tarde en la puerta de la tienda: misiá Obdulia, con pañolón negro y una canasta de pan al brazo, se inclina sobre el mostrador para contar un chisme en voz baja; Carmenza envuelve media libra de chocolate en papel sin mirarla, con cara de paciencia.",
+    "personajes": [
+     "obdulia",
+     "carmenza"
+    ],
+    "lugar": "tienda",
+    "momento": "tarde"
+   },
+   "gancho": "Llegaba por el pan… y por el chisme",
+   "fragmento": {
+    "capitulo": 1,
+    "inicio": 360.08,
+    "fin": 398.33
+   },
+   "texto": {
+    "fb": "—Véndame media libra de chocolate y un pan de a cinco. Y a propósito, mija… 👀\n\n¿En su cuadra quién era la que llegaba por el pan y se iba con todas las noticias?\n\nLa Hora de la Fortuna, desde el capítulo 1, gratis: https://radionovelasdeayer.com/cap-1?f=fb",
+    "ig": "—Véndame media libra de chocolate y un pan de a cinco. Y a propósito, mija… 👀\n\n¿En su cuadra quién era la que llegaba por el pan y se iba con todas las noticias?\n\nCapítulo 1 completo y gratis: enlace en el perfil.\n\n#radionovelasdeayer #radionovela #nostalgia #chisme",
+    "yt_titulo": "La vecina que llegaba por el pan y por el chisme 👀 #radionovela #Shorts",
+    "yt_desc": "La Hora de la Fortuna, una radionovela de las de antes. Escúchela completa y gratis desde el capítulo 1: https://radionovelasdeayer.com/cap-1?f=yt",
+    "tiktok": "¿En su cuadra quién era la que llegaba por el pan y se iba con todas las noticias? Capítulo 1 gratis: enlace en el perfil. #radionovelasdeayer #radionovela #nostalgia #chisme",
+    "comentario": "El capítulo 1 completo, gratis 👉 https://radionovelasdeayer.com/cap-1?f=fb"
+   },
+   "por_que": "Repite la ganadora de W43 (w43-02, chisme de la tienda: 593 vistas en YT y 333 en FB) con otro corte, otro gancho y otra ilustración.",
+   "costo_estimado": 0.0504
+  },
+  {
+   "id": "w45-11",
+   "tipo": "carrusel",
+   "familia": "dato",
+   "fecha": "2026-11-06",
+   "hora": "17:00",
+   "plataformas": [
+    "fb",
+    "ig"
+   ],
+   "dato": "Radio Continental, antecesora de Todelar, alcanzó a tener 35 radionovelas al aire, cada una con 200 capítulos en promedio.",
+   "fuentes": [
+    "https://radionacional.co/cultura/historia-colombiana/que-es-una-radionovela-historia-y-evolucion"
+   ],
+   "carrusel": {
+    "diapositivas": [
+     {
+      "ilustracion": {
+       "escena": "Estudio de radio de los años cincuenta: cuatro actores de pie, de traje y vestido, leen libretos alrededor de un micrófono antiguo; detrás de un vidrio, un técnico con audífonos mueve perillas; sobre una mesa, pilas altas de libretos.",
+       "lugar": "estudio de radio en la capital",
+       "momento": "noche"
+      },
+      "titulo": "¿Cuántas radionovelas sonaban a la vez?"
+     },
+     {
+      "titulo": "Treinta y cinco al aire",
+      "texto": "Radio Continental, la antecesora de Todelar, alcanzó a tener 35 radionovelas al aire."
+     },
+     {
+      "titulo": "Doscientos capítulos",
+      "texto": "Cada una tenía, en promedio, 200 capítulos."
+     },
+     {
+      "titulo": "¿Usted cuál no se perdía?",
+      "texto": "Cuéntenos en los comentarios cuál era la suya."
+     },
+     {
+      "titulo": "Hoy sigue sonando así",
+      "texto": "La Hora de la Fortuna, una radionovela de las de antes.\nGratis en radionovelasdeayer.com"
+     }
+    ]
+   },
+   "texto": {
+    "fb": "¿Sabía que una sola emisora llegó a tener 35 radionovelas al aire, y cada una con unos 200 capítulos? 📻\n\n¿Cuál era la radionovela que usted no se perdía?\n\nEscuche una radionovela de las de antes, gratis: https://radionovelasdeayer.com/cap-1?f=fb",
+    "ig": "¿Sabía que una sola emisora llegó a tener 35 radionovelas al aire, y cada una con unos 200 capítulos? 📻\n\n¿Cuál era la radionovela que usted no se perdía?\n\nGratis: enlace en el perfil.\n\n#radionovelasdeayer #radionovela #nostalgia #radiocolombiana"
+   },
+   "por_que": "Dato de época con fuente que invita a nombrar la radionovela de cada quien en los comentarios.",
+   "costo_estimado": 0.0504
+  },
+  {
+   "id": "w45-12",
+   "tipo": "fragmento",
+   "familia": "recuerdo",
+   "fecha": "2026-11-06",
+   "hora": "19:30",
+   "plataformas": [
+    "fb",
+    "ig",
+    "yt",
+    "tt"
+   ],
+   "ilustracion": {
+    "escena": "Noche en la tienda llena de gente del pueblo sentada en bultos y bancos alrededor del radio de tubos encendido; misiá Obdulia, adelante, le hace señas a Carmenza para que le suba al radio; Saturnino se acomoda en un taburete; don Eutimio, de pie junto a la puerta, con la ruana.",
+    "personajes": [
+     "obdulia",
+     "carmenza",
+     "saturnino",
+     "eutimio"
+    ],
+    "lugar": "tienda",
+    "momento": "noche"
+   },
+   "gancho": "Las ocho de la noche y la tienda llena",
+   "fragmento": {
+    "capitulo": 1,
+    "inicio": 797.44,
+    "fin": 832.27
+   },
+   "texto": {
+    "fb": "Las ocho de la noche. Es miércoles y en la tienda no cabe un alma: el radio de tubos ya está caliente. 📻\n\n¿En su casa a qué hora se prendía el radio para oír la novela?\n\nEscuche el capítulo 1 completo, gratis: https://radionovelasdeayer.com/cap-1?f=fb",
+    "ig": "Las ocho de la noche. Es miércoles y en la tienda no cabe un alma: el radio de tubos ya está caliente. 📻\n\n¿En su casa a qué hora se prendía el radio para oír la novela?\n\nCapítulo 1 completo y gratis: enlace en el perfil.\n\n#radionovelasdeayer #radionovela #nostalgia #radiocolombiana",
+    "yt_titulo": "Las ocho de la noche y todo el pueblo frente al radio 📻 #radionovela #Shorts",
+    "yt_desc": "La Hora de la Fortuna, una radionovela de las de antes. Escúchela completa y gratis desde el capítulo 1: https://radionovelasdeayer.com/cap-1?f=yt",
+    "tiktok": "¿En su casa a qué hora se prendía el radio para oír la novela? Capítulo 1 gratis: enlace en el perfil. #radionovelasdeayer #radionovela #nostalgia #colombia",
+    "comentario": "El capítulo 1 completo, gratis 👉 https://radionovelasdeayer.com/cap-1?f=fb"
+   },
+   "por_que": "A del A/B de gancho: escuchar la radio en grupo es el recuerdo central del público. Gancho descriptivo.",
+   "ab": {
+    "experimento": "w45-gancho-usted",
+    "variable": "gancho",
+    "metrica": "vistas",
+    "hipotesis": "Un gancho en segunda persona que mete al oyente en la escena ('¿Y si usted estuviera…?', como los Shorts de nostalgia más vistos en Colombia) retiene más que uno descriptivo.",
+    "variante": "A"
+   },
+   "costo_estimado": 0.0504
+  },
+  {
+   "id": "w45-13",
+   "tipo": "escena",
+   "familia": "dato",
+   "fecha": "2026-11-07",
+   "hora": "07:00",
+   "plataformas": [
+    "fb",
+    "ig",
+    "yt",
+    "tt"
+   ],
+   "dato": "En la mayoría de los hogares colombianos la radionovela se escuchaba en grupo; muchas veces, sentarse a escuchar era el premio a una larga jornada escolar y laboral.",
+   "fuentes": [
+    "https://radionacional.co/cultura/historia-colombiana/kaliman-y-el-legado-de-las-radionovelas-en-la-radio-colombiana"
+   ],
+   "ilustracion": {
+    "escena": "Noche en la sala de una casa de tapia de los años cincuenta: una abuela, un padre, una madre y dos niños sentados alrededor de un radio de tubos sobre una mesa con mantel tejido; tazas de tinto, cuadernos de escuela cerrados a un lado y luz cálida de bombillo.",
+    "lugar": "sala de una casa",
+    "momento": "noche"
+   },
+   "gancho": "¿Se acuerda de oír la novela en familia?",
+   "escena": {
+    "fondo": "tiple_de_cinco",
+    "fondo_vol": -26,
+    "capitulo_cta": 1,
+    "lineas": [
+     {
+      "personaje": "locutor",
+      "texto": "¿Se acuerda usted de cuando la radionovela se oía en familia, todos juntos alrededor del radio?",
+      "emocion": "cálido"
+     },
+     {
+      "personaje": "locutor",
+      "texto": "Así era en la mayoría de los hogares colombianos. Sentarse a escuchar era el premio después de una larga jornada de escuela y de trabajo.",
+      "emocion": "nostálgico"
+     },
+     {
+      "personaje": "locutor",
+      "texto": "Las tareas hechas, el tinto servido y el radio de tubos bien prendido.",
+      "emocion": "evocador"
+     },
+     {
+      "personaje": "locutor",
+      "texto": "Esa costumbre vuelve con La Hora de la Fortuna. Escúchela gratis desde el capítulo uno, y llame a la familia.",
+      "emocion": "invitador"
+     }
+    ]
+   },
+   "texto": {
+    "fb": "¿Se acuerda de cuando la radionovela se oía en familia? 📻 Sentarse a escuchar era el premio después de la escuela y el trabajo.\n\n¿Con quién oía usted la radionovela?\n\nUna radionovela de las de antes, gratis: https://radionovelasdeayer.com/cap-1?f=fb",
+    "ig": "¿Se acuerda de cuando la radionovela se oía en familia? 📻 Sentarse a escuchar era el premio después de la escuela y el trabajo.\n\n¿Con quién oía usted la radionovela?\n\nCapítulo 1 completo y gratis: enlace en el perfil.\n\n#radionovelasdeayer #radionovela #nostalgia #familia",
+    "yt_titulo": "Cuando la radionovela se oía en familia 📻 #nostalgia #Shorts",
+    "yt_desc": "La Hora de la Fortuna, una radionovela de las de antes. Fuente del dato: Radio Nacional de Colombia. Escúchela completa y gratis desde el capítulo 1: https://radionovelasdeayer.com/cap-1?f=yt",
+    "tiktok": "¿Con quién oía usted la radionovela? Capítulo 1 gratis: enlace en el perfil. #radionovelasdeayer #radionovela #nostalgia #familia",
+    "comentario": "El capítulo 1 completo, gratis 👉 https://radionovelasdeayer.com/cap-1?f=fb"
+   },
+   "por_que": "Dato con voz del locutor (w43-06 hizo 321 vistas en FB): prueba de tráfico paralelo de gente que busca nostalgia, no la novela.",
+   "costo_estimado": 0.0722
+  },
+  {
+   "id": "w45-14",
+   "tipo": "fragmento",
+   "familia": "costumbre",
+   "fecha": "2026-11-07",
+   "hora": "12:30",
+   "plataformas": [
+    "fb",
+    "ig",
+    "yt",
+    "tt"
+   ],
+   "ilustracion": {
+    "escena": "Tarde en la tienda: misiá Obdulia, escandalizada, se lleva la mano al pecho con el rosario entre los dedos; Carmenza, firme detrás del mostrador, la mira de frente con los brazos cruzados; sobre el mostrador, un paquete de velas amarrado con cabuya.",
+    "personajes": [
+     "obdulia",
+     "carmenza"
+    ],
+    "lugar": "tienda",
+    "momento": "tarde"
+   },
+   "gancho": "«¡Qué genio! Por eso es que no se ha casado»",
+   "fragmento": {
+    "capitulo": 1,
+    "inicio": 532.62,
+    "fin": 572.41
+   },
+   "texto": {
+    "fb": "—¡Virgen Santísima, qué genio! Por eso es que no se ha casado, mija. 😅\n\n¿A usted también le decían eso en las visitas?\n\nLa Hora de la Fortuna, desde el capítulo 1, gratis: https://radionovelasdeayer.com/cap-1?f=fb",
+    "ig": "—¡Virgen Santísima, qué genio! Por eso es que no se ha casado, mija. 😅\n\n¿A usted también le decían eso en las visitas?\n\nCapítulo 1 completo y gratis: enlace en el perfil.\n\n#radionovelasdeayer #radionovela #nostalgia #humor",
+    "yt_titulo": "«¡Qué genio! Por eso es que no se ha casado, mija» 😅 #radionovela #Shorts",
+    "yt_desc": "La Hora de la Fortuna, una radionovela de las de antes. Escúchela completa y gratis desde el capítulo 1: https://radionovelasdeayer.com/cap-1?f=yt",
+    "tiktok": "¿A usted también le decían eso en las visitas? Capítulo 1 gratis: enlace en el perfil. #radionovelasdeayer #radionovela #nostalgia #humor",
+    "comentario": "El capítulo 1 completo, gratis 👉 https://radionovelasdeayer.com/cap-1?f=fb"
+   },
+   "por_que": "Frase de madrina que todo el mundo oyó alguna vez: costumbre con humor, sin trama.",
+   "costo_estimado": 0.0504
+  },
+  {
+   "id": "w45-15",
+   "tipo": "carrusel",
+   "familia": "personaje",
+   "fecha": "2026-11-07",
+   "hora": "17:00",
+   "plataformas": [
+    "fb",
+    "ig"
+   ],
+   "carrusel": {
+    "diapositivas": [
+     {
+      "ilustracion": {
+       "escena": "Retrato de grupo de mañana frente a la tienda, en la plaza del pueblo con la iglesia al fondo: Carmenza con delantal, misiá Obdulia con pañolón y rosario, Saturnino con sombrero en la mano y don Eutimio con su ruana, posando serios como para una foto de estudio de época.",
+       "personajes": [
+        "carmenza",
+        "obdulia",
+        "saturnino",
+        "eutimio"
+       ],
+       "lugar": "plaza",
+       "momento": "mañana"
+      },
+      "titulo": "Conozca a la gente de Guatancuy"
+     },
+     {
+      "ilustracion": {
+       "escena": "Retrato de medio cuerpo de Carmenza detrás del mostrador, con delantal y un lápiz detrás de la oreja, sosteniendo la libreta de fiados.",
+       "personajes": [
+        "carmenza"
+       ],
+       "lugar": "tienda",
+       "momento": "mañana"
+      },
+      "titulo": "Carmenza, la tendera",
+      "texto": "Seria por fuera, tierna por dentro. Le fía a medio pueblo y lo apunta todo en su libreta."
+     },
+     {
+      "ilustracion": {
+       "escena": "Retrato de medio cuerpo de misiá Obdulia con pañolón negro, rezando el rosario a la salida de la iglesia y mirando de reojo a un lado.",
+       "personajes": [
+        "obdulia"
+       ],
+       "lugar": "atrio de la iglesia",
+       "momento": "mañana"
+      },
+      "titulo": "Misiá Obdulia, la madrina",
+      "texto": "Reza el rosario y se entera de todo.\n«Yo no es por hablar, mija, pero…»"
+     },
+     {
+      "ilustracion": {
+       "escena": "Retrato de medio cuerpo de Saturnino, el sacristán, tirando de la cuerda de la campana en el campanario, con cara de susto.",
+       "personajes": [
+        "saturnino"
+       ],
+       "lugar": "campanario",
+       "momento": "tarde"
+      },
+      "titulo": "Saturnino, el sacristán",
+      "texto": "Toca las campanas y se asusta de su propia sombra.\n«Con el perdón de la sotana…»"
+     },
+     {
+      "ilustracion": {
+       "escena": "Retrato de medio cuerpo de don Eutimio con su ruana gastada, sosteniendo con cuidado un sobre con estampilla, en la neblina de la mañana.",
+       "personajes": [
+        "eutimio"
+       ],
+       "lugar": "calle de pueblo",
+       "momento": "madrugada"
+      },
+      "titulo": "Don Eutimio, el de los sobres",
+      "texto": "El más pobre del pueblo. Cada miércoles manda un sobre al concurso de la radio."
+     },
+     {
+      "titulo": "¿Con cuál se queda usted?",
+      "texto": "Conózcalos en La Hora de la Fortuna.\nGratis en radionovelasdeayer.com"
+     }
+    ]
+   },
+   "texto": {
+    "fb": "Le presentamos a la gente de Guatancuy: Carmenza, misiá Obdulia, Saturnino y don Eutimio. 📻\n\n¿A cuál de ellos tuvo usted de vecino?\n\nEscuche una radionovela de las de antes, gratis: https://radionovelasdeayer.com/cap-1?f=fb",
+    "ig": "Le presentamos a la gente de Guatancuy: Carmenza, misiá Obdulia, Saturnino y don Eutimio. 📻\n\n¿A cuál de ellos tuvo usted de vecino?\n\nGratis: enlace en el perfil.\n\n#radionovelasdeayer #radionovela #nostalgia #personajes"
+   },
+   "por_que": "Referente IG (moda de retratos de época): carrusel de presentación para quien no conoce la serie. Cada lámina con ilustración.",
+   "costo_estimado": 0.252
+  },
+  {
+   "id": "w45-16",
+   "tipo": "fragmento",
+   "familia": "recuerdo",
+   "fecha": "2026-11-07",
+   "hora": "19:30",
+   "plataformas": [
+    "fb",
+    "ig",
+    "yt",
+    "tt"
+   ],
+   "ilustracion_de": "w45-12",
+   "gancho": "¿Y si usted estuviera en esta tienda en 1958?",
+   "fragmento": {
+    "capitulo": 1,
+    "inicio": 797.44,
+    "fin": 832.27
+   },
+   "texto": {
+    "fb": "Las ocho de la noche. Es miércoles y en la tienda no cabe un alma: el radio de tubos ya está caliente. 📻\n\n¿En su casa a qué hora se prendía el radio para oír la novela?\n\nEscuche el capítulo 1 completo, gratis: https://radionovelasdeayer.com/cap-1?f=fb",
+    "ig": "Las ocho de la noche. Es miércoles y en la tienda no cabe un alma: el radio de tubos ya está caliente. 📻\n\n¿En su casa a qué hora se prendía el radio para oír la novela?\n\nCapítulo 1 completo y gratis: enlace en el perfil.\n\n#radionovelasdeayer #radionovela #nostalgia #radiocolombiana",
+    "yt_titulo": "Las ocho de la noche y todo el pueblo frente al radio 📻 #radionovela #Shorts",
+    "yt_desc": "La Hora de la Fortuna, una radionovela de las de antes. Escúchela completa y gratis desde el capítulo 1: https://radionovelasdeayer.com/cap-1?f=yt",
+    "tiktok": "¿En su casa a qué hora se prendía el radio para oír la novela? Capítulo 1 gratis: enlace en el perfil. #radionovelasdeayer #radionovela #nostalgia #colombia",
+    "comentario": "El capítulo 1 completo, gratis 👉 https://radionovelasdeayer.com/cap-1?f=fb"
+   },
+   "por_que": "B del A/B de gancho: mismo clip, imagen y textos que w45-12; gancho en segunda persona.",
+   "ab": {
+    "experimento": "w45-gancho-usted",
+    "variable": "gancho",
+    "metrica": "vistas",
+    "hipotesis": "Un gancho en segunda persona que mete al oyente en la escena ('¿Y si usted estuviera…?', como los Shorts de nostalgia más vistos en Colombia) retiene más que uno descriptivo.",
+    "variante": "B"
+   },
+   "costo_estimado": 0.0
+  },
+  {
+   "id": "w45-17",
+   "tipo": "fragmento",
+   "familia": "costumbre",
+   "fecha": "2026-11-08",
+   "hora": "07:00",
+   "plataformas": [
+    "fb",
+    "ig",
+    "yt",
+    "tt"
+   ],
+   "ilustracion": {
+    "escena": "Tarde en la tienda: Saturnino, recostado en el mostrador con un atado de velas bajo el brazo, se ríe tapándose la boca; detrás del mostrador, Carmenza cuenta las velas una por una y lo mira de reojo, seria.",
+    "personajes": [
+     "saturnino",
+     "carmenza"
+    ],
+    "lugar": "tienda",
+    "momento": "tarde"
+   },
+   "gancho": "«Usted es el sacristán, no el pregonero»",
+   "fragmento": {
+    "capitulo": 1,
+    "inicio": 398.83,
+    "fin": 435.88
+   },
+   "texto": {
+    "fb": "—Saturnino, usted es el sacristán, no el pregonero. 😅\n\n¿En su pueblo quién era el que pregonaba todo?\n\nLa Hora de la Fortuna, desde el capítulo 1, gratis: https://radionovelasdeayer.com/cap-1?f=fb",
+    "ig": "—Saturnino, usted es el sacristán, no el pregonero. 😅\n\n¿En su pueblo quién era el que pregonaba todo?\n\nCapítulo 1 completo y gratis: enlace en el perfil.\n\n#radionovelasdeayer #radionovela #nostalgia #humor",
+    "yt_titulo": "«Usted es el sacristán, no el pregonero» 😅 #radionovela #Shorts",
+    "yt_desc": "La Hora de la Fortuna, una radionovela de las de antes. Escúchela completa y gratis desde el capítulo 1: https://radionovelasdeayer.com/cap-1?f=yt",
+    "tiktok": "¿En su pueblo quién era el que pregonaba todo? Capítulo 1 gratis: enlace en el perfil. #radionovelasdeayer #radionovela #nostalgia #humor",
+    "comentario": "El capítulo 1 completo, gratis 👉 https://radionovelasdeayer.com/cap-1?f=fb"
+   },
+   "por_que": "Segundo corte del momento ganador de W43 (la tienda, con Saturnino), ahora centrado en el regaño de Carmenza.",
+   "costo_estimado": 0.0504
+  },
+  {
+   "id": "w45-18",
+   "tipo": "escena",
+   "familia": "costumbre",
+   "fecha": "2026-11-08",
+   "hora": "12:30",
+   "plataformas": [
+    "fb",
+    "ig",
+    "yt",
+    "tt"
+   ],
+   "ilustracion": {
+    "escena": "Tarde soleada en la tienda: misiá Obdulia y Saturnino, apretados en un mismo banco de madera junto al radio de tubos, se disputan el puesto con los codos; detrás del mostrador, Carmenza los mira con resignación.",
+    "personajes": [
+     "obdulia",
+     "saturnino",
+     "carmenza"
+    ],
+    "lugar": "tienda",
+    "momento": "tarde"
+   },
+   "gancho": "La pelea por el puesto junto al radio",
+   "escena": {
+    "fondo": "colchon_tierno",
+    "capitulo_cta": 1,
+    "lineas": [
+     {
+      "personaje": "saturnino",
+      "texto": "Misiá Obdulia, con todo respeto, ese taburete junto al radio es el mío.",
+      "emocion": "tímido"
+     },
+     {
+      "personaje": "obdulia",
+      "texto": "¿El suyo, Saturnino? Yo me siento aquí desde antes de que usted tocara campanas.",
+      "emocion": "altiva"
+     },
+     {
+      "personaje": "saturnino",
+      "texto": "Pero es que yo oigo mal del lado izquierdo, misiá Obdulia.",
+      "emocion": "quejumbroso"
+     },
+     {
+      "personaje": "obdulia",
+      "texto": "[con firmeza] Y yo oigo mal de los dos lados, y no me quejo.",
+      "emocion": "terca"
+     },
+     {
+      "personaje": "carmenza",
+      "texto": "Madrina, Saturnino, el radio se oye igual desde toda la tienda.",
+      "emocion": "conciliadora"
+     },
+     {
+      "personaje": "saturnino",
+      "texto": "[con duda] Igual no, Carmenza. Desde aquí se oyen mejor los secretos.",
+      "emocion": "avergonzado"
+     },
+     {
+      "personaje": "obdulia",
+      "texto": "Eso sí es verdad. Córrase un poquito, Saturnino, que cabemos los dos.",
+      "emocion": "cómplice"
+     }
+    ]
+   },
+   "texto": {
+    "fb": "—Ese taburete junto al radio es el mío.\n—¿El suyo? Yo me siento aquí desde antes de que usted tocara campanas. 📻\n\n¿En su casa quién tenía el puesto fijo junto al radio?\n\nLa Hora de la Fortuna, gratis desde el capítulo 1: https://radionovelasdeayer.com/cap-1?f=fb",
+    "ig": "—Ese taburete junto al radio es el mío.\n—¿El suyo? Yo me siento aquí desde antes de que usted tocara campanas. 📻\n\n¿En su casa quién tenía el puesto fijo junto al radio?\n\nCapítulo 1 completo y gratis: enlace en el perfil.\n\n#radionovelasdeayer #radionovela #nostalgia #humor",
+    "yt_titulo": "La pelea por el puesto junto al radio 📻 #radionovela #Shorts",
+    "yt_desc": "La Hora de la Fortuna, una radionovela de las de antes. Escúchela completa y gratis desde el capítulo 1: https://radionovelasdeayer.com/cap-1?f=yt",
+    "tiktok": "¿En su casa quién tenía el puesto fijo junto al radio? Capítulo 1 gratis: enlace en el perfil. #radionovelasdeayer #radionovela #nostalgia #humor",
+    "comentario": "El capítulo 1 completo, gratis 👉 https://radionovelasdeayer.com/cap-1?f=fb"
+   },
+   "por_que": "Tercera escena costumbrista de la semana (el formato que mejor rinde en FB), sobre el ritual de oír la radio.",
+   "costo_estimado": 0.0749
+  },
+  {
+   "id": "w45-19",
+   "tipo": "carrusel",
+   "familia": "pregunta",
+   "fecha": "2026-11-08",
+   "hora": "17:00",
+   "plataformas": [
+    "fb",
+    "ig"
+   ],
+   "carrusel": {
+    "diapositivas": [
+     {
+      "ilustracion": {
+       "escena": "De noche, sobre un mostrador de madera: un radio de tubos encendido con el dial ámbar y, al lado, un sobre con estampilla y tres envolturas de chocolate dobladas, sin letras; una vela encendida ilumina la escena.",
+       "lugar": "tienda",
+       "momento": "noche"
+      },
+      "titulo": "Cincuenta mil pesos en 1958"
+     },
+     {
+      "titulo": "En Guatancuy, un jornal era de cuatro pesos",
+      "texto": "Cincuenta mil pesos eran la plata de toda una vida."
+     },
+     {
+      "titulo": "¿Usted qué haría?",
+      "texto": "¿Le pondría techo a la escuela?\n¿Compraría una finca?\n¿Se iría para la capital?"
+     },
+     {
+      "titulo": "Así empieza La Hora de la Fortuna",
+      "texto": "Un hombre que manda un sobre cada miércoles.\nGratis en radionovelasdeayer.com"
+     }
+    ]
+   },
+   "texto": {
+    "fb": "En Guatancuy, un jornal era de cuatro pesos. Y el concurso de la radio daba cincuenta mil. 📻\n\n¿Usted qué habría hecho con esa plata?\n\nEscuche una radionovela de las de antes, gratis: https://radionovelasdeayer.com/cap-1?f=fb",
+    "ig": "En Guatancuy, un jornal era de cuatro pesos. Y el concurso de la radio daba cincuenta mil. 📻\n\n¿Usted qué habría hecho con esa plata?\n\nGratis: enlace en el perfil.\n\n#radionovelasdeayer #radionovela #nostalgia #pueblo"
+   },
+   "por_que": "Dilema de la premisa en formato carrusel: invita a comentar y presenta la serie sin revelar nada.",
+   "costo_estimado": 0.0504
+  },
+  {
+   "id": "w45-20",
+   "tipo": "fragmento",
+   "familia": "dramatico",
+   "fecha": "2026-11-08",
+   "hora": "19:30",
+   "plataformas": [
+    "fb",
+    "ig",
+    "yt",
+    "tt"
+   ],
+   "ilustracion": {
+    "escena": "Madrugada de neblina en la plaza: la flota de las seis, un bus de escalera de colores, espera con el motor encendido; don Eutimio, con la ruana y el sombrero, le entrega con las dos manos un sobre con estampilla al ayudante del bus.",
+    "personajes": [
+     "eutimio"
+    ],
+    "lugar": "plaza",
+    "momento": "madrugada"
+   },
+   "gancho": "«Esta semana sí, doña Carmenza. Esta semana sí»",
+   "fragmento": {
+    "capitulo": 1,
+    "inicio": 304.48,
+    "fin": 342.13
+   },
+   "texto": {
+    "fb": "—Eutimio Chitiva. Guatancuy. Con letra clara, para que el señor del radio no se me enrede. 📻\n\n¿Usted alguna vez mandó un sobre a un concurso de la radio?\n\nEscuche el capítulo 1 completo, gratis: https://radionovelasdeayer.com/cap-1?f=fb",
+    "ig": "—Eutimio Chitiva. Guatancuy. Con letra clara, para que el señor del radio no se me enrede. 📻\n\n¿Usted alguna vez mandó un sobre a un concurso de la radio?\n\nCapítulo 1 completo y gratis: enlace en el perfil.\n\n#radionovelasdeayer #radionovela #nostalgia #radiocolombiana",
+    "yt_titulo": "Dos años mandando el mismo sobre: «Esta semana sí» 📻 #radionovela #Shorts",
+    "yt_desc": "La Hora de la Fortuna, una radionovela de las de antes. Escúchela completa y gratis desde el capítulo 1: https://radionovelasdeayer.com/cap-1?f=yt",
+    "tiktok": "¿Usted alguna vez mandó un sobre a un concurso de la radio? Capítulo 1 gratis: enlace en el perfil. #radionovelasdeayer #radionovela #nostalgia #colombia",
+    "comentario": "El capítulo 1 completo, gratis 👉 https://radionovelasdeayer.com/cap-1?f=fb"
+   },
+   "por_que": "Dramático sin spoiler (la esperanza antes del sorteo), para cerrar la semana con la premisa.",
+   "costo_estimado": 0.0504
+  }
+ ],
+ "nostalgia": [
+  {
+   "titulo": "Para páginas tipo «Recuerdos de Colombia»",
+   "pieza": "w45-03",
+   "texto": "Buenas tardes. Hacemos radionovelas como las de antes, gratis, para la gente que creció oyendo la radio. Le comparto un carrusel con un recuerdo bonito: desde 1965, las 5:30 de la tarde eran la hora de Kalimán y todo el mundo corría a la casa. Si le parece bien publicarlo en su página, con mucho gusto le damos el crédito. Se escucha completa en radionovelasdeayer.com"
+  },
+  {
+   "titulo": "Para grupos de fotos antiguas y de pueblos",
+   "pieza": "w45-07",
+   "texto": "Buenas. Le comparto un carrusel sobre la tienda de antes: la libreta de fiados, el radio en la repisa, la panela y las velas. Es de Radionovelas de ayer, radionovelas gratis como las de antes. Si le gusta para su grupo, con mucho gusto. La serie se escucha en radionovelasdeayer.com"
+  }
+ ],
+ "referentes": [
+  {
+   "canal": "yt",
+   "quien": "What if Boy (337 mil suscriptores): Shorts '¿Y si fueras a un paseo de olla en los 2000 en Colombia?'",
+   "que_hacen": "Shorts de 68 a 75 s en segunda persona que ponen al espectador en una escena de su infancia; 61 mil y 33 mil vistas en 30 días.",
+   "fuente": "https://audio.radionovelasdeayer.com/datos/competencia.txt",
+   "que_aprendemos": "Gancho en segunda persona en los primeros segundos: lo probamos en el A/B w45-gancho-usted."
+  },
+  {
+   "canal": "yt",
+   "quien": "Tu radionovela: 'Amor a los 60: reencontró a su primer amor después de 40 años | Historia completa'",
+   "que_hacen": "Historias completas de casi una hora, con edad y emoción en el título; 149 mil vistas en 30 días.",
+   "fuente": "https://audio.radionovelasdeayer.com/datos/competencia.txt",
+   "que_aprendemos": "En YouTube hay público para el capítulo completo: evaluar subir capítulos enteros como videos largos (decisión de Andrés, por la regla 2)."
+  },
+  {
+   "canal": "fb",
+   "quien": "Grupo de Facebook 'Fotografía Antigua' (nació de una idea en Bogotá; más de 30.000 miembros, alcance estimado de 300.000)",
+   "que_hacen": "Fotos de álbumes y baúles que 'disparan un recuerdo'; la gente aporta sus propias fotos y comenta; prohíben política y religión.",
+   "fuente": "https://www.lagaceta.com.ar/nota/855210/actualidad/fotografia-antigua-albumes-familiares-viven-uno-sus-mejores-momentos.html",
+   "que_aprendemos": "Preguntas que pidan un recuerdo concreto ('¿quién batía el chocolate en su casa?') y responder cada comentario; ofrecer los carruseles a grupos así (textos de nostalgia)."
+  },
+  {
+   "canal": "ig",
+   "quien": "Tendencia de Instagram 'verse como en los años 80'",
+   "que_hacen": "Retratos con peinado, ropa, luz y grano de foto de época; se comparte por nostalgia y para destacar en el feed.",
+   "fuente": "https://www.publimetro.co/tecnologia/2026/09/07/por-que-se-puso-de-moda-verse-como-en-los-anos-80-en-instagram/",
+   "que_aprendemos": "Carrusel de retratos de época de los personajes (w45-15)."
+  },
+  {
+   "canal": "tt",
+   "quien": "Inesita, abuela paisa de 88 años (más de 1 millón de seguidores en TikTok y 600.000 en Instagram)",
+   "que_hacen": "Recetas típicas explicadas paso a paso con ternura; la nieta edita los videos.",
+   "fuente": "https://www.noticiasrcn.com/tendencias/inesita-la-abuela-famosa-de-tiktok-por-sus-recetas-446560",
+   "que_aprendemos": "Escena w45-04: Obdulia enseña a batir el chocolate con molinillo."
+  }
+ ],
+ "costo_estimado_semana": 1.204
+}
