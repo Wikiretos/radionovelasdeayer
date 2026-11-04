@@ -10,7 +10,7 @@
 <link rel="icon" href="https://radionovelasdeayer.com/favicon.ico" sizes="48x48"><link rel="icon" href="https://radionovelasdeayer.com/icon-192.png" type="image/png" sizes="192x192"><link rel="apple-touch-icon" href="https://radionovelasdeayer.com/apple-touch-icon.png"><link rel="manifest" href="https://radionovelasdeayer.com/manifest.webmanifest">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Imbue:wght@400;500&family=Albert+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "PodcastSeries", "@id": "https://radionovelasdeayer.com/la-hora-de-la-fortuna#serie", "name": "La Hora de la Fortuna", "description": "La Hora de la Fortuna es una radionovela colombiana nueva, ambientada en 1958: un pueblo de tierra fría, un concurso de la radio y un secreto. Diez capítulos para escuchar completos.", "url": "https://radionovelasdeayer.com/la-hora-de-la-fortuna", "inLanguage": "es-CO", "image": "https://radionovelasdeayer.com/cartel.webp", "author": {"@type": "Organization", "name": "Radionovelas de ayer", "url": "https://radionovelasdeayer.com/", "logo": "https://radionovelasdeayer.com/logo.png"}, "publisher": {"@type": "Organization", "name": "Radionovelas de ayer", "url": "https://radionovelasdeayer.com/", "logo": "https://radionovelasdeayer.com/logo.png"}, "webFeed": ""}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://radionovelasdeayer.com/"}, {"@type": "ListItem", "position": 2, "name": "La Hora de la Fortuna", "item": "https://radionovelasdeayer.com/la-hora-de-la-fortuna"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿La Hora de la Fortuna es una radionovela real de 1958?", "acceptedAnswer": {"@type": "Answer", "text": "No. Es una radionovela colombiana nueva, de 2026, ambientada en octubre de 1958. El pueblo, el concurso, las marcas y los personajes son inventados; la época, la comida, la radio de tubos y la manera de hablar son de verdad."}}, {"@type": "Question", "name": "¿Cuántos capítulos tiene y cuánto dura cada uno?", "acceptedAnswer": {"@type": "Answer", "text": "Diez capítulos, de entre trece y diecinueve minutos. Sale uno cada mañana a las seis desde el viernes 16 de octubre de 2026."}}, {"@type": "Question", "name": "¿Dónde se puede escuchar La Hora de la Fortuna?", "acceptedAnswer": {"@type": "Answer", "text": "Aquí, en radionovelasdeayer.com, completa y sin registro, en el celular o en el computador. No está en Spotify ni en otras plataformas por ahora."}}, {"@type": "Question", "name": "¿Hay que oírla en orden?", "acceptedAnswer": {"@type": "Answer", "text": "Sí, conviene. Cada capítulo recuerda el anterior en un minuto, pero la historia empieza en el capítulo uno y el enredo se arma de ahí en adelante."}}]}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "PodcastSeries", "@id": "https://radionovelasdeayer.com/la-hora-de-la-fortuna#serie", "name": "La Hora de la Fortuna", "description": "La Hora de la Fortuna es una radionovela colombiana nueva, ambientada en 1958: un pueblo de tierra fría, un concurso de la radio y un secreto. Diez capítulos para escuchar completos.", "url": "https://radionovelasdeayer.com/la-hora-de-la-fortuna", "inLanguage": "es-CO", "image": "https://radionovelasdeayer.com/cartel.webp", "author": {"@type": "Organization", "name": "Radionovelas de ayer", "url": "https://radionovelasdeayer.com/", "logo": "https://radionovelasdeayer.com/logo.png"}, "publisher": {"@type": "Organization", "name": "Radionovelas de ayer", "url": "https://radionovelasdeayer.com/", "logo": "https://radionovelasdeayer.com/logo.png"}, "webFeed": ""}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://radionovelasdeayer.com/"}, {"@type": "ListItem", "position": 2, "name": "La Hora de la Fortuna", "item": "https://radionovelasdeayer.com/la-hora-de-la-fortuna"}]}]}</script>
 <style>/* Radionovelas de ayer: la radio es el reproductor. Tokens y reglas en DESIGN.md (§5). Cada sección es un campo de un solo color. */
 :root{
   color-scheme:dark;
@@ -44,11 +44,21 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;-webki
 .display{font-family:var(--display);font-weight:400;text-transform:uppercase;letter-spacing:-.01em;line-height:.9;text-wrap:balance}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
+/* ---------- Cabecera de una línea (todas las páginas, DESIGN.md §4) ---------- */
+.cabecera{background:var(--surface);min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.cab-marca{display:flex;align-items:center;gap:10px;min-height:64px;min-width:0;text-decoration:none;color:var(--ink)}
+.cab-marca img{width:28px;height:28px;flex:none}
+.cab-marca span{font-family:var(--display);font-size:22px;text-transform:uppercase;letter-spacing:-.01em;line-height:.9;white-space:nowrap}
+.cab-caps{flex:none;min-height:64px;min-width:64px;display:inline-flex;align-items:center;justify-content:flex-end;font-size:var(--s-small);color:var(--ink);text-underline-offset:4px}
+.cab-caps.actual{color:var(--muted)}
+
 /* ---------- Escena: marca, serie y la radio ---------- */
 .portada{display:grid;justify-items:center}
 .escena{display:grid;justify-items:center;gap:14px;padding-block:20px 0;text-align:center;width:100%}
 .marca{font-size:var(--s-small);color:var(--muted)}
 .serie{font-size:var(--s-serie);color:var(--ink)}
+a.serie{text-decoration:none;padding-block:15px;margin-block:-15px}   /* toque ≥ 64 px sin mover nada */
+a.serie:hover{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:6px}
 @media (max-height:720px) and (max-width:899px){.marca{display:none}.escena{padding-top:12px;gap:8px}}
 
 /* ---------- La radio ---------- */
@@ -95,6 +105,9 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;-webki
 .fin.entra-fin{animation:sube .5s var(--ease) both}
 @keyframes sube{from{opacity:0;transform:translateY(16px)}}
 .continuar{width:100%;max-width:460px}
+.fin-redes{font-size:var(--s-small);text-align:center;text-wrap:balance}
+.fin-redes a{color:var(--accent);text-underline-offset:4px}
+.nota-radio{font-size:var(--s-small);color:var(--muted);text-align:center;font-variant-numeric:tabular-nums}
 
 /* ---------- Botones y enlaces ---------- */
 .acciones{display:grid;gap:12px}
@@ -107,6 +120,8 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;-webki
 .boton.principal:hover{background:#ffb24e}
 .boton.claro{background:var(--surface);color:var(--ink)}
 .boton.claro:hover{background:#2a241f}
+.boton.paso{background:var(--estante-paso);color:var(--ink);width:100%;max-width:680px;margin:40px auto 0}
+.boton.paso:hover{background:var(--bg)}
 .boton:disabled{cursor:default;color:var(--muted)}
 .enlace{min-height:64px;display:inline-flex;align-items:center;justify-content:center;font-size:var(--s-body);text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:2px;color:var(--ink)}
 
@@ -144,6 +159,38 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;-webki
 .texto{background:var(--surface);padding-block:64px}
 .texto .cuerpo{display:grid;gap:20px;max-width:60ch;margin:0 auto}
 .texto a{color:var(--accent);text-underline-offset:4px}
+.texto h2{font-size:clamp(34px,1.2rem + 4vw,72px)}
+
+/* ---------- Portada: el puente a la novela y "Para leer" ---------- */
+.portada-lado{width:100%;display:grid}
+.portada-h1{padding-block:28px 40px;text-align:center}
+.portada-h1 .h1-seo{max-width:600px;margin:0 auto}
+.puente{background:var(--estante);padding-block:40px 48px;display:grid;gap:28px}
+.puente-cab{display:grid;grid-template-columns:96px minmax(0,1fr);gap:16px;align-items:start;max-width:600px}
+.puente-cab img{width:96px;height:128px;object-fit:cover}
+.puente-cab > div{display:grid;gap:10px}
+.puente-t{font-size:clamp(28px,8vw,40px)}
+.puente .nota{font-size:var(--s-small);color:var(--ink);font-variant-numeric:tabular-nums}
+.puente .acciones{max-width:600px;width:100%}
+.leer{background:var(--papel);color:var(--papel-ink);padding-block:64px}
+.leer-in{max-width:60ch;margin:0 auto;display:grid;gap:16px}
+.leer h2{font-size:clamp(34px,1.2rem + 4vw,72px)}
+.leer ul a,.leer .todo a{display:inline-flex;align-items:center;min-height:64px;line-height:1.3;color:var(--papel-ink);text-underline-offset:4px}
+.leer ul a{font-size:var(--s-body)}
+.leer .todo a{font-size:var(--s-small);color:var(--papel-muted)}
+.leer :focus-visible{outline-color:var(--papel-ink)}
+
+/* ---------- Página de la novela ---------- */
+.novela{display:grid;gap:20px;padding-block:20px 56px;max-width:680px;margin:0 auto;width:100%}
+.ficha{display:grid;grid-template-columns:120px minmax(0,1fr);gap:16px;align-items:start}
+.ficha img{width:120px;height:160px;object-fit:cover}
+.datos{display:grid;gap:6px;font-size:var(--s-small);line-height:1.4}
+.datos .van{color:var(--muted)}
+.novela .acciones{width:100%}
+.quienes{padding-block:56px;display:grid;gap:20px;max-width:680px;margin:0 auto}
+.quienes h2{font-size:clamp(34px,1.2rem + 4vw,72px)}
+.mas summary{font-size:var(--s-body)}
+.mas .cuerpo-post{padding-top:24px}
 
 /* ---------- La programación ---------- */
 .programa{background:var(--estante);padding-block:72px}
@@ -168,6 +215,7 @@ a.item:hover .t{text-decoration:underline;text-underline-offset:4px}
 .item.hoy .d,.item.oyendo .d{color:var(--papel-acento);font-weight:600}
 .item.pronto{color:var(--papel-muted)}
 .hoja footer{text-align:center;font-size:var(--s-small);color:var(--papel-muted)}
+.hoja.compacta{gap:28px}
 
 /* ---------- Guion ---------- */
 .guion{background:#2c241d;padding-block:56px}
@@ -191,6 +239,13 @@ details[open] .chev::after{transform:rotate(40deg)}
 .post .migas-post a{color:var(--ink);text-underline-offset:4px;display:inline-flex;align-items:center;min-height:64px}
 .post h1{font-size:clamp(40px,1.4rem + 4vw,72px)}
 .post .fecha{font-size:var(--s-small);color:var(--muted);font-variant-numeric:tabular-nums}
+.post .lectura{font-size:var(--s-small);color:var(--muted);font-variant-numeric:tabular-nums}
+.post-arriba{padding-bottom:48px}
+.indice{background:var(--surface);padding:16px 20px 8px}
+.indice-t{font-size:var(--s-small);color:var(--muted)}
+.indice ol{display:grid}
+.indice a{display:flex;align-items:center;min-height:64px;font-size:var(--s-small);line-height:1.3;color:var(--ink);text-underline-offset:4px}
+.cuerpo-post h2[id]{scroll-margin-top:16px}
 .cuerpo-post{display:grid;gap:20px}
 .cuerpo-post h2{font-family:var(--display);font-weight:400;text-transform:uppercase;letter-spacing:-.01em;line-height:.95;font-size:clamp(30px,1rem + 3vw,48px);text-wrap:balance;padding-top:24px}
 .cuerpo-post h3{font-size:var(--s-lead);font-weight:600;line-height:1.25;padding-top:8px}
@@ -206,6 +261,7 @@ details[open] .chev::after{transform:rotate(40deg)}
 .cuerpo-post blockquote{margin:0;background:var(--surface);padding:16px 18px}
 .escuchelo{background:var(--surface);padding-block:64px 72px}
 .escuchelo .escena{padding-top:0}
+.escuchelo h2{font-size:clamp(34px,1.2rem + 4vw,72px);text-align:center}
 .escuchelo .lead{max-width:40ch;text-align:center}
 .escuchelo .acciones{width:100%;max-width:460px}
 .escuchelo .boton.claro{background:var(--bg)}
@@ -263,6 +319,10 @@ details[open] .chev::after{transform:rotate(40deg)}
   .programa,.texto{padding-block:140px}
   .hoja{padding:56px 64px 60px}
   .pie .cols{grid-template-columns:repeat(4,1fr)}
+  .portada-lado{align-self:center}
+  .portada-h1{text-align:left;padding-inline:0}
+  .portada-h1 .h1-seo{margin:0}
+  .puente{padding-inline:32px}
   .palabra .ancha{display:block}.palabra .partida{display:none}
   .barra .pista{display:block}
 }
@@ -273,19 +333,52 @@ details[open] .chev::after{transform:rotate(40deg)}
   .pre{opacity:1;transform:none}
 }
 </style></head><body>
+<header class="cabecera caja"><a class="cab-marca" href="/" data-interno><img src="logo-56.webp" width="28" height="28" alt=""><span>Radionovelas de ayer</span></a><span class="cab-caps actual" aria-current="page">Capítulos</span></header>
 <main id="contenido">
-  <article class="post caja">
-    <div class="medida">
-      <p class="migas-post"><a href="/" data-interno>Radionovelas de ayer</a></p>
-      <h1 class="display">La Hora de la Fortuna, radionovela colombiana de 1958 en diez capítulos</h1>
-      <p class="fecha"><time datetime="2026-10-14">2026-10-14</time></p>
-      <div class="cuerpo-post"><p>Guatancuy, octubre de 1958. Ochenta casas de tapia, una plaza empedrada, una iglesia, una pila de agua. Tres radios en todo el pueblo, una sola flota al día y luz eléctrica apenas de seis a diez de la noche. Aquí vive Eutimio Chitiva, el hombre más pobre del lugar, que cada semana, desde hace dos años, manda un sobre con tres envolturas de chocolate al gran concurso de la radio. Un miércoles por la noche, con la tienda llena, el animador dice su nombre. Cincuenta mil pesos. Y Eutimio, en vez de brincar, dice que va por la cédula y sale.</p>
+<header class="novela caja" id="arriba" data-campo="bg">
+  <p class="marca">Radionovelas de ayer presenta</p>
+  <h1 class="serie display">La Hora de la Fortuna</h1>
+  <div class="ficha">
+    <img src="cartel-retrato.webp" width="240" height="320" alt="Carmenza anota en su libreta y Eutimio sostiene un sobre, junto a la radio de la tienda." fetchpriority="high">
+    <ul class="datos">
+      <li>Guatancuy, octubre de 1958.</li>
+      <li>10 capítulos de 19 minutos.</li>
+      <li>Uno nuevo cada mañana a las 6:00 a. m.</li>
+      <li class="van" id="van">Van 7 publicados.</li>
+    </ul>
+  </div>
+  <p class="sinopsis-serie">Guatancuy, octubre de 1958. Tres radios en todo el pueblo y luz apenas de seis a diez de la noche. Eutimio Chitiva, el hombre más pobre del lugar, lleva dos años mandando sobres al gran concurso de la radio. Un miércoles por la noche, con la tienda llena, el animador dice su nombre. Eutimio se acaba de volver millonario.</p>
+  <div class="acciones">
+    <a class="boton principal" id="seguir" href="/cap-1" data-interno><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 4.5v15a1 1 0 0 0 1.5.9l12-7.5a1 1 0 0 0 0-1.8l-12-7.5A1 1 0 0 0 7 4.5z"/></svg><span>Oír el capítulo 1</span></a>
+    <a class="boton wa" id="wa" href="#" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.2 14.8l-.3-.2-2.6.7.7-2.5-.2-.3A8 8 0 0 1 12 4zm-3 4.5c-.2 0-.5 0-.8.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.2 5 4.4 2.5 1 3 .8 3.5.7.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4l-.5-.3-1.8-.9c-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6.3-.5v-.5l-.8-2c-.2-.5-.4-.4-.6-.4z"/></svg>Compartir por WhatsApp</a>
+  </div>
+</header>
+<section class="programa caja" id="capitulos" data-campo="estante">
+  <div class="hoja" id="programa" data-e>
+    <header>
+      <h2 class="display">La programación</h2>
+      <p class="nota">Un capítulo nuevo cada mañana a las 6:00 a. m., hora de Colombia.</p>
+    </header>
+    <p class="cuenta" id="cuenta"></p>
+    <div class="grupo" id="grupo-ya"><h3>Ya salió</h3><a class="item" data-n="1" href="/cap-1" data-interno><span class="t">1. El hombre de los sobres</span><span class="d" data-fecha="vie 16 oct">vie 16 oct</span><span class="s">Eutimio, el más pobre del pueblo, lleva dos años mandando sobres a la radio. Esta noche dicen su nombre.</span></a><a class="item" data-n="2" href="/cap-2" data-interno><span class="t">2. El secreto de todo el pueblo</span><span class="d" data-fecha="sáb 17 oct">sáb 17 oct</span><span class="s">Eutimio murió de la dicha y el premio se entrega en persona. Obdulia tiene una idea que el padre no quiere oír.</span></a><a class="item" data-n="3" href="/cap-3" data-interno><span class="t">3. Llegó antes de tiempo</span><span class="d" data-fecha="dom 18 oct">dom 18 oct</span><span class="s">Saturnino ensaya para ser Eutimio. Tienen ocho días. De la flota del viernes se baja alguien que no esperaban.</span></a><a class="item" data-n="4" href="/cap-4" data-interno><span class="t">4. La gripa de Eutimio</span><span class="d" data-fecha="lun 19 oct">lun 19 oct</span><span class="s">Obdulia inventa una gripa, el forastero pregunta por una muerta de hace treinta años y don Belisario vio una tumba nueva.</span></a><a class="item" data-n="5" href="/cap-5" data-interno><span class="t">5. El precio del silencio</span><span class="d" data-fecha="mar 20 oct">mar 20 oct</span><span class="s">Obdulia cierra un trato con don Belisario y el delegado por fin ve a Eutimio. Pero pide quedarse a solas con él.</span></a><a class="item" data-n="6" href="/cap-6" data-interno><span class="t">6. Lo que dice el libro</span><span class="d" data-fecha="mié 21 oct">mié 21 oct</span><span class="s">Saturnino responde por un muerto, el forastero se vuelve frío y el padre Severo abre un libro que llevaba treinta años cerrado.</span></a><a class="item" data-n="7" href="/cap-7" data-interno><span class="t">7. Las cartas del rancho</span><span class="d" data-fecha="jue 22 oct">jue 22 oct</span><span class="s">Carmenza abre el baúl de Eutimio y encuentra veintinueve cartas que nunca mandó, mientras don Belisario le pone un plazo y ella decide hablar.</span></a></div>
+    <div class="grupo" id="grupo-viene"><h3>Lo que viene</h3><div class="item pronto" data-n="8"><span class="t">8. El otro don Régulo</span><span class="d" data-fecha="vie 23 oct">vie 23 oct</span></div><div class="item pronto" data-n="9"><span class="t">9. Me llamo Álvaro</span><span class="d" data-fecha="sáb 24 oct">sáb 24 oct</span></div><div class="item pronto" data-n="10"><span class="t">10. El premio de Eutimio</span><span class="d" data-fecha="dom 25 oct">dom 25 oct</span></div></div>
+    <footer>Si llega tarde, el capítulo lo espera donde lo dejó.</footer>
+  </div>
+</section>
+<section class="quienes caja" data-campo="bg">
+  <h2 class="display" data-e>Quiénes son</h2>
+  <p data-e>Eutimio Chitiva, el jornalero que ganó. Carmenza Rincón, la tendera que todo lo apunta. Misiá Obdulia, la que reparte las noticias. Saturnino, el sacristán. El padre Severo, que nunca miente. Don Belisario, el hacendado. Y un forastero de la capital.</p>
+</section>
+<section class="guion mas caja" id="mas" data-campo="guion">
+  <details>
+    <summary>Más sobre la novela: cómo se hizo, el pueblo, la época<span class="chev" aria-hidden="true"></span></summary>
+    <div class="cuerpo-post"><p>Guatancuy, octubre de 1958. Ochenta casas de tapia, una plaza empedrada, una iglesia, una pila de agua. Tres radios en todo el pueblo, una sola flota al día y luz eléctrica apenas de seis a diez de la noche. Aquí vive Eutimio Chitiva, el hombre más pobre del lugar, que cada semana, desde hace dos años, manda un sobre con tres envolturas de chocolate al gran concurso de la radio. Un miércoles por la noche, con la tienda llena, el animador dice su nombre. Cincuenta mil pesos. Y Eutimio, en vez de brincar, dice que va por la cédula y sale.</p>
 <p>La Hora de la Fortuna es una radionovela colombiana nueva, hecha en 2026 con el sabor de las que se oían en los años cincuenta: tendera, sacristán, cura, hacendado y un forastero que llega antes de tiempo. Son diez capítulos de menos de veinte minutos, uno cada mañana a las seis, para oír completos en el celular. Esta página cuenta de qué va, quiénes son los que hablan y en qué orden oírla. Sin contarle el final.</p>
-<h2>De qué trata</h2>
+<h3>De qué trata</h3>
 <p>El premio del concurso se entrega en persona, en acto público, al ganador con su cédula en la mano. Un delegado de la casa patrocinadora viene de la capital a entregarlo, y si en diez días no hay a quién, la plata se vuelve a sortear al aire. Con esa regla, y con una noticia que el pueblo recibe la misma noche del sorteo, Guatancuy toma una decisión que nadie debería tomar y que todos toman: que Eutimio Chitiva siga siendo Eutimio Chitiva hasta que llegue el delegado, pase lo que pase.</p>
 <p>Lo que sigue es comedia de costumbres con un pueblo entero metido en un enredo: ensayos en un rancho de bahareque, una gripa inventada, un cura que se opone y calla, un hacendado que lo ve todo y cobra por callar, y una tendera que entró al engaño a su pesar y que se enamora de quien no debe. Y debajo del enredo, un secreto viejo: un rumor de que Eutimio, de joven, dejó un hijo donde unas monjas.</p>
 <p>¿Usted qué haría si se ganara el premio de la radio y el pueblo entero se enterara?</p>
-<h2>Los que hablan</h2>
+<h3>Los que hablan</h3>
 <p>Carmenza Rincón, veintisiete años, tendera. Heredó la tienda de su padre y todo lo apunta en una libreta. El pueblo ya la da por quedada. Es la única amiga de Eutimio: le fía el pan y le guarda las envolturas. Dice "hagamos cuentas" y "eso no me cuadra", y nombra a Dios poco y en serio.</p>
 <p>Eutimio Chitiva, sesenta y dos años que parecen ochenta. Jornalero sin tierra, hace mandados, barre el atrio sin que nadie le pague. Viudo desde hace treinta años. Habla bajito, con dichos, y cierra con "si Dios no dispone otra cosa".</p>
 <p>Misiá Obdulia Pachón, sesenta y uno, viuda, madrina de Carmenza. Reza el rosario y reparte las noticias. Las ideas torcidas son siempre suyas, y las anuncia con "yo no es por hablar, mija, pero".</p>
@@ -294,11 +387,13 @@ details[open] .chev::after{transform:rotate(40deg)}
 <p>Don Belisario Umaña, cincuenta y cinco, hacendado, dueño del único camión y de medio pueblo. Pretendió a Carmenza y ella le dijo que no. "Aquí no se mueve una hoja sin que yo sepa."</p>
 <p>El forastero, treinta años, de la capital, cortés y cansado, que se baja de la flota del viernes con sombrero y maletín preguntando por Eutimio Chitiva. Pregunta mucho y no cuenta nada de sí mismo.</p>
 <p>Y el animador de La Hora de la Fortuna, la única voz que suena a radio, porque sale de la radio de tubos de la tienda: "Tres envolturas, su nombre y su pueblo, y espere usted noticias de esta emisora".</p>
-<h2>El mundo de 1958</h2>
+<h3>El mundo de 1958</h3>
 <p>Todo lo que se oye en la serie es de época o inventado con sabor de época. La flota llega de la capital a las cuatro de la tarde y sale a las seis de la mañana. Las noticias entran por la radio de la tienda, por el periódico que llega con un día de atraso y por telegrama, que se recoge en el pueblo grande, a una hora. No hay teléfono, no hay médico, no hay banco. Se come changua, cuchuco, almojábana y chocolate en pocillo; se toma cerveza en la tienda y chicha a escondidas. Por la radio suenan boleros, bambucos, el rosario y el concurso del miércoles.</p>
 <p>Las marcas son inventadas, para que nadie se ofenda: Chocolate El Arrebol, el que madruga con usted; Jabón Flor de Sabana; Café Tres Campanas; Brillantina Gardenia Real; Fósforos El Relámpago. El pueblo no se ubica en ningún mapa; es tierra fría, a tres horas de flota de la capital, y con eso basta.</p>
 <p>Las mujeres estrenan cédula, porque votaron por primera vez el diciembre anterior. En la capital hay televisión. En Guatancuy nadie la ha visto.</p>
-<h2>Los capítulos</h2>
+<h3>Los capítulos</h3>
+<p>Estos son los capítulos de La Hora de la Fortuna, completos, en orden, para escuchar cuando quiera. Cada uno dura menos de veinte minutos y sale a las seis de la mañana, uno por día. Si es la primera vez que llega, empiece por el uno: la historia se entiende desde ahí y cada capítulo arranca recordando lo que pasó en el anterior, como hacían las radio novelas de antes para el que se había perdido la del día.</p>
+<p>Pasa en Guatancuy, un pueblo de tierra fría, en octubre de 1958. El hombre más pobre del pueblo se gana un concurso de la radio, y lo que el pueblo hace con esa noticia es lo que aquí se cuenta. El capítulo de hoy aparece destacado; el de mañana dice a qué hora sale. Si prefiere oírlos de noche, también sirven: nadie le va a apurar.</p>
 <table>
 <thead>
 <tr>
@@ -362,58 +457,30 @@ details[open] .chev::after{transform:rotate(40deg)}
 </table>
 
 <p>Cada capítulo arranca con el locutor recordando lo que pasó en el anterior, como se hacía antes, así que si se perdió uno no se pierde la historia. Pero empiece por el primero: la radionovela se entiende desde la tienda, un miércoles por la mañana, con un hombre que pide fiado un sobre y una estampilla.</p>
-<h2>Cómo oírla</h2>
+<h3>Cómo oírla</h3>
 <p>En el celular, sin descargar nada y sin cuenta. Abra el capítulo, toque la perilla y arranca; si cierra a la mitad, al volver sigue donde iba. Debajo del reproductor hay un botón para leer lo que van diciendo, frase por frase, y más abajo el guion completo del capítulo, por si quiere seguirlo con los ojos o volver a una frase. Al terminar, un botón de WhatsApp le manda el capítulo uno a quien usted quiera con un mensaje ya escrito.</p>
 <p>La radionovela sale a las seis de la mañana porque a esa hora salían las de antes, para oírlas con el tinto. Pero se puede oír a cualquier hora, y de noche, con la luz apagada, suena mejor.</p>
-<h2>Por qué hacemos radionovelas en 2026</h2>
+<h3>Por qué hacemos radionovelas en 2026</h3>
 <p>Porque nadie las está haciendo. <a href="/radionovelas-colombianas" data-interno>Las radionovelas colombianas de Todelar, Caracol y la Radio Nacional</a> se apagaron hacia 1995, y lo que ha vuelto desde entonces son reediciones de Kalimán y audionovelas sueltas. No había una serie nueva, de época, con capítulo diario, hecha para oír completa. Esta es la primera de esta casa. Cuando termine, viene otra, y la trama la escogen los oyentes.</p>
-<h2>Preguntas que nos hacen</h2>
-<h3>¿La Hora de la Fortuna es una radionovela real de 1958?</h3>
+<h3>Preguntas que nos hacen</h3>
+<h4>¿La Hora de la Fortuna es una radionovela real de 1958?</h4>
 <p>No. Es una radionovela colombiana nueva, de 2026, ambientada en octubre de 1958. El pueblo, el concurso, las marcas y los personajes son inventados; la época, la comida, la radio de tubos y la manera de hablar son de verdad.</p>
-<h3>¿Cuántos capítulos tiene y cuánto dura cada uno?</h3>
+<h4>¿Cuántos capítulos tiene y cuánto dura cada uno?</h4>
 <p>Diez capítulos, de entre trece y diecinueve minutos. Sale uno cada mañana a las seis desde el viernes 16 de octubre de 2026.</p>
-<h3>¿Dónde se puede escuchar La Hora de la Fortuna?</h3>
+<h4>¿Dónde se puede escuchar La Hora de la Fortuna?</h4>
 <p>Aquí, en radionovelasdeayer.com, completa y sin registro, en el celular o en el computador. No está en Spotify ni en otras plataformas por ahora.</p>
-<h3>¿Hay que oírla en orden?</h3>
+<h4>¿Hay que oírla en orden?</h4>
 <p>Sí, conviene. Cada capítulo recuerda el anterior en un minuto, pero la historia empieza en el capítulo uno y el enredo se arma de ahí en adelante.</p>
 <p>Si quiere saber a qué suena, dele al botón: <a href="/cap-1" data-interno>el capítulo uno</a> dura diecinueve minutos y empieza con una puerta que se abre y un "buenos días, doña Carmenza, con permiso".</p></div>
-    </div>
-  </article>
-  <section class="escuchelo caja" id="escuchelo" aria-label="Escúchelo" data-campo="surface">
-  <div class="escena">
-    <p class="lead">Capítulo 1 de La Hora de la Fortuna: <i>El hombre de los sobres</i>.</p>
-    <div class="aparato" id="radio">
-    <div class="mueble">
-      <img src="radio-panel-460.webp" srcset="radio-panel-460.webp 460w, radio-panel-825.webp 825w" sizes="(min-width:900px) 520px, min(calc(100vw - 32px), 460px)" width="825" height="1024" alt="El frente de una radio de mesa de los años cincuenta, de madera, con el dial y tres perillas." loading="lazy">
-      <canvas class="onda" id="onda" aria-hidden="true"></canvas>
-      <div class="luz-dial" aria-hidden="true"></div>
-      <svg class="escala" viewBox="0 0 825 1024" aria-hidden="true"><g id="minutos"></g><g class="aguja" id="aguja"><line x1="148" y1="336" x2="148" y2="386" stroke="#a3271b" stroke-width="5" stroke-linecap="round"/></g></svg>
-      <p class="pantalla" id="pantalla" aria-hidden="true"><span id="pantalla-txt"></span></p>
-      <p class="placa-radio estado" id="placa" aria-live="polite"><span id="placa-radio">Toque la perilla naranja</span></p>
-      <button class="perilla-img atras" id="atras" aria-label="Retroceder 15 segundos"><img src="perilla.webp" width="200" height="200" alt=""><svg class="salto" viewBox="0 0 48 48" aria-hidden="true"><path d="M13.5 13.8A15 15 0 1 1 9.4 27.5" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round"/><path d="M6.5 8.5l1.8 9.3 9.2-2.4" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/><text x="24" y="30.5" text-anchor="middle" font-size="19" font-weight="800" fill="currentColor" font-family="Albert Sans,Arial,sans-serif">15</text></svg></button>
-      <button class="perilla-img play" id="play" aria-label="Reproducir"><img src="perilla-naranja.webp" width="200" height="200" alt=""><span class="ico-p" id="ico-p"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 4.5v15a1 1 0 0 0 1.5.9l12-7.5a1 1 0 0 0 0-1.8l-12-7.5A1 1 0 0 0 7 4.5z"/></svg></span></button>
-      <button class="perilla-img adelante" id="adelante" aria-label="Adelantar 15 segundos"><img src="perilla.webp" width="200" height="200" alt=""><svg class="salto" viewBox="0 0 48 48" aria-hidden="true"><path d="M34.5 13.8A15 15 0 1 0 38.6 27.5" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round"/><path d="M41.5 8.5l-1.8 9.3-9.2-2.4" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/><text x="24" y="30.5" text-anchor="middle" font-size="19" font-weight="800" fill="currentColor" font-family="Albert Sans,Arial,sans-serif">15</text></svg></button>
-    </div>
-  </div>
-  
-  <button class="enlace" id="desde-cero" hidden>Empezar el capítulo desde el principio</button>
-  <div class="fin" id="fin" hidden>
-    <div class="acciones" id="fin-botones"></div>
-    <p class="fin-aviso" id="fin-aviso"></p>
-    <button class="enlace" id="otra-vez">Oír este capítulo otra vez</button>
-  </div>
-  <audio id="audio" src="https://audio.radionovelasdeayer.com/cap01_web.mp3" preload="metadata"></audio>
-    <div class="acciones"><a class="boton claro" href="/cap-1" data-interno><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 4.5v15a1 1 0 0 0 1.5.9l12-7.5a1 1 0 0 0 0-1.8l-12-7.5A1 1 0 0 0 7 4.5z"/></svg>Oír el capítulo 1 completo</a></div>
-    <p><a href="/" data-interno>Escuchar radionovelas</a>: una nueva cada mañana a las 6:00 a. m.</p>
-  </div>
+  </details>
 </section>
 </main>
 <footer class="pie caja" id="pie" data-campo="papel">
   <div class="cols">
-    <div><b>La serie</b><ul><li><a href="/la-hora-de-la-fortuna" data-interno>La Hora de la Fortuna</a></li><li><a href="/capitulos" data-interno>Todos los capítulos</a></li><li><a href="/" data-interno>Inicio</a></li></ul></div>
+    <div><b>La serie</b><ul><li><a href="/la-hora-de-la-fortuna" data-interno>La Hora de la Fortuna</a></li><li><a href="/la-hora-de-la-fortuna" data-interno>Todos los capítulos</a></li><li><a href="/" data-interno>Inicio</a></li></ul></div>
     <div><b>Para leer</b><ul><li><a href="/que-es-una-radionovela" data-interno>Qué es una radionovela</a></li><li><a href="/radionovelas-colombianas" data-interno>Radionovelas colombianas</a></li><li><a href="/radionovelas" data-interno>Radionovelas</a></li></ul></div>
-    <div><b>Horario</b><ul><li>Un capítulo nuevo cada mañana a las 6:00 a. m., hora de Colombia.</li></ul></div>
-    <div><b>Compartir</b><ul><li><a id="wa3" href="#" target="_blank" rel="noopener">Mandar el capítulo 1 por WhatsApp</a></li></ul></div>
+    <div><b>Síganos</b><ul><li><a href="https://www.facebook.com/profile.php?id=61595326047740&amp;utm_source=sitio&amp;utm_medium=pie" target="_blank" rel="noopener" data-red="Facebook">Facebook</a></li><li><a href="https://www.instagram.com/radionovelasdeayer/?utm_source=sitio&amp;utm_medium=pie" target="_blank" rel="noopener" data-red="Instagram">Instagram</a></li><li><a href="https://www.youtube.com/@radionovelasdeayer?utm_source=sitio&amp;utm_medium=pie" target="_blank" rel="noopener" data-red="YouTube">YouTube</a></li><li><a href="https://www.tiktok.com/@radionovelasdeayer?utm_source=sitio&amp;utm_medium=pie" target="_blank" rel="noopener" data-red="TikTok">TikTok</a></li></ul></div>
+    <div><b>Compartir</b><ul><li><a id="wa3" href="#" target="_blank" rel="noopener">Mandar el capítulo 1 por WhatsApp</a></li><li>Un capítulo nuevo cada mañana a las 6:00 a. m., hora de Colombia.</li></ul></div>
   </div>
   <div><ul class="legal" aria-label="Sobre el sitio"><li><a href="/privacidad" data-interno>Privacidad</a></li><li><a href="/terminos" data-interno>Términos</a></li><li><a href="/eliminacion-datos" data-interno>Borrar datos</a></li></ul></div>
   <div class="palabra" aria-label="Radionovelas de ayer">
@@ -424,10 +491,11 @@ details[open] .chev::after{transform:rotate(40deg)}
 </footer>
 <div class="barra" id="barra" aria-hidden="true">
   <button class="perilla" id="play2" tabindex="-1" aria-label="Reproducir"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 4.5v15a1 1 0 0 0 1.5.9l12-7.5a1 1 0 0 0 0-1.8l-12-7.5A1 1 0 0 0 7 4.5z"/></svg></button>
-  <div class="txt"><b>Capítulo 1 · El hombre de los sobres</b><span id="t-barra">0:00 de 18:58</span></div>
+  <div class="txt"><b id="b-titulo">Capítulo 1 · El hombre de los sobres</b><span id="t-barra">0:00 de 18:58</span></div>
   <div class="pista"><i id="luz2"></i></div>
-</div><script>
-window.CFG={"prod": true, "base": "https://radionovelasdeayer.com/", "caps": ["El hombre de los sobres", "El secreto de todo el pueblo", "Llegó antes de tiempo", "La gripa de Eutimio", "El precio del silencio", "Lo que dice el libro", "Las cartas del rancho", "El otro don Régulo", "Me llamo Álvaro", "El premio de Eutimio"], "ganchos": ["¿Usted qué haría si se ganara el premio de la radio… y el pueblo entero se enterara?", "¿Usted cree que un pueblo entero puede guardar un secreto?", "¿Y si el que llega de la capital no es quien dice ser?", "¿Cuánto aguanta una mentira cuando todos la cuidan?", "¿Usted cree que el padre Severo aguanta callado?", "¿Qué pasa cuando alguien abre la libreta de Carmenza?", "¿A quién le escribía Eutimio todos esos años?", "¿Y si hay dos hombres con el mismo nombre?", "¿Usted cree que Álvaro perdona?", "¿Quién se queda al final con la fortuna?"], "estreno": "2026-10-16", "canal": "", "serie": "La Hora de la Fortuna", "marca": "Radionovelas de ayer", "contexto": "Guatancuy, 1958: el hombre más pobre del pueblo se gana el concurso de la radio y todos se enteran.", "dur": 19, "oyentes_hoy": null, "existentes": [1, 2, 3, 4, 5, 6, 7], "n": 1, "titulo": "El hombre de los sobres", "gancho": "¿Usted qué haría si se ganara el premio de la radio… y el pueblo entero se enterara?", "nombres": {"locutor": "El narrador", "animador": "El animador del concurso", "carmenza": "Carmenza", "eutimio": "Eutimio", "obdulia": "Misiá Obdulia", "saturnino": "Saturnino, el sacristán", "padre_severo": "El padre Severo", "belisario": "Belisario", "regulo": "Don Régulo Peñaranda", "alvaro": "Don Régulo, el forastero"}, "lineas": [{"personaje": "locutor", "texto": "[solemne] Radionovelas de ayer presenta… La Hora de la Fortuna. Capítulo uno: El hombre de los sobres. Una historia de tierra fría, de cuando la fortuna llegaba por el radio.", "inicio": 2.5, "fin": 20.11}, {"personaje": "locutor", "texto": "Con la actuación de Anselmo Cifuentes como Eutimio Chitiva, Leonor Villaveces como Carmenza Rincón, Betsabé Moncada como misiá Obdulia, Pompilio Rozo como Saturnino Cuervo, Aurelio Santamaría como el padre Severo y Rigoberto Alcázar como el animador de La Hora de la Fortuna.", "inicio": 20.61, "fin": 49.63}, {"personaje": "locutor", "texto": "Guatancuy. Un pueblo de tierra fría, a tres horas de flota de la capital. Corre el mes de octubre de mil novecientos cincuenta y ocho. Ochenta casas de tapia, una plaza empedrada, una iglesia y una pila de agua. Tres radios en todo el pueblo, una sola flota al día, y luz eléctrica apenas de seis a diez de la noche. Aquí vive Carmenza Rincón, la tendera, que todo lo apunta en su libreta. Misiá Obdulia, su madrina, que todo lo oye. Saturnino Cuervo, el sacristán, que todo lo repite. Y Eutimio Chitiva, el hombre más pobre de Guatancuy, que cada semana, desde hace dos años, manda un sobre al concurso de la radio. Hoy es miércoles. Escuchemos.", "inicio": 50.13, "fin": 106.42}, {"personaje": "eutimio", "texto": "Buenos días, doña Carmenza. Con permiso… ¿se puede?", "inicio": 109.83, "fin": 116.05}, {"personaje": "carmenza", "texto": "Siga, don Eutimio, siga, que afuera está helando. ¿Cómo amaneció?", "inicio": 116.55, "fin": 122.24}, {"personaje": "eutimio", "texto": "Amanecí, doña Carmenza, que ya es ganancia. Si Dios no dispone otra cosa, aquí sigo.", "inicio": 122.74, "fin": 133.95}, {"personaje": "carmenza", "texto": "Hoy es miércoles, don Eutimio, así que ya sé a qué viene. Por el sobre y la estampilla para el concurso de la radio. El de la otra semana.", "inicio": 134.45, "fin": 143.77}, {"personaje": "eutimio", "texto": "[ríe suavemente] Un sobre y una estampilla. Y… y fiados, doña Carmenza, qué pena con sumercé. Esta semana no hubo mandados, y sin mandados no hay ni para el chocolate.", "inicio": 144.27, "fin": 160.13}, {"personaje": "carmenza", "texto": "Hagamos cuentas, don Eutimio. Aquí en la libreta me debe un peso con cuarenta. Con el sobre y la estampilla, un peso con sesenta.", "inicio": 160.63, "fin": 169.67}, {"personaje": "eutimio", "texto": "Anótelo ahí, doña Carmenza, que yo se lo pago. Con mandados… con lo que sumercé disponga. Yo a usted no le quedo mal.", "inicio": 170.17, "fin": 182.21}, {"personaje": "carmenza", "texto": "Yo sé que no, don Eutimio. [pausa] Y sin chocolate no hay envolturas. Por eso le guardé una cosa. Tenga.", "inicio": 182.71, "fin": 191.07}, {"personaje": "eutimio", "texto": "¿Las… las envolturas?", "inicio": 191.57, "fin": 194.73}, {"personaje": "carmenza", "texto": "Las tres envolturas de Chocolate El Arrebol, las que pide el concurso. Tres envolturas en un sobre, con el nombre y el pueblo. Y no le cuente a nadie que se las guardo, que después todo Guatancuy me pide.", "inicio": 195.23, "fin": 210.96}, {"personaje": "eutimio", "texto": "Dios se lo pague, sumercé. El sobre de esta noche ya está allá en la capital. Lo mandé hace ocho días.", "inicio": 211.46, "fin": 222.3}, {"personaje": "carmenza", "texto": "¿Y este, entonces?", "inicio": 222.8, "fin": 224.73}, {"personaje": "eutimio", "texto": "Este es para el sorteo del otro miércoles, doña Carmenza. Cada semana sortean, y cada semana hay que mandar sobre nuevo. Ya van… van dos años de sobres.", "inicio": 225.23, "fin": 239.83}, {"personaje": "carmenza", "texto": "Dos años perdiendo cada miércoles, y dos años de estampillas. Eso es lo que no me cuadra. Don Eutimio, dígame una cosa. ¿Usted qué haría si se ganara esos cincuenta mil pesos?", "inicio": 240.33, "fin": 254.02}, {"personaje": "eutimio", "texto": "[en voz baja] Me iría para la capital, doña Carmenza.", "inicio": 255.52, "fin": 259.26}, {"personaje": "carmenza", "texto": "¿Para la capital? ¿Y a qué, don Eutimio?", "inicio": 259.76, "fin": 263.78}, {"personaje": "eutimio", "texto": "A buscar a alguien. [pausa] Pero bien presentado, doña Carmenza. Con vestido de paño. Con zapatos. Sin la vergüenza de llegar de limosnero.", "inicio": 264.28, "fin": 278.2}, {"personaje": "carmenza", "texto": "[sorprendida] ¿A buscar a quién, don Eutimio?", "inicio": 280.2, "fin": 282.89}, {"personaje": "eutimio", "texto": "A alguien que… que hace mucho no veo. [pausa] Y que no sabe que lo busco.", "inicio": 283.39, "fin": 291.15}, {"personaje": "carmenza", "texto": "[con ternura] Ay, don Eutimio. Ya está desvariando otra vez, con este frío. Siéntese ahí en el bulto y le sirvo una aguapanela, que tiene las manos moradas.", "inicio": 291.65, "fin": 303.98}, {"personaje": "eutimio", "texto": "No, sumercé, no, que tengo que escribirlo bien. El sobre se va mañana en la flota de las seis. Eutimio Chitiva. Guatancuy. Con letra clara, para que el señor del radio no se me enrede.", "inicio": 304.48, "fin": 323.94}, {"personaje": "carmenza", "texto": "Escríbalo aquí en el mostrador, que hay luz. Y la aguapanela se la toma, don Eutimio, que esa no se la anoto.", "inicio": 324.44, "fin": 332.38}, {"personaje": "eutimio", "texto": "Dios se lo pague, sumercé. Esta semana sí, doña Carmenza. Esta semana sí.", "inicio": 332.88, "fin": 342.13}, {"personaje": "locutor", "texto": "Esa misma tarde, en la tienda de Carmenza Rincón, a la hora en que las vecinas bajan por el pan.", "inicio": 348.63, "fin": 357.67}, {"personaje": "obdulia", "texto": "Buenas y santas, Carmenza, mija. Véndame media libra de chocolate y un pan de a cinco. Y a propósito, mija: ¿es verdad que esta mañana estuvo aquí Eutimio, otra vez con lo del sobre?", "inicio": 360.08, "fin": 374.84}, {"personaje": "carmenza", "texto": "Buenas tardes, madrina. Estuvo, sí señora. Como todos los miércoles.", "inicio": 375.34, "fin": 381.19}, {"personaje": "obdulia", "texto": "¡Ave María Purísima! Otro sobre. Ese hombre se ha gastado en estampillas lo que no se ha gastado en comida.", "inicio": 381.69, "fin": 390.62}, {"personaje": "carmenza", "texto": "Siga, Saturnino, que ya le tengo listas las velas para el padre Severo.", "inicio": 393.03, "fin": 398.33}, {"personaje": "saturnino", "texto": "Buenas tardes, Carmenza. Buenas, misiá Obdulia. [ríe] ¿Otra vez el sobre de Eutimio? Yo creo que esos sobres ni siquiera llegan a la capital. Se… se han de perder por el camino.", "inicio": 398.83, "fin": 413.04}, {"personaje": "carmenza", "texto": "Saturnino, usted es el sacristán, no el pregonero. Vino por las velas del padre Severo, no a hablar de mis clientes. Son doce velas. Hagamos cuentas.", "inicio": 413.54, "fin": 424.8}, {"personaje": "saturnino", "texto": "Con el perdón de la sotana del padre, Carmenza, pero es que… ¡cincuenta mil pesos para Eutimio Chitiva! Primero se los gana la mula de don Belisario.", "inicio": 425.3, "fin": 435.88}, {"personaje": "obdulia", "texto": "[en voz baja] Yo no es por hablar, mija, pero a ese pobre no es la plata lo que lo tiene así. Acérquense. Dicen… dicen que de joven, cuando se le murió la mujer, quedó con un niño de brazos. Y sin con qué.", "inicio": 436.38, "fin": 451.5}, {"personaje": "carmenza", "texto": "Madrina, ese cuento es más viejo que la iglesia.", "inicio": 452.0, "fin": 455.01}, {"personaje": "obdulia", "texto": "Cuento viejo será. Pero dicen que se fue para la capital con el niño envuelto en la ruana… y que volvió solo. Que lo dejó donde unas monjas. Y que de ahí se le corrió la teja, y por eso anda hablando solo por los caminos.", "inicio": 455.51, "fin": 471.91}, {"personaje": "saturnino", "texto": "[apurado] Eso sí lo he oído yo. En el nombre del Padre y del Hijo… Dicen que por eso no pasa de la puerta de la iglesia. Dominus vobiscum, y que Dios lo perdone.", "inicio": 472.41, "fin": 483.75}, {"personaje": "carmenza", "texto": "[con firmeza, alzando un poco la voz] ¿Alguno de ustedes vio a ese niño? ¿Lo vio usted, Saturnino? ¿Lo vio sumercé, madrina? Nadie. Llevan treinta años repitiendo un chisme que nadie puede probar.", "inicio": 484.25, "fin": 497.99}, {"personaje": "obdulia", "texto": "Yo no lo inventé, mija. Eso lo dice todo el pueblo desde antes de que usted naciera.", "inicio": 498.49, "fin": 505.15}, {"personaje": "carmenza", "texto": "Yo lo que sé es otra cosa. Que don Eutimio le barre el atrio al padre sin que nadie le pague. Que nunca me ha negado un saludo. Y que la noche en que se agravó mi papá, el único que amaneció sentado en esa puerta fue él.", "inicio": 505.65, "fin": 520.25}, {"personaje": "saturnino", "texto": "No se ponga brava, Carmenza. Si yo al viejo lo estimo. Lo que pasa es que… que es una lástima. Un pobre esperando que la radio diga su nombre.", "inicio": 520.75, "fin": 532.12}, {"personaje": "carmenza", "texto": "[con firmeza] Esta noche prendo el radio a las ocho, como todos los miércoles. Y don Eutimio se sienta junto a la puerta, como todos los miércoles. Y el que se ría de él en mi tienda, Saturnino, no vuelve a oír la radio aquí.", "inicio": 532.62, "fin": 549.52}, {"personaje": "obdulia", "texto": "¡Virgen Santísima, qué genio! Por eso es que no se ha casado, mija.", "inicio": 550.02, "fin": 556.31}, {"personaje": "carmenza", "texto": "Son sesenta centavos, madrina. Y las velas, Saturnino, se las apunto al padre.", "inicio": 556.81, "fin": 562.35}, {"personaje": "saturnino", "texto": "Apúnteselas, apúnteselas. Y… y guárdeme puesto esta noche, Carmenza. Que yo no me río. Yo oigo calladito.", "inicio": 562.85, "fin": 572.41}, {"personaje": "locutor", "texto": "Cae la tarde sobre Guatancuy. En la plaza, junto a la pila de agua, un hombre espera al párroco con un sobre en la mano.", "inicio": 578.91, "fin": 591.09}, {"personaje": "eutimio", "texto": "Padre Severo… padre, sumercé perdone que lo ataje aquí en plena plaza.", "inicio": 591.59, "fin": 597.44}, {"personaje": "padre_severo", "texto": "Eutimio, hijo. Para usted siempre tengo tiempo. ¿Qué trae ahí, tan apretado?", "inicio": 597.94, "fin": 606.98}, {"personaje": "eutimio", "texto": "El sobre, padre. El del concurso de la otra semana. Mañana se va en la flota. Yo quería… si no es mucho pedir… que sumercé me lo bendijera.", "inicio": 607.48, "fin": 624.48}, {"personaje": "padre_severo", "texto": "[ríe suavemente, con cariño] ¿Bendecir un sobre de chocolate? En treinta y dos años de cura en este pueblo me han traído a bendecir vacas, semillas y hasta un camión. Un sobre, nunca.", "inicio": 624.98, "fin": 639.48}, {"personaje": "eutimio", "texto": "Es que ya van dos años mandando sobres, padre, y nunca dicen mi nombre. Uno solo… uno solo no puede.", "inicio": 639.98, "fin": 650.82}, {"personaje": "padre_severo", "texto": "Dios no se afana, Eutimio. Él tiene su hora, y a nosotros nos toca esperarla con paciencia. [pausa] Démelo acá.", "inicio": 651.32, "fin": 663.96}, {"personaje": "padre_severo", "texto": "[en voz baja] Señor, dale a este hombre la suerte que la vida le ha negado. Y si es tu voluntad, que esta vez sea su nombre el que digan. Amén.", "inicio": 664.46, "fin": 678.28}, {"personaje": "padre_severo", "texto": "Téngalo, Eutimio.", "inicio": 678.78, "fin": 680.87}, {"personaje": "eutimio", "texto": "Dios se lo pague, padre Severo.", "inicio": 681.37, "fin": 684.51}, {"personaje": "padre_severo", "texto": "Quédese sentado un rato, Eutimio, no se vaya tan rápido, que hace rato no conversamos. [pausa] ¿Todavía piensa en eso?", "inicio": 685.01, "fin": 699.82}, {"personaje": "eutimio", "texto": "Todos los días, padre.", "inicio": 702.82, "fin": 705.51}, {"personaje": "padre_severo", "texto": "¿Todos?", "inicio": 706.01, "fin": 707.47}, {"personaje": "eutimio", "texto": "Todos. Cuando amanece. Cuando llega la luz. Y cuando la quitan. [pausa] Más cuando la quitan.", "inicio": 707.97, "fin": 718.71}, {"personaje": "padre_severo", "texto": "Yo le dije una vez que hablara, hijo. Que en este pueblo lo iban a entender.", "inicio": 719.21, "fin": 726.5}, {"personaje": "eutimio", "texto": "No, padre. Sumercé me dio su palabra. Eso es entre Dios, sumercé y yo. Un hombre que… [pausa] No. Con qué cara.", "inicio": 727.0, "fin": 746.04}, {"personaje": "padre_severo", "texto": "Mi palabra la tiene, Eutimio. Yo no ando contando lo que no es mío. Pero hay silencios que pesan más que una ruana mojada.", "inicio": 746.54, "fin": 757.88}, {"personaje": "eutimio", "texto": "Si me gano ese premio, padre, se acaba el silencio. Voy… voy y arreglo lo que tengo que arreglar. Si Dios no dispone otra cosa.", "inicio": 758.38, "fin": 772.54}, {"personaje": "padre_severo", "texto": "¿Y si no se lo gana?", "inicio": 773.04, "fin": 775.41}, {"personaje": "eutimio", "texto": "Mando otro sobre el miércoles que viene.", "inicio": 775.91, "fin": 780.64}, {"personaje": "padre_severo", "texto": "[ríe suavemente] Ay, Eutimio…", "inicio": 781.14, "fin": 783.47}, {"personaje": "padre_severo", "texto": "[con ternura] Vaya con Dios, Eutimio. Y abríguese, que esta noche hiela.", "inicio": 783.97, "fin": 790.94}, {"personaje": "locutor", "texto": "Las ocho de la noche. En la tienda de Carmenza Rincón no cabe un alma: es miércoles, y el radio de tubos ya está caliente.", "inicio": 797.44, "fin": 809.33}, {"personaje": "obdulia", "texto": "Carmenza, mija, súbale a ese radio, que ya va a empezar. Y cállese un momento, Saturnino, que no me deja oír.", "inicio": 809.83, "fin": 817.64}, {"personaje": "carmenza", "texto": "Ya va, madrina, ya va. Don Eutimio, éntrese, no se me quede en la puerta, que se hiela.", "inicio": 818.14, "fin": 824.88}, {"personaje": "eutimio", "texto": "Aquí estoy bien, doña Carmenza. Desde aquí oigo. Y no… no estorbo.", "inicio": 825.38, "fin": 832.27}, {"personaje": "animador", "texto": "[por el radio] ¡Muy buenas noches, amigos oyentes! Desde los estudios de Radio Cordillera, en la capital, llega hasta su hogar… ¡La Hora de la Fortuna! El programa que cada miércoles sortea una fortuna entre sus oyentes, por cortesía de Chocolate El Arrebol… ¡el que madruga con usted!", "inicio": 843.8, "fin": 869.74}, {"personaje": "animador", "texto": "[por el radio] Recuerde, señora. Recuerde, caballero. Tres envolturas de Chocolate El Arrebol en un sobre, con su nombre y su pueblo. El premio mayor lo entrega en persona el delegado de la casa patrocinadora, en acto público, y el ganador lo recibe con su cédula en la mano. ¡Cincuenta mil pesos!", "inicio": 870.24, "fin": 892.89}, {"personaje": "obdulia", "texto": "Cincuenta mil pesos… Con eso se le pone techo a la escuela, se trae el agua, y todavía sobra.", "inicio": 893.39, "fin": 902.03}, {"personaje": "animador", "texto": "[por el radio] Y ahora, amigos míos… silencio en los hogares. Una niña del público, con los ojos vendados, mete la mano en la tómbola… revuelve… revuelve entre miles y miles de sobres… ¡y ya tiene uno!", "inicio": 902.53, "fin": 922.07}, {"personaje": "animador", "texto": "[por el radio] Lo abro. Tres envolturas, en regla. Y el nombre dice…", "inicio": 922.57, "fin": 930.38}, {"personaje": "animador", "texto": "[por el radio] ¡El ganador de esta noche es… Eutimio Chitiva… de Guatancuy! ¡Cincuenta mil pesos!", "inicio": 936.92, "fin": 949.93}, {"personaje": "obdulia", "texto": "[gritando de alegría] ¡Virgen Santísima! ¡Dijo Guatancuy! ¡Carmenza, dijo Guatancuy!", "inicio": 951.93, "fin": 959.53}, {"personaje": "carmenza", "texto": "[gritando de alegría] ¡Dijo Eutimio Chitiva! ¡Don Eutimio! ¡Don Eutimio, es usted! ¡Se lo ganó!", "inicio": 960.03, "fin": 968.0}, {"personaje": "saturnino", "texto": "[gritando] ¡Se lo ganó! ¡Virgen Santísima, se lo ganó el viejo!", "inicio": 968.5, "fin": 973.46}, {"personaje": "animador", "texto": "[por el radio] ¡Felicitaciones, don Eutimio, allá en Guatancuy! Espere usted noticias de esta emisora. Y no lo olvide: Chocolate El Arrebol… ¡el que madruga con usted!", "inicio": 973.96, "fin": 989.29}, {"personaje": "eutimio", "texto": "[sobrecogido, incrédulo] Se me hizo el milagro… [pausa] Voy por la cédula, doña Carmenza. Ya vuelvo.", "inicio": 990.79, "fin": 998.13}, {"personaje": "obdulia", "texto": "¿Y ese hombre por qué no brinca, mija? Se gana cincuenta mil pesos y sale como si fuera a misa. ¡Eutimio!", "inicio": 1000.54, "fin": 1008.74}, {"personaje": "carmenza", "texto": "[riendo, emocionada] Es que no lo cree, madrina. Fue por la cédula. ¡Dos años de sobres, y se lo ganó! ¡Se lo ganó!", "inicio": 1009.24, "fin": 1017.81}, {"personaje": "obdulia", "texto": "¡Cerveza para todos, mija, que hoy paga Eutimio! ¡Que viva Guatancuy!", "inicio": 1019.31, "fin": 1025.03}, {"personaje": "locutor", "texto": "El pueblo celebra. Pero pasa una hora, y Eutimio Chitiva no vuelve. Carmenza sube hasta el rancho, a la salida del pueblo, con el sacristán detrás.", "inicio": 1028.53, "fin": 1044.31}, {"personaje": "saturnino", "texto": "Carmenza, espere… espéreme, que este camino está muy oscuro y yo… yo de noche no veo. ¿Ese es el rancho?", "inicio": 1045.81, "fin": 1054.95}, {"personaje": "carmenza", "texto": "[con duda] Ese es, Saturnino. Y está… está sin luz. Ni una vela.", "inicio": 1055.45, "fin": 1062.19}, {"personaje": "saturnino", "texto": "Se habrá dormido. Con el perdón de la sotana, a mí me dicen cincuenta mil pesos y no duermo en un mes.", "inicio": 1062.69, "fin": 1070.82}, {"personaje": "carmenza", "texto": "[desconcertada] Don Eutimio dijo que iba por la cédula y volvía. Y él nunca falta a su palabra. Eso no me cuadra.", "inicio": 1071.32, "fin": 1079.73}, {"personaje": "carmenza", "texto": "¡Don Eutimio! ¡Abra, que lo está esperando todo el pueblo para celebrar!", "inicio": 1081.78, "fin": 1086.97}, {"personaje": "carmenza", "texto": "[asustada, alzando la voz] ¡Don Eutimio! ¿Don Eutimio?…", "inicio": 1091.02, "fin": 1094.16}, {"personaje": "locutor", "texto": "¿Por qué no volvió Eutimio Chitiva, la noche en que por fin se ganó el premio que tanto esperó? ¿Y a quién quería ir a buscar a la capital el que, hasta hace unas horas, era el hombre más pobre de Guatancuy? No deje de escuchar mañana el próximo capítulo de La Hora de la Fortuna… en Radionovelas de ayer.", "inicio": 1100.87, "fin": 1128.27}], "duracion": 1138, "pagina": "post", "post": {"cluster": "marca", "keyword": "radionovela colombiana"}};
+</div>
+<audio id="audio" preload="none"></audio><script>
+window.CFG={"prod": true, "base": "https://radionovelasdeayer.com/", "caps": ["El hombre de los sobres", "El secreto de todo el pueblo", "Llegó antes de tiempo", "La gripa de Eutimio", "El precio del silencio", "Lo que dice el libro", "Las cartas del rancho", "El otro don Régulo", "Me llamo Álvaro", "El premio de Eutimio"], "ganchos": ["¿Usted qué haría si se ganara el premio de la radio… y el pueblo entero se enterara?", "¿Usted cree que un pueblo entero puede guardar un secreto?", "¿Y si el que llega de la capital no es quien dice ser?", "¿Cuánto aguanta una mentira cuando todos la cuidan?", "¿Usted cree que el padre Severo aguanta callado?", "¿Qué pasa cuando alguien abre la libreta de Carmenza?", "¿A quién le escribía Eutimio todos esos años?", "¿Y si hay dos hombres con el mismo nombre?", "¿Usted cree que Álvaro perdona?", "¿Quién se queda al final con la fortuna?"], "estreno": "2026-10-16", "canal": "", "serie": "La Hora de la Fortuna", "marca": "Radionovelas de ayer", "contexto": "Guatancuy, 1958: el hombre más pobre del pueblo se gana el concurso de la radio y todos se enteran.", "dur": 19, "oyentes_hoy": null, "existentes": [1, 2, 3, 4, 5, 6, 7], "n": 1, "gancho": "¿Usted qué haría si se ganara el premio de la radio… y el pueblo entero se enterara?", "pagina": "novela", "audios": {"1": "https://audio.radionovelasdeayer.com/cap01_web.mp3", "2": "https://audio.radionovelasdeayer.com/cap02_web.mp3", "3": "https://audio.radionovelasdeayer.com/cap03_web.mp3", "4": "https://audio.radionovelasdeayer.com/cap04_web.mp3", "5": "https://audio.radionovelasdeayer.com/cap05_web.mp3", "6": "https://audio.radionovelasdeayer.com/cap06_web.mp3", "7": "https://audio.radionovelasdeayer.com/cap07_web.mp3"}, "duraciones": {"1": 1138, "2": 1140, "3": 1023, "4": 1050, "5": 1062, "6": 1185, "7": 1085}};
 const ICO={"wa": "<svg class=\"ico\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.2 14.8l-.3-.2-2.6.7.7-2.5-.2-.3A8 8 0 0 1 12 4zm-3 4.5c-.2 0-.5 0-.8.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.2 5 4.4 2.5 1 3 .8 3.5.7.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4l-.5-.3-1.8-.9c-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6.3-.5v-.5l-.8-2c-.2-.5-.4-.4-.6-.4z\"/></svg>", "play": "<svg class=\"ico\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M7 4.5v15a1 1 0 0 0 1.5.9l12-7.5a1 1 0 0 0 0-1.8l-12-7.5A1 1 0 0 0 7 4.5z\"/></svg>", "check": "<svg class=\"ico\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M4 12.5l5 5L20 6.5\"/></svg>", "reloj": "<svg class=\"ico\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"9\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\"/><path fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" d=\"M12 7v5.5l3.5 2\"/></svg>", "cerrado": "<svg class=\"ico\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"5\" y=\"10\" width=\"14\" height=\"10\" rx=\"2\" fill=\"currentColor\"/><path d=\"M8 10V7a4 4 0 0 1 8 0v3\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\"/></svg>", "campana": "<svg class=\"ico\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M12 2a1.5 1.5 0 0 1 1.5 1.5V4a6 6 0 0 1 4.5 5.8V14l2 2.5V18H4v-1.5L6 14V9.8A6 6 0 0 1 10.5 4v-.5A1.5 1.5 0 0 1 12 2zm-2.5 17h5a2.5 2.5 0 0 1-5 0z\"/></svg>", "pausa": "<svg class=\"ico\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"5\" y=\"4\" width=\"5\" height=\"16\" rx=\"1\" fill=\"currentColor\"/><rect x=\"14\" y=\"4\" width=\"5\" height=\"16\" rx=\"1\" fill=\"currentColor\"/></svg>", "repetir": "<svg class=\"ico\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M4 12a8 8 0 0 1 13.7-5.6L20 8.5M20 4v4.5h-4.5M20 12a8 8 0 0 1-13.7 5.6L4 15.5M4 20v-4.5h4.5\"/></svg>"};
 // ===== Medición =====
 // IDs vacíos = no se carga nada. En el sitio real: META_PIXEL_ID y uno de GA4_ID / PLAUSIBLE_DOMAIN.
@@ -453,7 +521,7 @@ document.querySelectorAll('a[data-interno]').forEach(a=>{ a.href=conF(a.getAttri
 window.EVENTOS=[];
 // CFG se declara como window.CFG en build.py: así capitulo llega con su número y no en 0.
 // pagina: cap | portada | lista | post. Lo que abre WhatsApp o un canal sale con beacon para no perderse al salir.
-const BEACON=['share_click','canal_click'];
+const BEACON=['share_click','canal_click','red_click'];
 function medir(nombre, datos){
   const d=Object.assign({capitulo:(window.CFG&&CFG.n)||0, fuente:F, pagina:(window.CFG&&CFG.pagina)||''}, datos||{});
   EVENTOS.push([nombre,d]);
@@ -478,159 +546,119 @@ function prepararWA(el, gancho){ if(!el) return; el.href='https://wa.me/?text='+
 
 // ===== Pie: compartir y la marca ajustada a su propio ancho, sin estirar letras =====
 prepararWA($('wa3'), CFG.gancho);
+// Redes (pie y fin del capítulo): red_click con la red; pagina va en medir() (DESIGN.md §4 "Redes")
+document.querySelectorAll('a[data-red]').forEach(a=>a.addEventListener('click',()=>medir('red_click',{red:a.dataset.red})));
 function ajustarMarca(){ document.querySelectorAll('.palabra svg').forEach(s=>{ const tx=s.querySelector('text'); try{ const b=tx.getBBox(); if(b.width) s.setAttribute('viewBox',[b.x,b.y,b.width,b.height].map(v=>v.toFixed(1)).join(' ')); }catch(e){} }); }
 ajustarMarca(); if(document.fonts&&document.fonts.ready) document.fonts.ready.then(ajustarMarca);
 
-// ===== La radio interactiva (DESIGN.md §2). Un solo componente para capítulo, portada y post. Necesita comun.js. =====
-const LINEAS=CFG.lineas, NOMBRES=CFG.nombres, N=CFG.n, K='cap'+N+'_';
-const REDUCIR=matchMedia('(prefers-reduced-motion: reduce)').matches;
-const audio=$('audio'), cuerpo=document.body;
-const ICO_PAUSA=ICO.pausa;
-const ver=(id,si)=>{ const e=$(id); if(e) e.hidden=!si; };
+// ===== La programación (DESIGN.md §4): fechas desde ESTRENO, 6 a. m. hora de Colombia, sin depender del reloj del visitante. =====
+// build.py la deja impresa con enlaces para lo que ya salió al generar; aquí se pone al día a la hora real.
+function pintarProgramacion(){
+  const hoja=$('programa'); if(!hoja) return;
+  let hoy=0; for(let n=1;n<=CFG.caps.length;n++) if(publicado(n)) hoy=n;
+  if(hoja.classList.contains('compacta')) return compacta(hoja, Math.max(0,...CFG.existentes.filter(publicado)));   // "Hoy" = el último que ya salió de verdad
+  const ya=$('grupo-ya'), viene=$('grupo-viene');
+  hoja.querySelectorAll('.item').forEach(el=>{
+    const n=+el.dataset.n, sale=publicado(n) && CFG.existentes.includes(n), oyendo=CFG.pagina==='cap' && n===CFG.n;
+    if(sale && el.tagName!=='A'){   // salió después de generar la página: se vuelve enlace y pasa a "Ya salió"
+      const a=document.createElement('a'); a.className=el.className; a.dataset.n=n; a.innerHTML=el.innerHTML; a.href=conF(rutaCap(n));
+      el.replaceWith(a); ya.appendChild(a); el=a;
+      const s=a.querySelector('.s'); if(s) s.hidden=false;
+    }
+    el.classList.toggle('pronto',!sale); el.classList.toggle('hoy',sale && n===hoy && !oyendo); el.classList.toggle('oyendo',oyendo);
+    const d=el.querySelector('.d'); d.textContent=oyendo?'Está oyendo este':(sale && n===hoy?'Hoy':d.dataset.fecha);
+  });
+  viene.hidden=!viene.querySelector('.item');
+  const sig=hoy+1;
+  if(!$('cuenta')) return;
+  if(sig>CFG.caps.length){ $('cuenta').textContent='Ya salieron los diez capítulos.'; return; }
+  const falta=fechaCap(sig).getTime()-Date.now(), h=Math.floor(falta/36e5), m=Math.floor(falta%36e5/6e4);
+  const cuanto=h>0?(h+(h===1?' hora':' horas')+' y '+m+(m===1?' minuto':' minutos')):(m+(m===1?' minuto':' minutos'));
+  $('cuenta').innerHTML='El capítulo '+sig+' sale en <b></b>.'; $('cuenta').querySelector('b').textContent=cuanto;
+}
+// Capítulo (DESIGN.md §4 punto 9): el que oye, el siguiente y el de hoy, sin repetir; el resto queda oculto.
+function compacta(hoja, hoy){
+  const caja=$('grupo-compacta'), N0=CFG.n, orden=[N0,N0+1,hoy].filter((n,i,a)=>n>=1 && n<=CFG.caps.length && a.indexOf(n)===i);
+  [...caja.querySelectorAll('.item')].forEach(el=>{
+    const n=+el.dataset.n, sale=publicado(n) && CFG.existentes.includes(n);
+    if(sale && el.tagName!=='A'){ const a=document.createElement('a'); a.className=el.className; a.dataset.n=n; a.innerHTML=el.innerHTML; a.href=conF(rutaCap(n)); el.replaceWith(a); el=a; const s=a.querySelector('.s'); if(s) s.hidden=false; }
+    const oyendo=n===N0, d=el.querySelector('.d');
+    el.classList.toggle('pronto',!sale); el.classList.toggle('oyendo',oyendo); el.classList.toggle('hoy',!oyendo && sale && n===hoy);
+    d.textContent=oyendo?'Está oyendo este':(n===N0+1?(sale?'Siguiente':'Siguiente · '+d.dataset.fecha):(n===hoy?'Hoy':d.dataset.fecha));
+    el.hidden=!orden.includes(n);
+  });
+  orden.forEach(n=>{ const el=caja.querySelector('.item[data-n="'+n+'"]'); if(el) caja.appendChild(el); });
+  const faltan=CFG.caps.length-CFG.existentes.filter(publicado).length;
+  if($('faltan')){ $('faltan').hidden=faltan<=0; $('faltan-n').textContent=faltan; }
+}
+pintarProgramacion(); setInterval(pintarProgramacion,30000);
 
-prepararWA($('wa'), CFG.gancho);
-if(CFG.oyentes_hoy && $('oyentes')){ $('oyentes').textContent='Hoy ya lo oyeron '+CFG.oyentes_hoy.toLocaleString('es-CO')+' personas'; $('oyentes').hidden=false; }
+/* ---- entradas: solo lo que está por debajo al cargar, siempre desde un estado visible si el script falla ---- */
+if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+  const piezas=[...document.querySelectorAll('[data-e]')].filter(el=>el.getBoundingClientRect().top>innerHeight);
+  piezas.forEach(el=>el.classList.add('pre'));
+  const io=new IntersectionObserver(es=>{ es.forEach(e=>{ if(!e.isIntersecting) return; const el=e.target, hermanos=[...el.parentElement.querySelectorAll(':scope > [data-e].pre')]; const i=Math.max(0,hermanos.indexOf(el));
+    el.classList.add('entra'); el.style.transitionDelay=(i*80)+'ms'; requestAnimationFrame(()=>el.classList.remove('pre')); io.unobserve(el); }); },{rootMargin:'0px 0px -10% 0px'});
+  piezas.forEach(el=>io.observe(el));
+}
 
-/* ---- texto frase por frase: ≤ 54 caracteres, cortadas de preferencia en coma ---- */
-LINEAS.forEach(l=>{
-  const t=limpiar(l.texto);
-  const partes=(t.match(/[^.!?…;]+[.!?…;]*\s*/g)||[t]).map(x=>x.trim()).filter(Boolean);
-  const fr0=[]; partes.forEach(p=>{ if(fr0.length && (p.length<18 || fr0[fr0.length-1].length<18) && (fr0[fr0.length-1].length+p.length)<54) fr0[fr0.length-1]+=' '+p; else fr0.push(p); });
-  const fr=[]; fr0.forEach(f=>{ if(f.length<=56){ fr.push(f); return; } const n=Math.ceil(f.length/52), w=f.split(' '), meta=f.length/n; let cur=''; w.forEach(x=>{ if(cur && ((cur.length+x.length+1)>meta+8 || (/[,:]$/.test(cur) && cur.length>=meta*.55))){ fr.push(cur); cur=x; } else cur=cur?cur+' '+x:x; }); if(cur) fr.push(cur); });
-  const total=fr.reduce((a,f)=>a+f.length+6,0)||1, dur=l.fin-l.inicio; let t0=l.inicio;
-  l.frases=fr.map(f=>{const d=dur*(f.length+6)/total; const o={texto:f,inicio:t0,fin:t0+d}; t0+=d; return o;});
-});
+// ===== Página de la novela (DESIGN.md §4): sin radio. El botón ámbar sigue la lógica de portada.js
+// y la barra fija de abajo suena el capítulo al que apunta ese botón. Necesita comun.js.
+(function(){
+  const audio=$('audio'), cuerpo=document.body, barra=$('barra'), seguir=$('seguir');
+  prepararWA($('wa'), CFG.gancho);
 
-/* ---- placa: nombres grabados o avisos sobre esmalte ---- */
-const pant=$('pantalla-txt'); let avisoHasta=0, fraseAct='', primera=true, nombreAct='', tEstado=0;
-function grabar(n){   // nombres: una línea; si para caber bajaría de 17 px, pasan a dos líneas. Avisos: nunca menos de 15 px (DESIGN.md §5).
-  const s=$('placa-radio'), c=s.parentElement; s.textContent=n; s.style.fontSize=''; c.classList.remove('dos');
-  if(c.classList.contains('estado')){ s.style.fontSize='max(15px,'+(n.length>18?4.3:5.2)+'cqw)'; return; }
-  let f=parseFloat(getComputedStyle(s).fontSize); const tope=c.clientWidth*0.94;
-  while(s.scrollWidth>tope && f>17){ f=Math.max(17,f-1); s.style.fontSize=f+'px'; }
-  if(s.scrollWidth>tope){ c.classList.add('dos'); s.style.fontSize='17px'; } }
-function estado(txt,ms,pausa){ clearTimeout(tEstado); $('placa').classList.add('estado'); $('placa').classList.toggle('pausa',!!pausa); grabar(txt); if(ms) tEstado=setTimeout(()=>{ if(!audio.paused && nombreAct) nombre(nombreAct); },ms); avisoHasta=ms?Date.now()+ms:Infinity; }
-function nombre(n){ nombreAct=n; if(Date.now()<avisoHasta) return; $('placa').classList.remove('estado','pausa'); grabar(n); }
+  // "Van N publicados", a la hora real
+  const pub=CFG.existentes.filter(publicado).length;
+  if($('van')) $('van').textContent='Van '+pub+' publicados.';
 
-/* ---- escala en minutos ---- */
-function escalaMin(d){ const g=$('minutos'); if(!g||!d) return; g.innerHTML=''; for(let m=0;m*60<=d;m+=3){ const x=148+528*(m*60/d), e=document.createElementNS('http://www.w3.org/2000/svg','text'); e.setAttribute('x',x.toFixed(1)); e.setAttribute('y','374'); e.textContent=m; g.appendChild(e); }
-  const u=document.createElementNS('http://www.w3.org/2000/svg','text'); u.setAttribute('x','712'); u.setAttribute('y','374'); u.setAttribute('class','min'); u.textContent='min'; g.appendChild(u); }
-escalaMin(CFG.duracion); estado('Toque la perilla naranja');
-
-/* ---- reanudar donde iba ---- */
-const pos=parseFloat(leer(K+'pos')||'0');
-function tiempoBarra(){ $('t-barra').textContent=fmt(audio.currentTime||0)+' de '+fmt(audio.duration||CFG.duracion); }
-function alCargar(){ escalaMin(audio.duration); tiempoBarra(); if(pos>5 && pos<audio.duration-10 && audio.currentTime<1){ audio.currentTime=pos; estado('Usted iba en el minuto '+fmt(pos)); ver('desde-cero',true); } }
-if(audio.readyState>=1) alCargar(); else audio.addEventListener('loadedmetadata',alCargar,{once:true});
-
-/* ---- prender la radio: clic, estática, aguja que barre y luz que sube ---- */
-let ctx=null, encendido=false;
-function ruido(dur,vol,f,t0){ const n=ctx.sampleRate*dur,b=ctx.createBuffer(1,n,ctx.sampleRate),d=b.getChannelData(0); for(let i=0;i<n;i++) d[i]=Math.random()*2-1;
-  const s=ctx.createBufferSource(); s.buffer=b; const q=ctx.createBiquadFilter(); q.type=f.tipo; q.frequency.value=f.f; q.Q.value=f.q||1;
-  const g=ctx.createGain(); g.gain.setValueAtTime(0,t0); g.gain.linearRampToValueAtTime(vol,t0+.03); g.gain.exponentialRampToValueAtTime(.001,t0+dur); s.connect(q); q.connect(g); g.connect(ctx.destination); s.start(t0); s.stop(t0+dur); }
-function encender(){ if(encendido) return 0; encendido=true; cuerpo.classList.add('encendido'); if(REDUCIR) return 0; cuerpo.classList.add('sintonizando'); setTimeout(()=>cuerpo.classList.remove('sintonizando'),1200);
-  try{ ctx=ctx||new (window.AudioContext||window.webkitAudioContext)(); const t=ctx.currentTime; ruido(.06,.5,{tipo:'bandpass',f:1800,q:2},t); ruido(.7,.12,{tipo:'highpass',f:900},t+.35); return 1.1; }catch(e){ return 0; } }
-let suena=false, esperando=false, tEspera=0, yaPlay=false;
-function icono(p){ $('play2').innerHTML=p?ICO_PAUSA:ICO.play; [$('play'),$('play2')].forEach(b=>b.setAttribute('aria-label',p?'Pausar':'Reproducir')); $('ico-p').innerHTML=p?ICO_PAUSA:ICO.play; girar($('play'),p?40:-40); }
-function fallo(){ suena=false; esperando=false; cuerpo.classList.remove('sonando'); estado('Sin señal. Toque la perilla',0,true); icono(false); }
-function play(){ const e=encender(); if(e) estado('Sintonizando…',1300); const pr=audio.play(); if(pr&&pr.catch) pr.catch(fallo); }   // play() dentro del mismo toque
-function alternar(){ audio.paused?play():audio.pause(); }
-$('play').onclick=alternar; $('play2').onclick=alternar;
-$('desde-cero').onclick=()=>{ audio.currentTime=0; guardar(K+'pos','0'); ver('desde-cero',false); if(audio.paused) play(); };
-function girar(b,g){ const v=(parseFloat(b.dataset.giro)||0)+g; b.dataset.giro=v; b.style.setProperty('--giro',v+'deg'); }
-function clic(){ if(REDUCIR) return; try{ ctx=ctx||new (window.AudioContext||window.webkitAudioContext)(); ruido(.05,.35,{tipo:'bandpass',f:2400,q:3},ctx.currentTime); }catch(e){} }
-function saltar(s){ audio.currentTime=Math.min(Math.max(0,audio.currentTime+s),audio.duration||0); guardar(K+'pos',audio.currentTime); }
-$('atras').onclick=()=>{ clic(); girar($('atras'),-30); estado('15 segundos atrás',1500); saltar(-15); };
-$('adelante').onclick=()=>{ clic(); girar($('adelante'),30); estado('15 segundos adelante',1500); saltar(15); };
-
-function sonando(){ suena=true; esperando=false; cuerpo.classList.add('sonando'); onda(); }
-audio.addEventListener('play',()=>{ icono(true); if(audio.currentTime>30) ver('desde-cero',false); ver('fin',false); ver('acciones-gancho',true);
-  if(!yaPlay){ yaPlay=true; medir('play'); }
-  if(primera){ primera=false; estado('Toque otra vez para pausar',4000); } else { avisoHasta=0; if(nombreAct) nombre(nombreAct); } });
-audio.addEventListener('pause',()=>{ suena=false; icono(false); cuerpo.classList.remove('sonando'); guardar(K+'pos',audio.currentTime); if(!audio.ended) estado('En pausa',0,true); });
-audio.addEventListener('playing',()=>{ if(esperando){ avisoHasta=0; if(nombreAct) nombre(nombreAct); } sonando(); });
-['waiting','stalled'].forEach(ev=>audio.addEventListener(ev,()=>{ if(audio.paused) return; suena=false; esperando=true; tEspera=audio.currentTime; cuerpo.classList.remove('sonando'); estado('Buscando la señal…'); }));
-audio.addEventListener('error',fallo);
-audio.addEventListener('seeked',()=>guardar(K+'pos',audio.currentTime));
-audio.addEventListener('ended',()=>{ guardar(K+'pos','0'); guardar(K+'fin','1'); medir('complete');
-  estado('Fin del capítulo'); pant.textContent='¿Le gustó? Compártalo con un amigo por WhatsApp.'; fraseAct=''; $('pantalla').classList.add('ver');
-  $('fin').classList.add('entra-fin'); pintarFin(); ver('fin',true); ver('acciones-gancho',false);
-  $('fin').scrollIntoView({behavior:REDUCIR?'auto':'smooth',block:'nearest'}); });
-
-/* ---- avance: aguja, barra, texto del dial, quién habla, hitos ---- */
-const hitos={25:false,50:false,75:false}; let tPrev=0;
-audio.addEventListener('seeked',()=>{ tPrev=audio.currentTime; });
-let actual=-1, tick=0;
-audio.addEventListener('timeupdate',()=>{
-  const t=audio.currentTime, d=audio.duration||CFG.duracion, pct=t/d*100;
-  if(esperando && !audio.paused && t>tEspera+.3){ avisoHasta=0; if(nombreAct) nombre(nombreAct); sonando(); }   // 'stalled' sin 'playing' después
-  $('aguja').style.setProperty('--x',(pct*5.28)+'px'); $('luz2').style.width=pct+'%'; tiempoBarra();
-  if(++tick%4===0) guardar(K+'pos',t);
-  // progreso: solo lo que se oye sonando, no lo que se salta al retomar o al mover la aguja (decisión 2026-10-18)
-  const oido=!audio.paused && t>tPrev && t-tPrev<=20, desde=tPrev/d*100; tPrev=t;
-  if(oido) for(const h of [25,50,75]) if(!hitos[h] && desde<h && pct>=h){ hitos[h]=true; medir('progreso',{pct:h}); }
-  let i=LINEAS.findIndex(l=>t>=l.inicio && t<l.fin+.4); if(i<0) i=LINEAS.filter(l=>l.fin<=t).length-1;
-  if(i!==actual && i>=0){ actual=i; nombre(NOMBRES[LINEAS[i].personaje]||''); }
-  else if(i<0 && actual!==-1){ actual=-1; nombre(''); }   // volvió antes de la primera voz: la placa queda limpia
-  if(audio.ended) return;
-  const enLinea=actual>=0 && t>=LINEAS[actual].inicio-.2 && t<LINEAS[actual].fin+1.2; $('pantalla').classList.toggle('ver',enLinea);
-  if(enLinea){ const fr=LINEAS[actual].frases, f=fr.find(x=>t<x.fin)||fr[fr.length-1]; if(f && f.texto!==fraseAct){ fraseAct=f.texto; pant.textContent=f.texto; } }
-});
-
-/* ---- la onda: sigue los tiempos de tiempos.json, no el sonido real (iPhone corta el audio al bloquear) ---- */
-let ondaViva=false, amp=0;
-function onda(){
-  if(ondaViva || REDUCIR) return; ondaViva=true;
-  const c=$('onda'), g=c.getContext('2d'), color=getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()||'#f2a23a';
-  const fases=Array.from({length:40},()=>Math.random()*6.28), vel=Array.from({length:40},()=>.004+Math.random()*.006);
-  function paso(ms){
-    const r=c.getBoundingClientRect(), dpr=Math.min(2,devicePixelRatio||1), W=Math.round(r.width*dpr), H=Math.round(r.height*dpr);
-    if(c.width!==W||c.height!==H){ c.width=W; c.height=H; }
-    const t=audio.currentTime, habla=LINEAS.some(l=>t>=l.inicio && t<l.fin);
-    const meta=!suena?0:(habla?1:.3); amp+=(meta-amp)*.08;
-    g.clearRect(0,0,W,H); g.fillStyle=color; g.globalAlpha=.95;
-    const n=40, col=W/n, ancho=col*.42;
-    for(let k=0;k<n;k++){ const env=Math.sin(Math.PI*(k+.5)/n)*.8+.2, v=.25+.75*Math.abs(Math.sin(fases[k]+ms*vel[k]));
-      const h=Math.max(2*dpr,H*.88*amp*env*v); g.fillRect(k*col+(col-ancho)/2,(H-h)/2,ancho,h); }
-    if(!suena && amp<.01){ g.clearRect(0,0,W,H); ondaViva=false; return; }
-    requestAnimationFrame(paso);
+  // A qué capítulo apunta: "Oír el capítulo 1" o "Seguir con el capítulo N (minuto m:ss)" (misma regla que portada.js)
+  let n=1, txt='Oír el capítulo 1';
+  let ultimo=0; for(let k=CFG.caps.length;k>=1;k--){ if(publicado(k) && CFG.existentes.includes(k) && (parseFloat(leer('cap'+k+'_pos')||'0')>5 || leer('cap'+k+'_fin')==='1')){ ultimo=k; break; } }
+  if(ultimo){
+    const p=parseFloat(leer('cap'+ultimo+'_pos')||'0');
+    if(p>5){ n=ultimo; txt='Seguir con el capítulo '+n+' (minuto '+fmt(p)+')'; }
+    else if(leer('cap'+ultimo+'_fin')==='1' && publicado(ultimo+1) && CFG.existentes.includes(ultimo+1)){ n=ultimo+1; txt='Escuchar capítulo '+n; }
   }
-  requestAnimationFrame(paso);
-}
+  seguir.querySelector('span').textContent=txt; seguir.href=conF(rutaCap(n));
+  CFG.n=n;   // medir() manda el capítulo que suena
 
-/* ---- pantalla bloqueada ---- */
-if('mediaSession' in navigator){ try{
-  navigator.mediaSession.metadata=new MediaMetadata({title:'Capítulo '+N+' · '+CFG.titulo,artist:CFG.serie,album:CFG.marca,artwork:[{src:new URL('cartel.webp',location.href).href,sizes:'1200x630',type:'image/webp'}]});
-  navigator.mediaSession.setActionHandler('play',()=>audio.play()); navigator.mediaSession.setActionHandler('pause',()=>audio.pause());
-  navigator.mediaSession.setActionHandler('seekbackward',()=>$('atras').click()); navigator.mediaSession.setActionHandler('seekforward',()=>$('adelante').click());
-}catch(e){} }
+  // La barra: el mismo capítulo, desde donde iba
+  const K='cap'+n+'_', dur=CFG.duraciones[n]||0;
+  $('b-titulo').textContent='Capítulo '+n+' · '+CFG.caps[n-1];
+  function tiempo(){ if(audio.error && cargado){ $('t-barra').textContent='Sin señal. Toque la perilla'; return; } $('t-barra').textContent=fmt(audio.currentTime||0)+' de '+fmt(audio.duration||dur); $('luz2').style.width=((audio.currentTime||0)/(audio.duration||dur||1)*100)+'%'; }
+  let cargado=false, yaPlay=false;
+  function icono(p){ $('play2').innerHTML=p?ICO.pausa:ICO.play; $('play2').setAttribute('aria-label',p?'Pausar':'Reproducir'); }
+  $('play2').onclick=()=>{
+    if(!cargado){ cargado=true; audio.src=CFG.audios[n]; const pos=parseFloat(leer(K+'pos')||'0');
+      if(pos>5) audio.addEventListener('loadedmetadata',()=>{ if(pos<audio.duration-10) audio.currentTime=pos; },{once:true}); }
+    else if(audio.error) audio.load();   // otro intento después de "Sin señal"
+    if(audio.paused){ const pr=audio.play(); if(pr&&pr.catch) pr.catch(()=>{ icono(false); tiempo(); }); }   // play() dentro del mismo toque
+    else audio.pause();
+  };
+  audio.addEventListener('play',()=>{ icono(true); if(!yaPlay){ yaPlay=true; medir('play'); } });
+  audio.addEventListener('pause',()=>{ icono(false); guardar(K+'pos',audio.currentTime); });
+  audio.addEventListener('waiting',()=>{ if(!audio.paused) $('t-barra').textContent='Buscando la señal…'; });
+  audio.addEventListener('error',()=>{ icono(false); tiempo(); });
+  let tick=0; audio.addEventListener('timeupdate',()=>{ tiempo(); if(++tick%4===0) guardar(K+'pos',audio.currentTime); });
+  audio.addEventListener('ended',()=>{ guardar(K+'pos','0'); guardar(K+'fin','1'); medir('complete'); });
+  tiempo();
+  if('mediaSession' in navigator){ try{
+    navigator.mediaSession.setActionHandler('play',()=>audio.play()); navigator.mediaSession.setActionHandler('pause',()=>audio.pause());
+    navigator.mediaSession.setActionHandler('seekbackward',()=>{ audio.currentTime=Math.max(0,audio.currentTime-15); });
+    navigator.mediaSession.setActionHandler('seekforward',()=>{ audio.currentTime=Math.min(audio.duration||0,audio.currentTime+15); });
+  }catch(e){} }
 
-/* ---- final del capítulo ---- */
-function boton(txt, cls, ico, fn, href){ const b=document.createElement(href?'a':'button'); b.className='boton '+cls; b.innerHTML=(ico||'')+'<span></span>'; b.lastChild.textContent=txt; if(href) b.href=href; if(fn) b.addEventListener('click',fn); return b; }
-function botonCanal(){
-  if(CFG.canal){ const a=boton('Que me avisen mañana a las 6','claro',ICO.campana,()=>medir('canal_click'),CFG.canal); a.target='_blank'; a.rel='noopener'; return a; }
-  const b=boton('Que me avisen mañana a las 6','claro',ICO.campana,()=>{ medir('canal_click'); b.lastChild.textContent='Pronto: el canal de WhatsApp está en camino.'; b.disabled=true; }); return b;
-}
-function pintarFin(){
-  const c=$('fin-botones'); c.innerHTML='';
-  const w=boton('Compartir por WhatsApp','wa',ICO.wa,null,'#'); w.id='wa-fin'; w.target='_blank'; w.rel='noopener'; prepararWA(w,CFG.gancho); c.appendChild(w);
-  const sig=N+1, hay=sig<=CFG.caps.length;
-  if(hay && publicado(sig) && CFG.existentes.includes(sig)){ c.appendChild(boton('Escuchar capítulo '+sig,'claro',ICO.play,null,conF(rutaCap(sig)))); $('fin-aviso').textContent=''; }
-  else $('fin-aviso').textContent=hay?('El capítulo '+sig+', '+CFG.caps[sig-1]+', sale '+fechaTexto(sig).replace(/\.?$/,'.')):'Este fue el último capítulo de la serie.';
-  if(hay) c.appendChild(botonCanal());
-  const toda=boton('Escuchar toda la serie ya','claro',ICO.cerrado,()=>{ medir('toda_serie_click'); toda.lastChild.textContent='Pronto. Por ahora, un capítulo por día.'; toda.disabled=true; }); c.appendChild(toda);
-}
-$('otra-vez').onclick=()=>{ audio.currentTime=0; ver('fin',false); ver('acciones-gancho',true); play(); };
-
-/* ---- la barra sigue sonando y toma el color de la sección que pasa debajo ---- */
-const barra=$('barra');
-const CAMPOS={bg:['var(--surface)','var(--ink)'],surface:['var(--bg)','var(--ink)'],estante:['var(--estante-paso)','var(--ink)'],noche:['var(--noche-paso)','var(--ink)'],guion:['var(--bg)','var(--ink)'],papel:['var(--papel-ink)','var(--papel)']};
-if('IntersectionObserver' in window){
-  new IntersectionObserver(es=>{ es.forEach(e=>{ const v=!e.isIntersecting && e.boundingClientRect.top<0; barra.classList.toggle('ver',v); cuerpo.classList.toggle('con-barra',v); barra.setAttribute('aria-hidden',!v); $('play2').tabIndex=v?0:-1; }); },{threshold:0}).observe($('radio'));
+  // Aparece cuando el botón de seguir sale por arriba; toma el color de la sección que pasa debajo
+  const CAMPOS={bg:['var(--surface)','var(--ink)'],surface:['var(--bg)','var(--ink)'],estante:['var(--estante-paso)','var(--ink)'],noche:['var(--noche-paso)','var(--ink)'],guion:['var(--bg)','var(--ink)'],papel:['var(--papel-ink)','var(--papel)']};
   const secs=[...document.querySelectorAll('[data-campo]')];
-  function campo(){ const y=innerHeight-40; let c='bg'; secs.forEach(s=>{ const r=s.getBoundingClientRect(); if(r.top<=y && r.bottom>y) c=s.dataset.campo; }); const v=CAMPOS[c]; barra.style.setProperty('--b-bg',v[0]); barra.style.setProperty('--b-ink',v[1]); }
-  addEventListener('scroll',campo,{passive:true}); campo();
-}
+  function alMover(){
+    const v=seguir.getBoundingClientRect().bottom<0;
+    barra.classList.toggle('ver',v); cuerpo.classList.toggle('con-barra',v); barra.setAttribute('aria-hidden',!v); $('play2').tabIndex=v?0:-1;
+    const y=innerHeight-40; let c='bg'; secs.forEach(s=>{ const r=s.getBoundingClientRect(); if(r.top<=y && r.bottom>y) c=s.dataset.campo; });
+    const w=CAMPOS[c]; barra.style.setProperty('--b-bg',w[0]); barra.style.setProperty('--b-ink',w[1]);
+  }
+  addEventListener('scroll',alMover,{passive:true}); alMover();
+})();
 
-window.dataLayer=window.dataLayer||[]; dataLayer.push({evento:'post', cluster:CFG.post.cluster, keyword:CFG.post.keyword}); medir('post_view',{capitulo:0, cluster:CFG.post.cluster, keyword:CFG.post.keyword});
 </script></body></html>
