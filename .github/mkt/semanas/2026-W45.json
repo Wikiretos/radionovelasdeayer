@@ -212,7 +212,7 @@
      },
      {
       "personaje": "carmenza",
-      "texto": "[ríe suavemente] Está bien, madrina. Bátalo usted, que yo le pongo el queso.",
+      "texto": "[ríe suavemente] Bueno, madrina. Bátalo usted, que yo le pongo el queso.",
       "emocion": "divertida"
      }
     ]
@@ -406,7 +406,7 @@
      },
      {
       "personaje": "carmenza",
-      "texto": "[ríe] Ay, Saturnino. Mañana le guardo el puesto, pero con un tinto bien cargado.",
+      "texto": "[ríe] Ay, Saturnino. Mañana le guardo el puesto, pero con un tinto bien cargadito.",
       "emocion": "tierna"
      }
     ]
@@ -633,7 +633,7 @@
      },
      {
       "personaje": "locutor",
-      "texto": "Las tareas hechas, el tinto servido y el radio de tubos bien prendido.",
+      "texto": "Las tareas hechas, el tinto servido y el radio de tubos ya prendido.",
       "emocion": "evocador"
      },
      {
@@ -913,7 +913,7 @@
      },
      {
       "personaje": "obdulia",
-      "texto": "Eso sí es verdad. Córrase un poquito, Saturnino, que cabemos los dos.",
+      "texto": "Eso sí es verdad. Córrase un poquitico, Saturnino, que cabemos los dos.",
       "emocion": "cómplice"
      }
     ]
