@@ -1,0 +1,209 @@
+{
+ "semana": "2026-W45",
+ "generado": "2026-11-05T22:53:36Z",
+ "piezas": {
+  "w45-01": {
+   "ok": true,
+   "video": "w45-01.mp4",
+   "portada": "w45-01.jpg",
+   "vista_previa": "w45-01-prev.mp4",
+   "segundos": 37.4,
+   "usd_aprox": 0.0504,
+   "huella": "474bef18a658"
+  },
+  "w45-02": {
+   "ok": true,
+   "video": "w45-02.mp4",
+   "portada": "w45-02.jpg",
+   "vista_previa": "w45-02-prev.mp4",
+   "segundos": 50.3,
+   "usd_aprox": 0.0504,
+   "huella": "17a449a53c3c"
+  },
+  "w45-03": {
+   "ok": true,
+   "imagenes": [
+    "w45-03-1.jpg",
+    "w45-03-2.jpg",
+    "w45-03-3.jpg",
+    "w45-03-4.jpg"
+   ],
+   "vista_previa": "w45-03-1.jpg",
+   "usd_aprox": 0.0504,
+   "huella": "953f4971f2cb"
+  },
+  "w45-04": {
+   "ok": true,
+   "video": "w45-04.mp4",
+   "portada": "w45-04.jpg",
+   "vista_previa": "w45-04-prev.mp4",
+   "segundos": 43.2,
+   "tts_tokens_salida": 975,
+   "usd_aprox": 0.0699,
+   "huella": "810de47c4ad6"
+  },
+  "w45-05": {
+   "ok": true,
+   "video": "w45-05.mp4",
+   "portada": "w45-05.jpg",
+   "vista_previa": "w45-05-prev.mp4",
+   "segundos": 45.0,
+   "usd_aprox": 0.0504,
+   "huella": "c1fd3774d455"
+  },
+  "w45-06": {
+   "ok": true,
+   "video": "w45-06.mp4",
+   "portada": "w45-06.jpg",
+   "vista_previa": "w45-06-prev.mp4",
+   "segundos": 50.3,
+   "usd_aprox": 0.0,
+   "huella": "04d742f74260"
+  },
+  "w45-07": {
+   "ok": true,
+   "imagenes": [
+    "w45-07-1.jpg",
+    "w45-07-2.jpg",
+    "w45-07-3.jpg",
+    "w45-07-4.jpg",
+    "w45-07-5.jpg"
+   ],
+   "vista_previa": "w45-07-1.jpg",
+   "usd_aprox": 0.0504,
+   "huella": "33728982aa8d"
+  },
+  "w45-08": {
+   "ok": true,
+   "video": "w45-08.mp4",
+   "portada": "w45-08.jpg",
+   "vista_previa": "w45-08-prev.mp4",
+   "segundos": 41.4,
+   "tts_tokens_salida": 939,
+   "usd_aprox": 0.0692,
+   "huella": "97eaa7b8d42e"
+  },
+  "w45-09": {
+   "ok": true,
+   "video": "w45-09.mp4",
+   "portada": "w45-09.jpg",
+   "vista_previa": "w45-09-prev.mp4",
+   "segundos": 35.3,
+   "usd_aprox": 0.0504,
+   "huella": "32a21c5e5a2d"
+  },
+  "w45-10": {
+   "ok": true,
+   "video": "w45-10.mp4",
+   "portada": "w45-10.jpg",
+   "vista_previa": "w45-10-prev.mp4",
+   "segundos": 41.8,
+   "usd_aprox": 0.0504,
+   "huella": "7453884ab5c4"
+  },
+  "w45-11": {
+   "ok": true,
+   "imagenes": [
+    "w45-11-1.jpg",
+    "w45-11-2.jpg",
+    "w45-11-3.jpg",
+    "w45-11-4.jpg",
+    "w45-11-5.jpg"
+   ],
+   "vista_previa": "w45-11-1.jpg",
+   "usd_aprox": 0.0504,
+   "huella": "4787cbebb2eb"
+  },
+  "w45-12": {
+   "ok": true,
+   "video": "w45-12.mp4",
+   "portada": "w45-12.jpg",
+   "vista_previa": "w45-12-prev.mp4",
+   "segundos": 38.3,
+   "usd_aprox": 0.0504,
+   "huella": "bc7221ea1c48"
+  },
+  "w45-13": {
+   "ok": true,
+   "video": "w45-13.mp4",
+   "portada": "w45-13.jpg",
+   "vista_previa": "w45-13-prev.mp4",
+   "segundos": 41.0,
+   "tts_tokens_salida": 929,
+   "usd_aprox": 0.069,
+   "huella": "74771a2cf9e6"
+  },
+  "w45-14": {
+   "ok": true,
+   "video": "w45-14.mp4",
+   "portada": "w45-14.jpg",
+   "vista_previa": "w45-14-prev.mp4",
+   "segundos": 43.3,
+   "usd_aprox": 0.0504,
+   "huella": "a280dc37a010"
+  },
+  "w45-15": {
+   "ok": true,
+   "imagenes": [
+    "w45-15-1.jpg",
+    "w45-15-2.jpg",
+    "w45-15-3.jpg",
+    "w45-15-4.jpg",
+    "w45-15-5.jpg",
+    "w45-15-6.jpg"
+   ],
+   "vista_previa": "w45-15-1.jpg",
+   "usd_aprox": 0.252,
+   "huella": "410bef2e9043"
+  },
+  "w45-16": {
+   "ok": true,
+   "video": "w45-16.mp4",
+   "portada": "w45-16.jpg",
+   "vista_previa": "w45-16-prev.mp4",
+   "segundos": 38.3,
+   "usd_aprox": 0.0,
+   "huella": "55a4c9f8f16e"
+  },
+  "w45-17": {
+   "ok": true,
+   "video": "w45-17.mp4",
+   "portada": "w45-17.jpg",
+   "vista_previa": "w45-17-prev.mp4",
+   "segundos": 40.5,
+   "usd_aprox": 0.0504,
+   "huella": "c81dda494089"
+  },
+  "w45-18": {
+   "ok": true,
+   "video": "w45-18.mp4",
+   "portada": "w45-18.jpg",
+   "vista_previa": "w45-18-prev.mp4",
+   "segundos": 39.3,
+   "tts_tokens_salida": 889,
+   "usd_aprox": 0.0682,
+   "huella": "45efdc0703be"
+  },
+  "w45-19": {
+   "ok": true,
+   "imagenes": [
+    "w45-19-1.jpg",
+    "w45-19-2.jpg",
+    "w45-19-3.jpg",
+    "w45-19-4.jpg"
+   ],
+   "vista_previa": "w45-19-1.jpg",
+   "usd_aprox": 0.0504,
+   "huella": "f156870f1eec"
+  },
+  "w45-20": {
+   "ok": true,
+   "video": "w45-20.mp4",
+   "portada": "w45-20.jpg",
+   "vista_previa": "w45-20-prev.mp4",
+   "segundos": 41.1,
+   "usd_aprox": 0.0504,
+   "huella": "79231b55b1c8"
+  }
+ }
+}
