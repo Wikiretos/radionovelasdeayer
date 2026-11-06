@@ -69,6 +69,11 @@ def main():
     prueba("instagram", meta_ig, res)
     prueba("youtube", youtube, res)
     prueba("gemini", gemini, res)
+    if os.environ.get("TT_CLIENT_KEY"):
+        def tiktok():
+            from tiktok import tt_usuario
+            return tt_usuario()
+        prueba("tiktok", tiktok, res)
     salida = {"generado": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "pruebas": res,
               "todo_ok": all(v.get("ok") for v in res.values()) and not res.get("meta_permisos", {}).get("faltan")}
     Path(a.salida).write_text(json.dumps(salida, ensure_ascii=False, indent=1))

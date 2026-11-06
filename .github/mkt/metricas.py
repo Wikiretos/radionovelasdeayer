@@ -162,6 +162,10 @@ def main():
                 fila["estado"] = "error" if reg.get("error") else "vencida" if reg.get("vencida") else "error"
                 fila["error"] = reg.get("error") or ("se cortó a mitad de la publicación: revisar a mano en la red si salió" if reg.get("en_curso") else None)
                 filas.append(fila); continue
+            if pl == "tt":  # borrador en la bandeja de TikTok: Andrés lo publica desde la app; sin métricas por API
+                fila["estado"] = "borrador_tiktok"; fila["publish_id"] = reg.get("publish_id"); fila["estado_tiktok"] = reg.get("estado")
+                if reg.get("aviso"): fila["aviso"] = reg["aviso"]
+                filas.append(fila); continue
             err = []
             fila["estado"] = "publicada"
             if reg.get("aviso"): fila["aviso"] = reg["aviso"]
@@ -267,7 +271,8 @@ def main():
             if f in (ahora.strftime("%Y-%m-%d"), (ahora + timedelta(days=1)).strftime("%Y-%m-%d")):
                 txt = dict(p.get("texto") or {}); txt.update(apr.get("texto") or {})
                 tiktok.append({"id": pid, "fecha": f, "hora": apr.get("hora", p.get("hora")), "texto": txt.get("tiktok", ""),
-                               "video": f"{CONFIG['r2_publico']}/mkt/{sem}/{pid}.mp4"})
+                               "video": f"{CONFIG['r2_publico']}/mkt/{sem}/{pid}.mp4",
+                               "en_bandeja": bool((estado.get(pid) or {}).get("tt", {}).get("publish_id"))})
     salida = {"generado": datetime.now(ZoneInfo("UTC")).strftime("%Y-%m-%dT%H:%M:%SZ"), "cuentas": cuentas(token, errores),
               "piezas": filas, "por_familia": resumen("familia"), "por_tipo": resumen("tipo"), "por_plataforma": resumen("plataforma"), "por_hashtag": dict(por_hashtag), "por_ilustracion": resumen("ilustracion_nueva"),
               "top10": [{"id": f["id"], "plataforma": f["plataforma"], "familia": f["familia"], "vistas": f["metricas"].get("vistas"), "url": f["url"]} for f in top],
