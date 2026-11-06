@@ -101,7 +101,7 @@ a.serie:hover{text-decoration:underline;text-decoration-thickness:2px;text-under
 /* ---------- Encima y bajo la radio: capítulo fijo, vecinos y velocidad (feedback 2026-11-06) ---------- */
 .cap-linea{font-size:var(--s-small);color:var(--ink);font-variant-numeric:tabular-nums;margin-top:-4px}
 .vecinos{width:100%;max-width:460px;display:flex;justify-content:space-between;gap:12px}
-.vecinos .vecino{gap:8px;font-size:var(--s-small)}
+.vecinos .vecino{gap:8px;font-size:var(--s-body);white-space:nowrap}
 .vecinos .vecino svg{width:18px;height:18px;flex:none}
 .velocidad{width:100%;max-width:460px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px}
 .vel-t{flex:1 0 100%;font-size:var(--s-small);color:var(--muted);text-align:center}
@@ -110,7 +110,7 @@ a.serie:hover{text-decoration:underline;text-decoration-thickness:2px;text-under
 .vel.sel{background:var(--ink);color:var(--bg);font-weight:600}
 /* ---------- Bajo la radio: retomar y fin ---------- */
 .fin{display:grid;gap:14px;width:100%;max-width:460px;padding-top:4px}
-.fin .boton.wa{min-height:76px;font-size:22px;padding-inline:20px}
+.fin .boton.wa,.fin .boton.principal{min-height:76px;font-size:22px;padding-inline:20px}
 .fin-aviso{color:var(--muted);font-size:var(--s-small);text-align:center}
 .fin.entra-fin{animation:sube .5s var(--ease) both}
 @keyframes sube{from{opacity:0;transform:translateY(16px)}}
@@ -311,9 +311,6 @@ details[open] .chev::after{transform:rotate(40deg)}
 .barra .pista{flex:1;height:10px;background:rgba(127,127,127,.28);border-radius:999px;overflow:hidden;display:none}
 .barra .pista i{display:block;height:100%;width:0;background:var(--accent);border-radius:999px}
 
-/* ---------- Entradas ---------- */
-.pre{opacity:0;transform:translateY(24px)}
-.entra{transition:opacity .7s var(--ease),transform .7s var(--ease)}
 
 /* ---------- Pantalla ancha ---------- */
 @media (min-width:900px){
@@ -345,8 +342,7 @@ details[open] .chev::after{transform:rotate(40deg)}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .fin.entra-fin,.placa-radio.pausa span{animation:none}
-  .perilla-img img,.pantalla,.luz-dial,.aguja,.entra,.barra,.franjas a{transition:none}
-  .pre{opacity:1;transform:none}
+  .perilla-img img,.pantalla,.luz-dial,.aguja,.barra,.franjas a{transition:none}
 }
 </style></head><body>
 <header class="cabecera caja"><a class="cab-marca" href="/" data-interno><img src="logo-56.webp" width="28" height="28" alt=""><span>Radionovelas de ayer</span></a><a class="cab-caps" href="/la-hora-de-la-fortuna" data-interno>Capítulos</a></header>
@@ -380,6 +376,7 @@ details[open] .chev::after{transform:rotate(40deg)}
   
   
   <div class="velocidad" role="group" aria-label="Velocidad"><span class="vel-t">Velocidad</span><button class="vel" data-v="0.8">Despacio</button><button class="vel sel" data-v="1" aria-pressed="true">Normal</button><button class="vel" data-v="1.2">Rápido</button></div>
+  <div class="velocidad volumen" id="volumen" role="group" aria-label="Volumen" hidden><span class="vel-t">Volumen</span><button class="vel vol" data-v="0.35">Bajo</button><button class="vel vol" data-v="0.7">Medio</button><button class="vel vol sel" data-v="1" aria-pressed="true">Alto</button></div>
   
   <button class="enlace" id="desde-cero" hidden>Empezar el capítulo desde el principio</button>
   <div class="fin" id="fin" hidden>
@@ -513,6 +510,15 @@ function fechaTexto(n){ const f=fechaCap(n); const dia=new Date(f.getTime()-5*36
   const diff=Math.round((Date.UTC(dia.getUTCFullYear(),dia.getUTCMonth(),dia.getUTCDate())-Date.UTC(hoy.getUTCFullYear(),hoy.getUTCMonth(),hoy.getUTCDate()))/864e5);
   if(diff===1) return 'mañana a las 6 a. m.'; return 'el '+DIAS[dia.getUTCDay()]+' '+dia.getUTCDate()+' a las 6 a. m.'; }
 
+// ===== "Su capítulo": regla única para portada, novela y barra (feedback 2026-11-06) =====
+// El último capítulo con progreso (> 5 s) es el suyo; si lo terminó, el siguiente ya publicado; si no hay nada, 0.
+function capituloMio(){
+  for(let n=CFG.caps.length;n>=1;n--){ if(!(publicado(n) && CFG.existentes.includes(n))) continue;
+    if(parseFloat(leer('cap'+n+'_pos')||'0')>5) return n;
+    if(leer('cap'+n+'_fin')==='1') return (publicado(n+1) && CFG.existentes.includes(n+1))?n+1:0; }
+  return 0; }
+const ES_IOS=/iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform==='MacIntel' && navigator.maxTouchPoints>1);   // iOS no deja mover el volumen desde la página
+
 // ===== Compartir: siempre al capítulo 1 con f=share =====
 function urlCap1(){ const u=new URL(CFG.prod?CFG.base+'cap-1':'cap-1.html',location.href); u.searchParams.set('f','share'); return u.href; }
 function textoWA(gancho){ return 'Oiga, le mando una radionovela como las de antes. '+CFG.serie+'. '+gancho+' Toque aquí y dele a la perilla naranja: '+urlCap1(); }
@@ -526,7 +532,7 @@ function ajustarMarca(){ document.querySelectorAll('.palabra svg').forEach(s=>{ 
 ajustarMarca(); if(document.fonts&&document.fonts.ready) document.fonts.ready.then(ajustarMarca);
 
 // ===== La radio interactiva (DESIGN.md §2). Un solo componente para capítulo, portada y post. Necesita comun.js. =====
-const LINEAS=CFG.lineas, NOMBRES=CFG.nombres, N=CFG.n, K='cap'+N+'_';
+let LINEAS=CFG.lineas, NOMBRES=CFG.nombres, N=CFG.n, K='cap'+N+'_';
 const REDUCIR=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const audio=$('audio'), cuerpo=document.body;
 const ICO_PAUSA=ICO.pausa;
@@ -537,17 +543,18 @@ prepararWA($('wa'), CFG.gancho);
 if(CFG.oyentes_hoy && $('oyentes')){ $('oyentes').textContent='Hoy ya lo oyeron '+CFG.oyentes_hoy.toLocaleString('es-CO')+' personas'; $('oyentes').hidden=false; }
 
 /* ---- texto frase por frase: ≤ 54 caracteres, cortadas de preferencia en coma ---- */
-LINEAS.forEach(l=>{
+function prepararLineas(ls){ ls.forEach(l=>{
   const t=limpiar(l.texto);
   const partes=(t.match(/[^.!?…;]+[.!?…;]*\s*/g)||[t]).map(x=>x.trim()).filter(Boolean);
   const fr0=[]; partes.forEach(p=>{ if(fr0.length && (p.length<18 || fr0[fr0.length-1].length<18) && (fr0[fr0.length-1].length+p.length)<54) fr0[fr0.length-1]+=' '+p; else fr0.push(p); });
   const fr=[]; fr0.forEach(f=>{ if(f.length<=56){ fr.push(f); return; } const n=Math.ceil(f.length/52), w=f.split(' '), meta=f.length/n; let cur=''; w.forEach(x=>{ if(cur && ((cur.length+x.length+1)>meta+8 || (/[,:]$/.test(cur) && cur.length>=meta*.55))){ fr.push(cur); cur=x; } else cur=cur?cur+' '+x:x; }); if(cur) fr.push(cur); });
   const total=fr.reduce((a,f)=>a+f.length+6,0)||1, dur=l.fin-l.inicio; let t0=l.inicio;
   l.frases=fr.map(f=>{const d=dur*(f.length+6)/total; const o={texto:f,inicio:t0,fin:t0+d}; t0+=d; return o;});
-});
+}); }
+prepararLineas(LINEAS);
 
 /* ---- placa: nombres grabados o avisos sobre esmalte ---- */
-const pant=$('pantalla-txt'); let avisoHasta=0, fraseAct='', primera=true, nombreAct='', tEstado=0;
+const pant=$('pantalla-txt'); let avisoHasta=0, fraseAct='', primera=true, nombreAct='', tEstado=0, actual=-1, tPrev=0; const hitos={25:false,50:false,75:false};
 function grabar(n){   // nombres: una línea; si para caber bajaría de 17 px, pasan a dos líneas. Avisos: nunca menos de 15 px (DESIGN.md §5).
   const s=$('placa-radio'), c=s.parentElement; s.textContent=n; s.style.fontSize=''; c.classList.remove('dos');
   if(c.classList.contains('estado')){ s.style.fontSize='max(15px,'+(n.length>18?4.3:5.2)+'cqw)'; return; }
@@ -563,12 +570,24 @@ function escalaMin(d){ const g=$('minutos'); if(!g||!d) return; g.innerHTML=''; 
 escalaMin(CFG.duracion); estado('Toque la perilla naranja');
 
 /* ---- reanudar donde iba ---- */
-const pos=parseFloat(leer(K+'pos')||'0'); let esperando=false;
+let pos=parseFloat(leer(K+'pos')||'0'); let esperando=false;
 function tiempoBarra(){ if(!barraConTiempo) return; if(esperando && !audio.paused){ $('t-barra').textContent='Buscando la señal…'; return; }
   const t=audio.currentTime>=1?audio.currentTime:(pos>5?pos:0);   // antes de cargar, la barra muestra el minuto guardado: el mismo que la placa y la lista
   $('t-barra').textContent=fmt(t)+' de '+fmt(audio.duration||CFG.duracion); }
 function alCargar(){ escalaMin(audio.duration); tiempoBarra(); if(pos>5 && pos<audio.duration-10 && audio.currentTime<1){ audio.currentTime=pos; estado('Usted iba en el minuto '+fmt(pos)); ver('desde-cero',true); } }
 if(audio.readyState>=1) alCargar(); else audio.addEventListener('loadedmetadata',alCargar,{once:true});
+
+/* ---- la portada suena "su" capítulo (decisión 2026-11-06): si iba en otro, se cargan sus datos sin recargar la página ---- */
+function cambiarCapitulo(d){
+  N=d.n; K='cap'+N+'_'; CFG.n=N; CFG.titulo=d.titulo; CFG.duracion=d.duracion; LINEAS=d.lineas; NOMBRES=d.nombres; prepararLineas(LINEAS);
+  pos=parseFloat(leer(K+'pos')||'0'); actual=-1; fraseAct=''; nombreAct=''; tPrev=0; for(const h in hitos) hitos[h]=false;
+  audio.src=d.audio; audio.load(); escalaMin(d.duracion); tiempoBarra();
+  if($('b-titulo')) $('b-titulo').textContent='Capítulo '+N+' · '+d.titulo;
+  if($('nota-radio')) $('nota-radio').textContent='Capítulo '+N+' de '+CFG.caps.length+' · donde lo dejó';
+  if(pos>5){ estado('Usted iba en el minuto '+fmt(pos)); ver('desde-cero',true); }
+  audio.addEventListener('loadedmetadata',alCargar,{once:true}); mediaSession();
+}
+if(CFG.pagina==='portada'){ const mio=capituloMio(); if(mio && mio!==N) fetch((CFG.prod?'/':'')+'datos/cap'+mio+'.json').then(r=>r.json()).then(cambiarCapitulo).catch(()=>{}); }
 tiempoBarra();   // desde el arranque la barra dice el minuto guardado, no 0:00
 
 /* ---- prender la radio: clic, estática, aguja que barre y luz que sube ---- */
@@ -601,15 +620,15 @@ audio.addEventListener('playing',()=>{ if(esperando){ avisoHasta=0; if(nombreAct
 ['waiting','stalled'].forEach(ev=>audio.addEventListener(ev,()=>{ if(audio.paused) return; suena=false; esperando=true; tEspera=audio.currentTime; cuerpo.classList.remove('sonando'); estado('Buscando la señal…'); tiempoBarra(); }));
 audio.addEventListener('error',fallo);
 audio.addEventListener('seeked',()=>guardar(K+'pos',audio.currentTime));
-audio.addEventListener('ended',()=>{ guardar(K+'pos','0'); guardar(K+'fin','1'); medir('complete');
+audio.addEventListener('ended',()=>{ guardar(K+'pos','0'); guardar(K+'fin','1'); medir('complete'); ver('desde-cero',false);
   estado('Fin del capítulo'); pant.textContent='¿Le gustó? Compártalo con un amigo por WhatsApp.'; fraseAct=''; $('pantalla').classList.add('ver');
   $('fin').classList.add('entra-fin'); pintarFin(); ver('fin',true); ver('acciones-gancho',false);
   $('fin').scrollIntoView({behavior:REDUCIR?'auto':'smooth',block:'nearest'}); });
 
 /* ---- avance: aguja, barra, texto del dial, quién habla, hitos ---- */
-const hitos={25:false,50:false,75:false}; let tPrev=0;
+
 audio.addEventListener('seeked',()=>{ tPrev=audio.currentTime; });
-let actual=-1, tick=0;
+let tick=0;
 audio.addEventListener('timeupdate',()=>{
   const t=audio.currentTime, d=audio.duration||CFG.duracion, pct=t/d*100;
   if(esperando && !audio.paused && t>tEspera+.3){ avisoHasta=0; if(nombreAct) nombre(nombreAct); sonando(); }   // 'stalled' sin 'playing' después
@@ -652,15 +671,21 @@ function onda(){
   function poner(v,guarda){ audio.playbackRate=v; audio.defaultPlaybackRate=v; bs.forEach(b=>{ const sel=+b.dataset.v===v; b.classList.toggle('sel',sel); b.setAttribute('aria-pressed',sel); }); if(guarda){ guardar('vel',v); medir('velocidad',{vel:v}); } }
   const g=parseFloat(leer('vel')||'1'); if([0.8,1,1.2].includes(g) && g!==1) poner(g);
   bs.forEach(b=>b.onclick=()=>{ clic(); poner(+b.dataset.v,true); }); })();
+/* ---- volumen: Bajo · Medio · Alto; oculto en iPhone, donde la página no puede moverlo (decisión 2026-11-06) ---- */
+(function(){ const g=$('volumen'); if(!g) return; if(ES_IOS) return; g.hidden=false; const bs=[...g.querySelectorAll('.vol')];
+  function poner(v,guarda){ audio.volume=v; bs.forEach(b=>{ const sel=+b.dataset.v===v; b.classList.toggle('sel',sel); b.setAttribute('aria-pressed',sel); }); if(guarda){ guardar('vol',v); medir('volumen',{vol:v}); } }
+  const g0=parseFloat(leer('vol')||'1'); if([0.35,0.7].includes(g0)) poner(g0);
+  bs.forEach(b=>b.onclick=()=>{ clic(); poner(+b.dataset.v,true); }); })();
 /* ---- siguiente capítulo: se destapa a la hora real del estreno ---- */
 if($('sig') && publicado(N+1) && CFG.existentes.includes(N+1)) ver('sig',true);
 
 /* ---- pantalla bloqueada ---- */
-if('mediaSession' in navigator){ try{
+function mediaSession(){ if('mediaSession' in navigator){ try{
   navigator.mediaSession.metadata=new MediaMetadata({title:'Capítulo '+N+' · '+CFG.titulo,artist:CFG.serie,album:CFG.marca,artwork:[{src:new URL('cartel.webp',location.href).href,sizes:'1200x630',type:'image/webp'}]});
   navigator.mediaSession.setActionHandler('play',()=>audio.play()); navigator.mediaSession.setActionHandler('pause',()=>audio.pause());
   navigator.mediaSession.setActionHandler('seekbackward',()=>$('atras').click()); navigator.mediaSession.setActionHandler('seekforward',()=>$('adelante').click());
-}catch(e){} }
+}catch(e){} } }
+mediaSession();
 
 /* ---- final del capítulo ---- */
 function boton(txt, cls, ico, fn, href){ const b=document.createElement(href?'a':'button'); b.className='boton '+cls; b.innerHTML=(ico||'')+'<span></span>'; b.lastChild.textContent=txt; if(href) b.href=href; if(fn) b.addEventListener('click',fn); return b; }
@@ -670,10 +695,11 @@ function botonCanal(){
 }
 function pintarFin(){
   const c=$('fin-botones'); c.innerHTML='';
+  const sig=N+1, hay=sig<=CFG.caps.length;   // el siguiente va primero y en ámbar (decisión 2026-11-06); si no hay, WhatsApp primero
+  if(hay && publicado(sig) && CFG.existentes.includes(sig)){ c.appendChild(boton('Escuchar capítulo '+sig,'principal',ICO.play,null,conF(rutaCap(sig)))); $('fin-aviso').textContent=''; }
   const w=boton('Compartir por WhatsApp','wa',ICO.wa,null,'#'); w.id='wa-fin'; w.target='_blank'; w.rel='noopener'; prepararWA(w,CFG.gancho); c.appendChild(w);
-  const sig=N+1, hay=sig<=CFG.caps.length;
-  if(hay && publicado(sig) && CFG.existentes.includes(sig)){ c.appendChild(boton('Escuchar capítulo '+sig,'claro',ICO.play,null,conF(rutaCap(sig)))); $('fin-aviso').textContent=''; }
-  else $('fin-aviso').textContent=hay?('El capítulo '+sig+', '+CFG.caps[sig-1]+', sale '+fechaTexto(sig).replace(/\.?$/,'.')):'Este fue el último capítulo de la serie.';
+  if(!(hay && publicado(sig) && CFG.existentes.includes(sig))){
+    $('fin-aviso').textContent=hay?('El capítulo '+sig+', '+CFG.caps[sig-1]+', sale '+fechaTexto(sig).replace(/\.?$/,'.')):'Este fue el último capítulo de la serie.'; }
   if(hay) c.appendChild(botonCanal());
   const toda=boton('Escuchar toda la serie ya','claro',ICO.cerrado,()=>{ medir('toda_serie_click'); toda.lastChild.textContent='Pronto. Por ahora, un capítulo por día.'; toda.disabled=true; }); c.appendChild(toda);
 }

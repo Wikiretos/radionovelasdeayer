@@ -101,7 +101,7 @@ a.serie:hover{text-decoration:underline;text-decoration-thickness:2px;text-under
 /* ---------- Encima y bajo la radio: capítulo fijo, vecinos y velocidad (feedback 2026-11-06) ---------- */
 .cap-linea{font-size:var(--s-small);color:var(--ink);font-variant-numeric:tabular-nums;margin-top:-4px}
 .vecinos{width:100%;max-width:460px;display:flex;justify-content:space-between;gap:12px}
-.vecinos .vecino{gap:8px;font-size:var(--s-small)}
+.vecinos .vecino{gap:8px;font-size:var(--s-body);white-space:nowrap}
 .vecinos .vecino svg{width:18px;height:18px;flex:none}
 .velocidad{width:100%;max-width:460px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px}
 .vel-t{flex:1 0 100%;font-size:var(--s-small);color:var(--muted);text-align:center}
@@ -110,7 +110,7 @@ a.serie:hover{text-decoration:underline;text-decoration-thickness:2px;text-under
 .vel.sel{background:var(--ink);color:var(--bg);font-weight:600}
 /* ---------- Bajo la radio: retomar y fin ---------- */
 .fin{display:grid;gap:14px;width:100%;max-width:460px;padding-top:4px}
-.fin .boton.wa{min-height:76px;font-size:22px;padding-inline:20px}
+.fin .boton.wa,.fin .boton.principal{min-height:76px;font-size:22px;padding-inline:20px}
 .fin-aviso{color:var(--muted);font-size:var(--s-small);text-align:center}
 .fin.entra-fin{animation:sube .5s var(--ease) both}
 @keyframes sube{from{opacity:0;transform:translateY(16px)}}
@@ -311,9 +311,6 @@ details[open] .chev::after{transform:rotate(40deg)}
 .barra .pista{flex:1;height:10px;background:rgba(127,127,127,.28);border-radius:999px;overflow:hidden;display:none}
 .barra .pista i{display:block;height:100%;width:0;background:var(--accent);border-radius:999px}
 
-/* ---------- Entradas ---------- */
-.pre{opacity:0;transform:translateY(24px)}
-.entra{transition:opacity .7s var(--ease),transform .7s var(--ease)}
 
 /* ---------- Pantalla ancha ---------- */
 @media (min-width:900px){
@@ -345,8 +342,7 @@ details[open] .chev::after{transform:rotate(40deg)}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .fin.entra-fin,.placa-radio.pausa span{animation:none}
-  .perilla-img img,.pantalla,.luz-dial,.aguja,.entra,.barra,.franjas a{transition:none}
-  .pre{opacity:1;transform:none}
+  .perilla-img img,.pantalla,.luz-dial,.aguja,.barra,.franjas a{transition:none}
 }
 </style></head><body>
 <header class="cabecera caja"><a class="cab-marca" href="/" data-interno><img src="logo-56.webp" width="28" height="28" alt=""><span>Radionovelas de ayer</span></a><span class="cab-caps actual" aria-current="page">Capítulos</span></header>
@@ -555,6 +551,15 @@ function fechaTexto(n){ const f=fechaCap(n); const dia=new Date(f.getTime()-5*36
   const diff=Math.round((Date.UTC(dia.getUTCFullYear(),dia.getUTCMonth(),dia.getUTCDate())-Date.UTC(hoy.getUTCFullYear(),hoy.getUTCMonth(),hoy.getUTCDate()))/864e5);
   if(diff===1) return 'mañana a las 6 a. m.'; return 'el '+DIAS[dia.getUTCDay()]+' '+dia.getUTCDate()+' a las 6 a. m.'; }
 
+// ===== "Su capítulo": regla única para portada, novela y barra (feedback 2026-11-06) =====
+// El último capítulo con progreso (> 5 s) es el suyo; si lo terminó, el siguiente ya publicado; si no hay nada, 0.
+function capituloMio(){
+  for(let n=CFG.caps.length;n>=1;n--){ if(!(publicado(n) && CFG.existentes.includes(n))) continue;
+    if(parseFloat(leer('cap'+n+'_pos')||'0')>5) return n;
+    if(leer('cap'+n+'_fin')==='1') return (publicado(n+1) && CFG.existentes.includes(n+1))?n+1:0; }
+  return 0; }
+const ES_IOS=/iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform==='MacIntel' && navigator.maxTouchPoints>1);   // iOS no deja mover el volumen desde la página
+
 // ===== Compartir: siempre al capítulo 1 con f=share =====
 function urlCap1(){ const u=new URL(CFG.prod?CFG.base+'cap-1':'cap-1.html',location.href); u.searchParams.set('f','share'); return u.href; }
 function textoWA(gancho){ return 'Oiga, le mando una radionovela como las de antes. '+CFG.serie+'. '+gancho+' Toque aquí y dele a la perilla naranja: '+urlCap1(); }
@@ -612,14 +617,7 @@ function compacta(hoja, hoy){
 }
 pintarProgramacion(); setInterval(pintarProgramacion,30000);
 
-/* ---- entradas: solo lo que está por debajo al cargar, siempre desde un estado visible si el script falla ---- */
-if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches){
-  const piezas=[...document.querySelectorAll('[data-e]')].filter(el=>el.getBoundingClientRect().top>innerHeight);
-  piezas.forEach(el=>el.classList.add('pre'));
-  const io=new IntersectionObserver(es=>{ es.forEach(e=>{ if(!e.isIntersecting) return; const el=e.target, hermanos=[...el.parentElement.querySelectorAll(':scope > [data-e].pre')]; const i=Math.max(0,hermanos.indexOf(el));
-    el.classList.add('entra'); el.style.transitionDelay=(i*80)+'ms'; requestAnimationFrame(()=>el.classList.remove('pre')); io.unobserve(el); }); },{rootMargin:'0px 0px -10% 0px'});
-  piezas.forEach(el=>io.observe(el));
-}
+// Las secciones aparecen de inmediato: la entrada escalonada se quitó el 2026-11-06 (el oyente la leía como "se trabó").
 
 // ===== Página de la novela (DESIGN.md §4): sin radio. El botón ámbar sigue la lógica de portada.js
 // y la barra fija de abajo suena el capítulo al que apunta ese botón. Necesita comun.js.
@@ -632,13 +630,7 @@ if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: red
   if($('van')) $('van').textContent='Van '+pub+' publicados.';
 
   // A qué capítulo apunta: "Oír el capítulo 1" o "Seguir con el capítulo N (minuto m:ss)" (misma regla que portada.js)
-  let n=1, txt='Oír el capítulo 1';
-  let ultimo=0; for(let k=CFG.caps.length;k>=1;k--){ if(publicado(k) && CFG.existentes.includes(k) && (parseFloat(leer('cap'+k+'_pos')||'0')>5 || leer('cap'+k+'_fin')==='1')){ ultimo=k; break; } }
-  if(ultimo){
-    const p=parseFloat(leer('cap'+ultimo+'_pos')||'0');
-    if(p>5){ n=ultimo; txt='Seguir con el capítulo '+n+' (minuto '+fmt(p)+')'; }
-    else if(leer('cap'+ultimo+'_fin')==='1' && publicado(ultimo+1) && CFG.existentes.includes(ultimo+1)){ n=ultimo+1; txt='Escuchar capítulo '+n; }
-  }
+  let n=capituloMio()||1, txt=n===1&&!(parseFloat(leer('cap1_pos')||'0')>5)?'Oír el capítulo 1':(parseFloat(leer('cap'+n+'_pos')||'0')>5?'Seguir con el capítulo '+n+' (minuto '+fmt(parseFloat(leer('cap'+n+'_pos')))+')':'Escuchar capítulo '+n);
   seguir.querySelector('span').textContent=txt; seguir.href=conF(rutaCap(n));
   CFG.n=n;   // medir() manda el capítulo que suena
 
@@ -650,7 +642,7 @@ if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: red
   let cargado=false, yaPlay=false;
   function icono(p){ $('play2').innerHTML=p?ICO.pausa:ICO.play; $('play2').setAttribute('aria-label',p?'Pausar':'Reproducir'); }
   $('play2').onclick=()=>{
-    if(!cargado){ cargado=true; audio.src=CFG.audios[n]; const v=parseFloat(leer('vel')||'1'); if([0.8,1.2].includes(v)){ audio.playbackRate=v; audio.defaultPlaybackRate=v; } const pos=parseFloat(leer(K+'pos')||'0');
+    if(!cargado){ cargado=true; audio.src=CFG.audios[n]; const v=parseFloat(leer('vel')||'1'); if([0.8,1.2].includes(v)){ audio.playbackRate=v; audio.defaultPlaybackRate=v; } const vo=parseFloat(leer('vol')||'1'); if(!ES_IOS && [0.35,0.7].includes(vo)) audio.volume=vo; const pos=parseFloat(leer(K+'pos')||'0');
       if(pos>5) audio.addEventListener('loadedmetadata',()=>{ if(pos<audio.duration-10) audio.currentTime=pos; },{once:true}); }
     else if(audio.error) audio.load();   // otro intento después de "Sin señal"
     if(audio.paused){ const pr=audio.play(); if(pr&&pr.catch) pr.catch(()=>{ icono(false); tiempo(); }); }   // play() dentro del mismo toque

@@ -101,7 +101,7 @@ a.serie:hover{text-decoration:underline;text-decoration-thickness:2px;text-under
 /* ---------- Encima y bajo la radio: capítulo fijo, vecinos y velocidad (feedback 2026-11-06) ---------- */
 .cap-linea{font-size:var(--s-small);color:var(--ink);font-variant-numeric:tabular-nums;margin-top:-4px}
 .vecinos{width:100%;max-width:460px;display:flex;justify-content:space-between;gap:12px}
-.vecinos .vecino{gap:8px;font-size:var(--s-small)}
+.vecinos .vecino{gap:8px;font-size:var(--s-body);white-space:nowrap}
 .vecinos .vecino svg{width:18px;height:18px;flex:none}
 .velocidad{width:100%;max-width:460px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px}
 .vel-t{flex:1 0 100%;font-size:var(--s-small);color:var(--muted);text-align:center}
@@ -110,7 +110,7 @@ a.serie:hover{text-decoration:underline;text-decoration-thickness:2px;text-under
 .vel.sel{background:var(--ink);color:var(--bg);font-weight:600}
 /* ---------- Bajo la radio: retomar y fin ---------- */
 .fin{display:grid;gap:14px;width:100%;max-width:460px;padding-top:4px}
-.fin .boton.wa{min-height:76px;font-size:22px;padding-inline:20px}
+.fin .boton.wa,.fin .boton.principal{min-height:76px;font-size:22px;padding-inline:20px}
 .fin-aviso{color:var(--muted);font-size:var(--s-small);text-align:center}
 .fin.entra-fin{animation:sube .5s var(--ease) both}
 @keyframes sube{from{opacity:0;transform:translateY(16px)}}
@@ -311,9 +311,6 @@ details[open] .chev::after{transform:rotate(40deg)}
 .barra .pista{flex:1;height:10px;background:rgba(127,127,127,.28);border-radius:999px;overflow:hidden;display:none}
 .barra .pista i{display:block;height:100%;width:0;background:var(--accent);border-radius:999px}
 
-/* ---------- Entradas ---------- */
-.pre{opacity:0;transform:translateY(24px)}
-.entra{transition:opacity .7s var(--ease),transform .7s var(--ease)}
 
 /* ---------- Pantalla ancha ---------- */
 @media (min-width:900px){
@@ -345,8 +342,7 @@ details[open] .chev::after{transform:rotate(40deg)}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .fin.entra-fin,.placa-radio.pausa span{animation:none}
-  .perilla-img img,.pantalla,.luz-dial,.aguja,.entra,.barra,.franjas a{transition:none}
-  .pre{opacity:1;transform:none}
+  .perilla-img img,.pantalla,.luz-dial,.aguja,.barra,.franjas a{transition:none}
 }
 </style></head><body>
 <header class="cabecera caja"><a class="cab-marca" href="/" data-interno><img src="logo-56.webp" width="28" height="28" alt=""><span>Radionovelas de ayer</span></a><a class="cab-caps" href="/la-hora-de-la-fortuna" data-interno>Capítulos</a></header>
@@ -430,6 +426,15 @@ const DIAS=['domingo','lunes','martes','miércoles','jueves','viernes','sábado'
 function fechaTexto(n){ const f=fechaCap(n); const dia=new Date(f.getTime()-5*3600e3); const hoy=new Date(Date.now()-5*3600e3);
   const diff=Math.round((Date.UTC(dia.getUTCFullYear(),dia.getUTCMonth(),dia.getUTCDate())-Date.UTC(hoy.getUTCFullYear(),hoy.getUTCMonth(),hoy.getUTCDate()))/864e5);
   if(diff===1) return 'mañana a las 6 a. m.'; return 'el '+DIAS[dia.getUTCDay()]+' '+dia.getUTCDate()+' a las 6 a. m.'; }
+
+// ===== "Su capítulo": regla única para portada, novela y barra (feedback 2026-11-06) =====
+// El último capítulo con progreso (> 5 s) es el suyo; si lo terminó, el siguiente ya publicado; si no hay nada, 0.
+function capituloMio(){
+  for(let n=CFG.caps.length;n>=1;n--){ if(!(publicado(n) && CFG.existentes.includes(n))) continue;
+    if(parseFloat(leer('cap'+n+'_pos')||'0')>5) return n;
+    if(leer('cap'+n+'_fin')==='1') return (publicado(n+1) && CFG.existentes.includes(n+1))?n+1:0; }
+  return 0; }
+const ES_IOS=/iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform==='MacIntel' && navigator.maxTouchPoints>1);   // iOS no deja mover el volumen desde la página
 
 // ===== Compartir: siempre al capítulo 1 con f=share =====
 function urlCap1(){ const u=new URL(CFG.prod?CFG.base+'cap-1':'cap-1.html',location.href); u.searchParams.set('f','share'); return u.href; }
