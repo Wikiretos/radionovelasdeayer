@@ -98,6 +98,16 @@ a.serie:hover{text-decoration:underline;text-decoration-thickness:2px;text-under
 .perilla-img .ico-p{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none;color:#2a1606}
 .perilla-img .ico-p svg{width:40%;height:40%}
 
+/* ---------- Encima y bajo la radio: capítulo fijo, vecinos y velocidad (feedback 2026-11-06) ---------- */
+.cap-linea{font-size:var(--s-small);color:var(--ink);font-variant-numeric:tabular-nums;margin-top:-4px}
+.vecinos{width:100%;max-width:460px;display:flex;justify-content:space-between;gap:12px}
+.vecinos .vecino{gap:8px;font-size:var(--s-small)}
+.vecinos .vecino svg{width:18px;height:18px;flex:none}
+.velocidad{width:100%;max-width:460px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px}
+.vel-t{flex:1 0 100%;font-size:var(--s-small);color:var(--muted);text-align:center}
+.vel{min-height:64px;flex:1 1 0;border-radius:999px;background:var(--surface);color:var(--ink);font-size:var(--s-body);padding:12px 14px;transition:background-color .2s,transform .15s var(--ease)}
+.vel:active{transform:scale(.97)}
+.vel.sel{background:var(--ink);color:var(--bg);font-weight:600}
 /* ---------- Bajo la radio: retomar y fin ---------- */
 .fin{display:grid;gap:14px;width:100%;max-width:460px;padding-top:4px}
 .fin .boton.wa{min-height:76px;font-size:22px;padding-inline:20px}
@@ -153,6 +163,9 @@ a.serie:hover{text-decoration:underline;text-decoration-thickness:2px;text-under
 .leyendas{display:grid;gap:4px;font-size:var(--s-small);color:var(--muted);max-width:34ch}
 .sinopsis{display:grid;gap:20px;max-width:52ch;padding-bottom:56px}
 .panorama,.panorama img{width:100%}
+.panorama{position:relative;background:var(--bg)}
+.panorama::before{content:"Cargando la ilustración…";position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);font-size:var(--s-small)}
+.panorama img{position:relative}   /* al cargar, tapa el aviso */
 .panorama img{height:auto;aspect-ratio:4/5;object-fit:cover}
 
 /* ---------- Texto (portada y lista) ---------- */
@@ -211,6 +224,9 @@ a.item{border-radius:6px;transition:background-color .2s}
 a.item:hover .t{text-decoration:underline;text-underline-offset:4px}
 .item .t{font-weight:600;font-size:var(--s-body);line-height:1.3;min-width:0}
 .item .d{font-variant-numeric:tabular-nums;font-size:var(--s-small);white-space:nowrap}
+a.item .t{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px}   /* lo que se puede oír se ve tocable (feedback 2026-11-06) */
+a.item .d{color:var(--papel-acento);font-weight:600}
+.item .d svg{width:18px;height:18px;vertical-align:-3px}
 .item .s{grid-column:1/-1;font-size:var(--s-small);color:var(--papel-muted);line-height:1.45}
 .item.hoy .d,.item.oyendo .d{color:var(--papel-acento);font-weight:600}
 .item.pronto{color:var(--papel-muted)}
@@ -269,14 +285,14 @@ details[open] .chev::after{transform:rotate(40deg)}
 .escuchelo a:not(.boton){color:var(--accent);text-underline-offset:4px}
 
 /* ---------- Pie ---------- */
-.pie{background:var(--papel);color:var(--papel-ink);min-height:92svh;display:grid;grid-template-rows:auto 1fr auto;padding-block:48px 24px}
+.pie{background:var(--papel);color:var(--papel-ink);display:grid;padding-block:48px 24px}
 .pie .cols{display:grid;grid-template-columns:1fr 1fr;gap:32px 24px;font-size:var(--s-small)}
 .pie .cols b{display:block;font-weight:600;margin-bottom:6px}
 .pie .cols li{color:var(--papel-muted)}
 .pie .cols a{color:var(--papel-ink);text-underline-offset:4px;display:inline-flex;align-items:center;min-height:64px}
 .pie .legal{display:flex;flex-wrap:wrap;column-gap:18px;margin-top:16px;font-size:var(--s-small)}
 .pie .legal a{color:var(--papel-ink);text-underline-offset:4px;display:inline-flex;align-items:center;min-height:64px}
-.palabra{display:grid;gap:6px;padding-top:15svh}
+.palabra{display:grid;gap:6px;padding-top:48px}
 .palabra svg{width:100%;height:auto;display:block}
 .palabra text{font-family:var(--display);fill:var(--papel-ink);text-transform:uppercase}
 .palabra .ancha{display:none}

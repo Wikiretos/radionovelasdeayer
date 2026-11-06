@@ -98,6 +98,16 @@ a.serie:hover{text-decoration:underline;text-decoration-thickness:2px;text-under
 .perilla-img .ico-p{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none;color:#2a1606}
 .perilla-img .ico-p svg{width:40%;height:40%}
 
+/* ---------- Encima y bajo la radio: capítulo fijo, vecinos y velocidad (feedback 2026-11-06) ---------- */
+.cap-linea{font-size:var(--s-small);color:var(--ink);font-variant-numeric:tabular-nums;margin-top:-4px}
+.vecinos{width:100%;max-width:460px;display:flex;justify-content:space-between;gap:12px}
+.vecinos .vecino{gap:8px;font-size:var(--s-small)}
+.vecinos .vecino svg{width:18px;height:18px;flex:none}
+.velocidad{width:100%;max-width:460px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px}
+.vel-t{flex:1 0 100%;font-size:var(--s-small);color:var(--muted);text-align:center}
+.vel{min-height:64px;flex:1 1 0;border-radius:999px;background:var(--surface);color:var(--ink);font-size:var(--s-body);padding:12px 14px;transition:background-color .2s,transform .15s var(--ease)}
+.vel:active{transform:scale(.97)}
+.vel.sel{background:var(--ink);color:var(--bg);font-weight:600}
 /* ---------- Bajo la radio: retomar y fin ---------- */
 .fin{display:grid;gap:14px;width:100%;max-width:460px;padding-top:4px}
 .fin .boton.wa{min-height:76px;font-size:22px;padding-inline:20px}
@@ -153,6 +163,9 @@ a.serie:hover{text-decoration:underline;text-decoration-thickness:2px;text-under
 .leyendas{display:grid;gap:4px;font-size:var(--s-small);color:var(--muted);max-width:34ch}
 .sinopsis{display:grid;gap:20px;max-width:52ch;padding-bottom:56px}
 .panorama,.panorama img{width:100%}
+.panorama{position:relative;background:var(--bg)}
+.panorama::before{content:"Cargando la ilustración…";position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);font-size:var(--s-small)}
+.panorama img{position:relative}   /* al cargar, tapa el aviso */
 .panorama img{height:auto;aspect-ratio:4/5;object-fit:cover}
 
 /* ---------- Texto (portada y lista) ---------- */
@@ -211,6 +224,9 @@ a.item{border-radius:6px;transition:background-color .2s}
 a.item:hover .t{text-decoration:underline;text-underline-offset:4px}
 .item .t{font-weight:600;font-size:var(--s-body);line-height:1.3;min-width:0}
 .item .d{font-variant-numeric:tabular-nums;font-size:var(--s-small);white-space:nowrap}
+a.item .t{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px}   /* lo que se puede oír se ve tocable (feedback 2026-11-06) */
+a.item .d{color:var(--papel-acento);font-weight:600}
+.item .d svg{width:18px;height:18px;vertical-align:-3px}
 .item .s{grid-column:1/-1;font-size:var(--s-small);color:var(--papel-muted);line-height:1.45}
 .item.hoy .d,.item.oyendo .d{color:var(--papel-acento);font-weight:600}
 .item.pronto{color:var(--papel-muted)}
@@ -269,14 +285,14 @@ details[open] .chev::after{transform:rotate(40deg)}
 .escuchelo a:not(.boton){color:var(--accent);text-underline-offset:4px}
 
 /* ---------- Pie ---------- */
-.pie{background:var(--papel);color:var(--papel-ink);min-height:92svh;display:grid;grid-template-rows:auto 1fr auto;padding-block:48px 24px}
+.pie{background:var(--papel);color:var(--papel-ink);display:grid;padding-block:48px 24px}
 .pie .cols{display:grid;grid-template-columns:1fr 1fr;gap:32px 24px;font-size:var(--s-small)}
 .pie .cols b{display:block;font-weight:600;margin-bottom:6px}
 .pie .cols li{color:var(--papel-muted)}
 .pie .cols a{color:var(--papel-ink);text-underline-offset:4px;display:inline-flex;align-items:center;min-height:64px}
 .pie .legal{display:flex;flex-wrap:wrap;column-gap:18px;margin-top:16px;font-size:var(--s-small)}
 .pie .legal a{color:var(--papel-ink);text-underline-offset:4px;display:inline-flex;align-items:center;min-height:64px}
-.palabra{display:grid;gap:6px;padding-top:15svh}
+.palabra{display:grid;gap:6px;padding-top:48px}
 .palabra svg{width:100%;height:auto;display:block}
 .palabra text{font-family:var(--display);fill:var(--papel-ink);text-transform:uppercase}
 .palabra .ancha{display:none}
@@ -360,7 +376,7 @@ details[open] .chev::after{transform:rotate(40deg)}
       <p class="nota">Un capítulo nuevo cada mañana a las 6:00 a. m., hora de Colombia.</p>
     </header>
     <p class="cuenta" id="cuenta"></p>
-    <div class="grupo" id="grupo-ya"><h3>Ya salió</h3><a class="item" data-n="1" href="/cap-1" data-interno><span class="t">1. El hombre de los sobres</span><span class="d" data-fecha="vie 16 oct">vie 16 oct</span><span class="s">Eutimio, el más pobre del pueblo, lleva dos años mandando sobres a la radio. Esta noche dicen su nombre.</span></a><a class="item" data-n="2" href="/cap-2" data-interno><span class="t">2. El secreto de todo el pueblo</span><span class="d" data-fecha="sáb 17 oct">sáb 17 oct</span><span class="s">Eutimio murió de la dicha y el premio se entrega en persona. Obdulia tiene una idea que el padre no quiere oír.</span></a><a class="item" data-n="3" href="/cap-3" data-interno><span class="t">3. Llegó antes de tiempo</span><span class="d" data-fecha="dom 18 oct">dom 18 oct</span><span class="s">Saturnino ensaya para ser Eutimio. Tienen ocho días. De la flota del viernes se baja alguien que no esperaban.</span></a><a class="item" data-n="4" href="/cap-4" data-interno><span class="t">4. La gripa de Eutimio</span><span class="d" data-fecha="lun 19 oct">lun 19 oct</span><span class="s">Obdulia inventa una gripa, el forastero pregunta por una muerta de hace treinta años y don Belisario vio una tumba nueva.</span></a><a class="item" data-n="5" href="/cap-5" data-interno><span class="t">5. El precio del silencio</span><span class="d" data-fecha="mar 20 oct">mar 20 oct</span><span class="s">Obdulia cierra un trato con don Belisario y el delegado por fin ve a Eutimio. Pero pide quedarse a solas con él.</span></a><a class="item" data-n="6" href="/cap-6" data-interno><span class="t">6. Lo que dice el libro</span><span class="d" data-fecha="mié 21 oct">mié 21 oct</span><span class="s">Saturnino responde por un muerto, el forastero se vuelve frío y el padre Severo abre un libro que llevaba treinta años cerrado.</span></a><a class="item" data-n="7" href="/cap-7" data-interno><span class="t">7. Las cartas del rancho</span><span class="d" data-fecha="jue 22 oct">jue 22 oct</span><span class="s">Carmenza abre el baúl de Eutimio y encuentra veintinueve cartas que nunca mandó, mientras don Belisario le pone un plazo y ella decide hablar.</span></a><a class="item" data-n="8" href="/cap-8" data-interno><span class="t">8. El otro don Régulo</span><span class="d" data-fecha="vie 23 oct">vie 23 oct</span><span class="s">Carmenza le confiesa al delegado que Eutimio murió, lo lleva a la tumba sin cruz, y el sábado la flota trae a un desconocido.</span></a><a class="item" data-n="9" href="/cap-9" data-interno><span class="t">9. Me llamo Álvaro</span><span class="d" data-fecha="sáb 24 oct">sáb 24 oct</span><span class="s">Don Belisario denuncia la farsa ante el verdadero delegado, que da plazo hasta las siete, y el forastero llega con un papel viejo.</span></a></div>
+    <div class="grupo" id="grupo-ya"><h3>Ya salió</h3><a class="item" data-n="1" href="/cap-1" data-interno><span class="t">1. El hombre de los sobres</span><span class="d" data-fecha="vie 16 oct"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 4.5v15a1 1 0 0 0 1.5.9l12-7.5a1 1 0 0 0 0-1.8l-12-7.5A1 1 0 0 0 7 4.5z"/></svg> Oír</span><span class="s">Eutimio, el más pobre del pueblo, lleva dos años mandando sobres a la radio. Esta noche dicen su nombre.</span></a><a class="item" data-n="2" href="/cap-2" data-interno><span class="t">2. El secreto de todo el pueblo</span><span class="d" data-fecha="sáb 17 oct"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 4.5v15a1 1 0 0 0 1.5.9l12-7.5a1 1 0 0 0 0-1.8l-12-7.5A1 1 0 0 0 7 4.5z"/></svg> Oír</span><span class="s">Eutimio murió de la dicha y el premio se entrega en persona. Obdulia tiene una idea que el padre no quiere oír.</span></a><a class="item" data-n="3" href="/cap-3" data-interno><span class="t">3. Llegó antes de tiempo</span><span class="d" data-fecha="dom 18 oct"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 4.5v15a1 1 0 0 0 1.5.9l12-7.5a1 1 0 0 0 0-1.8l-12-7.5A1 1 0 0 0 7 4.5z"/></svg> Oír</span><span class="s">Saturnino ensaya para ser Eutimio. Tienen ocho días. De la flota del viernes se baja alguien que no esperaban.</span></a><a class="item" data-n="4" href="/cap-4" data-interno><span class="t">4. La gripa de Eutimio</span><span class="d" data-fecha="lun 19 oct"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 4.5v15a1 1 0 0 0 1.5.9l12-7.5a1 1 0 0 0 0-1.8l-12-7.5A1 1 0 0 0 7 4.5z"/></svg> Oír</span><span class="s">Obdulia inventa una gripa, el forastero pregunta por una muerta de hace treinta años y don Belisario vio una tumba nueva.</span></a><a class="item" data-n="5" href="/cap-5" data-interno><span class="t">5. El precio del silencio</span><span class="d" data-fecha="mar 20 oct"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 4.5v15a1 1 0 0 0 1.5.9l12-7.5a1 1 0 0 0 0-1.8l-12-7.5A1 1 0 0 0 7 4.5z"/></svg> Oír</span><span class="s">Obdulia cierra un trato con don Belisario y el delegado por fin ve a Eutimio. Pero pide quedarse a solas con él.</span></a><a class="item" data-n="6" href="/cap-6" data-interno><span class="t">6. Lo que dice el libro</span><span class="d" data-fecha="mié 21 oct"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 4.5v15a1 1 0 0 0 1.5.9l12-7.5a1 1 0 0 0 0-1.8l-12-7.5A1 1 0 0 0 7 4.5z"/></svg> Oír</span><span class="s">Saturnino responde por un muerto, el forastero se vuelve frío y el padre Severo abre un libro que llevaba treinta años cerrado.</span></a><a class="item" data-n="7" href="/cap-7" data-interno><span class="t">7. Las cartas del rancho</span><span class="d" data-fecha="jue 22 oct"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 4.5v15a1 1 0 0 0 1.5.9l12-7.5a1 1 0 0 0 0-1.8l-12-7.5A1 1 0 0 0 7 4.5z"/></svg> Oír</span><span class="s">Carmenza abre el baúl de Eutimio y encuentra veintinueve cartas que nunca mandó, mientras don Belisario le pone un plazo y ella decide hablar.</span></a><a class="item" data-n="8" href="/cap-8" data-interno><span class="t">8. El otro don Régulo</span><span class="d" data-fecha="vie 23 oct"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 4.5v15a1 1 0 0 0 1.5.9l12-7.5a1 1 0 0 0 0-1.8l-12-7.5A1 1 0 0 0 7 4.5z"/></svg> Oír</span><span class="s">Carmenza le confiesa al delegado que Eutimio murió, lo lleva a la tumba sin cruz, y el sábado la flota trae a un desconocido.</span></a><a class="item" data-n="9" href="/cap-9" data-interno><span class="t">9. Me llamo Álvaro</span><span class="d" data-fecha="sáb 24 oct"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 4.5v15a1 1 0 0 0 1.5.9l12-7.5a1 1 0 0 0 0-1.8l-12-7.5A1 1 0 0 0 7 4.5z"/></svg> Oír</span><span class="s">Don Belisario denuncia la farsa ante el verdadero delegado, que da plazo hasta las siete, y el forastero llega con un papel viejo.</span></a></div>
     <div class="grupo" id="grupo-viene"><h3>Lo que viene</h3><div class="item pronto" data-n="10"><span class="t">10. El premio de Eutimio</span><span class="d" data-fecha="dom 25 oct">dom 25 oct</span></div></div>
     <footer>Si llega tarde, el capítulo lo espera donde lo dejó.</footer>
   </div>
@@ -553,6 +569,9 @@ ajustarMarca(); if(document.fonts&&document.fonts.ready) document.fonts.ready.th
 
 // ===== La programación (DESIGN.md §4): fechas desde ESTRENO, 6 a. m. hora de Colombia, sin depender del reloj del visitante. =====
 // build.py la deja impresa con enlaces para lo que ya salió al generar; aquí se pone al día a la hora real.
+// La etiqueta de la derecha lleva ▶ cuando el capítulo se puede oír: así se ve qué es tocable (sesión de feedback 2026-11-06).
+const d_fecha=el=>el.querySelector('.d').dataset.fecha;
+function etiqueta(d,txt,play){ d.innerHTML=play?ICO.play+' ':''; d.appendChild(document.createTextNode(txt)); }
 function pintarProgramacion(){
   const hoja=$('programa'); if(!hoja) return;
   let hoy=0; for(let n=1;n<=CFG.caps.length;n++) if(publicado(n)) hoy=n;
@@ -566,7 +585,7 @@ function pintarProgramacion(){
       const s=a.querySelector('.s'); if(s) s.hidden=false;
     }
     el.classList.toggle('pronto',!sale); el.classList.toggle('hoy',sale && n===hoy && !oyendo); el.classList.toggle('oyendo',oyendo);
-    const d=el.querySelector('.d'); d.textContent=oyendo?'Está oyendo este':(sale && n===hoy?'Hoy':d.dataset.fecha);
+    etiqueta(el.querySelector('.d'), oyendo?'Está oyendo este':(sale?(n===hoy?'Hoy':'Oír'):d_fecha(el)), sale && !oyendo);
   });
   viene.hidden=!viene.querySelector('.item');
   const sig=hoy+1;
@@ -584,7 +603,7 @@ function compacta(hoja, hoy){
     if(sale && el.tagName!=='A'){ const a=document.createElement('a'); a.className=el.className; a.dataset.n=n; a.innerHTML=el.innerHTML; a.href=conF(rutaCap(n)); el.replaceWith(a); el=a; const s=a.querySelector('.s'); if(s) s.hidden=false; }
     const oyendo=n===N0, d=el.querySelector('.d');
     el.classList.toggle('pronto',!sale); el.classList.toggle('oyendo',oyendo); el.classList.toggle('hoy',!oyendo && sale && n===hoy);
-    d.textContent=oyendo?'Está oyendo este':(n===N0+1?(sale?'Siguiente':'Siguiente · '+d.dataset.fecha):(n===hoy?'Hoy':d.dataset.fecha));
+    etiqueta(d, oyendo?'Está oyendo este':(n===N0+1?(sale?'Siguiente':'Siguiente · '+d.dataset.fecha):(n===hoy?'Hoy':d.dataset.fecha)), sale && !oyendo);
     el.hidden=!orden.includes(n);
   });
   orden.forEach(n=>{ const el=caja.querySelector('.item[data-n="'+n+'"]'); if(el) caja.appendChild(el); });
@@ -624,13 +643,14 @@ if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: red
   CFG.n=n;   // medir() manda el capítulo que suena
 
   // La barra: el mismo capítulo, desde donde iba
-  const K='cap'+n+'_', dur=CFG.duraciones[n]||0;
+  const K='cap'+n+'_', dur=CFG.duraciones[n]||0, pos0=parseFloat(leer(K+'pos')||'0');
   $('b-titulo').textContent='Capítulo '+n+' · '+CFG.caps[n-1];
-  function tiempo(){ if(audio.error && cargado){ $('t-barra').textContent='Sin señal. Toque la perilla'; return; } $('t-barra').textContent=fmt(audio.currentTime||0)+' de '+fmt(audio.duration||dur); $('luz2').style.width=((audio.currentTime||0)/(audio.duration||dur||1)*100)+'%'; }
+  function tiempo(){ if(audio.error && cargado){ $('t-barra').textContent='Sin señal. Toque la perilla'; return; } const t=audio.currentTime>=1?audio.currentTime:(!cargado && pos0>5?pos0:0);   // antes de cargar: el minuto guardado, el mismo del botón
+    $('t-barra').textContent=fmt(t)+' de '+fmt(audio.duration||dur); $('luz2').style.width=(t/(audio.duration||dur||1)*100)+'%'; }
   let cargado=false, yaPlay=false;
   function icono(p){ $('play2').innerHTML=p?ICO.pausa:ICO.play; $('play2').setAttribute('aria-label',p?'Pausar':'Reproducir'); }
   $('play2').onclick=()=>{
-    if(!cargado){ cargado=true; audio.src=CFG.audios[n]; const pos=parseFloat(leer(K+'pos')||'0');
+    if(!cargado){ cargado=true; audio.src=CFG.audios[n]; const v=parseFloat(leer('vel')||'1'); if([0.8,1.2].includes(v)){ audio.playbackRate=v; audio.defaultPlaybackRate=v; } const pos=parseFloat(leer(K+'pos')||'0');
       if(pos>5) audio.addEventListener('loadedmetadata',()=>{ if(pos<audio.duration-10) audio.currentTime=pos; },{once:true}); }
     else if(audio.error) audio.load();   // otro intento después de "Sin señal"
     if(audio.paused){ const pr=audio.play(); if(pr&&pr.catch) pr.catch(()=>{ icono(false); tiempo(); }); }   // play() dentro del mismo toque
