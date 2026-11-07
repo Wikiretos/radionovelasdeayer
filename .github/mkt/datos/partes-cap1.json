@@ -1,0 +1,62 @@
+{
+ "capitulo": 1,
+ "nota": "Partición sugerida del cap. 1 en 7 partes (≤ 174,5 s de audio cada una, cortadas en límites de línea, sin presentación de créditos). El creador puede mover los cortes a momentos más fuertes respetando el orden, la continuidad y el tope.",
+ "partes": [
+  {
+   "n": 1,
+   "m": 7,
+   "inicio": 50.13,
+   "fin": 210.96,
+   "empieza": "Guatancuy. Un pueblo de tierra fría, a tres horas ",
+   "termina": "se las guardo, que después todo Guatancuy me pide."
+  },
+  {
+   "n": 2,
+   "m": 7,
+   "inicio": 211.46,
+   "fin": 357.67,
+   "empieza": "Dios se lo pague, sumercé. El sobre de esta noche ",
+   "termina": "ón, a la hora en que las vecinas bajan por el pan."
+  },
+  {
+   "n": 3,
+   "m": 7,
+   "inicio": 360.08,
+   "fin": 520.25,
+   "empieza": "Buenas y santas, Carmenza, mija. Véndame media lib",
+   "termina": "l único que amaneció sentado en esa puerta fue él."
+  },
+  {
+   "n": 4,
+   "m": 7,
+   "inicio": 520.75,
+   "fin": 678.28,
+   "empieza": "No se ponga brava, Carmenza. Si yo al viejo lo est",
+   "termina": "ad, que esta vez sea su nombre el que digan. Amén."
+  },
+  {
+   "n": 5,
+   "m": 7,
+   "inicio": 678.78,
+   "fin": 824.88,
+   "empieza": "Téngalo, Eutimio.",
+   "termina": "ntrese, no se me quede en la puerta, que se hiela."
+  },
+  {
+   "n": 6,
+   "m": 7,
+   "inicio": 825.38,
+   "fin": 973.46,
+   "empieza": "Aquí estoy bien, doña Carmenza. Desde aquí oigo. Y",
+   "termina": "e lo ganó! ¡Virgen Santísima, se lo ganó el viejo!"
+  },
+  {
+   "n": 7,
+   "m": 7,
+   "inicio": 973.96,
+   "fin": 1128.27,
+   "empieza": "[por el radio] ¡Felicitaciones, don Eutimio, allá ",
+   "termina": "de La Hora de la Fortuna… en Radionovelas de ayer."
+  }
+ ]
+}

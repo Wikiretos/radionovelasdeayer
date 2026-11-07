@@ -13,15 +13,30 @@ Esquema (ver PLAN.md):
                 "carrusel": {"diapositivas": [{"titulo","texto","imagen?","papel?"}]},
                 "texto": {"fb","ig","yt_titulo","yt_desc","tiktok","comentario"},
                 "por_que": "razón de esta pieza (dato o hipótesis)" } ] }
+
+Reglas v3 (auditoría del 2026-11-07; semanas >= config.reglas_v3_desde):
+  tipos nuevos  "parte":    {"capitulo": 1, "n": 1..m, "m": M, "inicio": s, "fin": s, "siguiente": "Mañana a las 7"} (partes del cap. 1 en orden;
+                            ver datos/partes-cap1.json)
+                "capitulo": {"numero": 1, "titulo": "...", "ilustraciones": [{escena, personajes, lugar, momento, desde: s}]} (solo fb y yt)
+  cada pieza    "cta": {"destino": "cap-1" | "cap-2" | "video:<id de la pieza capitulo>" | "siguiente-parte"}  (UN solo llamado a la acción)
+                "hallazgo": en qué hallazgo de claude/marketing/prompt-campanas-auditoria-2026-11-07.md se apoya
+  textos        fb y yt_desc llevan {enlace} (el publicador lo cambia por la URL con ?f=<red> y utm_content=<id>); fb también en "comentario";
+                la pregunta para comentar va SOLO en "comentario"; ig y tiktok sin enlace; nada de reenviar ni WhatsApp; cero spoilers.
+  ab.metrica    "clics" o "plays" (GA4 por utm_content).
+  volumen       ≤ config.max_sueltas_por_dia piezas sueltas por red y día (sin contar partes ni capítulo); ig solo como copia de fb.
 """
 import argparse, json, re, sys
 from datetime import date, datetime, timedelta
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from comun import MKT, CONFIG, ErrorPieza, validar_texto
+from comun import MKT, CONFIG, ErrorPieza, validar_texto, v3, SPOILERS
 
 TIPOS = {"fragmento", "escena", "carrusel"}
+TIPOS_V3 = TIPOS | {"parte", "capitulo"}
+DESTINOS = {"cap-1", "cap-2", "siguiente-parte"}
+REENVIAR = [r"whats ?app", r"\breenv[ií]", r"m[aá]ndeselo", r"comp[aá]rta", r"compartir con"]
+METRICAS_AB_V3 = {"clics", "plays"}
 FAMILIAS = {"dramatico", "costumbre", "recuerdo", "personaje", "pregunta", "dato"}
 MARCA = "#radionovelasdeayer"
 # Del guionista: nada de esto en boca de un personaje ni del locutor.
@@ -39,11 +54,56 @@ PALABRAS_SEG = 117 / 60
 
 def costo_estimado(p):
     """US$ estimado de producir la pieza (ilustraciones + voces). Publicar y medir no cuesta."""
-    imgs = (1 if p.get("ilustracion") and not p.get("ilustracion_de") else 0) + sum(1 for d in (p.get("carrusel") or {}).get("diapositivas", []) if d.get("ilustracion"))
+    imgs = ((1 if p.get("ilustracion") and not p.get("ilustracion_de") else 0) + sum(1 for d in (p.get("carrusel") or {}).get("diapositivas", []) if d.get("ilustracion"))
+            + len((p.get("capitulo") or {}).get("ilustraciones") or []))
     pal = sum(len(re.sub(r"\[[^\]]*\]", "", l.get("texto", "")).split()) for l in (p.get("escena") or {}).get("lineas", []))
     return round(imgs * USD_IMAGEN + (pal / PALABRAS_SEG) * USD_SEG_VOZ * 1.15, 4)  # +15 % por la dirección enviada
 PLATAFORMAS = {"fb", "ig", "yt", "tt"}
 FONDOS = {None, "colchon_tierno", "colchon_tension", "tiple_de_cinco", "sintonia_concurso"}
+
+
+def v3_pieza(p, pls, e):
+    """Reglas de la auditoría del 2026-11-07."""
+    t = p.get("texto") or {}
+    if not p.get("hallazgo"): e("falta 'hallazgo': en qué hallazgo de la auditoría se apoya")
+    cta = p.get("cta") or {}
+    dest = cta.get("destino", "")
+    if p.get("tipo") == "parte":
+        pa = p.get("parte") or {}
+        if not all(isinstance(pa.get(k), int) for k in ("capitulo", "n", "m")) or not 1 <= pa.get("n", 0) <= pa.get("m", 0):
+            e("parte: necesita capitulo, n y m enteros (1 ≤ n ≤ m)")
+        elif pa["capitulo"] not in CONFIG["capitulos_en_redes"]: e(f"parte: el capítulo {pa['capitulo']} no se cuenta en redes")
+        elif pa["n"] < pa["m"] and not pa.get("siguiente"): e("parte: falta 'siguiente' (cuándo sale la próxima, p. ej. 'Mañana a las 7')")
+        esperado = "siguiente-parte" if pa.get("n", 0) < pa.get("m", 0) else "cap-2"
+        if dest != esperado: e(f"parte {pa.get('n')}/{pa.get('m')}: cta.destino debe ser '{esperado}'")
+    elif p.get("tipo") == "capitulo":
+        c = p.get("capitulo") or {}
+        if c.get("numero") not in CONFIG["capitulos_en_redes"]: e(f"capitulo: solo {CONFIG['capitulos_en_redes']} va completo en redes")
+        if not pls <= {"fb", "yt"}: e("capitulo completo: solo fb y yt")
+        ils = c.get("ilustraciones") or []
+        if not 1 <= len(ils) <= 6: e("capitulo: 1 a 6 ilustraciones")
+        for il in ils:
+            if not il.get("escena"): e("capitulo: ilustración sin 'escena'")
+            for per in il.get("personajes") or []:
+                if not (ESTILO["personajes"].get(per) or {}).get("ref"): e(f"capitulo: {per} sin hoja de personaje aprobada")
+        if dest != "cap-2": e("capitulo completo: cta.destino debe ser 'cap-2'")
+    elif not (dest in ("cap-1", "cap-2") or dest.startswith("video:")):
+        e("cta.destino debe ser 'cap-1', 'cap-2' o 'video:<id del capítulo completo>'")
+    if "ig" in pls and "fb" not in pls: e("Instagram solo como copia de Facebook: ig sin fb")
+    lleva_enlace = dest in ("cap-1", "cap-2") or dest.startswith("video:")
+    for k in ("fb", "yt_desc"):
+        if t.get(k) and lleva_enlace and "{enlace}" not in t[k]: e(f"texto.{k}: falta {{enlace}} (el publicador pone la URL rastreable)")
+    if "fb" in pls and lleva_enlace and "{enlace}" not in t.get("comentario", ""): e("texto.comentario: falta {enlace} (va fijado como primer comentario)")
+    if "fb" in pls and "?" not in t.get("comentario", ""): e("texto.comentario: la pregunta para comentar va aquí")
+    for k in ("ig", "tiktok"):
+        if "{enlace}" in t.get(k, "") or "http" in t.get(k, ""): e(f"texto.{k}: sin enlaces (no se pueden tocar)")
+    for k in ("fb", "ig", "tiktok", "yt_desc"):
+        if "?" in re.sub(r"\{enlace\}", "", t.get(k, "")): e(f"texto.{k}: sin preguntas; la pregunta va en 'comentario' (un solo llamado a la acción)")
+    for k, v in list(t.items()) + [("gancho", p.get("gancho", ""))]:
+        for rx in REENVIAR:
+            if re.search(rx, v or "", re.I): e(f"texto.{k}: nada de reenviar ni WhatsApp ({rx})")
+        for rx in SPOILERS:
+            if re.search(rx, v or "", re.I): e(f"texto.{k}: posible spoiler ({rx})")
 
 
 def main():
@@ -74,13 +134,16 @@ def main():
                 mal.append(f"referente {c} sin fuente URL o sin 'que_aprendemos': {str(r)[:80]}")
     ids = set()
     por_dia = {}
+    sueltas = {}
     exps = {}
+    nuevas = v3(plan.get("semana"))
+    tipos_ok = TIPOS_V3 if nuevas else TIPOS
     for p in plan.get("piezas", []):
         pid = p.get("id", "?"); e = lambda m: mal.append(f"{pid}: {m}")
         if pid in ids: e("id repetido")
         ids.add(pid)
         if not re.fullmatch(r"[a-z0-9-]{3,30}", pid): e("id inválido (minúsculas, números, guiones)")
-        if p.get("tipo") not in TIPOS: e("tipo inválido")
+        if p.get("tipo") not in tipos_ok: e("tipo inválido")
         if p.get("ab"):
             ab = p["ab"]
             if ab.get("variante") not in ("A", "B") or not ab.get("experimento") or ab.get("variable") not in VARIABLES_AB or not ab.get("hipotesis"):
@@ -102,7 +165,13 @@ def main():
         if p.get("tipo") == "carrusel" and "yt" in pls: e("carrusel no va a YouTube")
         for pl in pls & {"fb", "ig", "yt"}:
             por_dia[(p.get("fecha"), pl)] = por_dia.get((p.get("fecha"), pl), 0) + 1
-        if p.get("tipo") != "carrusel":
+            if p.get("tipo") not in ("parte", "capitulo"):
+                sueltas[(p.get("fecha"), pl)] = sueltas.get((p.get("fecha"), pl), 0) + 1
+        if nuevas:
+            v3_pieza(p, pls, e)
+        if p.get("tipo") == "capitulo":
+            pass
+        elif p.get("tipo") != "carrusel":
             if p.get("ilustracion_de"):
                 otra = next((x for x in plan["piezas"] if x.get("id") == p["ilustracion_de"]), None)
                 if not otra or not otra.get("ilustracion") or plan["piezas"].index(otra) > plan["piezas"].index(p):
@@ -140,15 +209,16 @@ def main():
             except ErrorPieza as x: e(str(x))
         try: validar_texto(p.get("gancho", ""), "gancho")
         except ErrorPieza as x: e(str(x))
-        if p.get("tipo") == "fragmento":
-            fr = p.get("fragmento") or {}
+        if p.get("tipo") in ("fragmento", "parte"):
+            fr = (p.get("parte") if p.get("tipo") == "parte" else p.get("fragmento")) or {}
             cap = fr.get("capitulo")
             if not isinstance(cap, int) or not 1 <= cap <= args.estrenados: e(f"capítulo {cap} no estrenado o inválido")
             else:
                 tp = MKT / "datos" / f"tiempos-cap{cap}.json"
                 if not tp.exists(): e(f"falta {tp.name}")
                 d = fr.get("fin", 0) - fr.get("inicio", 0)
-                if not 8 <= d <= CONFIG["duracion_max_video"] - 3.5: e(f"fragmento de {d:.1f}s (8 a {CONFIG['duracion_max_video'] - 3.5}s)")
+                tope = (CONFIG["duracion_max_parte"] if p.get("tipo") == "parte" else CONFIG["duracion_max_video"]) - 3.5
+                if not 8 <= d <= tope: e(f"fragmento de {d:.1f}s (8 a {tope}s)")
                 if tp.exists():
                     lin = json.loads(tp.read_text())["lineas"]
                     cortes = [l for l in lin if l["inicio"] + 0.3 < fr["inicio"] < l["fin"] - 0.3 or l["inicio"] + 0.3 < fr["fin"] < l["fin"] - 0.3]
@@ -191,6 +261,20 @@ def main():
         if var != "hora" and a.get("hora") != b.get("hora"): mal.append(f"experimento {nombre}: A y B deben salir a la misma hora (en días distintos) para que solo cambie '{var}'")
     if len(exps) < 2:
         mal.append(f"la semana necesita al menos 2 experimentos A/B (tiene {len(exps)})")
+    if nuevas:
+        for (f, pl), n in sueltas.items():
+            if n > CONFIG["max_sueltas_por_dia"]: mal.append(f"{f} {pl}: {n} piezas sueltas (máx. {CONFIG['max_sueltas_por_dia']} más partes y capítulo)")
+        partes = sorted((p for p in plan.get("piezas", []) if p.get("tipo") == "parte" and p.get("parte")), key=lambda p: (p["parte"].get("capitulo"), p["parte"].get("n")))
+        for a, b in zip(partes, partes[1:]):
+            pa, pb = a["parte"], b["parte"]
+            if pa.get("capitulo") != pb.get("capitulo"): continue
+            if pb.get("n") != pa.get("n", 0) + 1: mal.append(f"partes del cap. {pa.get('capitulo')}: falta la parte {pa.get('n', 0) + 1} entre {a['id']} y {b['id']}")
+            elif not 0 <= pb.get("inicio", 0) - pa.get("fin", 0) <= 4: mal.append(f"{b['id']}: la parte {pb.get('n')} debe empezar donde termina la {pa.get('n')} ({pa.get('fin')} s)")
+            if (b.get("fecha"), b.get("hora")) <= (a.get("fecha"), a.get("hora")): mal.append(f"{b['id']}: la parte {pb.get('n')} sale antes o a la vez que la {pa.get('n')}")
+        for pid, ps in exps.items():
+            for x in ps:
+                if x["ab"].get("metrica") not in METRICAS_AB_V3:
+                    mal.append(f"{x['id']}: ab.metrica debe ser 'clics' o 'plays' (se decide en GA4, no por vistas)")
     for (f, pl), n in por_dia.items():
         if n > CONFIG["max_por_dia"][pl]: mal.append(f"{f} {pl}: {n} piezas (máx. {CONFIG['max_por_dia'][pl]})")
     if mal:

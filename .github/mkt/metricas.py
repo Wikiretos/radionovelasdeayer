@@ -17,12 +17,15 @@ from comun import CONFIG, ErrorPieza, http, leer_publico, log, semanas, aprobaci
 
 UMBRAL_AB = 1.3        # la variante gana si supera a la otra en 30 % o más
 MIN_VISTAS_AB = 300    # y entre las dos suman al menos esto a las 48 h
+MIN_GA4_AB = 10        # clics o plays: entre las dos al menos esto (desde GA4, por utm_content)
+GA4_METRICA = {"clics": "usuarios", "plays": "play"}  # ab.metrica → campo de informe.txt → por_pieza[id][red]
 
 TZ = ZoneInfo(CONFIG["zona"])
 G = CONFIG["graph"]
 
 FB_REEL = ["blue_reels_play_count", "fb_reels_total_plays", "post_impressions_unique", "post_video_avg_time_watched",
-           "post_video_social_actions", "post_video_followers"]
+           "post_video_social_actions", "post_video_followers",
+           "total_video_views", "total_video_avg_time_watched", "total_video_view_total_time"]  # los tres últimos: videos normales (capítulo completo, partes > 90 s)
 FB_POST = ["post_media_view", "post_impressions_unique", "post_clicks", "post_reactions_by_type_total"]
 IG_REEL = ["views", "reach", "likes", "comments", "shares", "saved", "total_interactions", "ig_reels_avg_watch_time", "follows"]
 IG_CAR = ["views", "reach", "likes", "comments", "shares", "saved", "total_interactions", "follows"]
@@ -69,7 +72,8 @@ def fb(reg, tipo, token, err):
                     m[d["name"]] = valor(d)
         except ErrorPieza as e:
             err.append(f"fb video_insights: {str(e)[:160]}")
-    m["vistas"] = m.get("blue_reels_play_count") or m.get("fb_reels_total_plays") or m.get("post_media_view") or m.get("post_impressions_unique")
+    m["vistas"] = (m.get("blue_reels_play_count") or m.get("fb_reels_total_plays") or m.get("total_video_views")
+                   or m.get("post_media_view") or m.get("post_impressions_unique"))
     return m
 
 
@@ -216,10 +220,49 @@ def main():
     for pid, (sem, p) in planes.items():
         if p.get("ab"):
             grupos[(sem, p["ab"]["experimento"])][p["ab"]["variante"]] = p
+    # clics y plays por pieza: el Worker ga4-informe los publica en datos/informe.txt → por_pieza {id: {red: {usuarios, play}}}
+    ga4_pp, ga4_err = {}, None
+    if any(p.get("ab", {}).get("metrica") in GA4_METRICA for _, p in planes.values()):
+        try:
+            inf = leer_publico("datos/informe.txt", {}) or {}
+            ga4_pp = inf.get("por_pieza") or {}
+            if "por_pieza" not in inf:
+                ga4_err = "informe.txt aún no trae por_pieza (falta el cambio del Worker ga4-informe)"
+        except ErrorPieza as e:
+            ga4_err = f"informe.txt: {e}"
+        if ga4_err:
+            errores.append(ga4_err)
     for (sem, nombre), vs in grupos.items():
         if set(vs) != {"A", "B"}: continue
         A, B = vs["A"], vs["B"]
         metrica = A["ab"].get("metrica", "vistas")
+        if metrica in GA4_METRICA:
+            campo = GA4_METRICA[metrica]
+            res = {"semana": sem, "experimento": nombre, "variable": A["ab"]["variable"], "hipotesis": A["ab"].get("hipotesis"),
+                   "metrica": metrica, "fuente": "GA4 (utm_content)", "A": A["id"], "B": B["id"], "por_plataforma": {}}
+            edad = []
+            for X in (A, B):
+                fx = [f for f in filas if f["id"] == X["id"] and f.get("estado") == "publicada"]
+                edad.append(min((f.get("horas_publicada") or 0) for f in fx) if fx else 0)
+            for pl in A.get("plataformas", []):
+                va = ((ga4_pp.get(A["id"]) or {}).get(pl) or {}).get(campo)
+                vb = ((ga4_pp.get(B["id"]) or {}).get(pl) or {}).get(campo)
+                if ga4_err or min(edad) < 48:
+                    ver = "esperando 48 h" if not ga4_err else "sin datos de GA4 por pieza"
+                else:
+                    va, vb = va or 0, vb or 0
+                    ver = ("muestra insuficiente" if va + vb < MIN_GA4_AB else "gana A" if va >= vb * UMBRAL_AB and va > 0
+                           else "gana B" if vb >= va * UMBRAL_AB and vb > 0 else "sin diferencia clara")
+                res["por_plataforma"][pl] = {"A": va, "B": vb, "veredicto": ver}
+            ta = sum((v.get("A") or 0) for v in res["por_plataforma"].values()); tb = sum((v.get("B") or 0) for v in res["por_plataforma"].values())
+            vers = [x["veredicto"] for x in res["por_plataforma"].values()]
+            if not vers or any(v in ("esperando 48 h", "sin datos de GA4 por pieza") for v in vers):
+                res["veredicto"] = next((v for v in vers if v in ("sin datos de GA4 por pieza", "esperando 48 h")), "esperando 48 h")
+            else:  # el total de las redes decide: un solo enlace por pieza, poca muestra por red
+                res["veredicto"] = ("muestra insuficiente" if ta + tb < MIN_GA4_AB else "gana A" if ta >= tb * UMBRAL_AB and ta > 0
+                                    else "gana B" if tb >= ta * UMBRAL_AB and tb > 0 else "sin diferencia clara")
+            res["total"] = {"A": ta, "B": tb}
+            experimentos.append(res); continue
         res = {"semana": sem, "experimento": nombre, "variable": A["ab"]["variable"], "hipotesis": A["ab"].get("hipotesis"),
                "metrica": metrica, "A": A["id"], "B": B["id"], "por_plataforma": {}}
         for pl in A.get("plataformas", []):
@@ -242,6 +285,23 @@ def main():
         res["veredicto"] = ("gana A" if vers.count("gana A") > len(vers) / 2 else "gana B" if vers.count("gana B") > len(vers) / 2
                             else "esperando 48 h" if "esperando 48 h" in vers or not vers else "sin diferencia clara")
         experimentos.append(res)
+    # serialización: retención entre partes = vistas de la parte N+1 ÷ vistas de la parte N, por red
+    serializacion = []
+    series = defaultdict(dict)
+    for pid, (sem, p) in planes.items():
+        if p.get("tipo") == "parte" and p.get("parte"):
+            series[(p["parte"]["capitulo"], p["parte"]["m"])][p["parte"]["n"]] = pid
+    for (cap, m), partes in sorted(series.items()):
+        fila_s = {"capitulo": cap, "partes": m, "por_plataforma": {}}
+        for pl in ("fb", "ig", "yt"):
+            vistas = []
+            for n in range(1, m + 1):
+                f = next((x for x in filas if x["id"] == partes.get(n) and x["plataforma"] == pl and x.get("estado") == "publicada"), None)
+                vistas.append((f.get("metricas") or {}).get("vistas") if f else None)
+            ret = [round(vistas[i + 1] / vistas[i], 2) if vistas[i] and vistas[i + 1] is not None else None for i in range(m - 1)]
+            if any(v is not None for v in vistas):
+                fila_s["por_plataforma"][pl] = {"vistas": vistas, "retencion": ret}
+        serializacion.append(fila_s)
     # resúmenes
     def resumen(clave):
         acc = defaultdict(lambda: {"piezas": 0, "vistas": 0, "compartidos": 0, "comentarios": 0})
@@ -282,7 +342,7 @@ def main():
                          "usd_por_mil_vistas": round(total_usd / total_vistas * 1000, 3) if total_vistas else None,
                          "pauta_usd": 0, "por_pieza": sorted(costos, key=lambda c: c["id"]),
                          "nota": "Producción = ilustraciones + voces (Gemini). Publicar y medir no cuesta. La pauta, cuando la haya, se suma aparte."},
-              "experimentos": experimentos,
+              "experimentos": experimentos, "serializacion": serializacion,
               "nota": "vistas: FB=reproducciones de Reel (o alcance en carrusel), IG=views (o alcance), YT=viewCount. Métricas acumuladas desde la publicación."}
     Path(a.salida).write_text(json.dumps(salida, ensure_ascii=False, indent=1))
     log(f"Métricas: {len(filas)} filas, {len(errores)} errores de métricas")

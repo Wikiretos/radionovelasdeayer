@@ -74,5 +74,23 @@ def url_media(semana, nombre, version=None):
     return f"{R2_PUBLICO}/mkt/{semana}/{nombre}" + (f"?v={version}" if version else "")
 
 
+def v3(semana):
+    """Reglas de la auditoría del 2026-11-07 (un solo llamado a la acción, enlace por pieza, cap. 1 en redes)."""
+    return bool(semana) and semana >= CONFIG.get("reglas_v3_desde", "9999")
+
+
+DESTINOS_WEB = {"cap-1", "cap-2"}   # páginas del sitio a las que puede llevar una pieza
+SPOILERS = [r"\bmuri[óo]\b", r"\bmuert[oa]\b", r"\bmuere\b", r"suplant", r"\bfing", r"pasar por vivo", r"hacerlo pasar"]
+
+
+def enlace(p, pl, semana):
+    """URL rastreable de la pieza: ?f=<red> + UTM con el id de la pieza (GA4 la cuenta por utm_content)."""
+    dest = (p.get("cta") or {}).get("destino", "cap-1")
+    if dest not in DESTINOS_WEB:
+        return None
+    q = urllib.parse.urlencode({"f": pl, "utm_source": pl, "utm_medium": "social", "utm_campaign": semana, "utm_content": p["id"]})
+    return f"{CONFIG['sitio']}/{dest}?{q}"
+
+
 def log(*a):
     print(*a, flush=True)

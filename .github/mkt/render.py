@@ -7,6 +7,8 @@ Tipos de pieza:
   fragmento  audio recortado de un capítulo (audio/capNN_web.mp3) con subtítulos de tiempos-capN.json
   escena     audio nuevo: líneas con personajes → Gemini TTS (GEMINI_API_KEY) + colchón musical
   carrusel   imágenes 1080×1350 (JPEG) con textos
+  parte      parte N de M de un capítulo contado por partes (vertical, ≤ duracion_max_parte, abre con "Parte N de M")
+  capitulo   capítulo completo en video horizontal 1920×1080 (YouTube largo y video de Facebook)
 
 Salida por pieza: <id>.mp4 + <id>.jpg (portada) o <id>-1.jpg… (carrusel), y render.json con el resultado.
 Un error detiene SOLO esa pieza y queda en render.json; nunca se corrige solo.
@@ -16,7 +18,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from comun import MKT, REPO, CONFIG, ErrorPieza, validar_texto, http, log
+from comun import MKT, REPO, CONFIG, ErrorPieza, validar_texto, http, log, v3
 import ilustrar
 
 W, H, FPS = 1080, 1920, 30
@@ -116,7 +118,7 @@ def marco_vertical(dst, serie_titulo, pie):
     im.save(dst)
 
 
-def png_texto(dst, texto, quien=None, tam=62, banda=False, alto=300):
+def png_texto(dst, texto, quien=None, tam=62, banda=False, alto=300, W=W):
     """Subtítulo (o gancho) como PNG transparente de W×alto."""
     im = Image.new("RGBA", (W, alto), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
@@ -133,6 +135,33 @@ def png_texto(dst, texto, quien=None, tam=62, banda=False, alto=300):
     for l in lineas:
         d.text((W / 2, y + alto_l / 2), l, font=f, fill=INK, anchor="mm", stroke_width=3, stroke_fill=(14, 8, 3))
         y += alto_l
+    im.save(dst)
+
+
+def textos_cierre(p):
+    """Tarjeta final con UN solo llamado a la acción: seguir con la historia (reglas v3)."""
+    sitio = CONFIG["sitio"].replace("https://", "")
+    pa = p.get("parte")
+    if p.get("tipo") == "parte" and pa:
+        if pa["n"] < pa["m"]:
+            return (f"Sigue la parte {pa['n'] + 1} de {pa['m']}", pa.get("siguiente", "Muy pronto"), p.get("serie_titulo", "La Hora de la Fortuna"))
+        return (f"Fin del capítulo {pa['capitulo']}", f"El capítulo {pa['capitulo'] + 1} sigue gratis en", f"{sitio}/cap-{pa['capitulo'] + 1}")
+    dest = (p.get("cta") or {}).get("destino", "cap-1")
+    if dest == "cap-2":
+        return ("¿Quiere saber qué pasó después?", "Siga con el capítulo 2, gratis", f"{sitio}/cap-2")
+    if dest.startswith("video:"):
+        return ("El capítulo 1 completo", "Escúchelo gratis en esta misma cuenta", "Búsquelo en el perfil")
+    return ("¿Quiere saber qué pasó?", "Empiece por el capítulo 1, gratis", f"{sitio}/cap-1")
+
+
+def png_cierre_v3(dst, titulo, linea, pie, w=W, h=H):
+    im = Image.new("RGBA", (w, h), (14, 8, 3, 245))
+    d = ImageDraw.Draw(im)
+    cy = h // 2 - 260
+    d.text((w / 2, cy), titulo, font=fuente(F_DISPLAY, 84, 600), fill=ACCENT, anchor="mm")
+    for i, l in enumerate(envolver(d, linea, fuente(F_TEXTO, 60, 600), w - 160)):
+        d.text((w / 2, cy + 160 + i * 76), l, font=fuente(F_TEXTO, 60, 600), fill=INK, anchor="mm")
+    d.text((w / 2, cy + 400), pie, font=fuente(F_TEXTO, 56, 700), fill=ACCENT, anchor="mm")
     im.save(dst)
 
 
@@ -180,14 +209,15 @@ NOMBRES = {"locutor": None, "carmenza": "Carmenza", "eutimio": "Eutimio", "obdul
 # ---------- audio ----------
 
 def audio_fragmento(p, tmp):
-    fr = p["fragmento"]
+    fr = p["parte"] if p.get("tipo") == "parte" else p["fragmento"]
     cap = int(fr["capitulo"])
     src = REPO / "audio" / f"cap{cap:02d}_web.mp3"
     if not src.exists():
         raise ErrorPieza(f"no existe {src.name}")
     ini, fin = float(fr["inicio"]), float(fr["fin"])
-    if not 5 <= fin - ini <= CONFIG["duracion_max_video"] - CIERRE_S:
-        raise ErrorPieza(f"duración del fragmento {fin-ini:.1f}s fuera de rango")
+    tope = (CONFIG["duracion_max_parte"] if p.get("tipo") == "parte" else CONFIG["duracion_max_video"]) - CIERRE_S
+    if not 5 <= fin - ini <= tope:
+        raise ErrorPieza(f"duración del fragmento {fin-ini:.1f}s fuera de rango (5 a {tope}s)")
     dst = tmp / "voz.wav"
     d = fin - ini
     run(["ffmpeg", "-y", "-loglevel", "error", "-ss", str(ini), "-t", str(d), "-i", str(src),
@@ -340,8 +370,11 @@ def video(p, voz, subs, cap_cta, tmp, destino):
         f = [f"[1]crop={W}:{IMG_H}:x='(iw-{W})*t/{total:.2f}':y=0[ilu]",
              f"[0][ilu]overlay=0:{IMG_Y}[b0]", *ola, f"[b0][ola]overlay=90:{WAVE_Y}[b1]"]
     ult, k = "b1", 3
-    if p.get("gancho"):
-        g = tmp / "gancho.png"; png_texto(g, p["gancho"], tam=70, banda=True, alto=IMG_H)
+    gancho = p.get("gancho", "")
+    if p.get("tipo") == "parte":
+        gancho = f"Parte {p['parte']['n']} de {p['parte']['m']}" + (f". {gancho}" if gancho else "")
+    if gancho:
+        g = tmp / "gancho.png"; png_texto(g, gancho, tam=70, banda=True, alto=IMG_H)
         entradas += ["-loop", "1", "-t", "3", "-i", str(g)]
         f.append(f"[{k}]fade=t=out:st=2.3:d=0.3:alpha=1[gk]"); f.append(f"[{ult}][gk]overlay=0:{IMG_Y}:eof_action=pass:enable='lt(t,2.6)'[g]"); ult, k = "g", k + 1
     # subtítulos: una sola pista (concat de PNG con duraciones) en vez de una entrada por trozo
@@ -360,7 +393,11 @@ def video(p, voz, subs, cap_cta, tmp, destino):
     entradas += ["-f", "concat", "-safe", "0", "-i", str(tmp / "subs.txt")]
     f.append(f"[{k}]fps={FPS},format=rgba[subs]")
     f.append(f"[{ult}][subs]overlay=0:{SUB_Y}:eof_action=pass[st]"); ult, k = "st", k + 1
-    c = tmp / "cierre.png"; png_cierre(c, cap_cta, CONFIG["sitio"])
+    c = tmp / "cierre.png"
+    if v3(p.get("_semana")):
+        png_cierre_v3(c, *textos_cierre(p))
+    else:
+        png_cierre(c, cap_cta, CONFIG["sitio"])
     entradas += ["-loop", "1", "-framerate", str(FPS), "-t", f"{CIERRE_S:.2f}", "-i", str(c)]
     f.append(f"[{k}]setpts=PTS+{dur_voz:.2f}/TB[ck]")
     f.append(f"[{ult}][ck]overlay=0:0:eof_action=pass,format=yuv420p[v]")
@@ -374,6 +411,99 @@ def video(p, voz, subs, cap_cta, tmp, destino):
     # portada: fotograma a los 1,2 s
     run(["ffmpeg", "-y", "-loglevel", "error", "-ss", "1.2", "-i", str(destino / f"{p['id']}.mp4"), "-frames:v", "1", "-q:v", "3",
          str(destino / f"{p['id']}.jpg")])
+    return round(total, 1), usd
+
+
+HW, HH, HFPS, CIERRE_LARGO = 1920, 1080, 24, 8.0
+
+
+def ass_tiempo(t):
+    h, r = divmod(max(t, 0), 3600); m, sg = divmod(r, 60)
+    return f"{int(h)}:{int(m):02d}:{sg:05.2f}"
+
+
+def video_capitulo(p, tmp, destino):
+    """Capítulo completo, horizontal 1920×1080: audio final sobre ilustraciones con acercamiento lento y subtítulos (libass)."""
+    c = p["capitulo"]; n = int(c["numero"])
+    if n not in CONFIG.get("capitulos_en_redes", []):
+        raise ErrorPieza(f"el capítulo {n} no está autorizado en redes (config.json → capitulos_en_redes)")
+    src = REPO / "audio" / f"cap{n:02d}_web.mp3"
+    if not src.exists():
+        raise ErrorPieza(f"no existe {src.name}")
+    ini = float(c.get("inicio") or 0); fin = float(c.get("fin") or duracion(src)); dur_voz = fin - ini
+    total = dur_voz + CIERRE_LARGO
+    audio = tmp / "audio.m4a"
+    run(["ffmpeg", "-y", "-loglevel", "error", "-ss", str(ini), "-t", str(dur_voz), "-i", str(src), "-ss", "0", "-t", str(CIERRE_LARGO + 0.5),
+         "-i", str(MKT / "musica" / "tiple_de_cinco.mp3"), "-filter_complex",
+         f"[0]afade=t=out:st={dur_voz-1:.2f}:d=1[v];[1]volume=-10dB,afade=t=in:d=0.6,afade=t=out:st={CIERRE_LARGO-1.5}:d=1.5,adelay={int(dur_voz*1000)}|{int(dur_voz*1000)}[c];"
+         f"[v][c]amix=inputs=2:normalize=0,atrim=0:{total:.2f},loudnorm=I=-16:TP=-1.5:LRA=11[a]",
+         "-map", "[a]", "-c:a", "aac", "-b:a", "128k", "-ar", "44100", str(audio)])
+    ilus = sorted(c.get("ilustraciones") or [], key=lambda x: float(x.get("desde", 0)))
+    if not ilus:
+        raise ErrorPieza("el capítulo necesita al menos una ilustración")
+    # degradados (abajo: subtítulos; arriba: marca) horneados en cada ilustración: un solo overlay menos por cuadro
+    capa = Image.new("RGBA", (HW, HH), (0, 0, 0, 0)); px = capa.load()
+    for y in range(HH):
+        a_ = int(200 * (1 - y / 160)) if y < 160 else int(min(230, 230 * ((y - 640) / 440) ** 0.9)) if y > 640 else 0
+        for x in range(HW):
+            px[x, y] = (14, 8, 3, max(a_, 0))
+    gw, gh = int(HW * 1.06), int(HH * 1.06)
+    capa_g = capa.resize((gw, gh), Image.LANCZOS)
+    usd, imgs = 0.0, []
+    for i, il in enumerate(ilus, 1):
+        ruta, u = ilustrar.generar(il, "horizontal", destino / f"{p['id']}-ilu{i}.jpg"); usd += u
+        im = Image.open(ruta).convert("RGB")
+        esc = max(gw / im.width, gh / im.height)
+        im = im.resize((int(im.width * esc) + 1, int(im.height * esc) + 1), Image.LANCZOS).crop((0, 0, gw, gh))
+        im = Image.alpha_composite(im.convert("RGBA"), capa_g).convert("RGB")
+        q = tmp / f"h{i}.png"; im.save(q); imgs.append(q)
+    cortes = [0.0] + [max(0.0, float(il.get("desde", 0)) - ini) for il in ilus[1:]] + [total]
+    entradas, f = [], []
+    for i, q in enumerate(imgs):
+        d = cortes[i + 1] - cortes[i]
+        if d <= 0:
+            raise ErrorPieza("ilustraciones del capítulo con 'desde' repetido o fuera de orden")
+        entradas += ["-loop", "1", "-framerate", str(HFPS), "-t", f"{d:.3f}", "-i", str(q)]
+        f.append(f"[{i}]crop={HW}:{HH}:x='(iw-{HW})*t/{d:.2f}':y='(ih-{HH})*(1-t/{d:.2f})',setsar=1[s{i}]")
+    f.append("".join(f"[s{i}]" for i in range(len(imgs))) + f"concat=n={len(imgs)}:v=1:a=0[fondo]")
+    # subtítulos ASS (libass): nombre en ámbar arriba del texto
+    tiempos = json.loads((MKT / "datos" / f"tiempos-cap{n}.json").read_text())
+    ev = [f"Dialogue: 1,{ass_tiempo(0)},{ass_tiempo(dur_voz)},B,,0,0,0,,RADIONOVELAS DE AYER · {p.get('serie_titulo', 'La Hora de la Fortuna')}"]
+    for l in tiempos["lineas"]:
+        if l["fin"] <= ini or l["inicio"] >= fin:
+            continue
+        quien = NOMBRES.get(l["personaje"], l["personaje"].title())
+        for a_, b_, txt in trozos(l["texto"], l["inicio"] - ini, l["fin"] - ini, max_pal=12):
+            a_, b_ = max(a_, 0), min(b_, dur_voz)
+            if b_ - a_ < 0.25:
+                continue
+            cab = ("{\\fs34\\c&H3AA2F2&}" + quien.upper() + "{\\r}\\N") if quien else ""
+            ev.append(f"Dialogue: 0,{ass_tiempo(a_)},{ass_tiempo(b_)},S,,0,0,0,,{cab}{txt}")
+    ass = ["[Script Info]", "ScriptType: v4.00+", f"PlayResX: {HW}", f"PlayResY: {HH}", "WrapStyle: 0", "",
+           "[V4+ Styles]", "Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding",
+           "Style: S,Albert Sans,56,&H00EAF1F5,&H00EAF1F5,&H00030E0E,&H00000000,-1,0,0,0,100,100,0,0,1,3,0,2,140,140,70,1",
+           "Style: B,Albert Sans,34,&H003AA2F2,&H003AA2F2,&H00030E0E,&H00000000,-1,0,0,0,100,100,1,0,1,0,0,7,60,60,50,1", "",
+           "[Events]", "Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text", *ev]
+    (tmp / "subs.ass").write_text("\n".join(ass), encoding="utf8")
+    f.append(f"[fondo]subtitles={tmp / 'subs.ass'}:fontsdir={MKT / 'fuentes'}[st]")
+    k = len(imgs)
+    titulo = tmp / "titulo_h.png"
+    png_texto(titulo, f"Capítulo {n}: {c.get('titulo', '')}".rstrip(": "), tam=72, banda=True, alto=400, W=HW)
+    entradas += ["-loop", "1", "-framerate", str(HFPS), "-t", "7", "-i", str(titulo)]
+    f.append(f"[{k}]fade=t=in:st=0:d=0.6:alpha=1,fade=t=out:st=6.2:d=0.6:alpha=1[tk]"); f.append("[st][tk]overlay=0:340:eof_action=pass[t]"); k += 1
+    cierre = tmp / "cierre_h.png"; png_cierre_v3(cierre, *textos_cierre(p), w=HW, h=HH)
+    entradas += ["-loop", "1", "-framerate", str(HFPS), "-t", f"{CIERRE_LARGO:.2f}", "-i", str(cierre)]
+    f.append(f"[{k}]setpts=PTS+{dur_voz:.2f}/TB[ck]"); f.append("[t][ck]overlay=0:0:eof_action=pass,format=yuv420p[v]"); k += 1
+    entradas += ["-i", str(audio)]
+    salida = destino / f"{p['id']}.mp4"
+    run(["ffmpeg", "-y", "-loglevel", "error", *entradas, "-filter_complex", ";".join(f), "-map", "[v]", "-map", f"{k}:a",
+         "-t", f"{total:.2f}", "-r", str(HFPS), "-c:v", "libx264", "-preset", "veryfast", "-tune", "stillimage", "-crf", "26",
+         "-maxrate", "1500k", "-bufsize", "3000k", "-pix_fmt", "yuv420p", "-c:a", "copy", "-movflags", "+faststart", str(salida)])
+    if salida.stat().st_size > 280 * 1024 * 1024:
+        raise ErrorPieza(f"el video del capítulo pesa {salida.stat().st_size // 2**20} MB (máx. 280 para subirlo a R2)")
+    run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(salida), "-vf", "scale=640:360", "-c:v", "libx264", "-preset", "veryfast", "-crf", "32",
+         "-c:a", "aac", "-b:a", "48k", "-movflags", "+faststart", str(destino / f"{p['id']}-prev.mp4")])
+    run(["ffmpeg", "-y", "-loglevel", "error", "-ss", "3", "-i", str(salida), "-frames:v", "1", "-q:v", "3", str(destino / f"{p['id']}.jpg")])
     return round(total, 1), usd
 
 
@@ -437,11 +567,14 @@ def carrusel(p, destino):
 
 
 CAMPOS_MEDIA = ("tipo", "fragmento", "escena", "carrusel", "imagen", "ilustracion", "ilustracion_de", "gancho", "serie_titulo", "reintento")
+CAMPOS_MEDIA_V3 = ("parte", "capitulo", "cta")  # solo cuentan si están: así no cambia la huella de piezas viejas
 
 
 def huella(p):
     import hashlib
-    return hashlib.sha1(json.dumps({k: p.get(k) for k in CAMPOS_MEDIA}, sort_keys=True, ensure_ascii=False).encode()).hexdigest()[:12]
+    d = {k: p.get(k) for k in CAMPOS_MEDIA}
+    d.update({k: p[k] for k in CAMPOS_MEDIA_V3 if p.get(k) is not None})
+    return hashlib.sha1(json.dumps(d, sort_keys=True, ensure_ascii=False).encode()).hexdigest()[:12]
 
 
 def main():
@@ -473,7 +606,7 @@ def main():
                 validar_texto(v, f"texto.{k}")
             with tempfile.TemporaryDirectory() as td:
                 tmp = Path(td)
-                if p["tipo"] == "fragmento":
+                if p["tipo"] in ("fragmento", "parte"):
                     voz, subs, cap = audio_fragmento(p, tmp)
                     dur, usd_img = video(p, voz, subs, cap, tmp, destino)
                     r = {"ok": True, "video": f"{p['id']}.mp4", "portada": f"{p['id']}.jpg", "vista_previa": f"{p['id']}-prev.mp4", "segundos": dur,
@@ -485,6 +618,10 @@ def main():
                          "tts_tokens_salida": tokens, "usd_aprox": round(tokens * 20 / 1e6 + usd_img, 4)}
                 elif p["tipo"] == "carrusel":
                     imgs, usd_img = carrusel(p, destino); r = {"ok": True, "imagenes": imgs, "vista_previa": imgs[0], "usd_aprox": usd_img}
+                elif p["tipo"] == "capitulo":
+                    dur, usd_img = video_capitulo(p, tmp, destino)
+                    r = {"ok": True, "video": f"{p['id']}.mp4", "portada": f"{p['id']}.jpg", "vista_previa": f"{p['id']}-prev.mp4", "segundos": dur,
+                         "horizontal": True, "usd_aprox": usd_img}
                 else:
                     raise ErrorPieza(f"tipo desconocido {p['tipo']}")
         except Exception as e:

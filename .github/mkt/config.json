@@ -10,6 +10,11 @@
   "tts_modelo_pro": "gemini-2.5-pro-preview-tts",
   "tts_pro_para": ["alvaro"],
   "duracion_max_video": 58,
-  "max_por_dia": {"fb": 4, "ig": 4, "yt": 3, "tt": 3},
+  "max_por_dia": {"fb": 4, "ig": 4, "yt": 4, "tt": 4},
+  "reglas_v3_desde": "2026-W46",
+  "max_sueltas_por_dia": 2,
+  "duracion_max_parte": 178,
+  "capitulos_en_redes": [1],
+  "fb_reel_max_s": 90,
   "tt_modo": "borrador"
 }

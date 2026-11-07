@@ -20,19 +20,56 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from comun import CONFIG, ErrorPieza, MKT, http, leer_publico, log, semanas, aprobaciones, url_media, validar_texto
+from comun import CONFIG, ErrorPieza, MKT, http, leer_publico, log, semanas, aprobaciones, url_media, validar_texto, v3, enlace
 
 TZ = ZoneInfo(CONFIG["zona"])
 G = CONFIG["graph"]
 VENCE_H = 20
 
 
+RED_DE = {"fb": "fb", "comentario": "fb", "ig": "ig", "yt_titulo": "yt", "yt_desc": "yt", "tiktok": "tt"}
+ESTADO = {}  # lo llena main(): para resolver enlaces a videos ya publicados (destino "video:<id>")
+
+
+def url_destino(p, pl):
+    """Enlace del único llamado a la acción de la pieza para la red pl (None si la pieza no lleva enlace)."""
+    dest = (p.get("cta") or {}).get("destino", "cap-1")
+    if dest.startswith("video:"):
+        reg = (ESTADO.get(dest[6:]) or {})
+        return (reg.get(pl) or {}).get("url") or (reg.get("yt") or {}).get("url") or (reg.get("fb") or {}).get("url")
+    return enlace(p, pl, p.get("_semana"))
+
+
 def texto_final(p, apr, clave):
     t = dict(p.get("texto") or {})
     t.update((apr.get("texto") or {}))
     v = t.get(clave, "")
+    if "{enlace}" in v:
+        u = url_destino(p, RED_DE.get(clave, "fb"))
+        if not u:
+            raise ErrorPieza(f"texto.{clave} pide {{enlace}} pero el destino {(p.get('cta') or {}).get('destino')} aún no tiene URL")
+        v = v.replace("{enlace}", u)
     validar_texto(v, f"texto.{clave}")
     return v
+
+
+VERIFICADOS = {}
+
+
+def verificar_enlace(p, pl):
+    """Reglas v3: el enlace se comprueba antes de publicar. 404, 5xx o falla de red detienen la pieza en esa red."""
+    u = url_destino(p, pl)
+    if not u or not u.startswith(CONFIG["sitio"]):
+        return
+    base = u.split("?")[0]
+    if base not in VERIFICADOS:
+        try:
+            http("GET", base, cabeceras={"User-Agent": "Mozilla/5.0 (Linux; Android 13) radionovelas-redes"}, crudo=True, timeout=30)
+            VERIFICADOS[base] = None
+        except ErrorPieza as e:
+            VERIFICADOS[base] = None if ("HTTP 403" in str(e) or "HTTP 429" in str(e)) else str(e)  # 403/429: protección del CDN, no un enlace roto
+    if VERIFICADOS[base]:
+        raise ErrorPieza(f"enlace roto, no se publica: {base} ({VERIFICADOS[base][:200]})")
 
 
 # ---------- Facebook ----------
@@ -65,6 +102,25 @@ def fb_reel(p, apr, semana, token, hv=None):
     if com:
         try:
             http("POST", f"{G}/{vid}/comments", {"message": com, "access_token": token})
+        except ErrorPieza as e:
+            r["aviso"] = f"comentario no publicado: {e}"
+    return r
+
+
+def fb_video(p, apr, semana, token, hv=None):
+    """Video normal de Facebook (capítulo completo o parte de más de 90 s, que no cabe como Reel)."""
+    page = CONFIG["meta_page_id"]
+    datos = {"file_url": url_media(semana, p["id"] + ".mp4", hv), "description": texto_final(p, apr, "fb"), "access_token": token}
+    if p.get("texto", {}).get("yt_titulo"):
+        datos["title"] = texto_final(p, apr, "yt_titulo")[:250]
+    v = http("POST", f"{G}/{page}/videos", datos, timeout=600)
+    if "id" not in v:
+        raise ErrorPieza(f"Facebook no devolvió id del video: {v}")
+    r = {"id": v["id"], "url": f"https://www.facebook.com/{page}/videos/{v['id']}"}
+    com = texto_final(p, apr, "comentario")
+    if com:
+        try:
+            http("POST", f"{G}/{v['id']}/comments", {"message": com, "access_token": token})
         except ErrorPieza as e:
             r["aviso"] = f"comentario no publicado: {e}"
     return r
@@ -162,7 +218,8 @@ def yt_short(p, apr, semana, hv=None):
              cabeceras={"Authorization": f"Bearer {tok}", "Content-Type": "multipart/related; boundary=" + limite.decode()}, timeout=600)
     if "id" not in r:
         raise ErrorPieza(f"YouTube no devolvió id: {str(r)[:300]}")
-    res = {"id": r["id"], "url": f"https://www.youtube.com/shorts/{r['id']}"}
+    largo = p.get("tipo") == "capitulo"
+    res = {"id": r["id"], "url": f"https://www.youtube.com/{'watch?v=' if largo else 'shorts/'}{r['id']}"}
     priv = (r.get("status") or {}).get("privacyStatus")
     if priv != "public":
         res["aviso"] = f"YouTube lo dejó como '{priv}' (posible bloqueo de proyecto API sin auditar)"
@@ -178,6 +235,7 @@ def main():
     a = ap.parse_args()
     ruta = Path(a.estado)
     estado = json.loads(ruta.read_text()) if ruta.exists() else {}
+    ESTADO.clear(); ESTADO.update(estado)
     ahora = datetime.now(TZ)
     token = os.environ.get("META_PAGE_TOKEN", "")
 
@@ -210,6 +268,7 @@ def main():
         aprs = aprobaciones(sem)
         render = None
         for p in plan["piezas"]:
+            p["_semana"] = sem
             apr = aprs.get(p["id"], {})
             if apr.get("estado") != "aprobado":
                 continue
@@ -238,14 +297,20 @@ def main():
                     reg[pl] = {"error": "sin medios renderizados (render.json)", "fecha": ahora.isoformat()}; guardar(); continue
                 if p["tipo"] == "carrusel" and pl in ("yt", "tt"):
                     continue
+                dest = (p.get("cta") or {}).get("destino", "")
+                if dest.startswith("video:") and not url_destino(p, pl):
+                    continue  # el capítulo completo al que apunta aún no está publicado: se intenta en el siguiente ciclo
                 log(f"→ {p['id']} {pl}")
                 if a.simular:
                     log("   (simulado)"); continue
                 hv = rp.get("huella")
                 reg[pl] = {"en_curso": True, "fecha": ahora.isoformat(), "semana": sem}; guardar()  # marca antes: nunca se publica dos veces
                 try:
+                    if v3(sem):
+                        verificar_enlace(p, pl)
+                    largo = p["tipo"] == "capitulo" or float(rp.get("segundos") or 0) > CONFIG.get("fb_reel_max_s", 90)
                     if pl == "fb":
-                        r = fb_fotos(p, apr, sem, rp, token) if p["tipo"] == "carrusel" else fb_reel(p, apr, sem, token, hv)
+                        r = fb_fotos(p, apr, sem, rp, token) if p["tipo"] == "carrusel" else fb_video(p, apr, sem, token, hv) if largo else fb_reel(p, apr, sem, token, hv)
                     elif pl == "ig":
                         r = ig_carrusel(p, apr, sem, rp, token) if p["tipo"] == "carrusel" else ig_reel(p, apr, sem, token, hv)
                     elif pl == "yt":
@@ -254,6 +319,7 @@ def main():
                         from tiktok import tt_borrador
                         r = tt_borrador(p, sem, hv)
                     r["fecha"] = datetime.now(TZ).isoformat(); r["semana"] = sem
+                    ESTADO[p["id"]] = estado[p["id"]] | {pl: r}
                     cuenta[pl] = cuenta.get(pl, 0) + 1
                     log("   OK", r.get("url"))
                 except Exception as e:  # cualquier fallo queda registrado; el ciclo sigue con las demás

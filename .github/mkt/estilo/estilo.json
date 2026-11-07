@@ -8,7 +8,8 @@
  "reglas": "Sin ningún texto, letra, número legible, logo ni marca. Nada fotográfico ni 3D. Nada moderno (cables, plástico, carros modernos, celulares). Rostros expresivos y dignos, sin caricatura ni burla. Apto para todo público.",
  "encuadres": {
   "video": {"aspect_ratio": "9:16", "nota": "Composición vertical. El sujeto principal en el tercio superior y central; el tercio inferior más oscuro y sencillo, porque ahí van los subtítulos."},
-  "carrusel": {"aspect_ratio": "4:5", "nota": "Composición vertical 4:5, sujeto centrado, fondo sencillo."}
+  "carrusel": {"aspect_ratio": "4:5", "nota": "Composición vertical 4:5, sujeto centrado, fondo sencillo."},
+  "horizontal": {"aspect_ratio": "16:9", "nota": "Composición horizontal 16:9 para video largo. Sujeto principal al centro y en el tercio superior; franja inferior más oscura y sencilla, porque ahí van los subtítulos."}
  },
  "personajes": {
   "carmenza": {"ref": "personajes/carmenza.jpg", "aspecto": "mujer de 27 años, cabello castaño oscuro recogido con un lápiz, delantal blanco sobre blusa terracota, mirada seria y tierna, libreta de fiados"},
