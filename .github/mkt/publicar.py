@@ -10,8 +10,9 @@ Publica en Facebook, Instagram y YouTube las piezas APROBADAS cuya hora ya lleg�
 
 Reglas: un intento por pieza y plataforma; si falla, queda el error y NO se reintenta
 (se reporta en el informe diario y se decide a mano). Piezas con más de 20 h de atraso
-se marcan "vencida" y no salen. TikTok no se publica aquí (va a mano).
-Secretos (entorno): META_PAGE_TOKEN, YT_CLIENT_ID, YT_CLIENT_SECRET, YT_REFRESH_TOKEN.
+se marcan "vencida" y no salen. TikTok: si config.json → tt_modo = "borrador", el video se manda como
+borrador a la bandeja de TikTok (tiktok.py) y Andrés lo publica desde la app; si no, va a mano.
+Secretos (entorno): META_PAGE_TOKEN, YT_CLIENT_ID, YT_CLIENT_SECRET, YT_REFRESH_TOKEN, TT_CLIENT_KEY, TT_CLIENT_SECRET, TT_REFRESH_TOKEN.
 """
 import argparse, json, os, re, subprocess, sys, time
 from datetime import datetime, timedelta
@@ -199,7 +200,7 @@ def main():
             estado[r["id"]].pop(r["plataforma"]); usados.append(k); guardar()
 
     hoy = ahora.strftime("%Y-%m-%d")
-    cuenta = {k: sum(1 for pid, pe in estado.items() if not pid.startswith("_") for pl, v in pe.items() if pl == k and str(v.get("fecha", "")).startswith(hoy) and v.get("id"))
+    cuenta = {k: sum(1 for pid, pe in estado.items() if not pid.startswith("_") for pl, v in pe.items() if pl == k and str(v.get("fecha", "")).startswith(hoy) and (v.get("id") or v.get("publish_id")))
               for k in CONFIG["max_por_dia"]}
     for ruta_plan in semanas():
         if ruta_plan.name.endswith(".aprobaciones.json"):
@@ -219,14 +220,14 @@ def main():
             if cuando > ahora:
                 continue
             for pl in p.get("plataformas", []):
-                if pl not in ("fb", "ig", "yt"):
-                    continue  # tt: a mano
+                if pl not in ("fb", "ig", "yt") and not (pl == "tt" and CONFIG.get("tt_modo") == "borrador"):
+                    continue  # tt: a mano salvo modo borrador
                 reg = estado.setdefault(p["id"], {})
                 if pl in reg:
                     continue  # ya publicado, vencido o con error: un solo intento
                 if ahora - cuando > timedelta(hours=VENCE_H):
                     reg[pl] = {"vencida": True, "fecha": ahora.isoformat()}; guardar(); continue
-                if cuenta.get(pl, 0) >= CONFIG["max_por_dia"][pl]:
+                if cuenta.get(pl, 0) >= CONFIG["max_por_dia"].get(pl, 3):
                     continue
                 if render is None:
                     render = (leer_publico(f"mkt/{sem}/render.json", {}) or {}).get("piezas", {})
@@ -235,7 +236,7 @@ def main():
                     continue  # aún sin render: se intenta en el siguiente ciclo
                 if not rp.get("ok"):
                     reg[pl] = {"error": "sin medios renderizados (render.json)", "fecha": ahora.isoformat()}; guardar(); continue
-                if p["tipo"] == "carrusel" and pl == "yt":
+                if p["tipo"] == "carrusel" and pl in ("yt", "tt"):
                     continue
                 log(f"→ {p['id']} {pl}")
                 if a.simular:
@@ -247,8 +248,11 @@ def main():
                         r = fb_fotos(p, apr, sem, rp, token) if p["tipo"] == "carrusel" else fb_reel(p, apr, sem, token, hv)
                     elif pl == "ig":
                         r = ig_carrusel(p, apr, sem, rp, token) if p["tipo"] == "carrusel" else ig_reel(p, apr, sem, token, hv)
-                    else:
+                    elif pl == "yt":
                         r = yt_short(p, apr, sem, hv)
+                    else:
+                        from tiktok import tt_borrador
+                        r = tt_borrador(p, sem, hv)
                     r["fecha"] = datetime.now(TZ).isoformat(); r["semana"] = sem
                     cuenta[pl] = cuenta.get(pl, 0) + 1
                     log("   OK", r.get("url"))

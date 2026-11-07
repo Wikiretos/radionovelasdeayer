@@ -66,6 +66,12 @@ verificar(){
   echo "subido datos/verificacion.txt"
 }
 
+tiktok(){
+  # prueba: manda UN video ya renderizado como borrador a la bandeja de TikTok (no toca estado.json)
+  [ -n "${PIEZA:-}" ] || { echo "ERROR: falta la pieza (ej. 2026-W45/w45-05)"; return 1; }
+  python3 .github/mkt/tiktok.py prueba "$PIEZA"
+}
+
 bajar(){
   # solo un 404 real significa "sin estado"; cualquier otro fallo detiene para no publicar dos veces
   c=$(curl -s -o estado.json -w '%{http_code}' "$PUBLICO/mkt/estado.json?v=$(date +%s)" || echo 000)
