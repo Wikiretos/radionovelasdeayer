@@ -30,7 +30,22 @@ const SC_PROPIEDAD = "sc-domain:radionovelasdeayer.com";
 const SC_URL = `https://searchconsole.googleapis.com/webmasters/v3/sites/${encodeURIComponent(SC_PROPIEDAD)}/searchAnalytics/query`;
 const SC_DESDE_MIN = "2026-09-14";
 const EMBUDO_DESDE = "2026-10-09";
-const INSPECCION_MAX = 15; // URL del sitemap inspeccionadas por corrida (cuida el límite de subrequests del Worker)
+// URL inspeccionadas por corrida. Presupuesto de subrequests (plan gratis: 50 por ejecución), 2026-11-07:
+// token 1 + informe 18 (15 GA4 + 3 R2) + seo 12 (SC 4, sitemap 1, posts.json 1, R2 2, GA4 3) + inspecciones 18 = 49.
+// Si el sitemap tiene más URL, se rota: siempre INSPECCION_FIJAS, luego las no indexadas o nunca vistas, luego las más viejas.
+const INSPECCION_MAX = 18;
+const INSPECCION_FIJAS = ["/radionovelas", "/que-es-una-radionovela", "/radionovelas-colombianas"];
+// Fecha (Colombia) desde la que cada URL está en el sitemap publicado sin interrupción, sacada del historial de
+// sitemap.xml en el repo (2026-11-07). Solo siembra la primera corrida: después la fecha se arrastra del seo.txt
+// anterior y una URL nueva toma la fecha del día en que el Worker la ve por primera vez. Nunca se renueva.
+const EN_SITEMAP_INICIAL = {
+  "/": "2026-10-09", "/cap-1": "2026-10-09", "/cap-2": "2026-10-09", "/cap-3": "2026-10-18", "/cap-4": "2026-10-19",
+  "/cap-5": "2026-10-20", "/cap-6": "2026-10-21", "/cap-7": "2026-11-04", "/cap-8": "2026-11-05", "/cap-9": "2026-11-06",
+  "/cap-10": "2026-11-06", "/radionovelas-colombianas": "2026-10-14", "/que-es-una-radionovela": "2026-10-14",
+  "/la-hora-de-la-fortuna": "2026-10-14", "/radionovelas": "2026-10-14", "/privacidad": "2026-10-18",
+  "/terminos": "2026-10-18", "/eliminacion-datos": "2026-10-18", "/kaliman-radionovela": "2026-11-03",
+  "/donde-escuchar-radionovelas": "2026-11-03", "/leyendas-colombianas": "2026-11-03",
+};
 
 // ===== Autenticación (un token para GA4 y Search Console) =====
 function b64url(buf) {
@@ -211,8 +226,9 @@ async function leerSitemap(url, profundidad = 0) {
 
 async function generarSeo(env, token) {
   const out = { generado: new Date().toISOString(), hoy: hace(0), datos_hasta: null, propiedad_sc: SC_PROPIEDAD, pais: "col",
-    estado: { search_console: "ok", sitemap: "ok", ga4: "ok", inspeccion: "ok" }, periodos: {}, keywords: [], agregado_radionovela: {},
-    indexacion: { revisadas: null, indexadas: null, nuevas_hoy: [], lista: [] },
+    estado: { search_console: "ok", sitemap: "ok", ga4: "ok", inspeccion: "ok", posts_json: "ok" }, periodos: {}, keywords: [], agregado_radionovela: {},
+    indexacion: { revisadas: null, cubiertas: null, en_sitemap: null, indexadas: null, nuevas_hoy: [], lista: [] },
+    en_sitemap_desde: {},
     diagnostico: {},
     por_dia: [], paginas: [], indexadas: { sitemap_total: null, con_impresiones_28: null, sin_impresiones: [] },
     embudo_organico: {}, posts: [], top_consultas: [],
@@ -220,7 +236,12 @@ async function generarSeo(env, token) {
           "Keywords: coincidencia exacta sin mayúsculas ni tildes, país Colombia. " +
           "Embudo orgánico: fuente = seo, sin ciudades de centros de datos. " +
           "indexacion: estado real en Google de cada URL del sitemap (API de inspección de URL); " +
-          "nuevas_hoy = URL que Google indexó desde la corrida anterior." };
+          "nuevas_hoy = URL que Google indexó desde la corrida anterior. " +
+          "Desde 2026-11-07: indexacion.revisadas = URL inspeccionadas hoy (máx. 18, rota; /radionovelas, " +
+          "/que-es-una-radionovela y /radionovelas-colombianas siempre); cubiertas = URL del sitemap con resultado " +
+          "(de hoy o arrastrado); cada fila trae inspeccionada (fecha) y de_hoy. en_sitemap_desde = fecha fija en que la URL " +
+          "entró al sitemap (no cambia al regenerar el sitio). posts: titulo, cluster, keyword y publicado salen de " +
+          "radionovelasdeayer.com/datos/posts.json (front matter); GA4 solo de respaldo." };
 
   // --- Search Console ---
   let scOk = false, porPaginaD28 = null;
@@ -238,8 +259,20 @@ async function generarSeo(env, token) {
       const desde = mayor(SC_DESDE_MIN, sumar(H, -89));
       const serie = await scConsulta(token, desde, H, ["date"]);
       const serPag = await scConsulta(token, desde, H, ["date", "page"]);
+      // Una sola consulta fecha+consulta+página para los cuatro periodos (antes eran cuatro; ahorra 3 subrequests).
+      const qpd = await scConsulta(token, P.d28_prev.desde, H, ["date", "query", "page"]);
       const QP = {};
-      for (const [k, p] of Object.entries(P)) QP[k] = await scConsulta(token, p.desde, p.hasta, ["query", "page"]);
+      for (const [k, p] of Object.entries(P)) {
+        const m = {};
+        for (const r of qpd) {
+          if (!dentro(r.keys[0], p)) continue;
+          const c = r.keys[1] + "\u0000" + r.keys[2];
+          const a = m[c] || (m[c] = { keys: [r.keys[1], r.keys[2]], impressions: 0, clicks: 0, _pp: 0 });
+          a.impressions += r.impressions; a.clicks += r.clicks; a._pp += r.position * r.impressions;
+        }
+        QP[k] = Object.values(m).map(a => ({ keys: a.keys, impressions: a.impressions, clicks: a.clicks,
+          position: a.impressions ? a._pp / a.impressions : 0 }));
+      }
 
       // Serie diaria total y por cluster.
       const clusPorDia = {};
@@ -260,6 +293,7 @@ async function generarSeo(env, token) {
       }
       // Registro de filas crudas por llamada (para diagnosticar diferencias con la interfaz de Search Console).
       out.diagnostico = { filas: { serie_fecha: serie.length, serie_fecha_pagina: serPag.length,
+        fecha_consulta_pagina: qpd.length, recortada: qpd.length >= 25000,
         ...Object.fromEntries(Object.entries(QP).map(([k, v]) => [`consulta_pagina_${k}`, v.length])) },
         impresiones: { serie_fecha: serie.reduce((s, r) => s + r.impressions, 0),
           serie_fecha_pagina: serPag.reduce((s, r) => s + r.impressions, 0) },
@@ -335,16 +369,28 @@ async function generarSeo(env, token) {
   // --- Indexación (API de inspección de URL de Search Console) ---
   // Estado real de indexación de cada URL del sitemap y fecha en que Google la indexó por primera vez
   // (se arrastra del seo.txt anterior). Límite de la API: 2.000 consultas/día; aquí, máx. INSPECCION_MAX por corrida.
+  let previoSeo = null;
+  try { const o = await env.AUDIO.get("datos/seo.txt"); if (o) previoSeo = JSON.parse(await o.text()); } catch { previoSeo = null; }
+  // en_sitemap_desde: se arrastra del seo.txt anterior; la siembra solo cubre la primera vez; URL nueva = hoy.
+  const enSitemap = { ...EN_SITEMAP_INICIAL, ...(previoSeo?.en_sitemap_desde || {}) };
+  for (const u of urls) if (!enSitemap[u.ruta]) enSitemap[u.ruta] = hace(0);
+  out.en_sitemap_desde = enSitemap;
   try {
     let previo = {};
-    try {
-      const o = await env.AUDIO.get("datos/seo.txt");
-      if (o) for (const f of (JSON.parse(await o.text()).indexacion?.lista || [])) previo[f.url] = f;
-    } catch { previo = {}; }
+    for (const f of (previoSeo?.indexacion?.lista || [])) previo[f.url] = { ...f, inspeccionada: f.inspeccionada || previoSeo.hoy || null };
     // Primera corrida (sin historial): no se puede saber qué es nuevo; indexada_desde queda null = "antes del primer registro".
     const primera = Object.keys(previo).length === 0;
-    const lista = [];
-    for (const u of urls.slice(0, INSPECCION_MAX)) {
+    // Orden de inspección: fijas, luego no indexadas o nunca vistas, luego las de inspección más vieja.
+    const fijas = urls.filter(u => INSPECCION_FIJAS.includes(u.ruta));
+    const resto = urls.filter(u => !INSPECCION_FIJAS.includes(u.ruta)).sort((a, b) => {
+      const pa = previo[a.ruta], pb = previo[b.ruta];
+      const ka = !pa || !pa.indexada ? 0 : 1, kb = !pb || !pb.indexada ? 0 : 1;
+      if (ka !== kb) return ka - kb;
+      return String(pa?.inspeccionada || "") < String(pb?.inspeccionada || "") ? -1 : String(pa?.inspeccionada || "") > String(pb?.inspeccionada || "") ? 1 : 0;
+    });
+    const aInspeccionar = [...fijas, ...resto].slice(0, INSPECCION_MAX);
+    const hoyIns = {};
+    for (const u of aInspeccionar) {
       const r = await fetch("https://searchconsole.googleapis.com/v1/urlInspection/index:inspect", { method: "POST",
         headers: { authorization: `Bearer ${token}`, "content-type": "application/json" },
         body: JSON.stringify({ inspectionUrl: SITIO + (u.ruta === "/" ? "/" : u.ruta), siteUrl: SC_PROPIEDAD, languageCode: "es" }) });
@@ -352,17 +398,36 @@ async function generarSeo(env, token) {
       const s = (await r.json()).inspectionResult?.indexStatusResult || {};
       const indexada = s.verdict === "PASS";
       const ant = previo[u.ruta];
-      lista.push({ url: u.ruta, indexada, estado: s.coverageState || null,
+      hoyIns[u.ruta] = { url: u.ruta, indexada, estado: s.coverageState || null,
         ultimo_rastreo: s.lastCrawlTime ? s.lastCrawlTime.slice(0, 10) : null,
         canonical_google: s.googleCanonical ? rutaDe(s.googleCanonical) : null,
-        indexada_desde: indexada ? (ant?.indexada ? ant.indexada_desde : (primera ? null : hace(0))) : null,
-        nueva_hoy: indexada && !primera && !(ant && ant.indexada) });
+        // URL nunca inspeccionada antes: no se sabe desde cuándo está indexada (null), y no cuenta como nueva.
+        indexada_desde: indexada ? (ant?.indexada ? ant.indexada_desde : (ant && !primera ? hace(0) : null)) : null,
+        nueva_hoy: indexada && !primera && !!ant && ant.indexada === false, inspeccionada: hace(0), de_hoy: true };
     }
-    out.indexacion = { revisadas: lista.length, indexadas: lista.filter(f => f.indexada).length,
+    // Lista en el orden del sitemap: resultado de hoy o, si no tocó, el último conocido.
+    const lista = urls.map(u => {
+      const base = hoyIns[u.ruta] || (previo[u.ruta] ? { ...previo[u.ruta], nueva_hoy: false, de_hoy: false } :
+        { url: u.ruta, indexada: null, estado: null, ultimo_rastreo: null, canonical_google: null, indexada_desde: null,
+          nueva_hoy: false, inspeccionada: null, de_hoy: false });
+      return { ...base, en_sitemap_desde: enSitemap[u.ruta] || null };
+    });
+    out.indexacion = { revisadas: Object.keys(hoyIns).length, cubiertas: lista.filter(f => f.inspeccionada).length,
+      en_sitemap: urls.length, indexadas: lista.filter(f => f.indexada === true).length,
       nuevas_hoy: lista.filter(f => f.nueva_hoy).map(f => f.url), lista };
   } catch (e) {
     out.estado.inspeccion = { error: String(e.message || e).slice(0, 220) };
-    out.indexacion = { revisadas: null, indexadas: null, nuevas_hoy: [], lista: [] };
+    out.indexacion = { revisadas: null, cubiertas: null, en_sitemap: null, indexadas: null, nuevas_hoy: [], lista: [] };
+  }
+
+  // --- Datos de los posts publicados por build.py (título, cluster, keyword, fecha de publicación) ---
+  let postsMeta = {};
+  try {
+    const r = await fetch(`${SITIO}/datos/posts.json`, { headers: { "cache-control": "no-cache" } });
+    if (!r.ok) throw new Error(`${r.status} posts.json`);
+    for (const m of await r.json()) postsMeta[rutaDe(m.url)] = m;
+  } catch (e) {
+    out.estado.posts_json = { error: String(e.message || e).slice(0, 160) };
   }
 
   // --- GA4: embudo orgánico y posts ---
@@ -413,8 +478,10 @@ async function generarSeo(env, token) {
       const filasP = ga.filter(r => rutaDe(r.pagePath.replace(/\.html$/, "")) === p.ruta).sort((a, b) => b.totalUsers - a.totalUsers);
       const primero = campo => limpio((filasP.find(r => limpio(r[campo])) || {})[campo]);
       const sc = scOk && porPaginaD28 ? (porPaginaD28[p.ruta] || { impresiones: 0, clics: 0, posicion: null }) : null;
-      return { url: p.ruta, titulo: primero("pageTitle"), publicado: p.publicado,
-        cluster: primero("customEvent:cluster"), keyword: primero("customEvent:keyword"),
+      const pm = postsMeta[p.ruta] || {};
+      return { url: p.ruta, titulo: pm.titulo || primero("pageTitle"), publicado: pm.publicado || p.publicado,
+        cluster: pm.cluster || primero("customEvent:cluster"), keyword: pm.keyword || primero("customEvent:keyword"),
+        en_sitemap_desde: enSitemap[p.ruta] || null, lastmod: p.publicado,
         impresiones_28: sc ? sc.impresiones : (scOk ? 0 : null), clics_28: sc ? sc.clics : (scOk ? 0 : null),
         posicion_28: sc ? sc.posicion : null };
     });
